@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import "breakPoint";
+
+
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: 'Roboto Slab', serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 200 !important;
+    font-family: 'Roboto Slab', serif;
+}
+
+.btn1 {
+    background: #5183BF;
+    color: white !important;
+    padding: 8px 20px !important;
+    box-shadow: 10px 20px 20px -10px gray;
+
+    &:hover {
+        background: #262626;
+    }
+}
+
+.font_1 {
+    font-family: 'Roboto Slab', serif !important;
+}
+
+.font_2 {
+    font-family: 'Outfit', sans-serif !important;
+}
+
+li,
+p {
+    font-size: 100%;
+    font-family: 'Outfit', sans-serif;
+
+    @include media("<=phone") {
+        font-size: 90%;
+    }
+}
+
+.LH0 {
+    line-height: 0;
+}
+
+.LH1 {
+    line-height: 1.2em;
+}
+
+.LH2 {
+    line-height: 1.25em;
+}
+
+.LH3 {
+    line-height: 1.50em;
+}
+
+.LH4 {
+    line-height: 1.75em;
+}
+
+.LH5 {
+    line-height: 2em;
+}
+
+.LH6 {
+    line-height: 2.25em;
+}
+
+.h1 {
+    font-size: 65px;
+
+    @include media("<=phone") {
+        font-size: 42px;
+    }
+}
+
+.h2 {
+    font-size: 54px;
+
+    @include media("<=phone") {
+        font-size: 32px;
+    }
+}
+
+.h3 {
+    font-size: 38px;
+
+    @include media("<=phone") {
+        font-size: 28px;
+    }
+}
+
+.h4 {
+    font-size: 28px;
+}
+
+.h5 {
+    font-size: 24px;
+}
+
+.h6 {
+    font-size: 18px;
+}
+
+// ------------------------
+nav {
+    background: white;
+    box-shadow: 0 5px 20px -10px black;
+
+    .menu1 {
+        font-size: 18px;
+
+        a {
+            color: rgb(37, 37, 37) !important;
+        }
+    }
+
+    .menu2 {
+        a {
+            color: rgb(37, 37, 37) !important;
+        }
+
+        .dropdown-menu {
+            left: unset;
+            right: 0;
+
+
+        }
+
+
+    }
+}
+
+.banner {
+    background: linear-gradient(180deg, #fe5b3699, white, white);
+
+    .search {
+        input:nth-child(1) {
+            padding: 10px 20px !important;
+            border: none;
+            border: 1px solid black;
+            border-radius: 20px 0 0 20px !important;
+        }
+
+        button {
+            padding: 10px !important;
+            border: none;
+            border: 1px solid black;
+            border-radius: 0 20px 20px 0 !important;
+            margin-left: -6px;
+        }
+    }
+
+    .persent {
+        color: #3C8F7C;
+        font-weight: 900;
+        font-size: 75px;
+    }
+}
+
+.home-bond-list {
+
+    .box {
+        border: 1px solid gray;
+        padding: 20px;
+    }
+}
+
+.signup-page {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(180deg, #5183BF, white);
+
+    .border {
+        background: white;
+        padding: 70px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px -15px gray;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        @include media("<=phone") {
+            padding: 30px;
+        }
+    }
+
+    .form-group {
+        padding-bottom: 12px;
+    }
+
+    .input-group-text {
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid black;
+        padding-left: 0;
+    }
+
+    .form-control {
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid black;
+    }
+
+    input:focus-visible {
+        outline-offset: 0px;
+    }
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: unset;
+        outline: 0;
+        box-shadow: unset;
+    }
+}

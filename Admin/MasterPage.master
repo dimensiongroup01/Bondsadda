@@ -1,0 +1,448 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Admin_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-bs-theme="light" data-sidebar-image="none" data-layout-mode="light" data-body-image="none" data-preloader="disable">
+<head>
+
+    <meta charset="utf-8" />
+    <title>Bonds Adda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- App favicon -->
+<%--    <a href="MasterPage.master">MasterPage.master</a>--%>
+    <link rel="shortcut icon" href="../Image/logo1.png">
+  
+
+    <!-- jsvectormap css -->
+    <link href="../assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--Swiper slider css-->
+    <link href="../assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Layout config Js -->
+    <script src="../assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+      
+    <!-- custom Css-->
+    <link href="../assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/notice.css" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
+   
+    <style>
+        .btn-primary{
+            --vz-btn-hover-bg: var(--vz-primary) !important;
+        }
+        .qw {
+    margin-top: 5px;
+}
+ .dropdown.ms-sm-3.header-item.topbar-user {
+    background-color: #cdcdcd;
+}
+ .navbar-menu .navbar-nav .nav-link[data-bs-toggle=collapse][aria-expanded=true] {
+    color: #000000 !important;
+}
+ .navbar-menu .navbar-nav .nav-sm .nav-link.active {
+    color: black;
+}
+ tr.fixedheader {
+    background-color: lightgray;
+}
+ .app-menu.navbar-menu.border-end {
+    width: 265px;
+}
+ .page-content {
+    margin-left: 14px;
+}
+ header#page-topbar {
+    margin-left: 15px;
+}
+    </style>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id ="form1" runat="server">
+    <!-- Begin page -->
+        <asp:HiddenField ID ="hfSubMenuUrl" runat="server" />
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+    <div class="layout-width">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <!-- LOGO -->
+                <div class="navbar-brand-box horizontal-logo">
+                  <%--  <a href="index-2.html" class="logo logo-dark">
+                        <span class="logo-sm">
+                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                        </span>
+                        <span class="logo-lg">
+
+<img src="../drive-download-20230512T063738Z-001/WHITE(T).png" width="200" />
+                        </span>
+                    </a>--%>
+
+                    <a href="index-2.html" class="logo logo-light">
+                        <span class="logo-sm">
+<%--                            <img src="assets/images/logo-sm.png" alt="" height="22">--%><img src="../Image/logo1.png" />
+                        </span>
+                        <span class="logo-lg">
+<%--                            <img src="assets/images/logo-light.png" alt="" height="17">--%>
+<img src="../Image/logo1.png"/>
+                        </span>
+                    </a>
+                </div>
+
+                <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger" id="topnav-hamburger-icon">
+                    <span class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+
+            </div>
+
+            <div class="d-flex align-items-center">
+
+
+                
+
+                <div class="dropdown ms-sm-3 header-item topbar-user">
+                    <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-flex align-items-center">
+<%--                            <img class="header-profile-user" src="../drive-download-20230512T063738Z-001/New%20folder/WHITE(S1).png" alt="Header Avatar">--%><img class="header-profile-user" src="../Image/logo1.png" height="25" />
+                                                            <span class="d-none d-xl-inline-block ms-1 fw-semibold user-name-text"></span>
+                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text" runat="server" id="divRole"></span>
+                           <%-- <span class="text-start ms-xl-2">
+
+                            </span>
+  --%>                      </span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        
+                       <div class="dropdown-header" id="divMemberCode" runat="server"></div>
+                        <a class="dropdown-item" href="UserManagement.aspx"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+                       <%-- <a class="dropdown-item" href="#"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
+                       --%>  <a class="dropdown-item" href="ChangePassword.aspx"><i class="mdi mdi-key text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Change Password</span></a>
+                       
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">
+    <asp:LinkButton ID="lnkLogout" runat="server" CssClass="mdi mdi-logout text-muted fs-16 align-middle me-1 align-middle" OnClick="lnkLogout_Click"> <span class="align-middle" data-key="t-logout">Logout</span></asp:LinkButton>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+        <!-- ========== App Menu ========== -->
+        <div class="app-menu navbar-menu border-end">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <!-- Dark Logo-->
+                <a href="Dashboard.aspx" class="logo logo-dark">
+                    <span class="logo-sm">
+<%--                        <img src="../Image/Screenshot%202023-06-08%20183433b.png" height="30"/>--%>
+                        <img src="../Image/logo1.png" height="35" />
+                    </span>
+                    <span class="logo-lg">
+                        
+<%--        <img src="../Image/Screenshot%202023-06-08%20183433.png" height="75" margin-top="5"/>--%>
+                        <img src="../Image/logo.png" height="40" margin-top="5"/>
+                    </span>
+
+                </a>
+               
+                <!-- Light Logo-->
+               <%-- <a href="index-2.html" class="logo logo-light">
+                   <div class="qw">
+                    <span class="logo-lg">
+                        
+                    <img src="../drive-download-20230512T063738Z-001/New%20folder/WHITE_S_-removebg-preview.png" height="75" margin-top="5" />
+                            
+                    </span>
+                    </div>
+                </a>--%>
+                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+                    <i class="ri-record-circle-line"></i>
+                </button>
+            </div>
+
+             <div id="scrollbar">
+                <div class="container-fluid">
+
+                    <div id="two-column-menu">
+                    </div>
+                    <ul class="navbar-nav" id="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="Dashboard.aspx">
+                                <i class="ri-dashboard-line"></i> <span data-key="t-dashboards">Dashboard</span>
+                            </a>
+                            
+                        </li> <!-- end Dashboard Menu -->
+                           <asp:HiddenField ID="hfUserRole" runat="server" />
+                                        <asp:Repeater ID="rptMainMenu" runat="server" OnItemDataBound="rptMainMenu_ItemDataBound">
+                            <ItemTemplate>
+                         <li class="nav-item">
+                            <a class="nav-link menu-link" href='#sidebarState<%#Eval("MainMenuId")%>' data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarState">
+                                <i class="<%#Eval("MainMenuIconHtml") %>"></i><span data-key="t-apps"><%#Eval("MainMenuHead") %></span>
+                                <asp:HiddenField ID="hfMainMenuId" runat="server" Value='<%#Eval("MainMenuId")%>' />
+                            </a>
+                            <div class="collapse menu-dropdown" id='sidebarState<%#Eval("MainMenuId")%>'>
+                                     
+                                <ul class="nav nav-sm flex-column">
+                                         <asp:Repeater ID="rptSubMenu" runat="server" OnItemDataBound="rptSubMenu_ItemDataBound">
+                                            <ItemTemplate>
+                                <asp:HiddenField ID ="hfSubMenuId" runat="server" Value='<%#Eval("SubMenuId") %>' />
+                                                <asp:HiddenField ID ="hfSubMenuUrl" runat="server" Value='<%#Eval("SubMenuUrl") %>' />
+                                                <asp:Panel ID ="withoutchild" runat="server">
+                                                    <li class="nav-item">
+                                        <a href="<%#Eval("SubMenuUrl")%>" class="nav-link" data-key="t-calendar"> <%#Eval("SubMenuTitle")%></a>
+
+                                    </li>
+                                                </asp:Panel>
+                                    <asp:Panel ID ="pnlWithChild" runat="server">
+                                        <li class="nav-item">
+                                        <a href='#SubsidebarState<%#Eval("SubMenuId")%>' class="nav-link"  data-bs-toggle="collapse" role="button" aria-expanded="false"  aria-controls="SubsidebarState" data-key="t-calendar"> <%#Eval("SubMenuTitle")%></a>
+
+                                    </li>
+                                    <div class="collapse menu-dropdown" id='SubsidebarState<%#Eval("SubMenuId") %>'>
+                                         <ul class="nav nav-sm flex-column">
+                                             <asp:Repeater ID ="rptChildSubMenu" runat="server">
+                                                 <ItemTemplate>
+                                                     <li class="nav-item">
+                                         <a href='<%#Eval("ChildSubMenuUrl") %>' class="nav-link" data-key="t-basic"> <%#Eval("ChildSubMenuTitle") %>
+                                                    </a>
+                                                </li>
+                                                     </ItemTemplate>
+                                             </asp:Repeater>
+                                                
+                                                
+                                            </ul>
+                                     </div>
+                                  </asp:Panel>
+
+                                                
+                                        
+                                                </ItemTemplate>
+                                             </asp:Repeater>
+<%--                                    <li class="nav-item">
+                                        <a href="ViewUserManagement.aspx" class="nav-link" data-key="t-chat"> View User </a>
+                                    </li>
+                                     <li class="nav-item">
+                                        <a href="UserAccess.aspx" class="nav-link" data-key="t-chat"> Access User </a>
+                                    </li>--%>
+                                 </ul>
+                            </div>
+                        </li>
+
+<%--                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarCity" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">                               
+                          <i class="ri-store-3-fill"></i> <span data-key="t-apps">Invaentory Management</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarCity">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="PaymentFrequency.aspx" class="nav-link" data-key="t-calendar">Payment/Interest Frequency </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="AddTags.aspx" class="nav-link" data-key="t-chat"> Tags </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="Category.aspx" class="nav-link" data-key="t-calendar"> Categories </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="Product.aspx" class="nav-link" data-key="t-chat"> Products </a>
+                                    </li>
+                                 </ul>
+                            </div>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link menu-link" href="ViewBookedSold.aspx">
+                              <i class="ri-account-circle-line"></i><span data-key="t-apps">View Booked/Sold</span>
+                            </a>
+                                                    </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarCategory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                               <i class="ri-group-fill"></i> <span data-key="t-layouts">Customer Management</span> 
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarCategory">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="ViewRegisteredCustomer.aspx" target="_blank" class="nav-link" data-key="t-horizontal">View Registered</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="ViewBuyer.aspx" target="_blank" class="nav-link" data-key="t-detached">View Buyers</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+
+                        <li class="nav-item">
+                                        <a href="#sidebarCustomer" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarchangePass"> <i class="ri-secure-payment-fill"></i><span data-key="t-password-create">
+                                            Transaction Management</span>
+                                        </a>
+                                        <div class="collapse menu-dropdown" id="sidebarCustomer">
+                                            <ul class="nav nav-sm flex-column">
+                                                <li class="nav-item">
+                                                    <a href="ApprovedTransaction.aspx" class="nav-link" data-key="t-basic">
+                                                        Approved Transaction </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="DeclineTransaction.aspx" class="nav-link" data-key="t-cover">
+                                                        Decline </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="Cart.aspx" class="nav-link"> <i class="ri-shopping-cart-fill"></i><span data-key="t-errors"> Cart</span>
+                                        </a>
+                                        
+                                    </li>
+
+
+                                    <li class="nav-item">
+                                        <a href="Wishlist.aspx" class="nav-link"> <i class="ri-heart-fill"></i><span data-key="t-errors"> Wishlist</span>
+                                        </a>
+                                        
+                                    </li>--%>
+                                </ItemTemplate>
+                        </asp:Repeater>
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+           </div>
+
+            <div class="sidebar-background"></div>
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- Vertical Overlay-->
+        <div class="vertical-overlay"></div>
+
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <footer class="footer border-top">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © Bonds Adda.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Design & Develop by Bonds Adda
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- JAVASCRIPT -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
+    <script src="../assets/libs/feather-icons/feather.min.js"></script>
+    <script src="../assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <%--<script src="../assets/js/plugins.js"></script>--%>
+    <!-- prismjs plugin -->
+    <script src="../assets/libs/prismjs/prism.js"></script>
+<script src="../assets/js/validation.js"></script>
+    <script src="../assets/js/app.js"></script>
+        <script src="../assets/js/jquery.notice.js"></script>
+        <%--<script>
+            $(document).ready(function () {
+                $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true, changeMonth: true, yearRange: "-10:+50" });
+                $(".chosen").chosen();
+
+                var prm = Sys.WebForms.PageRequestManager.getInstance();
+                prm.add_endRequest(function () {
+                    $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy', changeYear: true, changeMonth: true, yearRange: "-10:+50" });
+                    $(".chosen").chosen();
+                });
+
+                debugger;
+                var current = location.pathname.replace('/team/', '');
+                $('.list li a').each(function () {
+                    var $this = $(this);
+                    // if the current path is like this link, make it active
+                    if ($this.attr('href').indexOf(current) !== -1) {
+                        debugger;
+                        $this.closest('li').addClass('active');
+                        $this.closest('ul').show();
+                        var $thisu = $this.closest('ul');
+                        if ($thisu.hasClass("ml-menu")) {
+                            $thisu.parent().find('a').addClass('toggled');
+                        }
+                    }
+                })
+            });
+        </script>--%>
+        <script>
+            function init_DataTable() {
+                debugger;
+                var fName = 'Export to Excel';
+                $('.dataTable').DataTable({
+                    bPaginate: true,
+                    bFilter: false,
+                    bInfo: false,
+                    paginate: false,
+                    responsive: true,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        //   'copy', 'csv', 'excel', 'pdf', 'print'
+
+                        {
+                            extend: 'excel',
+                            text: '<h4 style="font-size: 25px;background-color: lightgray; width:75px;text-align:center;height:33px;">Excel</h4>',
+                            class: 'btn-primary',
+                            title: 'Bonds Adda',
+                            filename: fName,
+                            exportOptions: {
+                                columns: ':visible:not(.hidecolum)'
+                            }
+                        }
+                    ]
+                });
+            }
+        </script>
+             <script src="../assets/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.min.js"></script>
+
+
+             <script src="../assets/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../assets/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../assets/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../assets/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../assets/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../assets/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="../assets/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../assets/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../assets/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../assets/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.min.js"></script>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </form>
+
+   
+</body>
+</html>

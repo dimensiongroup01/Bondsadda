@@ -1,0 +1,1063 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="CustomerMaster.master.cs" Inherits="CustomerMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonds Adda</title>
+    <link rel="shortcut icon" href="Image/logo1.png" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- Whatsapp CSS Here -->
+    <link rel="stylesheet" href="whatsapp.css">
+
+    <!-- Chatbot AI Starts Here -->
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "ZDKaCV1WW4pu73nMz29Ro",
+            domain: "www.chatbase.co"
+        }
+    </script>
+    <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotid="ZDKaCV1WW4pu73nMz29Ro"
+        domain="www.chatbase.co"
+        defer>
+    </script>
+    <!-- Chatbot AI Ends Here -->
+
+    <!-- Modal CSS CDN Link -->
+    
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="css/owl_carosouel_min.css" rel="stylesheet" />
+
+    <%--    <link href="Signup/css/css/css/style.css" rel="stylesheet" />--%>
+    <link href="assets/css/notice.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
+
+    <link href="Signup/css/style.css" rel="stylesheet" />
+    <link href="Signup/css/cashflowstyle.css" rel="stylesheet" />
+    <style>
+        nav.navbar.navbar-expand-lg.navbar-light.transpatent {
+            z-index: 100 !important;
+        }
+
+        nav.navbar.navbar-expand-lg.navbar-light {
+            z-index: 100 !important;
+        }
+
+        .owl-dots {
+            display: none;
+        }
+
+        .new_icons_1 a i {
+            color: #fff;
+            border-radius: 50%;
+            border: 2px solid #fbfbfb;
+            background: #19ae19;
+            height: 55px;
+            width: 55px;
+            line-height: 48px;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .new_icons_2 a i {
+            color: #fff;
+            border-radius: 50%;
+            border: 2px solid #fbfbfb;
+            background: #19ae19;
+            height: 55px;
+            width: 55px;
+            line-height: 48px;
+            font-size: 35px;
+            text-align: center;
+        }
+
+        .new_icons_3 a i {
+            color: #fff;
+            border-radius: 50%;
+            border: 2px solid #fbfbfb;
+            background: #19ae19;
+            height: 55px;
+            width: 55px;
+            line-height: 48px;
+            font-size: 35px;
+            text-align: center;
+        }
+
+        .new_icons_1 {
+            padding-left: 2px;
+            position: fixed;
+            z-index: 10;
+            bottom: 160px;
+            right: -35px;
+        }
+
+        .new_icons_2 {
+            padding-left: 2px;
+            position: fixed;
+            z-index: 10;
+            bottom: 85px;
+            right: 7px;
+        }
+
+        .new_icons_3 {
+            padding-left: 2px;
+            position: fixed;
+            z-index: 10;
+            bottom: 225px;
+            right: -35px;
+        }
+
+        .ui-menu {
+            z-index: 1000000 !important;
+        }
+
+        a#ContentPlaceHolder1_lnkSearch {
+            padding: 10px !important;
+            border: none;
+            border: 1px solid black;
+            border-radius: 0 20px 20px 0 !important;
+            margin-left: -6px;
+        }
+
+        @media (max-width: 670px) {
+            #ui-id-2 {
+                width: 100% !important;
+                margin-top: 140px !important;
+                margin-left: 0px !important;
+            }
+        }
+
+        ul#ui-id-1 {
+            /*            top: 370px;
+            left: 200px;*/
+            height: 600px !important;
+            margin-left:250px;
+            margin-top:420px;
+        }
+
+        @media (max-width: 665px) {
+            #ui-id-1 {
+                width: 100% !important;
+                margin-top: 450px !important;
+                margin-left: 0px !important;
+            }
+        }
+
+        div#chatling-open-chat-icon {
+            margin-right: -20px;
+        }
+
+        input#txtResult {
+            border-radius: 20px 0px 0px 20px;
+            padding-left: 15px !important;
+            line-height: 2.5;
+        }
+
+        .admisionFeeFrom {
+            background: green;
+            width: 150px;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            top: 45%;
+            z-index: 111;
+            border-radius: 5px;
+            right: -57px;
+            transform: rotate(90deg);
+            color: white;
+        }
+
+        .sc-1q9fwvy-0.gHHEeh {
+            background: green !important;
+            border-radius: 50% !important;
+        }
+
+        button.sc-htpNat.sc-1w3tvxe-1.nwmXb.sc-EHOje.bsmmQV {
+            background: green;
+            border-radius: 50%;
+        }
+    </style>
+    <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-MNLVNJ32');</script>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNLVNJ32"
+            height="0" width="0" style="display: none; visibility: hidden"></iframe>
+    </noscript>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0VBF5EPEG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-V0VBF5EPEG');
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+
+    <form id="form2" runat="server">
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered moda-lg" role="document" style="max-width: 800px;">
+                <div class="modal-content" style="background: none; border: none;">
+
+                    <div class="modal-body">
+                        <div class="">
+                            <div class="row text-center search">
+
+                                <asp:TextBox ID="txtResult" style="height:45px;" runat="server" class="col-md-10 col-10 p-0" type="search" name
+                                    placeholder="Search For Bonds" ClientIDMode="Static"></asp:TextBox>
+                                <asp:LinkButton ID="lnkSerch" runat="server" type="submit" class="lnkSerch bg2 col-md-2 col-2" OnClick="lnkSerch_Click"><i
+                                class="text-white fa-solid fa-magnifying-glass"></i></asp:LinkButton>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light d-md-flex d-none">
+            <a class="navbar-brand " href="<%=ResolveUrl("~")%>Index">
+                <img src="img/logo.png" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarText" aria-controls="navbarText"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse font_1 " id="navbarText">
+                <ul class="navbar-nav ml-auto text-dark menu1">
+                    <%--<li class="nav-item active">
+                        <div class="dropdown ">
+                            <a
+                                class=" dropdown-toggle nav-link font-weight-bold"
+                                href="#"
+                                role="button"
+                                id="dropdownMenuLink"
+                                data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Bonds
+                            </a>
+
+                            <div class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another
+                                        action</a>
+                                    <a class="dropdown-item" href="#">Something
+                                        else here</a>
+                                </div>
+                        </div>
+                    </li>--%>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle nav-link font-weight-bold" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Investment
+                            Options</a>
+                            <div class="dropdown-menu"
+                                aria-labelledby="dropdownMenuLink">
+                                <asp:Repeater ID="rptcategory" runat="server">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnkcategory" runat="server" CssClass="dropdown-item" CommandArgument='<%#Eval("CategoryId") %>' OnClick="lnkcategory_Click"><%#Eval("CategoryHead") %></asp:LinkButton>
+                                        <%--                                   <a class="dropdown-item" href="<%=ResolveUrl("~")%>OurCollections?oId=<%#Eval("CategoryId") %>"><%#Eval("CategoryHead") %></a>--%>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>BlogNewsData">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>Partner">Partner
+                            with us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>SellBonds">Sell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>FAQ">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" target="_blank" href="https://camskra.com/">Check KYC</a>
+                    </li>
+                    <li class="nav-item">
+<%--                        <a class="nav-link font-weight-bold" href="RFQ.aspx">RFQ Integration</a>--%>
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>Pan_Kra_Verification">PAN KRA Verification</a>
+                    </li>
+                    
+                    <li>
+                        <a data-toggle="modal" class="nav-link header-icons" data-target="#exampleModalCenter">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="header-icons nav-link font-weight-bold" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-regular fa-user"></i></a>
+                            <asp:Panel ID="pnlList" runat="server">
+                                <div class="dropdown-menu" style="right: 0px !important; left: unset;"
+                                    aria-labelledby="dropdownMenuLink">
+
+                                    <%--                                    <div class="dropdown-item" runat="server" id="divMemberCode"></div>--%>
+                                    <strong><a class="dropdown-item" runat="server" id="dropdownMenuLinks"></a></strong>
+                                    <strong>
+                                        <a class="dropdown-item" runat="server" id="divMemberCode"></a></strong>
+                                    <asp:Repeater ID="rptdata" runat="server">
+                                        <ItemTemplate>
+                                            <a class="dropdown-item" style="text-transform: capitalize">RM -<%#Eval("FullName") %></a>
+                                            <a class="dropdown-item" href="tel:+91<%#Eval("Mobile") %>">RM -<i class="fa fa-phone"></i> <%#Eval("Mobile") %></a>
+                                            <a class="dropdown-item" href="mailto:<%#Eval("Email") %>">RM -<i class="fa fa-envelope"></i> <%#Eval("Email") %></a>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+
+                                    <a class="dropdown-item" href="<%=ResolveUrl("~")%>Requirement">KYC Status</a>
+                                    <a class="dropdown-item" href="<%=ResolveUrl("~")%>ChangePassword">Change Password</a>
+                                    <asp:LinkButton ID="LinkButton1" CssClass="dropdown-item" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
+                                    <%-- <a class="dropdown-item" href="#">Another
+                                        action</a>
+
+                                    <a class="dropdown-item" href="#">Something
+                                        else here</a>--%>
+                                </div>
+                            </asp:Panel>
+                            <asp:Panel ID="pnlSign" runat="server">
+
+                                <div class="dropdown-menu" style="right: 0px !important; left: unset;"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <asp:LinkButton ID="lnkSignin" CssClass="dropdown-item" runat="server" OnClick="lnkSignin_Click">Login</asp:LinkButton>
+                                    <asp:LinkButton ID="lnkSignup" CssClass="dropdown-item" runat="server" OnClick="lnkSignup_Click">Sign Up</asp:LinkButton>
+                                    <%--                                    <a class="dropdown-item" href="signin.aspx">Sign In</a>
+                                    <a class="dropdown-item" href="Signup.aspx">Sign Up</a>--%>
+
+                                    <%-- <a class="dropdown-item" href="#">Another
+                                        action</a>
+
+                                    <a class="dropdown-item" href="#">Something
+                                        else here</a>--%>
+                                </div>
+                            </asp:Panel>
+                        </div>
+                    </li>
+                    <li>
+                        <ul class="navbar-nav mr-auto menu2">
+                            <%--<li class="nav-item ">
+                            <div class="dropdown ">
+                                <a class=" dropdown-toggle nav-link pl-md-5"
+                                    href="#"
+                                    role="button"
+                                    id="dropdownMenuLink"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Help
+                                </a>
+
+                                <div class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="tel:+91 920-523-0117">+91 920-523-0117</a>
+                                    <a class="dropdown-item" href="mailto:info@bondsadda.com">info@bondsadda.com</a>
+                                  <%-- <a class="dropdown-item" href="<%=ResolveUrl("~")%>FAQ">FAQ</a>--%>
+                            <%-- <a class="dropdown-item" href="#">Something
+                                        else here</a>--%
+                                </div>
+                            </div>
+                        </li>--%>
+                            <asp:Panel ID="pnlRM" runat="server">
+                                <%--<li class="nav-item ">
+                            <div class="dropdown ">
+                                <a class=" dropdown-toggle nav-link pl-md-5"
+                                    href="#"
+                                    role="button"
+                                    id="dropdownMenuLinked" runat="server"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    
+                                </a>
+                                <asp:Repeater ID ="rptRMDetails" runat="server">
+                                    <ItemTemplate>
+                                        <div class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuLinked">
+                                 <a class="dropdown-item" style="text-transform:capitalize"><%#Eval("FullName") %></a>
+                                    <a class="dropdown-item" href="tel:+91<%#Eval("Mobile") %>"><%#Eval("Mobile") %></a>
+                                    <a class="dropdown-item" href="mailto:<%#Eval("Email") %>"><%#Eval("Email") %></a>
+                                  
+                                    <%-- <a class="dropdown-item" href="#">Something
+                                        else here</a>--%
+                                </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                
+                            </div>
+                        </li>--%>
+                            </asp:Panel>
+
+                            <%--<li class="nav-item">
+                           
+                                <div class="nav-link pl-md-5" runat="server" id="divRMData"></div>
+                        </li>--%>
+
+                            <li>
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+
+
+
+            </div>
+        </nav>
+
+
+        <!--mobile-->
+        <nav class="navbar navbar-expand-lg navbar-light d-md-none">
+            <div class="col-7 px-0">
+                <a class="navbar-brand " href="<%=ResolveUrl("~")%>Index">
+                    <img src="img/logo.png" class="col-12 p-0" style="height: auto;" alt="">
+                </a>
+            </div>
+
+            <div class=" col-3 p-0 text-right">
+                <a data-toggle="modal" class=" header-icons1" data-target="#exampleModalCenter">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+                <a class="header-icons1 font-weight-bold" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-regular fa-user"></i></a>
+                <asp:Panel ID="pnlList2" runat="server">
+                    <div class="dropdown-menu" style="right: 0px !important; left: unset;"
+                        aria-labelledby="dropdownMenuLink">
+
+                        <%--                                    <div class="dropdown-item" runat="server" id="divMemberCode"></div>--%>
+                        <strong><a class="dropdown-item" runat="server" id="dropdownMenuLinks2"></a></strong>
+                        <strong>
+                            <a class="dropdown-item" runat="server" id="divMemberCode2"></a></strong>
+                        <asp:Repeater ID="rptData2" runat="server">
+                            <ItemTemplate>
+                                <a class="dropdown-item" style="text-transform: capitalize">RM -<%#Eval("FullName") %></a>
+                                <a class="dropdown-item" href="tel:+91<%#Eval("Mobile") %>">RM -<i class="fa fa-phone"></i> <%#Eval("Mobile") %></a>
+                                <a class="dropdown-item" href="mailto:<%#Eval("Email") %>">RM -<i class="fa fa-envelope"></i> <%#Eval("Email") %></a>
+                            </ItemTemplate>
+                        </asp:Repeater>
+
+                        <a class="dropdown-item" href="<%=ResolveUrl("~")%>Requirement">KYC Status</a>
+                        <a class="dropdown-item" href="<%=ResolveUrl("~")%>ChangePassword">Change Password</a>
+                        <asp:LinkButton ID="LinkButton5" CssClass="dropdown-item" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
+                        <%-- <a class="dropdown-item" href="#">Another
+                                        action</a>
+
+                                    <a class="dropdown-item" href="#">Something
+                                        else here</a>--%>
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="pnlSign2" runat="server">
+
+                    <div class="dropdown-menu"
+                        aria-labelledby="dropdownMenuLink">
+                        <asp:LinkButton ID="LinkButton6" CssClass="dropdown-item" runat="server" OnClick="lnkSignin_Click">Login</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton7" CssClass="dropdown-item" runat="server" OnClick="lnkSignup_Click">Sign Up</asp:LinkButton>
+                        <%--                                    <a class="dropdown-item" href="signin.aspx">Sign In</a>
+                                    <a class="dropdown-item" href="Signup.aspx">Sign Up</a>--%>
+
+                        <%-- <a class="dropdown-item" href="#">Another
+                                        action</a>
+
+                                    <a class="dropdown-item" href="#">Something
+                                        else here</a>--%>
+                    </div>
+                </asp:Panel>
+
+
+            </div>
+            <div class="col-2">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarTexts" aria-controls="navbarText"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class=" collapse navbar-collapse font_1 " id="navbarTexts">
+                <ul class="navbar-nav ml-auto text-dark menu1 pl-3">
+                    <%--<li class="nav-item active">
+                        <div class="dropdown ">
+                            <a
+                                class=" dropdown-toggle nav-link font-weight-bold"
+                                href="#"
+                                role="button"
+                                id="dropdownMenuLink"
+                                data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Bonds
+                            </a>
+
+                            <div class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another
+                                        action</a>
+                                    <a class="dropdown-item" href="#">Something
+                                        else here</a>
+                                </div>
+                        </div>
+                    </li>--%>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle nav-link font-weight-bold" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Investment
+                            Options</a>
+                            <div class="dropdown-menu pl-4"
+                                aria-labelledby="dropdownMenuLink">
+                                <asp:Repeater ID="rptCategory2" runat="server">
+                                    <ItemTemplate>
+
+                                        <a class="dropdown-item" href="<%=ResolveUrl("~")%>OurCollections?oId=<%#Eval("CategoryId") %>"><%#Eval("CategoryHead") %></a>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>BlogNewsData">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>Partner">Partner
+                            with us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>SellBonds">Sell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>FAQ">FAQ</a>
+                    </li>
+
+                   <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>Pan_Kra_Verification">Pan Kra Verification</a>
+                    </li>
+
+                    <li>
+                        <ul class="navbar-nav mr-auto menu2">
+                            <%--<li class="nav-item ">
+                            <div class="dropdown ">
+                                <a class=" dropdown-toggle nav-link pl-md-5"
+                                    href="#"
+                                    role="button"
+                                    id="dropdownMenuLink"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Help
+                                </a>
+
+                                <div class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="tel:+91 920-523-0117">+91 920-523-0117</a>
+                                    <a class="dropdown-item" href="mailto:info@bondsadda.com">info@bondsadda.com</a>
+                                  <%-- <a class="dropdown-item" href="<%=ResolveUrl("~")%>FAQ">FAQ</a>--%>
+                            <%-- <a class="dropdown-item" href="#">Something
+                                        else here</a>--%
+                                </div>
+                            </div>
+                        </li>--%>
+                            <asp:Panel ID="Panel7" runat="server">
+                                <%--<li class="nav-item ">
+                            <div class="dropdown ">
+                                <a class=" dropdown-toggle nav-link pl-md-5"
+                                    href="#"
+                                    role="button"
+                                    id="dropdownMenuLinked" runat="server"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    
+                                </a>
+                                <asp:Repeater ID ="rptRMDetails" runat="server">
+                                    <ItemTemplate>
+                                        <div class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuLinked">
+                                 <a class="dropdown-item" style="text-transform:capitalize"><%#Eval("FullName") %></a>
+                                    <a class="dropdown-item" href="tel:+91<%#Eval("Mobile") %>"><%#Eval("Mobile") %></a>
+                                    <a class="dropdown-item" href="mailto:<%#Eval("Email") %>"><%#Eval("Email") %></a>
+                                  
+                                    <%-- <a class="dropdown-item" href="#">Something
+                                        else here</a>--%
+                                </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                
+                            </div>
+                        </li>--%>
+                            </asp:Panel>
+
+                            <%--<li class="nav-item">
+                           
+                                <div class="nav-link pl-md-5" runat="server" id="divRMData"></div>
+                        </li>--%>
+
+                            <li>
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+
+
+
+            </div>
+        </nav>
+
+        <%--                    <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>--%>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+            integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+        <script>
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 1) {
+                    $('nav').addClass("transpatent");
+                } else {
+                    $('nav').removeClass("transpatent");
+                }
+            });
+        </script>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <div class="admisionFeeFrom">
+            <a href="<%=ResolveUrl("~")%>EnquiryForm" title="Enquery Form" style="color: white;">Request Callback</a>
+        </div>
+
+        <div class="new_icons_1 animated pulse infinite">
+            <%--<a href="https://api.whatsapp.com/send?phone=919650799561&amp;text=Hello%2C%20Bonds%20Adda%20%F0%9F%91%8" target="_blank" title="Whatsapp us"> <i class="fab fa-whatsapp"></i></a>--%>
+            <!-- Whatsapp Start Here -->
+            <div class="whatsapp_main">
+                <a href="https://wa.me/919650799561" target="_blank">
+                    <div class="whatsapp_container">
+                        <img src="Image/Whatsapp-image.png" class="whatsapp_img">
+                        <div class="whatsapp_effect"></div>
+                        <!-- ye new div hai jo effect ke liye hai -->
+                    </div>
+                </a>
+            </div>
+            <!-- Whatsapp End Here -->
+        </div>
+        <%--                   <div class="new_icons_1 animated pulse infinite">
+                     <a href="tel:+919650799561" target="_blank" title="Talk to us"> <i class="fa fa-phone"></i></a>
+                    </div>--%>
+
+        <!-- Bonds-Calculator Starts Here -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="background-color:#FE5C36;">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel" style="color:white;">Bond Calculator</h3>
+                        <span aria-hidden="true" data-dismiss="modal" style="color:white;cursor:pointer;font-size:30px;margin-top:-6px;">&times;</span>
+                    </div>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="txtFaceValue" style="color:white;">Face Value:</label>
+                                    <asp:TextBox ID="txtFaceValue" runat="server" Text="1000" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtCouponRate" style="color:white;">Coupon Rate (in percentage):</label>
+                                    <asp:TextBox ID="txtCouponRate" runat="server" Text="5" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtYearsToMaturity" style="color:white;">Years Until Maturity:</label>
+                                    <asp:TextBox ID="txtYearsToMaturity" runat="server" Text="10" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="result">
+                                    <asp:Label ID="lblResult" runat="server" Text="" style="color:white;" CssClass="error-message"></asp:Label>
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnCalculate" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                    <div class="modal-footer">
+                        <asp:Button ID="btnCalculate" runat="server" Text="Calculate" OnClick="btnCalculate_Click" CssClass="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="new_icons_2 animated pulse infinite" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">
+            <img src="assets/bond-calculator.png" width="70" />
+        </div>
+
+        <!-- Bonds-Calculator Ends Here -->
+
+        <div class="new_icons_4 animated pulse infinite">
+            <script async data-id="2542942747" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+        </div>
+        <%--                                   <div class="new_icons_3 animated pulse infinite">
+                     <a href="<%=ResolveUrl("~")%>Contact" title="Request Callback"> <i class="fa fa-question"></i></a>
+                    </div>--%>
+        <footer class="footer py-md-5 py-5 text-white font_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 py-3">
+                        <img src="img/logo2.png" class="col-8 p-0" alt="" srcset="">
+                        <p>Bonds Adda is an online platform or market place powered by Dimension Financial Solutions Pvt Ltd to buy or sell bonds. Where we can make investment in fixed return bonds and can sell bonds.</p>
+                    </div>
+                    <div class="col-lg-3 py-3">
+                        <h2 class="h5 font-weight-normal">Quick Links</h2>
+                        <a href="" class="btn-link text-white">Bonds</a><br>
+                        <a href="<%=ResolveUrl("~")%>OurCollections" class="btn-link text-white">Collections</a><br>
+                        <a href="<%=ResolveUrl("~")%>PrivacyPolicy" class="btn-link text-white">Privacy Policy</a><br>
+                        <a href="<%=ResolveUrl("~")%>BlogNewsData" class="btn-link text-white">Blogs</a><br>
+                        <a href="<%=ResolveUrl("~")%>TermsAndCondition" class="btn-link text-white">Terms and Conditions</a><br />
+                        <a href="<%=ResolveUrl("~")%>FAQ" class="btn-link text-white">FAQ</a><br />
+                        <a href="<%=ResolveUrl("~")%>Contact" class="btn-link text-white">Contact Us</a><br />
+                        <a href="<%=ResolveUrl("~")%>CodeOfConduct" class="btn-link text-white">Code of Conduct</a><br />
+                        <a href="Image/Investor%20Grievance_DFS.pdf" download class="btn-link text-white">Investor Grievance</a>
+                    </div>
+                    <div class="col-lg-4 py-3">
+                        <h2 class="h5 font-weight-normal font_1">Corporate  Office</h2>
+                        <div class="row mb-2">
+                            <div class="col-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="col-10">
+                                KAUSHAMBI, GHAZIABAD
+                                <br />
+                                Dimension Tower, Plot No-10, 3rd Floor, Commercial Area, Kaushambi, Ghaziabad, U.P-201010.
+
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-1">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-10">
+                                0120-4376552, 0120-4151349
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-1">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-10">
+                                customercare@bondsadda.com
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-1">
+                            </div>
+                            <div class="col-10">
+                                SEBI REGISTRATION No.: INZ000313233
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-1">
+                            </div>
+                            <div class="col-10">
+                                BSE Member ID: 6824
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 py-3">
+                        <h2 class="h5 font-weight-normal font_1">Follow us</h2>
+                        <a href="https://www.facebook.com/profile.php?id=100094572825123" class="btn-link text-white" target="_blank">
+                            <div class="row mb-2">
+
+                                <div class="col-1">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </div>
+                                <div class="col-9">
+                                    Facebook
+                                </div>
+
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/bondsadda/" class="btn-link text-white" target="_blank">
+                            <div class="row mb-2">
+                                <div class="col-1">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                <div class="col-10">
+                                    Instagram
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://twitter.com/bondsadda" class="btn-link text-white" target="_blank">
+                            <div class="row mb-2">
+                                <div class="col-1">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </div>
+                                <div class="col-10">
+                                    Twitter
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container" style="padding: 25px;">
+                <hr />
+                <div class="row">
+                    <p>Dimension Financial Solutions Private Limited | SEBI Registration No.: INZ000313233</p>
+                    <p style="margin-bottom: -1px;">Bonds Adda, a website of Dimension Financial Solutions Private Limited (hereinafter “the Company”), is a SEBI-registered broker and an Online Bond Providing Platform (OBPP) that enables investors to trade bonds and debentures through exchange in the secondary market.</p>
+                    <p style="margin-bottom: -1px;">Welcome to BondsAdda.com. Before you proceed with using our website and its services, we ask that you carefully read and understand the following disclaimer:</p>
+                    <p>*** Investments in debt securities are subject to market risks. Read all the offer/scheme related documents carefully before investing. ***</p>
+
+                </div>
+                <div class="row">
+                    <p style="margin-bottom: -1px;"><strong>1. Investment Risks:</strong></p>
+                    <p style="margin-bottom: -1px;">BondsAdda.com is a marketplace that facilitates the buying and selling of bonds. All investments involve risks, and past performance is not indicative of future results. Users are advised to conduct thorough research and seek professional advice before making investment decisions.</p>
+                    <p style="margin-bottom: -1px;"><strong>2. Information Accuracy:</strong></p>
+                    <p style="margin-bottom: -1px;">While we strive to provide accurate and up-to-date information, BondsAdda.com does not guarantee the accuracy, completeness, or reliability of any information on the platform. Users should independently verify information before making financial decisions.</p>
+                    <p style="margin-bottom: -1px;"><strong>3. Financial Advice:</strong></p>
+                    <p style="margin-bottom: -1px;">BondsAdda.com does not provide personalized financial advice. The information presented on the platform is for general informational purposes only. Users are encouraged to consult with financial advisors or professionals to assess their individual financial situations and goals.</p>
+                    <p style="margin-bottom: -1px;"><strong>4. User Responsibility:</strong></p>
+                    <p style="margin-bottom: -1px;">Users are solely responsible for their investment decisions, actions, and outcomes. BondsAdda.com and Dimension Group are not liable for any financial losses or damages resulting from the use of the platform or the information provided.</p>
+                    <p style="margin-bottom: -1px;"><strong>5. Third-Party Links:</strong></p>
+                    <p style="margin-bottom: -1px;">BondsAdda.com may include links to third-party websites. These links are provided for convenience, and we do not endorse or guarantee the content, services, or products offered by third parties. Users should review the terms and policies of external websites.</p>
+                    <p style="margin-bottom: -1px;"><strong>6. Regulatory Compliance:</strong></p>
+                    <p style="margin-bottom: -1px;">Users are responsible for ensuring compliance with applicable laws and regulations related to investments in their jurisdiction. BondsAdda.com and the Company are not responsible for any legal consequences arising from non-compliance.</p>
+                    <p style="margin-bottom: -1px;"><strong>7. Platform Modifications:</strong></p>
+                    <p style="margin-bottom: -1px;">BondsAdda.com reserves the right to modify, suspend, or discontinue any aspect of the platform at any time without prior notice. We may also update this disclaimer, and users are encouraged to review it periodically.</p>
+                    <p style="margin-bottom: -1px;">By using BondsAdda.com, you acknowledge that you have read, understood, and agreed to the terms of this disclaimer. If you do not agree with any part of this disclaimer, please refrain from using our services.</p>
+                    <p style="margin-bottom: -1px;">For further inquiries or clarifications, please contact us at <a href="https://bondsadda.com/">customercare@bondsadda.com</a> </p>
+                </div>
+                <div class="row">
+                    <p style="margin-bottom: -1px;"><strong>Compliance Officer: RAVI KANT MATHUR</strong></p>
+                </div>
+                <div class="row">
+                    <p style="margin-bottom: -1px;"><strong>Contact Details:</strong></p>
+                </div>
+                <div class="row">
+
+                    <p style="margin-bottom: -1px;">Tel. No.: 0120-4151349 ,</p>
+                </div>
+                <div class="row">
+                    <p style="margin-bottom: -1px;">Email ID: compliance@dimensiongroup.co.in</p>
+                </div>
+                <div class="row">
+                    <p>(for any compliance & grievance related complaints)</p>
+                </div>
+                <div class="row">
+                    <p><strong>Directors: RAVI KANT MATHUR, PRACHI CHOPRA & VIVEK GAUTAM</strong></p>
+                </div>
+                <div class="row">
+                    <p>Thank you for choosing BondsAdda.com for your financial needs.</p>
+                </div>
+                <div class="row">
+
+                    <p>Important links: Indian Clearing Corporation Ltd(ICCL) | NSDL | CDSL | BSE</p>
+                </div>
+
+            </div>
+
+        </footer>
+        <br />
+        <section class="breadcrumb-collection  py-md-4 gradient">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 p-md-3 p-0">
+                        <div
+                            class="breadcrumbs py-md-2 pt-md-3 px-md-5 pt-3 py-2  px-3 text-white">
+                            <h1 class="h3 font-weight-normal ">FAQ</h1>
+                            <p class=" font_2">Home / FAQ</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="card">
+
+            <div class="container">
+                <asp:Repeater ID="rptFAQ" runat="server">
+                    <ItemTemplate>
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <h3 class="h5 font-weight-normal"><%#Eval("Question") %></h3>
+                                <div class="close">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="accordion-body">
+                                <p style="text-align: justify;"><%#Eval("Answer") %></p>
+                            </div>
+                            <hr class="bg-dark">
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+
+        </section>
+
+        <!-- Modal -->
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="Signup/js/cashflow.js"></script>
+        <%--                                                <script src="assets/js/validation.js"></script>--%>
+        <script src="assets/js/app.js"></script>
+        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+            rel="stylesheet">
+
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="assets/js/jquery.notice.js"></script>
+        <script>
+            $('.numbers').keypress(function (e) {
+                if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
+            });
+
+        </script>
+        <script>
+            function limitKeypress(event, value, maxLength) {
+                if (value != undefined && value.toString().length >= maxLength) {
+                    event.preventDefault();
+                }
+            }
+        </script>
+        <script>
+            $('form').bind("keypress", function (e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        </script>
+
+        <%--Chat Option --%>
+
+
+        <%--  <script type="text/javascript">
+             var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+             (function () {
+                 var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+                 s1.async = true;
+                 s1.src = 'https://embed.tawk.to/5d3169976d808312283905dd/1gnf4mfne';
+                 s1.charset = 'UTF-8';
+                 s1.setAttribute('crossorigin', '*');
+                 s0.parentNode.insertBefore(s1, s0);
+             })();
+         </script>--%>
+        <script type="text/javascript">
+
+
+            //********* Get Products ***************************
+
+            $(function () {
+                $("[id$=txtResult]").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: '<%=ResolveUrl("TMWebService.asmx/GetProducts") %>',
+                            data: "{ 'prefix': '" + request.term + "'}",
+                            dataType: "json",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                response($.map(data.d, function (item) {
+                                    return {
+                                        label: item.split('$')[0]
+                                        /*  , value: item.split('$')[1]*/
+
+                                    }
+                                }))
+                            },
+                            error: function (response) {
+                                alert(response.responseText);
+                            },
+                            failure: function (response) {
+                                alert(response.responseText);
+                            }
+                        });
+                    },
+
+                    minLength: 1
+                });
+            });
+
+
+
+
+
+            // It is important to place this JavaScript code after ScriptManager1
+            var xPos, yPos;
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+            function BeginRequestHandler(sender, args) {
+                if ($get('.table-responsive') != null) {
+                    // Get X and Y positions of scrollbar before the partial postback
+                    xPos = $get('.myDiv').scrollLeft;
+                    yPos = $get('.myDiv').scrollTop;
+                }
+            }
+
+            function EndRequestHandler(sender, args) {
+                if ($get('.table-responsive') != null) {
+                    // Set X and Y positions back to the scrollbar
+                    // after partial postback
+                    $get('.myDiv').scrollLeft = xPos;
+                    $get('.myDiv').scrollTop = yPos;
+                }
+            }
+
+            prm.add_beginRequest(BeginRequestHandler);
+            prm.add_endRequest(EndRequestHandler);
+        </script>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        </asp:ContentPlaceHolder>
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    </form>
+
+
+</body>
+</html>
