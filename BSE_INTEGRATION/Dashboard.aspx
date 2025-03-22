@@ -22,7 +22,9 @@
                 <a href="ICDMOrder.aspx" class="btn btn-primary">ICDM Order</a>
                 <a href="RFQOrder.aspx" class="btn btn-primary">RFQ Order</a>
                 <a href="RFQModify.aspx" class="btn btn-primary">Modify RFQ</a>
-                <a href="MarketData.aspx" class="btn btn-primary">Market Data</a>
+                <a href="RFQQuoteAccept.aspx" class="btn btn-primary">RFQ Quote Accept</a>
+                <a href="RFQDealPropose.aspx" class="btn btn-primary">RFQ Deal Propose</a>
+                <a href="RFQApprove.aspx" class="btn btn-primary">RFQ Deal Approve</a>
             </div>
         </div>
     </form>
