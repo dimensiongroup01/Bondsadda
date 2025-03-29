@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -117,7 +119,34 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
         }
     }
 
-
+    private void SaveRFQOrderLog(dynamic requestBody)
+    {
+        SqlParameter[] parameters = new SqlParameter[]
+        {
+            new SqlParameter("@RFQDealId",requestBody.rfqdealid),
+            new SqlParameter("@RFQOrderNumber", requestBody.rfqordernumber),
+            new SqlParameter("@Product", requestBody.product),
+            new SqlParameter("@UserType", requestBody.userType),
+            new SqlParameter("@QuoteType", requestBody.quoteType),
+            new SqlParameter("@ISINNumber", requestBody.isinNumber),
+            new SqlParameter("@Value", requestBody.value),
+            new SqlParameter("@ProClient", requestBody.proClient),
+            new SqlParameter("@BuyerClientCode", requestBody.buyerClientCode),
+            new SqlParameter("@SellerClientCode", requestBody.sellerClientCode),
+            new SqlParameter("@DirectBrokered", requestBody.directBrokered),
+            new SqlParameter("@SellerBrokerCode", requestBody.sellerBrokerCode),
+            new SqlParameter("@BuyerBrokerCode", requestBody.buyerBrokerCode),
+            new SqlParameter("@ResponderReferenceNumber", requestBody.responderReferenceNumber),
+            new SqlParameter("@ResponderComment", requestBody.responderComment),
+            new SqlParameter("@RFQQuoteAccept", requestBody.rfqQuoteAccept),
+            new SqlParameter("@OBPPlatform", requestBody.obpPlatform),
+            new SqlParameter("@Filler2", requestBody.filler2),
+            new SqlParameter("@Filler3", requestBody.filler3),
+            new SqlParameter("@Filler4", requestBody.filler4),
+            new SqlParameter("@Filler5", requestBody.filler5)
+        };
+         SqlDBHelper.ExecuteNonQuery("SaveRFQQuoteAccept", parameters);
+    }
     protected void txtISINNumber_TextChanged(object sender, EventArgs e)
     {
         GetRFQQuoteData(txtISINNumber.Text.Trim());
