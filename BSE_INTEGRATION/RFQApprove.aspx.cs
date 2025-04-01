@@ -18,7 +18,7 @@ public partial class BSE_INTEGRATION_RFQApprove : System.Web.UI.Page
             Response.Redirect("Login.aspx");
         }
     }
-    private async Task<string> RFQQuotePropose()
+    private async Task<string> RFQQuoteApprove()
     {
         string token = Session["AuthToken"] as string;
         if (string.IsNullOrEmpty(token))
@@ -119,10 +119,10 @@ public partial class BSE_INTEGRATION_RFQApprove : System.Web.UI.Page
             return "Error: " + ex.Message;
         }
     }
-
-    protected async void Button1_Click(object sender, EventArgs e)
+   
+    protected async void btnSubmit_Click(object sender, EventArgs e)
     {
-        string response = await RFQQuotePropose();
-        Label1.Text = response;
+        string response = await RFQQuoteApprove();
+        lblMessage.Text = response;
     }
 }

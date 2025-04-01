@@ -42,7 +42,7 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
         decimal originalValue;
         decimal correctedValue = 0;
 
-        if (decimal.TryParse(value.InnerText, out originalValue))
+        if (decimal.TryParse(txtValue.Text, out originalValue))
         {
             correctedValue = originalValue * 10000000; // Multiply to restore the exact order value
         }
@@ -54,18 +54,18 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
             {
                 new
                 {
-                    rfqdealid = rfqdealid.InnerText,
-                    rfqordernumber = rfqordernumber.InnerText,
-                    product = product.InnerText,
-                    usertype = usertype.InnerText,
-                    quotetype = quotetype.InnerText,
-                    isinnumber = isinnumber.InnerText,
+                    rfqdealid = txtRFQDealID,
+                    rfqordernumber = txtRFQOrderNumber,
+                    product = ddlProduct,
+                    usertype = lblUserType,
+                    quotetype = ddlQuoteType,
+                    isinnumber =  txtISINNumber,
                     value = correctedValue.ToString("0"),
-                    proclient = proclient.InnerText,
-                    buyerclientcode = "",
-                    sellerclientcode = sellerclientcode.InnerText,
-                    directbrokered = directbrokered.InnerText,
-                    sellerbrokercode = sellerbrokercode.InnerText,
+                    proclient = txtProClientCode,
+                    buyerclientcode = txtBuyerClientCode,
+                    sellerclientcode =txtSellerClientCode,
+                    directbrokered = rblDirectBrokered,
+                    sellerbrokercode = lblSellerBrokerCode,
                     buyerbrokercode = "",
                     responderreferencenumber = "",
                     respondercomment = "",
@@ -166,19 +166,19 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
             DataRow row = dt.Rows[0];
 
             // Assign values to UI elements
-            product.InnerText = row["bondtype"].ToString();
-            directbrokered.InnerText = row["dealtype"].ToString();
-            quotetype.InnerText = row["bidoffer"].ToString();
-            isinnumber.InnerText = row["ISINNumber"].ToString();
-            rfqordernumber.InnerText = row["rfqordernumber"].ToString();
-            value.InnerText = row["value"].ToString();
-            proclient.InnerText = row["ProClient"].ToString();
-            usertype.InnerText = row["UserType"].ToString();
-            sellerbrokercode.InnerText = row["SellerBrokerCode"].ToString();
-            directbrokered.InnerText = row["DirectBrokered"].ToString();
-            sellerclientcode.InnerText = row["SellerClientCode"].ToString();
+            ddlProduct.Text = row["bondtype"].ToString();
+            rblDirectBrokered.Text = row["dealtype"].ToString();
+            ddlQuoteType.Text = row["bidoffer"].ToString();
+            txtISINNumber.Text = row["ISINNumber"].ToString();
+            txtRFQOrderNumber.Text = row["rfqordernumber"].ToString();
+            txtValue.Text = row["value"].ToString();
+            txtProClientCode.Text = row["ProClient"].ToString();
+            lblUserType.Text = row["UserType"].ToString();
+            lblSellerBrokerCode.Text = row["SellerBrokerCode"].ToString();
+            rblDirectBrokered.Text = row["DirectBrokered"].ToString();
+            txtSellerClientCode.Text = row["SellerClientCode"].ToString();
 
-            rfqdealid.InnerText = row["rfqdealid"].ToString();
+            txtRFQDealID.Text = row["rfqdealid"].ToString();
 
         }
 
@@ -186,7 +186,7 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
 
 
 
-    protected async void btnAcceptQuote_Click(object sender, EventArgs e)
+    protected async void btnSubmit_Click(object sender, EventArgs e)
     {
         string response = await RFQQuoteAccept();
 
