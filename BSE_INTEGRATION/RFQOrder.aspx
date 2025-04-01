@@ -92,6 +92,158 @@
          }
 
      </script>
+    <script>
+        $(document).ready(function () {
+            // Attach a click event to the submit button to validate the form before submitting
+            $("#<%= btnSubmit.ClientID %>").click(function (e) {
+                if (!validateRFQForm()) {
+                    e.preventDefault(); // Prevent submission if validation fails
+                }
+            });
+        });
+
+        function validateRFQForm() {
+            var isValid = true;
+            var errorMsg = "";
+
+            // Validate Market Tab fields (if any required) and Order Details
+            if ($("#<%= txtISINNumber.ClientID %>").val().trim() === "") {
+            errorMsg += "ISIN Number is required.\n";
+            isValid = false;
+        }
+        if ($("#<%= ddlProClient.ClientID %>").val().trim() === "") {
+            errorMsg += "PRO/CLIENT selection is required.\n";
+            isValid = false;
+        }
+
+        // Validate radio button selection for order type and respective fields
+        var orderType = $("input[name='orderType']:checked").val();
+        if (orderType === "BID") {
+            if ($("#<%= txtBidValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtBidMinValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Minimum Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= ddlBidYieldType.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Yield Type is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtBidYieldValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Yield Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtBidPrice.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Price is required.\n";
+                isValid = false;
+            }
+        } else if (orderType === "OFFER") {
+            if ($("#<%= txtOfferValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Offer Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtOfferMinValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Offer Minimum Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= ddlOfferYieldType.ClientID %>").val().trim() === "") {
+                errorMsg += "Offer Yield Type is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtOfferYieldValue.ClientID %>").val().trim() === ""){
+                errorMsg += "Offer Yield Value is required.\n";
+                isValid = false;
+            }
+            if($("#<%= txtOfferPrice.ClientID %>").val().trim() === ""){
+                errorMsg += "Offer Price is required.\n";
+                isValid = false;
+            }
+        } else {
+            errorMsg += "Please select an Order Type (Bid or Offer).\n";
+            isValid = false;
+        }
+
+        // Validate Deal Time if GFD is checked
+        if($("#<%= chkGFD.ClientID %>").is(":checked")){
+            if($("#<%= ddlDealTimeHours.ClientID %>").val().trim() === ""){
+                errorMsg += "Deal Time Hours is required when GFD is checked.\n";
+                isValid = false;
+            }
+            if($("#<%= ddlDealTimeMinutes.ClientID %>").val().trim() === ""){
+                errorMsg += "Deal Time Minutes is required when GFD is checked.\n";
+                isValid = false;
+            }
+        }
+
+        // Validate other mandatory fields in the second section
+        if($("#<%= ddlNegotiableTag.ClientID %>").val().trim() === ""){
+            errorMsg += "Negotiable field is required.\n";
+            isValid = false;
+        }
+        if($("#<%= ddlObpPlatform.ClientID %>").val().trim() === ""){
+            errorMsg += "OBP Platform field is required.\n";
+            isValid = false;
+        }
+        if($("#<%= txtRating.ClientID %>").val().trim() === ""){
+            errorMsg += "Rating is required.\n";
+            isValid = false;
+        }
+        if($("#<%= txtRatingAgency.ClientID %>").val().trim() === ""){
+            errorMsg += "Rating Agency is required.\n";
+            isValid = false;
+        }
+        if($("#ddlUserType").val().trim() === ""){
+            errorMsg += "User Type is required.\n";
+            isValid = false;
+        }
+        // If User Type is BROKERED, then Broker Name must be provided
+        if($("#ddlUserType").val().trim() === "BROKERED"){
+            if($("#<%= txtBrokerName.ClientID %>").val().trim() === ""){
+                errorMsg += "Broker Name is required for BROKERED User Type.\n";
+                isValid = false;
+            }
+        }
+        if($("#<%= ddlSettleType.ClientID %>").val().trim() === ""){
+            errorMsg += "Settlement Type is required.\n";
+            isValid = false;
+        }
+        if($("#<%= ddlDisclosedIdentity.ClientID %>").val().trim() === ""){
+            errorMsg += "Disclosed Identity is required.\n";
+            isValid = false;
+        }
+        if ($("#<%= ddlOtoOtm.ClientID %>").val().trim() === "") {
+            errorMsg += "OTO/MOTO is required.\n";
+            isValid = false;
+        }
+
+        // If any field is invalid, show an alert with all missing details
+        if (!isValid) {
+            alert("Please complete all details:\n" + errorMsg);
+        }
+        return isValid;
+    }
+    </script>
+    <script>
+        function showReceipt(responseData) {
+            // Populate the receipt modal with response data
+            document.getElementById("bidrfqordernumber").textContent = responseData.bidrfqordernumber;
+            document.getElementById("isinnumber").textContent = responseData.isinnumber;
+            document.getElementById("bidprice").textContent = parseFloat(responseData.bidprice).toFixed(2);
+            document.getElementById("bidquantity").textContent = responseData.bidquantity;
+            document.getElementById("bidvalue").textContent = parseFloat(responseData.bidvalue).toFixed(2);
+            document.getElementById("bidyield").textContent = parseFloat(responseData.bidyield).toFixed(2);
+            document.getElementById("settlementdate").textContent = responseData.settlementdate;
+            document.getElementById("orderstatus").textContent = responseData.orderstatus;
+            document.getElementById("message").textContent = responseData.message;
+
+            // Show the modal
+            let receiptModal = new bootstrap.Modal(document.getElementById('receiptModal'));
+            receiptModal.show();
+        }
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server" class="container mt-5">

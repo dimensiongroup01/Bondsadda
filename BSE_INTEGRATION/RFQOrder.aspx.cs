@@ -148,14 +148,12 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
     {
         string response = await CreateRFQOrder();
 
-     
-
-
         SaveRFQOrderResponse(response);
-        
+
+        // Register a startup script to call showReceipt with the response JSON
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReceiptModal",
+            "showReceipt(" + response + ");", true);
     }
-
-
     private void SaveRFQOrderLog(dynamic requestBody)
     {
         SqlParameter[] parameters = new SqlParameter[]

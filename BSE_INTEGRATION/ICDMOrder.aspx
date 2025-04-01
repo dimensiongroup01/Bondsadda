@@ -13,6 +13,12 @@
 
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Flatpickr for Time Picker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -77,7 +83,150 @@
     <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            // Attach onblur events for individual field validations
+            document.getElementById('<%= txtISIN.ClientID %>').addEventListener("blur", validateISIN);
+                document.getElementById('<%= txtValue.ClientID %>').addEventListener("blur", validateValue);
+                document.getElementById('<%= txtPrice.ClientID %>').addEventListener("blur", validatePrice);
+                document.getElementById('<%= txtYield.ClientID %>').addEventListener("blur", validateYield);
+                document.getElementById('<%= txtBuyerClientId.ClientID %>').addEventListener("blur", validateBuyerClientId);
+                document.getElementById('<%= ddlHours.ClientID %>').addEventListener("change", validateExecutionTime);
+                document.getElementById('<%= ddlMinutes.ClientID %>').addEventListener("change", validateExecutionTime);
 
+                // Validate on submit button click
+                document.getElementById('<%= btnCreateICDM.ClientID %>').addEventListener("click", function (event) {
+                    if (!validateForm()) {
+                        event.preventDefault();  // Stop form submission if validation fails
+                    }
+                });
+
+                // Prevent modal from opening if data is incorrect
+                document.getElementById('orderModal').addEventListener('show.bs.modal', function (event) {
+                    let orderGrid = document.getElementById("gvOrders");  // Ensure GridView has data
+                    // Assuming the first row is the header row; so valid data exists if more than 1 row.
+                    if (!orderGrid || orderGrid.rows.length <= 1) {
+                        alert("No valid order data available.");
+                        event.preventDefault();
+                    }
+                });
+            });
+
+        // Individual Field Validation Functions
+        function validateISIN() {
+            let isin = document.getElementById('<%= txtISIN.ClientID %>').value.trim();
+            if (!/^([A-Za-z0-9]{12})$/.test(isin)) {
+                alert("❌ Invalid ISIN Number. It must be 12 alphanumeric characters.");
+                return false;
+            }
+            return true;
+        }
+
+        function validateValue() {
+            let value = document.getElementById('<%= txtValue.ClientID %>').value.trim();
+            if (!/^\d+(\.\d{1,2})?$/.test(value) || parseFloat(value) <= 0) {
+                alert("❌ Value must be a positive number.");
+                return false;
+            }
+            return true;
+        }
+
+        function validatePrice() {
+            let price = document.getElementById('<%= txtPrice.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(price) || parseFloat(price) <= 0) {
+            alert("❌ Price must be a positive number.");
+            return false;
+        }
+        return true;
+    }
+
+    function validateYield() {
+        let yieldVal = document.getElementById('<%= txtYield.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(yieldVal) || parseFloat(yieldVal) <= 0) {
+            alert("❌ Yield must be a positive number.");
+            return false;
+        }
+        return true;
+    }
+
+    function validateBuyerClientId() {
+        let buyerClientId = document.getElementById('<%= txtBuyerClientId.ClientID %>').value.trim();
+        if (buyerClientId === "") {
+            alert("❌ Buyer Client ID cannot be empty.");
+            return false;
+        }
+        return true;
+    }
+
+    function validateExecutionTime() {
+        let hours = document.getElementById('<%= ddlHours.ClientID %>').value;
+        let minutes = document.getElementById('<%= ddlMinutes.ClientID %>').value;
+        if (hours === "" || minutes === "") {
+            alert("❌ Execution Time must be selected.");
+            return false;
+        }
+        return true;
+    }
+
+    // Form Validation on Submit
+    function validateForm() {
+        let isValid = true;
+        let errorMessage = "";
+
+        // Validate ISIN
+        let isin = document.getElementById('<%= txtISIN.ClientID %>').value.trim();
+        if (!/^([A-Za-z0-9]{12})$/.test(isin)) {
+            errorMessage += "❌ Invalid ISIN Number. It must be 12 alphanumeric characters.\n";
+            isValid = false;
+        }
+
+        // Validate Value
+        let value = document.getElementById('<%= txtValue.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(value) || parseFloat(value) <= 0) {
+            errorMessage += "❌ Value must be a positive number.\n";
+            isValid = false;
+        }
+
+        // Validate Price
+        let price = document.getElementById('<%= txtPrice.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(price) || parseFloat(price) <= 0) {
+            errorMessage += "❌ Price must be a positive number.\n";
+            isValid = false;
+        }
+
+        // Validate Yield
+        let yieldVal = document.getElementById('<%= txtYield.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(yieldVal) || parseFloat(yieldVal) <= 0) {
+            errorMessage += "❌ Yield must be a positive number.\n";
+            isValid = false;
+        }
+
+        // Validate Execution Time (Hours & Minutes)
+        let hours = document.getElementById('<%= ddlHours.ClientID %>').value;
+        let minutes = document.getElementById('<%= ddlMinutes.ClientID %>').value;
+        if (hours === "" || minutes === "") {
+            errorMessage += "❌ Execution Time must be selected.\n";
+            isValid = false;
+        }
+
+        // Validate Buyer Client ID
+            let buyerClientId = document.getElementById('<%= txtBuyerClientId.ClientID %>').value.trim();
+            if (buyerClientId === "") {
+                errorMessage += "❌ Buyer Client ID cannot be empty.\n";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                alert(errorMessage);
+            }
+
+            return isValid;
+        }
+
+    </script>
+
+   
 <body>
     <form id="form1" runat="server">
         <div class="container mt-4">
@@ -236,6 +385,39 @@
                 <div class="col-12 text-center mt-4">
                     <asp:Button ID="btnCreateICDM" runat="server" Text="Create Order" CssClass="btn btn-primary btn-lg w-100" OnClick="btnCreateICDM_Click" />
                 </div>
+                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#orderModal">
+    Show Orders
+</button>
+              <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel">Order Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- GridView inside Bootstrap Modal -->
+                <asp:GridView ID="gvOrders" runat="server" CssClass="table table-striped table-bordered"
+                    AutoGenerateColumns="False">
+                    <Columns>
+                        <asp:BoundField DataField="ordernumber" HeaderText="Order Number" />
+                        <asp:BoundField DataField="symbol" HeaderText="Symbol" />
+                        <asp:BoundField DataField="isinnumber" HeaderText="ISIN Number" />
+                        <asp:BoundField DataField="quantity" HeaderText="Quantity" />
+                        <asp:BoundField DataField="value" HeaderText="Value" />
+                        <asp:BoundField DataField="modaccr" HeaderText="ModAccr" />
+                        <asp:BoundField DataField="consideration" HeaderText="Consideration" />
+                        <asp:BoundField DataField="status" HeaderText="Status" />
+                        <asp:BoundField DataField="dealtime" HeaderText="Deal Time" />
+                    </Columns>
+                </asp:GridView>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
             </div>
         </div>
