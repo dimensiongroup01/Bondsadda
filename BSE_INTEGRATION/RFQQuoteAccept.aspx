@@ -254,7 +254,7 @@
                         <label for="usertype">UserType</label>
                         <asp:DropDownList ID="lblUserType" runat="server" CssClass="form-control">
                             <asp:ListItem Text="Brokered" >Brokered</asp:ListItem>
-                            <asp:ListItem Text="Direct" >Direct</asp:ListItem>
+                            <asp:ListItem Text="Directs" >Direct</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                                 <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold"></asp:Label>

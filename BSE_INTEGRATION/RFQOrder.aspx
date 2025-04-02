@@ -371,15 +371,16 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <label>Deal Time (Hours)</label>
-                <asp:DropDownList ID="ddlDealTimeHours" runat="server" CssClass="form-control"  data-clientid="<%= ddlDealTimeHours.ClientID %>"> </asp:DropDownList>
-            </div>
+          <div class="col-md-3">
+    <label for="ddlDealTimeHours">Deal Time (Hours)</label>
+    <asp:DropDownList ID="ddlDealTimeHours" runat="server" CssClass="form-control"></asp:DropDownList>
+</div>
 
-            <div class="col-md-3">
-                <label>Deal Time (Minutes)</label>
-                <asp:DropDownList ID="ddlDealTimeMinutes" runat="server" CssClass="form-control"  data-clientid="<%= ddlDealTimeMinutes.ClientID %>"></asp:DropDownList>
-            </div>
+<div class="col-md-3">
+    <label for="ddlDealTimeMinutes">Deal Time (Minutes)</label>
+    <asp:DropDownList ID="ddlDealTimeMinutes" runat="server" CssClass="form-control"></asp:DropDownList>
+</div>
+
         </div>
 
         <!-- Other Fields Below -->
@@ -494,6 +495,11 @@
                 </div>
             </div>
         </div>
+        
+            <!-- Error Message -->
+            <div class="error-message">
+                <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold"></asp:Label>
+            </div>
 
         <!-- Submit Button -->
         <div class="text-center mt-4">
