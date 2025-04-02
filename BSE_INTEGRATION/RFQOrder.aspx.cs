@@ -98,7 +98,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
          }
         };
 
-         
+
 
         SaveRFQOrderLog(requestBody);
 
@@ -146,14 +146,53 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
     }
     protected async void btnSubmit_Click(object sender, EventArgs e)
     {
+        lblMessage.Text = "Processing RFQ, please wait...";
         string response = await CreateRFQOrder();
 
-        SaveRFQOrderResponse(response);
+        if (!string.IsNullOrEmpty(response))
+        {
+            try
+            {
+                // Deserialize the JSON response
+                System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
+                var rfqData = js.Deserialize<RFQResponseRoot>(response);
 
-        // Register a startup script to call showReceipt with the response JSON
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReceiptModal",
-            "showReceipt(" + response + ");", true);
+                // Validate the error code
+                if (rfqData.RFQResponseList != null && rfqData.RFQResponseList.Count > 0)
+                {
+                    string errorMessage = rfqData.RFQResponseList[0].message;
+                    int errorCode = rfqData.RFQResponseList[0].errorcode;
+
+                    if (errorCode == 0)
+                    {
+                        SaveRFQOrderResponse(response); // Save response in DB
+                        lblMessage.Text = "RFQ Created Successfully: " + errorMessage;
+
+                        // Register a startup script to call showReceipt with the response JSON
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReceiptModal",
+                            "showReceipt(" + response + ");", true);
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Error: " + errorMessage;
+                    }
+                }
+                else
+                {
+                    lblMessage.Text = "Invalid response from server.";
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "An error occurred while processing the response: " + ex.Message;
+            }
+        }
+        else
+        {
+            lblMessage.Text = "No response received from server.";
+        }
     }
+
     private void SaveRFQOrderLog(dynamic requestBody)
     {
         SqlParameter[] parameters = new SqlParameter[]
@@ -263,4 +302,15 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
     }
 
 }
+public class RFQResponse
+{
+    public string message { get; set; }
+    public int errorcode { get; set; }
+}
+
+public class RFQResponseRoot
+{
+    public List<RFQResponse> RFQResponseList { get; set; }
+}
+
 
