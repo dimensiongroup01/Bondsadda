@@ -79,8 +79,8 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     dealtimeminutes = ddlDealTimeMinutes.SelectedValue,
                     otmoto = ddlOtoOtm.SelectedValue,
                     proclient = ddlProClient.SelectedValue,
-                    buyerclientcode = "DFSPL",
-                    sellerclientcode = "DFSPLD",
+                    buyerclientcode = "BSEFI",
+                    sellerclientcode = "DFSPL",
                     directbrokered = ddlUserType.SelectedValue,
                     sellerbrokercode = "",
                     buyerbrokercode = txtBrokerName.Text.Trim(),
@@ -103,7 +103,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         SaveRFQOrderLog(requestBody);
 
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-        // string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
+        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
         return await SendRFQOrderRequest(token, jsonPayload);
 
@@ -115,7 +115,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
                 client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
                 client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
                 client.DefaultRequestHeaders.Add("PASSWORD", "Dfspld@2025");
@@ -144,6 +144,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
             return "Error: " + ex.Message;
         }
     }
+
     protected async void btnSubmit_Click(object sender, EventArgs e)
     {
         lblMessage.Text = "Processing RFQ, please wait...";
@@ -153,45 +154,47 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         {
             try
             {
-                // Deserialize the JSON response
-                System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
-                var rfqData = js.Deserialize<RFQResponseRoot>(response);
+                // Parse JSON dynamically
+                dynamic rfqData = JsonConvert.DeserializeObject(response);
 
-                // Validate the error code
-                if (rfqData.RFQResponseList != null && rfqData.RFQResponseList.Count > 0)
+                // Check if RFQOrderResponseList exists and has at least one entry
+                if (rfqData != null && rfqData.RFQOrderResponseList != null && rfqData.RFQOrderResponseList.Count > 0)
                 {
-                    string errorMessage = rfqData.RFQResponseList[0].message;
-                    int errorCode = rfqData.RFQResponseList[0].errorcode;
+                    var rfq = rfqData.RFQOrderResponseList[0];
+                    int errorCode = rfq.errorcode;
+                    string message = rfq.message;
 
                     if (errorCode == 0)
                     {
-                        SaveRFQOrderResponse(response); // Save response in DB
-                        lblMessage.Text = "RFQ Created Successfully: " + errorMessage;
+                        SaveRFQOrderResponse(response); // Save response to DB if needed
+                        lblMessage.Text = "✅ RFQ Created Successfully: " + message;
 
-                        // Register a startup script to call showReceipt with the response JSON
+                        // Show the receipt modal with full response
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReceiptModal",
-                            "showReceipt(" + response + ");", true);
+                     string.Format("showReceipt({0});", JsonConvert.SerializeObject(rfq)), true);
+
                     }
                     else
                     {
-                        lblMessage.Text = "Error: " + errorMessage;
+                        lblMessage.Text = "❌ Error: " + message;
                     }
                 }
                 else
                 {
-                    lblMessage.Text = "Invalid response from server.";
+                    lblMessage.Text = "⚠️ Invalid response from server.";
                 }
             }
             catch (Exception ex)
             {
-                lblMessage.Text = "An error occurred while processing the response: " + ex.Message;
+                lblMessage.Text = "❗ Exception while processing response: " + ex.Message;
             }
         }
         else
         {
-            lblMessage.Text = "No response received from server.";
+            lblMessage.Text = "🚫 No response received from server.";
         }
     }
+
 
     private void SaveRFQOrderLog(dynamic requestBody)
     {

@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+        <script type="text/javascript" src="../js/bse_i/rfq.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             // Initial visibility
@@ -186,14 +186,14 @@
             errorMsg += "OBP Platform field is required.\n";
             isValid = false;
         }
-        if($("#<%= txtRating.ClientID %>").val().trim() === ""){
+      <%--  if($("#<%= txtRating.ClientID %>").val().trim() === ""){
             errorMsg += "Rating is required.\n";
             isValid = false;
         }
         if($("#<%= txtRatingAgency.ClientID %>").val().trim() === ""){
             errorMsg += "Rating Agency is required.\n";
             isValid = false;
-        }
+        }--%>
         if($("#ddlUserType").val().trim() === ""){
             errorMsg += "User Type is required.\n";
             isValid = false;
