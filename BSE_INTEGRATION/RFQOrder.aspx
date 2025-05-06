@@ -12,6 +12,15 @@
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+     <!-- External JavaScript -->
+ <script src="../js/bse_i/timepicker.js"></script>
+
+    <style>
+        .container{
+            width:85%;
+            margin:0 auto;
+        }
+    </style>
 
     <!-- ✅ Bootstrap JS (Required for Modals) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -78,6 +87,28 @@
 
 
     </script>
+    <script type="text/javascript">
+        function toggleQuoteParameters() {
+            var quoteType = document.getElementById('<%= ddlQuoteType.ClientID %>').value;
+            var bidSection = document.getElementById('bidSection');
+            var offerSection = document.getElementById('offerSection');
+
+            if (quoteType === "BID") {
+                bidSection.style.display = "block";
+                offerSection.style.display = "none";
+            } else if (quoteType === "OFFER") {
+                bidSection.style.display = "none";
+                offerSection.style.display = "block";
+            } else {
+                bidSection.style.display = "none";
+                offerSection.style.display = "none";
+            }
+        }
+
+        window.onload = function () {
+            toggleQuoteParameters();
+        };
+    </script>
 
     <!-- Custom JavaScript File -->
     <script type="text/javascript" src="../js/bse_i/rfq.js"></script>
@@ -85,15 +116,19 @@
 
 
 <body>
-    <form id="form1" runat="server">
-        <div class="container mt-5">
-            <h2 class="text-center">RFQ Order Entry</h2>
-              
-            <!-- Market and Quote Type Dropdowns -->
-            <div class="row mb-3">
+  <form id="form1" runat="server">
+        <div class="container p-4 bg-white shadow rounded mt-4 mb-5">
+
+            <!-- Title -->
+            <div class="mb-4 border-bottom pb-2">
+                <h3 class="text-primary text-center">RFQ Order Entry</h3>
+            </div>
+
+            <!-- Market Info -->
+            <div class="row g-3">
                 <div class="col-md-6">
-                    <label><b>Market:</b></label>
-                    <asp:DropDownList ID="ddlProduct" runat="server" CssClass="form-control">
+                    <label class="form-label fw-bold">Market:</label>
+                    <asp:DropDownList ID="ddlProduct" runat="server" CssClass="form-select">
                         <asp:ListItem Text="ICDM" Value="ICDM" />
                         <asp:ListItem Text="GSEC" Value="GSEC" />
                         <asp:ListItem Text="CP" Value="CP" />
@@ -101,231 +136,195 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-6">
-                    <label><b>Quote Type:</b></label>
-                    <asp:DropDownList ID="ddlQuoteType" runat="server" CssClass="form-control"
-                        AutoPostBack="false" data-clientid="<%= ddlQuoteType.ClientID %>">
+                    <label class="form-label fw-bold">Quote Type:</label>
+                    <asp:DropDownList ID="ddlQuoteType" runat="server" CssClass="form-select" onchange="toggleQuoteParameters()">
+                        <asp:ListItem Text="--Select--" Value="" />
                         <asp:ListItem Text="BID" Value="BID" />
                         <asp:ListItem Text="OFFER" Value="OFFER" />
                     </asp:DropDownList>
                 </div>
-                   
-               <div class="col-md-6">
-                     <label>ISIN Number</label>
-                     <asp:TextBox ID="txtISINNumber" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
-                
+                <div class="col-md-4">
+                    <label class="form-label">ISIN Number</label>
+                    <asp:TextBox ID="txtISINNumber" runat="server" CssClass="form-control" />
                 </div>
-
                 <div class="col-md-6">
-                    <label>PRO/CLIENT</label>
-                    <asp:DropDownList ID="ddlProClient" runat="server" CssClass="form-control">
+                    <label class="form-label">PRO/CLIENT</label>
+                    <asp:DropDownList ID="ddlProClient" runat="server" CssClass="form-select">
                         <asp:ListItem Value="PRO">PRO</asp:ListItem>
                         <asp:ListItem Value="CLIENT">CLIENT</asp:ListItem>
-      
                     </asp:DropDownList>
                 </div>
-            
             </div>
 
-            <!-- Bid and Offer Fields -->
-            <div class="row">
-                <!-- Bid Parameters (Left) -->
-                <div class="col-md-6 border-end">
-                    <h4 class="text-center text-primary">Bid Parameters</h4>
-                    
+            <!-- Bid and Offer Section -->
+            <div class="row g-3 mt-4">
+                <!-- BID -->
+                <div class="col-md-6 border-end" id="bidSection" style="display:none;">
+                    <h5 class="text-primary">Bid Parameters</h5>
                     <label>Bid Value</label>
-                    <asp:TextBox ID="txtBidValue" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
-
-                    <label>Bid Minimum Value:</label>
-                    <asp:TextBox ID="txtBidMinValue" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
-
-                    <label>Bid Yield Type:</label>
+                    <asp:TextBox ID="txtBidValue" runat="server" CssClass="form-control" TextMode="Number" />
+                    <label>Bid Min Value</label>
+                    <asp:TextBox ID="txtBidMinValue" runat="server" CssClass="form-control" TextMode="Number" />
+                    <label>Bid Yield Type</label>
                     <asp:DropDownList ID="ddlBidYieldType" runat="server" CssClass="form-control">
                         <asp:ListItem Text="YTM" Value="YTM"></asp:ListItem>
                         <asp:ListItem Text="YTP" Value="YTP"></asp:ListItem>
                         <asp:ListItem Text="YTC" Value="YTC"></asp:ListItem>
                     </asp:DropDownList>
-
-                    <label>Bid Yield Value:</label>
-                    <asp:TextBox ID="txtBidYieldValue" runat="server" CssClass="form-control" ></asp:TextBox>
-
+                    <label>Bid Yield Value</label>
+                    <asp:TextBox ID="txtBidYieldValue" runat="server" CssClass="form-control" TextMode="Number" />
                     <label>Bid Price</label>
-                    <asp:TextBox ID="txtBidPrice" runat="server" CssClass="form-control" ></asp:TextBox>
+                    <asp:TextBox ID="txtBidPrice" runat="server" CssClass="form-control" />
                 </div>
 
-                <!-- Offer Parameters (Right) -->
-                <div class="col-md-6">
-                    <h4 class="text-center text-danger">Offer Parameters</h4>
-
+                <!-- OFFER -->
+                <div class="col-md-6" id="offerSection" style="display:none;">
+                    <h5 class="text-danger">Offer Parameters</h5>
                     <label>Offer Value</label>
-                    <asp:TextBox ID="txtOfferValue" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
-
-                    <label>Offer Minimum Value:</label>
-                    <asp:TextBox ID="txtOfferMinValue" runat="server" CssClass="form-control" TextMode ="Number"></asp:TextBox>
-
-                    <label>Offer Yield Type:</label>
+                    <asp:TextBox ID="txtOfferValue" runat="server" CssClass="form-control" TextMode="Number" />
+                    <label>Offer Min Value</label>
+                    <asp:TextBox ID="txtOfferMinValue" runat="server" CssClass="form-control" TextMode="Number" />
+                    <label>Offer Yield Type</label>
                     <asp:DropDownList ID="ddlOfferYieldType" runat="server" CssClass="form-control">
                         <asp:ListItem Text="YTM" Value="YTM"></asp:ListItem>
                         <asp:ListItem Text="YTP" Value="YTP"></asp:ListItem>
                         <asp:ListItem Text="YTC" Value="YTC"></asp:ListItem>
                     </asp:DropDownList>
-
-                    <label>Offer Yield Value:</label>
-                    <asp:TextBox ID="txtOfferYieldValue" runat="server" CssClass="form-control" ></asp:TextBox>
-
+                    <label>Offer Yield Value</label>
+                    <asp:TextBox ID="txtOfferYieldValue" runat="server" CssClass="form-control" />
                     <label>Offer Price</label>
-                    <asp:TextBox ID="txtOfferPrice" runat="server" CssClass="form-control" ></asp:TextBox>
+                    <asp:TextBox ID="txtOfferPrice" runat="server" CssClass="form-control" />
                 </div>
             </div>
 
-              <div class="row">
+            <!-- Validity & Deal Time -->
+            <div class="row g-3 mt-4">
                 <div class="col-md-6">
-                    <label>Validity Time *</label>
+                    <label>Validity Time</label>
                     <div class="form-check">
-                       <asp:CheckBox ID="chkGFD" runat="server" CssClass="form-check-input" onclick="toggleDealTime()" data-clientid="<%= chkGFD.ClientID %>" />
-                        <label class="form-check-label" for="chkGFD">GFD </label>
+                        <asp:CheckBox ID="chkGFD" runat="server" CssClass="form-check-input" />
+                        <label class="form-check-label ms-2">GFD</label>
                     </div>
                 </div>
-
                 <div class="col-md-3">
                     <label>Deal Time (Hours)</label>
-                  <asp:DropDownList ID="ddlDealTimeHours" runat="server" CssClass="form-control"  data-clientid="<%= ddlDealTimeHours.ClientID %>"> </asp:DropDownList>
+                    <asp:DropDownList ID="ddlDealTimeHours" runat="server" CssClass="form-select" />
                 </div>
-
                 <div class="col-md-3">
                     <label>Deal Time (Minutes)</label>
-                    <asp:DropDownList ID="ddlDealTimeMinutes" runat="server" CssClass="form-control"  data-clientid="<%= ddlDealTimeMinutes.ClientID %>"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlDealTimeMinutes" runat="server" CssClass="form-select" />
                 </div>
             </div>
 
-
-            <!-- Other Fields Below -->
-            <div class="row mt-4">
+            <!-- Other Details -->
+            <div class="row g-3 mt-4">
                 <div class="col-md-6">
-
-                     <label>Negotiable*</label>
-                     <asp:DropDownList ID="ddlNegotiableTag" runat="server" ClientIDMode="Static" CssClass="form-control">
-
-                     <asp:ListItem Text="YES" Value="YES"></asp:ListItem>
-                     <asp:ListItem Text="NO" Value="NO"></asp:ListItem>
+                    <label>Negotiable</label>
+                    <asp:DropDownList ID="ddlNegotiableTag" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="YES" Value="YES"></asp:ListItem>
+                        <asp:ListItem Text="NO" Value="NO"></asp:ListItem>
                     </asp:DropDownList>
-                  
-                    <label>OBP Platform:</label>
-                     <asp:DropDownList ID="ddlObpPlatform" runat="server" CssClass="form-control">
-                         <asp:ListItem Text="YES" Value="YES" />
-                         <asp:ListItem Text="NO" Value="NO" />
-                     </asp:DropDownList>
-
+                    <label>OBP Platform</label>
+                    <asp:DropDownList ID="ddlObpPlatform" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="YES" Value="YES" />
+                        <asp:ListItem Text="NO" Value="NO" />
+                    </asp:DropDownList>
                     <label>Rating</label>
-                    <asp:TextBox ID="txtRating" runat="server" CssClass="form-control"></asp:TextBox>
-
+                    <asp:TextBox ID="txtRating" runat="server" CssClass="form-control" />
                     <label>Rating Agency</label>
-                    <asp:TextBox ID="txtRatingAgency" runat="server" CssClass="form-control"></asp:TextBox>
-
-
-               
-                    
-                 </div>
-                    <div class="col-md-6">
-                        <label>User Type *</label>
-                        <asp:DropDownList ID="ddlUserType" runat="server" ClientIDMode="Static" CssClass="form-control">
-                      
+                    <asp:TextBox ID="txtRatingAgency" runat="server" CssClass="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label>User Type</label>
+                    <asp:DropDownList ID="ddlUserType" runat="server" CssClass="form-control">
                         <asp:ListItem Text="BROKERED" Value="BROKERED"></asp:ListItem>
                         <asp:ListItem Text="DIRECT" Value="DIRECT"></asp:ListItem>
-      
                     </asp:DropDownList>
-               
-
-                    <div class="col-md-6" id="brokerNameContainer" style="display: none;">
-                        <label>Broker Name *</label>
-                        <asp:TextBox ID="txtBrokerName" runat="server" CssClass="form-control"></asp:TextBox>
+                    <div id="brokerNameContainer" style="display:none;">
+                        <label>Broker Name</label>
+                        <asp:TextBox ID="txtBrokerName" runat="server" CssClass="form-control" />
                     </div>
-
-
-                   <label>Settlement Type:</label>
+                    <label>Settlement Type</label>
                     <asp:DropDownList ID="ddlSettleType" runat="server" CssClass="form-control">
                         <asp:ListItem Text="T+0" Value="0" />
                         <asp:ListItem Text="T+1" Value="1" />
                     </asp:DropDownList>
-
-                   <label>Disclosed Identity:</label>
-                     <asp:DropDownList ID="ddlDisclosedIdentity" runat="server" CssClass="form-control">
-                         <asp:ListItem Text="NO" Value="NO" />
-                         <asp:ListItem Text="YES" Value="YES" />
-                     </asp:DropDownList>
-                    
-                   <label>OTO/MOTO</label>
+                    <label>Disclosed Identity</label>
+                    <asp:DropDownList ID="ddlDisclosedIdentity" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="NO" Value="NO" />
+                        <asp:ListItem Text="YES" Value="YES" />
+                    </asp:DropDownList>
+                    <label>OTO/MOTO</label>
                     <asp:DropDownList ID="ddlOtoOtm" runat="server" CssClass="form-control">
                         <asp:ListItem Value="OTO">OTO</asp:ListItem>
                         <asp:ListItem Value="OTM">OTM</asp:ListItem>
-      
                     </asp:DropDownList>
-                 
                 </div>
             </div>
 
-            <!-- Bootstrap Modal for Receipt -->
-         
-             <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content shadow-lg rounded">
-            
-                    <!-- Modal Header with Logo & Title -->
-                    <div class="modal-header bg-primary text-white d-flex align-items-center">
-                        <img src="/img/logo.png" alt="Company Logo"  style="width: 350px; height: 60px;">
-                       
-                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <!-- Modal Body with Receipt Details -->
-                    <div class="modal-body p-4">
-                        <div class="text-center">
-                            <h4 class="fw-bold text-primary">Transaction Receipt</h4>
-                            <p class="text-muted">Thank you for your transaction!</p>
-                        </div>
-                        <hr>
-
-                        <!-- Transaction Details -->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p><strong>Bid RFQ Order No:</strong> <span id="bidrfqordernumber"></span></p>
-                                <p><strong>ISIN Number:</strong> <span id="isinnumber"></span></p>
-                                <p><strong>Bid Price:</strong> ₹<span id="bidprice"></span></p>
-                                <p><strong>Bid Quantity:</strong> <span id="bidquantity"></span></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><strong>Bid Value:</strong> ₹<span id="bidvalue"></span></p>
-                                <p><strong>Bid Yield:</strong> <span id="bidyield"></span>%</p>
-                                <p><strong>Settlement Date:</strong> <span id="settlementdate"></span></p>
-                                <p><strong>Order Status:</strong> <span id="orderstatus"></span></p>
-                            </div>
-                        </div>
-
-                        <!-- Message -->
-                        <div class="text-center mt-3">
-                            <p class="fw-bold text-success" id="message"></p>
-                        </div>
-                    </div>
-
-                    <!-- Footer with Buttons -->
-                    <div class="modal-footer d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="fas fa-times"></i> Close
-                        </button>
-                        <button type="button" class="btn btn-primary" onclick="downloadReceipt()">
-                            <i class="fas fa-download"></i> Download
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-            <!-- Submit Button -->
+            <!-- Submit -->
             <div class="text-center mt-4">
-                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" OnClick="btnSubmit_Click" />
+                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary px-4" Text="Submit" OnClick="btnSubmit_Click" />
             </div>
+
         </div>
-    </form>
+    </form>  
+    <!-- Bootstrap Modal for Receipt -->
+      
+          <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+             <div class="modal-content shadow-lg rounded">
+         
+                 <!-- Modal Header with Logo & Title -->
+                 <div class="modal-header bg-primary text-white d-flex align-items-center">
+                     <img src="/img/logo.png" alt="Company Logo"  style="width: 350px; height: 60px;">
+                    
+                     <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+
+                 <!-- Modal Body with Receipt Details -->
+                 <div class="modal-body p-4">
+                     <div class="text-center">
+                         <h4 class="fw-bold text-primary">Transaction Receipt</h4>
+                         <p class="text-muted">Thank you for your transaction!</p>
+                     </div>
+                     <hr>
+
+                     <!-- Transaction Details -->
+                     <div class="row">
+                         <div class="col-md-6">
+                             <p><strong>Bid RFQ Order No:</strong> <span id="bidrfqordernumber"></span></p>
+                             <p><strong>ISIN Number:</strong> <span id="isinnumber"></span></p>
+                             <p><strong>Bid Price:</strong> ₹<span id="bidprice"></span></p>
+                             <p><strong>Bid Quantity:</strong> <span id="bidquantity"></span></p>
+                         </div>
+                         <div class="col-md-6">
+                             <p><strong>Bid Value:</strong> ₹<span id="bidvalue"></span></p>
+                             <p><strong>Bid Yield:</strong> <span id="bidyield"></span>%</p>
+                             <p><strong>Settlement Date:</strong> <span id="settlementdate"></span></p>
+                             <p><strong>Order Status:</strong> <span id="orderstatus"></span></p>
+                         </div>
+                     </div>
+
+                     <!-- Message -->
+                     <div class="text-center mt-3">
+                         <p class="fw-bold text-success" id="message"></p>
+                     </div>
+                 </div>
+
+                 <!-- Footer with Buttons -->
+                 <div class="modal-footer d-flex justify-content-between">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                         <i class="fas fa-times"></i> Close
+                     </button>
+                     <button type="button" class="btn btn-primary" onclick="downloadReceipt()">
+                         <i class="fas fa-download"></i> Download
+                     </button>
+                 </div>
+
+             </div>
+         </div>
+     </div>
+    
 </body>
 </html>

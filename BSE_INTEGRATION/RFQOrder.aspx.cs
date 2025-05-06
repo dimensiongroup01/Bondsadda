@@ -57,7 +57,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         {
                 new
                 {
-                    product = ddlProduct.SelectedValue,
+                  product = ddlProduct.SelectedValue,
                     usertype = "BROKER",
                     quotetype = ddlQuoteType.SelectedValue,
                     isinnumber = txtISINNumber.Text.Trim(),
@@ -79,8 +79,8 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     dealtimeminutes = ddlDealTimeMinutes.SelectedValue,
                     otmoto = ddlOtoOtm.SelectedValue,
                     proclient = ddlProClient.SelectedValue,
-                    buyerclientcode = "DFSPL",
-                    sellerclientcode = "DFSPLD",
+                    buyerclientcode = "BSEFI",
+                    sellerclientcode = "DFSPL",
                     directbrokered = ddlUserType.SelectedValue,
                     sellerbrokercode = "",
                     buyerbrokercode = txtBrokerName.Text.Trim(),
@@ -98,7 +98,8 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
          }
         };
 
-         
+
+
 
         SaveRFQOrderLog(requestBody);
 

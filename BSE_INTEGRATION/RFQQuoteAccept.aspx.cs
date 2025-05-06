@@ -42,7 +42,7 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
         decimal originalValue;
         decimal correctedValue = 0;
 
-        if (decimal.TryParse(value.InnerText, out originalValue))
+        if (decimal.TryParse(txtValue.Text, out originalValue))
         {
             correctedValue = originalValue * 10000000; // Multiply to restore the exact order value
         }
@@ -51,39 +51,38 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
         var requestBody = new
         {
             RFQQuoteAccept = new[]
-            {
-                new
-                {
-                    rfqdealid = rfqdealid.InnerText,
-                    rfqordernumber = rfqordernumber.InnerText,
-                    product = product.InnerText,
-                    usertype = usertype.InnerText,
-                    quotetype = quotetype.InnerText,
-                    isinnumber = isinnumber.InnerText,
-                    value = correctedValue.ToString("0"),
-                    proclient = proclient.InnerText,
-                    buyerclientcode = "",
-                    sellerclientcode = sellerclientcode.InnerText,
-                    directbrokered = directbrokered.InnerText,
-                    sellerbrokercode = sellerbrokercode.InnerText,
-                    buyerbrokercode = "",
-                    responderreferencenumber = "",
-                    respondercomment = "",
-                    rfqquoteaccept = "ACCEPT",
-                    obpplatform = "NO",
-                    filler2 = "",
-                    filler3 = "",
-                    filler4 = "",
-                    filler5 = ""
-                }
-            }
-
+                         {
+                            new
+                            {
+                                rfqdealid = txtRFQDealID.Text.Trim(),
+                                rfqordernumber = txtRFQOrderNumber.Text.Trim(),
+                                product = ddlProduct.SelectedValue,
+                                usertype = lblUserType.Text.Trim(),
+                                quotetype = ddlQuoteType.SelectedValue,
+                                isinnumber = txtISINNumber.Text.Trim(),
+                                value = correctedValue.ToString("0"),
+                                proclient = txtProClientCode.Text.Trim(),
+                                buyerclientcode = txtBuyerClientCode.Text.Trim(),
+                                sellerclientcode = txtSellerClientCode.Text.Trim(),
+                                directbrokered = rblDirectBrokered.SelectedValue,
+                                sellerbrokercode = lblSellerBrokerCode.Text.Trim(),
+                                buyerbrokercode = "DFSPL",
+                                responderreferencenumber = "",
+                                respondercomment = "",
+                                rfqquoteaccept = "ACCEPT",
+                                obpplatform = "NO",
+                                filler2 = "",
+                                filler3 = "",
+                                filler4 = "",
+                                filler5 = ""
+                            }
+                        }
         };
 
 
 
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-        // string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
+        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
         return await SendRFQQuoteAccept(token, jsonPayload);
     }
@@ -97,7 +96,7 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
                 client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
                 client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
                 client.DefaultRequestHeaders.Add("PASSWORD", "Dfspld@2025");
@@ -145,55 +144,135 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
             new SqlParameter("@Filler4", requestBody.filler4),
             new SqlParameter("@Filler5", requestBody.filler5)
         };
-         SqlDBHelper.ExecuteNonQuery("SaveRFQQuoteAccept", parameters);
+        SqlDBHelper.ExecuteNonQuery("SaveRFQQuoteAccept", parameters);
     }
     protected void txtISINNumber_TextChanged(object sender, EventArgs e)
     {
-        GetRFQQuoteData(txtISINNumber.Text.Trim());
-    }
-    private void GetRFQQuoteData(string isinNumber)
-    {
-        string query = "EXEC usp_GetRFQSelectedFieldsByISIN @ISINNumber";
-        Dictionary<string, object> parameters = new Dictionary<string, object>
-    {
-        {"@ISINNumber", isinNumber}
-    };
-
-        DataTable dt = SqlDBHelper.ExecuteQuery(query, parameters);
-
-        if (dt.Rows.Count > 0)
+        if (!string.IsNullOrEmpty(txtRFQDealID.Text.Trim()))
         {
-            DataRow row = dt.Rows[0];
-
-            // Assign values to UI elements
-            product.InnerText = row["bondtype"].ToString();
-            directbrokered.InnerText = row["dealtype"].ToString();
-            quotetype.InnerText = row["bidoffer"].ToString();
-            isinnumber.InnerText = row["ISINNumber"].ToString();
-            rfqordernumber.InnerText = row["rfqordernumber"].ToString();
-            value.InnerText = row["value"].ToString();
-            proclient.InnerText = row["ProClient"].ToString();
-            usertype.InnerText = row["UserType"].ToString();
-            sellerbrokercode.InnerText = row["SellerBrokerCode"].ToString();
-            directbrokered.InnerText = row["DirectBrokered"].ToString();
-            sellerclientcode.InnerText = row["SellerClientCode"].ToString();
-
-            rfqdealid.InnerText = row["rfqdealid"].ToString();
-
+            GetRFQQuoteData(txtRFQDealID.Text.Trim());
         }
-
+        else
+        {
+            lblMessage.Text = "Please enter a valid RFQ Deal ID.";
+        }
     }
 
-
-
-    protected async void btnAcceptQuote_Click(object sender, EventArgs e)
+    private void GetRFQQuoteData(string rfqdealid)
     {
-        string response = await RFQQuoteAccept();
+        try
+        {
+            string query = "EXEC usp_GetRFQSelectedFieldsByISIN @rfqdealid";
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "@rfqdealid", rfqdealid }
+        };
 
+            DataTable dt = SqlDBHelper.ExecuteQuery(query, parameters);
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+
+                SetDropDownListValue(ddlProduct, row["bondtype"] != null ? row["bondtype"].ToString() : "");
+                SetRadioButtonListValue(rblDirectBrokered, row["dealtype"] != null ? row["dealtype"].ToString() : "");
+                SetDropDownListValue(ddlQuoteType, row["bidoffer"] != null ? row["bidoffer"].ToString() : "");
+
+                txtISINNumber.Text = row["ISINNumber"] != null ? row["ISINNumber"].ToString() : "";
+                txtRFQOrderNumber.Text = row["rfqordernumber"] != null ? row["rfqordernumber"].ToString() : "";
+                txtValue.Text = row["value"] != null ? row["value"].ToString() : "";
+                txtProClientCode.Text = row["ProClient"] != null ? row["ProClient"].ToString() : "";
+                lblUserType.Text = row["UserType"] != null ? row["UserType"].ToString() : "";
+                lblSellerBrokerCode.Text = row["SellerBrokerCode"] != null ? row["SellerBrokerCode"].ToString() : "";
+                SetRadioButtonListValue(rblDirectBrokered, row["DirectBrokered"] != null ? row["DirectBrokered"].ToString() : "");
+                txtSellerClientCode.Text = row["SellerClientCode"] != null ? row["SellerClientCode"].ToString() : "";
+                txtRFQDealID.Text = row["rfqdealid"] != null ? row["rfqdealid"].ToString() : "";
+
+
+                lblMessage.Text = "";
+            }
+            else
+            {
+                lblMessage.Text = "No data found for this RFQ Deal ID.";
+                ClearFormFields();
+            }
+        }
+        catch (Exception ex)
+        {
+            lblMessage.Text = "Error fetching data: " + ex.Message;
+        }
+    }
+
+    private void SetDropDownListValue(DropDownList ddl, string value)
+    {
+        if (!string.IsNullOrEmpty(value))
+        {
+            ListItem item = ddl.Items.FindByValue(value);
+            if (item != null)
+            {
+                ddl.SelectedValue = value;
+            }
+            else
+            {
+                ddl.ClearSelection();
+            }
+        }
+    }
+
+    private void SetRadioButtonListValue(RadioButtonList rbl, string value)
+    {
+        if (!string.IsNullOrEmpty(value))
+        {
+            ListItem item = rbl.Items.FindByValue(value);
+            if (item != null)
+            {
+                rbl.SelectedValue = value;
+            }
+            else
+            {
+                rbl.ClearSelection();
+            }
+        }
+    }
+
+    private void ClearFormFields()
+    {
+        txtISINNumber.Text = "";
+        txtRFQOrderNumber.Text = "";
+        ddlProduct.ClearSelection();
+        ddlQuoteType.ClearSelection();
+        txtValue.Text = "";
+        txtProClientCode.Text = "";
+        lblUserType.Text = "";
+        lblSellerBrokerCode.Text = "";
+        rblDirectBrokered.ClearSelection();
+        txtSellerClientCode.Text = "";
+    }
+
+    protected async void btnSubmit_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string response = await RFQQuoteAccept(); // Assuming this handles saving or processing
+            lblMessage.Text = response; // Show a success or failure message
+        }
+        catch (Exception ex)
+        {
+            lblMessage.Text = "Submission failed: " + ex.Message;
+        }
     }
 
     protected void btnShowPopup_Click(object sender, EventArgs e)
     {
 
     }
+
+    //protected void Page_Load(object sender, EventArgs e)
+    //{
+    //    if (!IsPostBack)
+    //    {
+    //        btnCloseModal.Attributes["data-bs-dismiss"] = "modal";
+    //    }
+    //}
+
 }
