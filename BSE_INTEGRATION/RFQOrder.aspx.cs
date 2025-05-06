@@ -79,8 +79,8 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     dealtimeminutes = ddlDealTimeMinutes.SelectedValue,
                     otmoto = ddlOtoOtm.SelectedValue,
                     proclient = ddlProClient.SelectedValue,
-                    buyerclientcode = "DFSPL",
-                    sellerclientcode = "DFSPLD",
+                    buyerclientcode = "BSEFI",
+                    sellerclientcode = "DFSPL",
                     directbrokered = ddlUserType.SelectedValue,
                     sellerbrokercode = "",
                     buyerbrokercode = txtBrokerName.Text.Trim(),
@@ -98,12 +98,12 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
          }
         };
 
-         
+
 
         SaveRFQOrderLog(requestBody);
 
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-        // string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
+        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
         return await SendRFQOrderRequest(token, jsonPayload);
 
@@ -115,7 +115,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
                 client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
                 client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
                 client.DefaultRequestHeaders.Add("PASSWORD", "Dfspld@2025");
@@ -144,16 +144,58 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
             return "Error: " + ex.Message;
         }
     }
+
     protected async void btnSubmit_Click(object sender, EventArgs e)
     {
+        lblMessage.Text = "Processing RFQ, please wait...";
         string response = await CreateRFQOrder();
 
-        SaveRFQOrderResponse(response);
+        if (!string.IsNullOrEmpty(response))
+        {
+            try
+            {
+                // Parse JSON dynamically
+                dynamic rfqData = JsonConvert.DeserializeObject(response);
 
-        // Register a startup script to call showReceipt with the response JSON
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReceiptModal",
-            "showReceipt(" + response + ");", true);
+                // Check if RFQOrderResponseList exists and has at least one entry
+                if (rfqData != null && rfqData.RFQOrderResponseList != null && rfqData.RFQOrderResponseList.Count > 0)
+                {
+                    var rfq = rfqData.RFQOrderResponseList[0];
+                    int errorCode = rfq.errorcode;
+                    string message = rfq.message;
+
+                    if (errorCode == 0)
+                    {
+                        SaveRFQOrderResponse(response); // Save response to DB if needed
+                        lblMessage.Text = "✅ RFQ Created Successfully: " + message;
+
+                        // Show the receipt modal with full response
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReceiptModal",
+                     string.Format("showReceipt({0});", JsonConvert.SerializeObject(rfq)), true);
+
+                    }
+                    else
+                    {
+                        lblMessage.Text = "❌ Error: " + message;
+                    }
+                }
+                else
+                {
+                    lblMessage.Text = "⚠️ Invalid response from server.";
+                }
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "❗ Exception while processing response: " + ex.Message;
+            }
+        }
+        else
+        {
+            lblMessage.Text = "🚫 No response received from server.";
+        }
     }
+
+
     private void SaveRFQOrderLog(dynamic requestBody)
     {
         SqlParameter[] parameters = new SqlParameter[]
@@ -263,4 +305,15 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
     }
 
 }
+public class RFQResponse
+{
+    public string message { get; set; }
+    public int errorcode { get; set; }
+}
+
+public class RFQResponseRoot
+{
+    public List<RFQResponse> RFQResponseList { get; set; }
+}
+
 

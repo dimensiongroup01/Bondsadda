@@ -87,7 +87,7 @@ public partial class BSE_INTEGRATION_RFQDealPropose : System.Web.UI.Page
 
 
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-        // string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
+       string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
         return await SendRFQQuotePropose(token, jsonPayload);
     }
@@ -101,7 +101,7 @@ public partial class BSE_INTEGRATION_RFQDealPropose : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
                 client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
                 client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
                 client.DefaultRequestHeaders.Add("PASSWORD", "Dfspld@2025");

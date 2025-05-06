@@ -185,7 +185,7 @@
         /* Card Container */
         .home-page-investment-option .box {
             height: 320px; /* Fixed height for all cards */
-          background: rgb(246, 246, 246);;
+          background: rgb(246, 246, 246);
 
             border-radius: 12px;
             margin-bottom: 30px;
@@ -350,7 +350,7 @@ background: linear-gradient(90deg, rgba(232,133,238,1) 0%, rgba(228,86,148,0.678
 }
 
 .box .btn {
-    background-color: #333;; /* Orange button */
+    background-color: #333; /* Orange button */
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 5px;

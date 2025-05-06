@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RFQQuoteAccept.aspx.cs" Inherits="BSE_INTEGRATION_RFQQuoteAccept" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RFQQuoteAccept.aspx.cs" Inherits="BSE_INTEGRATION_RFQQuoteAccept" Async ="true" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,7 @@
                 isValid = false;
             }
 
-            // Validate Direct Brokered (if Brokered and Quote Type is OFFER/BID)
+             Validate Direct Brokered (if Brokered and Quote Type is OFFER/BID)
             let directBrokered = document.querySelector('input[name="rblDirectBrokered"]:checked');
             let quoteType = document.getElementById('ddlQuoteType').value;
             if (directBrokered && directBrokered.value === "YES" && quoteType === 'OFFER') {
@@ -152,7 +152,8 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server" onsubmit="return validateForm()">
+   <%-- <form id="form1" runat="server" onsubmit="return validateForm()">--%>
+    <form id="form1" runat="server" >
         <div class="container">
             <h2>RFQ Quote Accept</h2>
 
@@ -169,14 +170,16 @@
             <div class="tab-content mt-3">
                 <!-- RFQ Details Tab -->
                 <div class="tab-pane fade show active" id="rfq-details" role="tabpanel" aria-labelledby="rfq-details-tab">
-                    <div class="form-group">
-                        <label for="rfqdealid">RFQ Deal ID:</label>
-                        <asp:TextBox ID="txtRFQDealID" runat="server" CssClass="form-control" placeholder="Enter RFQ Deal ID" required maxlength="15" />
-                    </div>
+            <div class="form-group">
+                    <label for="rfqdealid">RFQ Deal ID:</label>
+                    <asp:TextBox ID="txtRFQDealID" runat="server" CssClass="form-control" placeholder="Enter RFQ Deal ID" maxlength="15"
+                        OnTextChanged="txtISINNumber_TextChanged" AutoPostBack="True" />
+                </div>  
+
 
                     <div class="form-group">
                         <label for="rfqordernumber">RFQ Order Number:</label>
-                        <asp:TextBox ID="txtRFQOrderNumber" runat="server" CssClass="form-control" placeholder="Enter RFQ Order Number starting with 'R'" required maxlength="16" />
+                        <asp:TextBox ID="txtRFQOrderNumber" runat="server" CssClass="form-control" placeholder="Enter RFQ Order Number starting with 'R'"  maxlength="16" />
                     </div>
 
                     <div class="form-group">
@@ -199,38 +202,38 @@
 
                     <div class="form-group">
                         <label for="isinnumber">ISIN Number:</label>
-                        <asp:TextBox ID="txtISINNumber" runat="server" CssClass="form-control" placeholder="Enter ISIN Number" required maxlength="12" />
+                        <asp:TextBox ID="txtISINNumber" runat="server" CssClass="form-control" placeholder="Enter ISIN Number"  maxlength="12" />
                     </div>
 
                     <div class="form-group">
                         <label for="value">Value:</label>
-                        <asp:TextBox ID="txtValue" runat="server" CssClass="form-control" placeholder="Enter Value" required />
+                        <asp:TextBox ID="txtValue" runat="server" CssClass="form-control" placeholder="Enter Value"  />
                     </div>
 
                     <div class="form-group">
                         <label for="proclient">PRO Client Code:</label>
-                        <asp:TextBox ID="txtProClientCode" runat="server" CssClass="form-control" placeholder="Enter PRO Client Code" required maxlength="6" />
+                        <asp:TextBox ID="txtProClientCode" runat="server" CssClass="form-control" placeholder="Enter PRO Client Code"  maxlength="6" />
                     </div>
 
                     <div class="form-group">
                         <label for="buyerclientcode">Buyer Client Code:</label>
-                        <asp:TextBox ID="txtBuyerClientCode" runat="server" CssClass="form-control" placeholder="Enter Buyer Client Code" required maxlength="15" />
+                        <asp:TextBox ID="txtBuyerClientCode" runat="server" CssClass="form-control" placeholder="Enter Buyer Client Code"  maxlength="15" />
                     </div>
 
                     <div class="form-group">
                         <label for="sellerclientcode">Seller Client Code:</label>
-                        <asp:TextBox ID="txtSellerClientCode" runat="server" CssClass="form-control" placeholder="Enter Seller Client Code" required maxlength="15" />
+                        <asp:TextBox ID="txtSellerClientCode" runat="server" CssClass="form-control" placeholder="Enter Seller Client Code"  maxlength="15" />
                     </div>
                     <div class="form-group">
                         <label for="sellerbrokercode">Seller Broker Code:</label>
-                        <asp:TextBox ID="lblSellerBrokerCode" runat="server" CssClass="form-control" placeholder="Enter Seller Client Code" required maxlength="15" />
+                        <asp:TextBox ID="lblSellerBrokerCode" runat="server" CssClass="form-control" placeholder="Enter Seller Client Code"  maxlength="15" />
                     </div>
 
                     <div class="form-group">
                         <label>Direct Brokered:</label>
                         <asp:RadioButtonList ID="rblDirectBrokered" runat="server" CssClass="form-control">
-                            <asp:ListItem Text="YES" Value="YES" />
-                            <asp:ListItem Text="NO" Value="NO" />
+                            <asp:ListItem Text="BROKERED" Value="BROKERED" />
+                            <asp:ListItem Text="DIRECT" Value="DIRECT" />
                         </asp:RadioButtonList>
                     </div>
                 </div>
@@ -253,8 +256,8 @@
                     <div class="form-group">
                         <label for="usertype">UserType</label>
                         <asp:DropDownList ID="lblUserType" runat="server" CssClass="form-control">
-                            <asp:ListItem Text="Brokered" >Brokered</asp:ListItem>
-                            <asp:ListItem Text="Direct" >Direct</asp:ListItem>
+                            <asp:ListItem Text="Brokered" >BROKER</asp:ListItem>
+                            <asp:ListItem Text="Direct" >DIRECT</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                                 <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold"></asp:Label>

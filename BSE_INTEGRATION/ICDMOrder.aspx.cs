@@ -131,7 +131,7 @@ public partial class BSE_INTEGRATION_ICDMOrder : System.Web.UI.Page
         };
 
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-        // string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
+        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
         return await SendICDMOrderRequest(token, jsonPayload);
     }
@@ -142,7 +142,7 @@ public partial class BSE_INTEGRATION_ICDMOrder : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
                 client.DefaultRequestHeaders.Add("TOKEN", token);
 
                 HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
