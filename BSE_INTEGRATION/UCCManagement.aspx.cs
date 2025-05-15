@@ -69,7 +69,7 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
                 {
                     recordaudflag = actionFlag,  // 1 for Add, 2 for Modify, 3 for Inactivate
                     clientucc = txtClientUCC.Text.Trim(),
-                    category = txtCategory.Text.Trim(),
+                    category = ddlCategory.Text.Trim(),
                     custodiancode = "", // Optional field
                     dor = "", // Date of Registration, Optional field
                     firstname = txtFirstName.Text.Trim(),
@@ -216,10 +216,10 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
 
         using (HttpClient client = new HttpClient())
         {
-            client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
-            client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
-            client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
-            client.DefaultRequestHeaders.Add("PASSWORD", "Dfspld@2025");
+            client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
+            client.DefaultRequestHeaders.Add("PARTICIPANTID", "DIMENSIONFSL");
+            client.DefaultRequestHeaders.Add("DEALERID", "DIMENSIONFSLD");
+            client.DefaultRequestHeaders.Add("PASSWORD", "Ravi#1234");
             client.DefaultRequestHeaders.Add("TOKEN", token);
           //  client.DefaultRequestHeaders.Add("CHECKSUM", checksum);
 
@@ -601,7 +601,7 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
             DataRow row = dt.Rows[0];
 
             // Fill the form fields with fetched data
-            txtCategory.Text = row["Category"].ToString();
+            ddlCategory.Text = row["Category"].ToString();
             txtFirstName.Text = row["FirstName"].ToString();
             txtMiddleName.Text = row["MiddleName"].ToString();
             txtLastName.Text = row["LastName"].ToString();
@@ -636,7 +636,7 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
     }
     private void ClearForm()
     {
-        txtCategory.Text = "";
+        ddlCategory.Text = "";
         txtFirstName.Text = "";
         txtMiddleName.Text = "";
         txtLastName.Text = "";

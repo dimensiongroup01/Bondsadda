@@ -6,6 +6,10 @@
     <title>UCC Management</title>
     <link href="../css/Style_Bse/style.css" rel="stylesheet" />
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+
 
     <style>
         body {
@@ -35,6 +39,29 @@
             text-align: center;
             margin-bottom: 10px;
         }
+         .card-gold {
+        border: 1px solid #d4af37;
+        box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+        border-radius: 12px;
+    }
+
+    .card-gold .card-header {
+        background: linear-gradient(90deg, #fceabb 0%, #f8b500 100%);
+        color: #fff;
+        border-bottom: 1px solid #e0c97d;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    .card-gold .form-label {
+        color: #b8860b;
+        font-weight: 600;
+    }
+
+    .form-control-sm:focus {
+        border-color: #d4af37;
+        box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+    }
 
         /*.nav-tabs .nav-link {
             border-radius: 12px 12px 0 0;
@@ -145,6 +172,10 @@
             border-radius: 8px;
             width: 100%;
         }*/
+        .btn:hover {
+        transform: scale(1.03);
+        transition: all 0.2s ease-in-out;
+    }
     </style>
 </head>
 
@@ -158,103 +189,198 @@
         <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold mb-3 d-block"></asp:Label>
 
         <!-- Basic Details Card -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="mb-0">Basic Details</h5>
+   <div class="card mb-4 card-gold">
+    <div class="card-header py-2">
+        <h6 class="mb-0"><i class="fas fa-id-card me-2"></i>Basic Details</h6>
+    </div>
+    <div class="card-body py-3 px-4">
+
+        <!-- Row 1 -->
+        <div class="row mb-3">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtClientUCC" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user-tag me-1"></i>Client UCC
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtClientUCC" runat="server" CssClass="form-control form-control-sm" AutoPostBack="true" OnTextChanged="txtClientUCC_TextChanged" />
+                </div>
             </div>
-            <div class="card-body row g-2">
-                <div class="col-md-2">
-                    <label class="form-label">Client UCC</label>
-                    <asp:TextBox ID="txtClientUCC" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtClientUCC_TextChanged"></asp:TextBox>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Category</label>
-                    <asp:DropDownList ID="txtCategory" runat="server" CssClass="form-control">
-                        <asp:ListItem Text="Others" Value="0" />
-                        <asp:ListItem Text="MUTUAL FUNDS" Value="1" />
-                        <asp:ListItem Text="INSURANCE COMPANY" Value="2" />
-                        <asp:ListItem Text="BANKS" Value="3" />
-                        <asp:ListItem Text="NBFC" Value="4" />
-                        <asp:ListItem Text="BROKER" Value="5" />
-                        <asp:ListItem Text="CORPORATE" Value="6" />
-                        <asp:ListItem Text="F II" Value="7" />
-                        <asp:ListItem Text="FII-SUB" Value="8" />
-                        <asp:ListItem Text="VC" Value="9" />
-                        <asp:ListItem Text="FVCI" Value="10" />
-                        <asp:ListItem Text="PMS" Value="11" />
-                        <asp:ListItem Text="DFI" Value="12" />
-                        <asp:ListItem Text="TRUST" Value="13" />
-                        <asp:ListItem Text="PD" Value="14" />
-                        <asp:ListItem Text="CUSTODY" Value="21" />
-                        <asp:ListItem Text="INDIVIDUAL" Value="24" />
-                    </asp:DropDownList>
 
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">First Name</label>
-                    <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control" />
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Middle Name</label>
-                    <asp:TextBox ID="txtMiddleName" runat="server" CssClass="form-control" />
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Last Name</label>
-                    <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control" />
-                </div>
-                <div class="col-md-1">
-                    <label class="form-label">Gender</label>
-                    <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-control">
-                        <asp:ListItem Text="Male" Value="Male" />
-                        <asp:ListItem Text="Female" Value="Female" />
-                        <asp:ListItem Text="Other" Value="Other" />
-                    </asp:DropDownList>
+           <div class="col-md-4 d-flex align-items-center">
+    <label for="ddlCategory" class="col-5 col-form-label text-end pe-2">
+        <i class="fas fa-layer-group me-1"></i>Category
+    </label>
+    <div class="col-7">
+        <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control">
+            <asp:ListItem Text="OTHERS" Value="0" />
+            <asp:ListItem Text="MUTUAL FUNDS" Value="1" />
+            <asp:ListItem Text="INSURANCE COMPANY" Value="2" />
+            <asp:ListItem Text="BANKS" Value="3" />
+            <asp:ListItem Text="NBFC" Value="4" />
+            <asp:ListItem Text="BROKER" Value="5" />
+            <asp:ListItem Text="CORPORATE" Value="6" />
+            <asp:ListItem Text="FII" Value="7" />
+            <asp:ListItem Text="FII-SUB" Value="8" />
+            <asp:ListItem Text="VC" Value="9" />
+            <asp:ListItem Text="FVCI" Value="10" />
+            <asp:ListItem Text="PMS" Value="11" />
+            <asp:ListItem Text="DFI" Value="12" />
+            <asp:ListItem Text="TRUST" Value="13" />
+            <asp:ListItem Text="PD" Value="14" />
+            <asp:ListItem Text="CUSTODY" Value="21" />
+            <asp:ListItem Text="INDIVIDUAL" Value="24" />
+        </asp:DropDownList>
+    </div>
+</div>
 
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtFirstName" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user me-1"></i>First Name
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control form-control-sm" />
                 </div>
-                <div class="col-md-2">
-                    <label class="form-label">Date of Birth</label>
-                    <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control" TextMode="Date" />
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Mobile No</label>
-                    <asp:TextBox ID="txtMobileNo" runat="server" CssClass="form-control" />
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Phone No</label>
-                    <asp:TextBox ID="txtPhoneNo" runat="server" CssClass="form-control" />
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Email ID</label>
-                    <asp:TextBox ID="txtEmailID" runat="server" CssClass="form-control" />
-                </div
             </div>
         </div>
 
-        <!-- Identity & Address Card -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="mb-0">Identity & Address</h5>
+        <!-- Row 2 -->
+        <div class="row mb-3">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtMiddleName" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user me-1"></i>Middle Name
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtMiddleName" runat="server" CssClass="form-control form-control-sm" />
+                </div>
             </div>
-            <div class="card-body row g-2">
-                <div class="col-md-2">
-                    <label class="form-label">PAN No</label>
-                    <asp:TextBox ID="txtPANNo" runat="server" CssClass="form-control" />
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtLastName" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user me-1"></i>Last Name
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control form-control-sm" />
                 </div>
-                <div class="col-md-2">
-                    <label class="form-label">Aadhar No</label>
-                    <asp:TextBox ID="txtAadharNo" runat="server" CssClass="form-control" />
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="ddlGender" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-venus-mars me-1"></i>Gender
+                </label>
+                <div class="col-7">
+                    <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
+                            <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
+                            <asp:ListItem Text="Third Gender" Value="Third Gender"></asp:ListItem>
+                        </asp:DropDownList>
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label">Address</label>
-                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" TextMode="MultiLine" />
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="row mb-3">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtDOB" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-calendar-alt me-1"></i>DOB
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtDOB" runat="server" CssClass="form-control form-control-sm" TextMode="Date" />
                 </div>
-                <div class="col-md-2">
-                    <label class="form-label">City</label>
-                    <asp:TextBox ID="txtCity" runat="server" CssClass="form-control" />
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtMobileNo" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-mobile-alt me-1"></i>Mobile
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtMobileNo" runat="server" CssClass="form-control form-control-sm" />
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label">State</label>
-                   <asp:DropDownList ID="txtState" runat="server" CssClass="form-control">
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtPhoneNo" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-phone me-1"></i>Phone
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtPhoneNo" runat="server" CssClass="form-control form-control-sm" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="row">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtEmailID" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-envelope me-1"></i>Email ID
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtEmailID" runat="server" CssClass="form-control form-control-sm" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+        <!-- Identity & Address Card -->
+      <div class="card mb-4 card-gold">
+    <div class="card-header py-2">
+        <h6 class="mb-0"><i class="fas fa-address-card me-2"></i>Identity & Address</h6>
+    </div>
+    <div class="card-body py-3 px-4">
+
+        <!-- Row 1 -->
+        <div class="row mb-3">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtPANNo" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-id-badge me-1"></i>PAN No
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtPANNo" runat="server" CssClass="form-control form-control-sm" />
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtAadharNo" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-fingerprint me-1"></i>Aadhar No
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtAadharNo" runat="server" CssClass="form-control form-control-sm" />
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtAddress" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-map-marker-alt me-1"></i>Address
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control form-control-sm" TextMode="MultiLine" Rows="2" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="row mb-3">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtCity" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-city me-1"></i>City
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtCity" runat="server" CssClass="form-control form-control-sm" />
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtState" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-flag me-1"></i>State
+                </label>
+                <div class="col-7">
+                    <asp:DropDownList ID="txtState" runat="server" CssClass="form-control form-control-sm">
                         <asp:ListItem Text="ANDAMAN AND NICOBAR ISLANDS" Value="38" />
                         <asp:ListItem Text="ANDHRA PRADESH" Value="39" />
                         <asp:ListItem Text="ARUNACHAL PRADESH" Value="40" />
@@ -292,78 +418,158 @@
                         <asp:ListItem Text="TELANGANA" Value="74" />
                         <asp:ListItem Text="UTTARAKHAND" Value="75" />
                     </asp:DropDownList>
-
-
                 </div>
-                <div class="col-md-2">
-                    <label class="form-label">PIN Code</label>
-                    <asp:TextBox ID="txtPinCode" runat="server" CssClass="form-control" />
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label">Country</label>
-                    <asp:TextBox ID="txtCountry" runat="server" CssClass="form-control" />
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtPinCode" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-mail-bulk me-1"></i>PIN Code
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtPinCode" runat="server" CssClass="form-control form-control-sm" />
                 </div>
             </div>
         </div>
 
-        <!-- Bank Details Card -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="mb-0">Bank Details</h5>
+        <!-- Row 3 -->
+        <div class="row">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtCountry" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-globe-asia me-1"></i>Country
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtCountry" runat="server" CssClass="form-control form-control-sm" />
+                </div>
             </div>
-            <div class="card-body row g-2">
-                <div class="col-md-3">
-                    <label class="form-label">Bank IFSC Code</label>
-                    <asp:TextBox ID="txtBankIFSC1" runat="server" CssClass="form-control" />
+        </div>
+
+    </div>
+</div>
+
+        <!-- Bank Details Card -->
+       <div class="card card-gold mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-university me-2"></i>Bank Details</h5>
+    </div>
+    <div class="card-body px-3 py-2">
+
+        <div class="row mb-3">
+            <div class="col-md-3 d-flex">
+                <label for="txtBankIFSC1" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-code me-1"></i> IFSC Code
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtBankIFSC1" runat="server" CssClass="form-control form-control-sm" />
                 </div>
-                <div class="col-md-3">
-                    <label class="form-label">Bank Account No</label>
-                    <asp:TextBox ID="txtBankAccNo1" runat="server" CssClass="form-control" />
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <label for="txtBankAccNo1" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-hashtag me-1"></i> Account No
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtBankAccNo1" runat="server" CssClass="form-control form-control-sm" />
                 </div>
-                <div class="col-md-3">
-                    <label class="form-label">Bank Account Type</label>
-                    <asp:DropDownList ID="ddlBankAccType1" runat="server" CssClass="form-control">
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <label for="ddlBankAccType1" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-wallet me-1"></i> Type
+                </label>
+                <div class="col-7">
+                    <asp:DropDownList ID="ddlBankAccType1" runat="server" CssClass="form-control form-control-sm">
                         <asp:ListItem Text="Saving" Value="1" />
                         <asp:ListItem Text="Current" Value="2" />
                     </asp:DropDownList>
                 </div>
-                <div class="col-md-3 d-flex align-items-center">
-                    <asp:CheckBox ID="chkDefaultBank1" runat="server" CssClass="form-check-input me-2" />
-                    <label class="form-check-label">Default Bank</label>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-center">
+                <label for="chkDefaultBank1" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-star me-1"></i> Default
+                </label>
+                <div class="col-7">
+                    <asp:CheckBox ID="chkDefaultBank1" runat="server" CssClass="form-check-input" />
                 </div>
             </div>
         </div>
 
+    </div>
+</div>
+
+
+
         <!-- DP Details Card -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="mb-0">DP Details</h5>
-            </div>
-            <div class="card-body row g-2">
-                <div class="col-md-3">
-                    <label class="form-label">DP Client ID</label>
-                    <asp:TextBox ID="txtDPClientID1" runat="server" CssClass="form-control" />
+        <div class="card card-gold mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-database me-2"></i>DP Details</h5>
+    </div>
+    <div class="card-body px-3 py-2">
+        <div class="row mb-3">
+            <!-- DP Client ID -->
+            <div class="col-md-4 d-flex">
+                <label for="txtDPClientID1" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-id-badge me-1"></i> DP Client ID
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtDPClientID1" runat="server" CssClass="form-control form-control-sm" />
                 </div>
-                <div class="col-md-3">
-                    <label class="form-label">DP Type</label>
-                    <asp:DropDownList ID="ddlDPType1" runat="server" CssClass="form-control">
+            </div>
+
+            <!-- DP Type -->
+            <div class="col-md-4 d-flex">
+                <label for="ddlDPType1" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-layer-group me-1"></i> DP Type
+                </label>
+                <div class="col-7">
+                    <asp:DropDownList ID="ddlDPType1" runat="server" CssClass="form-control form-control-sm">
                         <asp:ListItem Text="NSDL" Value="NSDL" />
                         <asp:ListItem Text="CDSL" Value="CDSL" />
                     </asp:DropDownList>
                 </div>
-                <div class="col-md-3 d-flex align-items-center">
-                    <asp:CheckBox ID="chkDefaultDP1" runat="server" CssClass="form-check-input me-2" />
-                    <label class="form-check-label">Default DP</label>
+            </div>
+
+            <!-- Default DP Checkbox -->
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="chkDefaultDP1" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-star me-1"></i> Default DP
+                </label>
+                <div class="col-7">
+                    <asp:CheckBox ID="chkDefaultDP1" runat="server" CssClass="form-check-input" />
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
 
         <!-- Submit Buttons -->
         <div class="text-center mt-3">
-           
-            <asp:Button ID="btnCreateUCC" runat="server" Text="Create UCC" CssClass="btn btn-success mx-1" OnClick="btnCreateUCC_Click" />
-            <asp:Button ID="btnModifyUCC" runat="server" Text="Modify UCC" CssClass="btn btn-warning mx-1" OnClick="btnModifyUCC_Click" />
-            <asp:Button ID="btnDeleteUCC" runat="server" Text="Delete UCC" CssClass="btn btn-danger mx-1" OnClick="btnDeleteUCC_Click" />
+           <div class="d-flex justify-content-center gap-3 my-4 flex-wrap">
+
+    <!-- Create UCC Button -->
+    <asp:Button ID="btnCreateUCC" runat="server"
+        Text=' Create UCC'
+        CssClass="btn btn-success btn-lg shadow-sm px-4 fw-semibold d-flex align-items-center gap-2"
+        OnClick="btnCreateUCC_Click"
+        UseSubmitBehavior="false" />
+
+    <!-- Modify UCC Button -->
+    <asp:Button ID="btnModifyUCC" runat="server"
+        Text=' Modify UCC'
+        CssClass="btn btn-warning btn-lg text-dark shadow-sm px-4 fw-semibold d-flex align-items-center gap-2"
+        OnClick="btnModifyUCC_Click"
+        UseSubmitBehavior="false" />
+
+    <!-- Delete UCC Button -->
+    <asp:Button ID="btnDeleteUCC" runat="server"
+        Text=' Delete UCC'
+        CssClass="btn btn-danger btn-lg shadow-sm px-4 fw-semibold d-flex align-items-center gap-2"
+        OnClick="btnDeleteUCC_Click"
+        UseSubmitBehavior="false" />
+
+</div>
+
              <%--<asp:Button ID="btnCreateUCC" runat="server" Text="Create UCC" CssClass="btn btn-success mx-1" OnClick="btnCreateUCC_Click" />--%>
         </div>
     </div>

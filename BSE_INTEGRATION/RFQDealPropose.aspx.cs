@@ -123,9 +123,9 @@ public partial class BSE_INTEGRATION_RFQDealPropose : System.Web.UI.Page
         }
     }
 
-    protected async void Button1_Click(object sender, EventArgs e)
+    protected async void btnSubmit_Click(object sender, EventArgs e)
     {
         string response =  await RFQQuotePropose();
-        Label1.Text = response;
+        lblMessage.Text = response;
     }
 }

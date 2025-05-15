@@ -267,6 +267,11 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
 
     }
 
+    protected void btnCloseQuote_Click(object sender, EventArgs e)
+    {
+        // Optional: Logic for modal close, if any
+        // Or simply leave empty if modal is closed via JavaScript
+    }
     //protected void Page_Load(object sender, EventArgs e)
     //{
     //    if (!IsPostBack)

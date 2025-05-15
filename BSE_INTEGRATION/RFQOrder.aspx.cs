@@ -22,11 +22,28 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Check if AuthToken is present in the session
         if (Session["AuthToken"] == null)
         {
             Response.Redirect("Login.aspx");
         }
+
+        // Handle Bid and Offer visibility based on selected Quote Type
+        //if (!IsPostBack)
+        //{
+        //    string quoteType = ddlQuoteType.SelectedValue;
+
+        //    // Set initial visibility based on the selected Quote Type
+        //    ddlQuoteType.Style["display"] = (quoteType == "BID") ? "block" : "none";
+        //    ddlQuoteType.Style["display"] = (quoteType == "OFFER") ? "block" : "none";
+        //}
+
+
+
+
     }
+    
+
 
 
 
@@ -62,7 +79,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     quotetype = ddlQuoteType.SelectedValue,
                     isinnumber = txtISINNumber.Text.Trim(),
                     rating = txtRating.Text.Trim(),
-                    ratingagency = txtRatingAgency.Text.Trim(),
+                    ratingagency = ddlRatingAgency.Text.Trim(),
                     bidvalue = isBidSelected ? (string.IsNullOrWhiteSpace(txtBidValue.Text) ? 0 : Convert.ToInt64(txtBidValue.Text)) : 0,
                     offervalue = isOfferSelected ? (string.IsNullOrWhiteSpace(txtOfferValue.Text) ? 0 : Convert.ToInt64(txtOfferValue.Text)) : 0,
                     bidminvalue = isBidSelected ? (string.IsNullOrWhiteSpace(txtBidMinValue.Text) ? 0 : Convert.ToInt64(txtBidMinValue.Text)) : 0,
@@ -149,11 +166,11 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
     {
         string response = await CreateRFQOrder();
 
-     
+
 
 
         SaveRFQOrderResponse(response);
-        
+
     }
 
 
@@ -266,4 +283,6 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
     }
 
 }
+
+
 
