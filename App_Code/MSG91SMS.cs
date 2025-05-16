@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Mail;
-using System.Security.RightsManagement;
-using System.Text.Json.Serialization;
-using System.Web;
-using System.Web.Script.Serialization;
-using DocumentFormat.OpenXml.Wordprocessing;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -18,47 +11,58 @@ public class MSG91SMS
 {
     public MSG91SMS()
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        // Constructor logic (if needed)
     }
 
-    private void forward_SMS(string mailjson)
+    private void forward_SMS(string smsJson)
     {
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
         var options = new RestClientOptions("https://control.msg91.com/api/v5/flow/")
         {
-            MaxTimeout = -1,
+            MaxTimeout = -1
         };
+
         var client = new RestClient(options);
-        var request = new RestRequest("https://control.msg91.com/api/v5/flow/", Method.Post);
-        request.AddHeader("authkey", "407622Apzn19OTk3653a4099P1");
+        var request = new RestRequest("", Method.Post);
+
+        request.AddHeader("authkey", "407622Apzn19OTk3653a4099P1"); // Replace with actual key
         request.AddHeader("Content-Type", "application/json");
-        request.AddStringBody(mailjson, DataFormat.Json);
+        request.AddStringBody(smsJson, DataFormat.Json);
+
         RestResponse response = client.Execute(request);
-        Console.WriteLine(response.Content);
 
-
+        Console.WriteLine("Status Code: " + response.StatusCode);
+        Console.WriteLine("Response Content: " + response.Content);
     }
 
     public void sendOTP(string mobile, string otpVal)
     {
-        MSG91SMSContent sc = new MSG91SMSContent();
-        List<SMSRecipient> srl = new List<SMSRecipient>();
-        SMSRecipient sr = new SMSRecipient();
-        sr.Mobiles = mobile;
-        sr.Otp = otpVal;
-        srl.Add(sr);
+        // Ensure mobile is prefixed with country code (e.g., "91" for India)
+        if (!mobile.StartsWith("91"))
+        {
+            mobile = "91" + mobile;
+        }
 
-        sc.ShortUrl = "0";
-        sc.TemplateId = "6557364dd6fc0577920b8d83";
+        var smsContent = new MSG91SMSContent
+        {
+            TemplateId = "6557364dd6fc0577920b8d83", // Make sure this template has {{otp}} variable
+            ShortUrl = "0",
+            Recipients = new List<SMSRecipient>
+            {
+                new SMSRecipient
+                {
+                    Mobiles = mobile,
+                    Otp = otpVal
+                }
+            }
+        };
 
-        sc.Recipients = srl;
-        //string js1 = new JavaScriptSerializer().Serialize(sc);
-        //string js2 = JsonConvert.SerializeObject(sc);
-           forward_SMS(JsonConvert.SerializeObject(sc));
+        string smsJson = JsonConvert.SerializeObject(smsContent);
+        Console.WriteLine("JSON Payload: " + smsJson); // Debug output
+
+        forward_SMS(smsJson);
     }
-
 }
 
 public class SMSRecipient

@@ -19,8 +19,8 @@ public partial class BSE_INTEGRATION_PaymenyGateway : System.Web.UI.Page
 
     protected async void btnGeneratePaymentLink_Click(object sender, EventArgs e)
     {
-     //string token = await GetAccessToken();
-          string token = "i6ouV9Pwhslm2iOr4HlekTOuyhPhWSs-CXbuXTr8K6bTYBXMGfwUQvuzEB--Gu8jd5DpO97c48aenLi0lwKcQfT9EJYVhRy6jjiAW1-uAnHhPPni8nluaTGsFVFw54drmROUMEqNb4ZDQXrNW6NiwdtTufN1JHfYFqtnxT5Qh3_HybEk52o0wTOlgkfdr3s6Li6Zy_hDk-rYOK0_cyLI_sINr9b01SXFOqHdimOSF_1R8z1kI7--wq_ZJZejUkKnpB7yMo3XyBKHc086JiWAEkJp3885bEEntVl54F1OawuXib1xJcgMlw3f7BlSX1DB";
+   //  string token = await GetAccessToken();
+          string token = "PciSacfir_efzSEmpZE-10S-uRxg2RXwTlWbvTZBotFaOyKR_-xRWKdz8WYYO7EP61TzzS-tP_BGGjJdLewsTomLqwnvzvYcg28-F4MzjzsfykZZixNOzcYYSlD8Xzcb6bRWs6J9VJZ6230MA5vRASvON9wWFgo94dsi5tohA0yIzj0FUdzGikqlzFVyZ-N3AtTJ0m2mJxGHAXFOc6BNHZQRBeErlhDkQQL_6uO4iTW5kp7-B2d-XMPs6MszJIUzy0JgYI6PKaju4LTJooAkQK32XIfXiqKkpzjU6RiZV3SMVTQD6_yiZXKryu5V2iCO";
         if (!string.IsNullOrEmpty(token))
         {
 
@@ -50,12 +50,15 @@ public partial class BSE_INTEGRATION_PaymenyGateway : System.Web.UI.Page
         {
             // Set the base address of the API
             client.BaseAddress = new Uri("https://uat-rfqepay.bseindia.com/");
-
+            string a = encrypt("DIMENSIONFSL");
+            string b = encrypt("Ravi#2025");
             // Prepare form content with required parameters
             var content = new FormUrlEncodedContent(new[]
             {
-            new KeyValuePair<string, string>("username", "BtUdTlsaeFLcz1ZJPZIcKvGhLSRc/o9EkXdj2WDm4hk="),
-            new KeyValuePair<string, string>("password", "wpOTn/xv+6Z4QHymsDi0O2dbD51BUs+MQEnEQkCt1Ys="),
+            new KeyValuePair<string, string>("username", a),
+
+
+            new KeyValuePair<string, string>("password", b),
             new KeyValuePair<string, string>("grant_type", "password")
         });
 
@@ -64,7 +67,7 @@ public partial class BSE_INTEGRATION_PaymenyGateway : System.Web.UI.Page
                 // Make the HTTP POST request to the token endpoint
                 HttpResponseMessage response = await client.PostAsync("token", content);
 
-                // Check if the response is successful
+
                 if (response.IsSuccessStatusCode)
                 {
                     string jsonResponse = await response.Content.ReadAsStringAsync();

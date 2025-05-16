@@ -79,15 +79,15 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     dealtimeminutes = ddlDealTimeMinutes.SelectedValue,
                     otmoto = ddlOtoOtm.SelectedValue,
                     proclient = ddlProClient.SelectedValue,
-                    buyerclientcode = "BSEFI",
-                    sellerclientcode = "DFSPL",
+                    buyerclientcode = "DIMENCOR",
+                    sellerclientcode = "DIMENSIONFSL",
                     directbrokered = ddlUserType.SelectedValue,
                     sellerbrokercode = "",
                     buyerbrokercode = txtBrokerName.Text.Trim(),
                     negotiableflag = ddlNegotiableTag.SelectedValue,
                     disclosedidentity = ddlDisclosedIdentity.SelectedValue,
                     initiatorreferencenumber = "",
-                    initiatorcomment = "",
+                    initiatorcomment = "Done thrugh online ",
                     obpplatform = ddlObpPlatform.SelectedValue,
                     filler2="",
                     filler3="",
@@ -116,15 +116,18 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
-                client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
-                client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
-                client.DefaultRequestHeaders.Add("PASSWORD", "Dfspld@2025");
+                client.DefaultRequestHeaders.Add("PARTICIPANTID", "DIMENSIONFSL");
+                client.DefaultRequestHeaders.Add("DEALERID", "DIMENSIONFSLD");
+                client.DefaultRequestHeaders.Add("PASSWORD", "Ravi@1234");
                 client.DefaultRequestHeaders.Add("TOKEN", token);
+               
 
                 HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync("AddRFQOrder", content);
                 string responseString = await response.Content.ReadAsStringAsync();
                 dynamic responseBody = JsonConvert.DeserializeObject<dynamic>(responseString);
+            
+              
                 if (response != null && responseBody.RFQOrderResponseList != null)
                 {
                     var responses = responseBody.RFQOrderResponseList[0]; // Get first response
