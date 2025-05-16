@@ -22,11 +22,28 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Check if AuthToken is present in the session
         if (Session["AuthToken"] == null)
         {
             Response.Redirect("Login.aspx");
         }
+
+        // Handle Bid and Offer visibility based on selected Quote Type
+        //if (!IsPostBack)
+        //{
+        //    string quoteType = ddlQuoteType.SelectedValue;
+
+        //    // Set initial visibility based on the selected Quote Type
+        //    ddlQuoteType.Style["display"] = (quoteType == "BID") ? "block" : "none";
+        //    ddlQuoteType.Style["display"] = (quoteType == "OFFER") ? "block" : "none";
+        //}
+
+
+
+
     }
+    
+
 
 
 
@@ -57,12 +74,12 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         {
                 new
                 {
-                    product = ddlProduct.SelectedValue,
+                  product = ddlProduct.SelectedValue,
                     usertype = "BROKER",
                     quotetype = ddlQuoteType.SelectedValue,
                     isinnumber = txtISINNumber.Text.Trim(),
                     rating = txtRating.Text.Trim(),
-                    ratingagency = txtRatingAgency.Text.Trim(),
+                    ratingagency = ddlRatingAgency.Text.Trim(),
                     bidvalue = isBidSelected ? (string.IsNullOrWhiteSpace(txtBidValue.Text) ? 0 : Convert.ToInt64(txtBidValue.Text)) : 0,
                     offervalue = isOfferSelected ? (string.IsNullOrWhiteSpace(txtOfferValue.Text) ? 0 : Convert.ToInt64(txtOfferValue.Text)) : 0,
                     bidminvalue = isBidSelected ? (string.IsNullOrWhiteSpace(txtBidMinValue.Text) ? 0 : Convert.ToInt64(txtBidMinValue.Text)) : 0,
@@ -79,8 +96,8 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     dealtimeminutes = ddlDealTimeMinutes.SelectedValue,
                     otmoto = ddlOtoOtm.SelectedValue,
                     proclient = ddlProClient.SelectedValue,
-                    buyerclientcode = "DIMENCOR",
-                    sellerclientcode = "DIMENSIONFSL",
+                    buyerclientcode = "BSEFI",
+                    sellerclientcode = "DFSPL",
                     directbrokered = ddlUserType.SelectedValue,
                     sellerbrokercode = "",
                     buyerbrokercode = txtBrokerName.Text.Trim(),
@@ -97,6 +114,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                 }
          }
         };
+
 
 
 
@@ -153,49 +171,15 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         lblMessage.Text = "Processing RFQ, please wait...";
         string response = await CreateRFQOrder();
 
-        if (!string.IsNullOrEmpty(response))
-        {
-            try
-            {
-                // Parse JSON dynamically
-                dynamic rfqData = JsonConvert.DeserializeObject(response);
 
-                // Check if RFQOrderResponseList exists and has at least one entry
-                if (rfqData != null && rfqData.RFQOrderResponseList != null && rfqData.RFQOrderResponseList.Count > 0)
-                {
-                    var rfq = rfqData.RFQOrderResponseList[0];
-                    int errorCode = rfq.errorcode;
-                    string message = rfq.message;
 
                     if (errorCode == 0)
                     {
                         SaveRFQOrderResponse(response); // Save response to DB if needed
                         lblMessage.Text = "✅ RFQ Created Successfully: " + message;
 
-                        // Show the receipt modal with full response
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReceiptModal",
-                     string.Format("showReceipt({0});", JsonConvert.SerializeObject(rfq)), true);
+        SaveRFQOrderResponse(response);
 
-                    }
-                    else
-                    {
-                        lblMessage.Text = "❌ Error: " + message;
-                    }
-                }
-                else
-                {
-                    lblMessage.Text = "⚠️ Invalid response from server.";
-                }
-            }
-            catch (Exception ex)
-            {
-                lblMessage.Text = "❗ Exception while processing response: " + ex.Message;
-            }
-        }
-        else
-        {
-            lblMessage.Text = "🚫 No response received from server.";
-        }
     }
 
 
@@ -318,5 +302,6 @@ public class RFQResponseRoot
 {
     public List<RFQResponse> RFQResponseList { get; set; }
 }
+
 
 

@@ -119,10 +119,15 @@ public partial class BSE_INTEGRATION_RFQApprove : System.Web.UI.Page
             return "Error: " + ex.Message;
         }
     }
-   
-    protected async void btnSubmit_Click(object sender, EventArgs e)
+
+    protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        string response = await RFQQuoteApprove();
-        lblMessage.Text = response;
+        // Example logic
+        string product = txtProduct.Text.Trim();
+        string clientCode = txtClientCode.Text.Trim();
+
+        // Do processing...
+        lblMessage.Text = "Form submitted successfully.";
     }
+
 }

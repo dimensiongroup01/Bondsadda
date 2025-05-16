@@ -126,6 +126,6 @@ public partial class BSE_INTEGRATION_RFQDealPropose : System.Web.UI.Page
     protected async void btnSubmit_Click(object sender, EventArgs e)
     {
         string response =  await RFQQuotePropose();
-       lblMessage.Text = response;
+        lblMessage.Text = response;
     }
 }
