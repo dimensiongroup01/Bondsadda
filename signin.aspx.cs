@@ -126,7 +126,7 @@ public partial class login : System.Web.UI.Page
             if (Mobile != null)
             {
                 hfOTP.Value = otp;
-                new MSG91SMS().sendOTP("91" + txtUserName.Text, otp);
+                new MSG91SMS().sendOTP("91" + Mobile, otp);
                 ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'OTP sent to your mobile no..!!!', type: 'success',});", true);
                 votp.Visible = true;
                 txtUserName.ReadOnly = true;

@@ -13,7 +13,7 @@ public class SqlDBHelper
     const string CONNECTION_STRING1 = @".\SQLEXPRESS;Initial Catalog=DimensionGroup;Integrated Security=True";
     const string CONNECTION_STRING2 = @".;DATABASE=dgbizzin_BondsAdda;user id=dgbizzin_BondsAdda; password=sV81xAoy2j*kfPxq;Timeout=20000;Min Pool Size=0;Max Pool Size=100;Pooling=true;";
     const string CONNECTION_STRING3 = @"Data Source=103.186.184.63; DATABASE=db_BondsAdda;user id =user_BondsAdda; password=P4*jz6c82;Timeout=20000;Min Pool Size=0;Max Pool Size=100;Pooling=true;";
-    const string CONNECTION_STRING = @"Data Source=103.211.202.68; DATABASE=db_BondsAdda;user id=user_BondsAdda; password=8s9!55joH;Timeout=20000;Min Pool Size=0;Max Pool Size=100;Pooling=true;";
+    const string CONNECTION_STRING = @"Data Source=103.211.202.68; DATABASE=db_BondsAdda;user id=user_BondsAdda ; password=8s9!55joH;Timeout=20000;Min Pool Size=0;Max Pool Size=100;Pooling=true;";
 
 
     internal static DataTable ExecuteSelectCommand(string CommandName, CommandType cmdType)
