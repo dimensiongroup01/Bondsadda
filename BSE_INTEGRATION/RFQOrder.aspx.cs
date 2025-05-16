@@ -121,7 +121,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         SaveRFQOrderLog(requestBody);
 
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-        // string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
+        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
         return await SendRFQOrderRequest(token, jsonPayload);
 
@@ -133,7 +133,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
                 client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
                 client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
                 client.DefaultRequestHeaders.Add("PASSWORD", "Dfspld@2025");
@@ -162,12 +162,18 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
             return "Error: " + ex.Message;
         }
     }
+
     protected async void btnSubmit_Click(object sender, EventArgs e)
     {
+        lblMessage.Text = "Processing RFQ, please wait...";
         string response = await CreateRFQOrder();
 
 
 
+                    if (errorCode == 0)
+                    {
+                        SaveRFQOrderResponse(response); // Save response to DB if needed
+                        lblMessage.Text = "✅ RFQ Created Successfully: " + message;
 
         SaveRFQOrderResponse(response);
 
@@ -282,6 +288,16 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
 
     }
 
+}
+public class RFQResponse
+{
+    public string message { get; set; }
+    public int errorcode { get; set; }
+}
+
+public class RFQResponseRoot
+{
+    public List<RFQResponse> RFQResponseList { get; set; }
 }
 
 

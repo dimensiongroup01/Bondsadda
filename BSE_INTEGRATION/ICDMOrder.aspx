@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ICDMOrder.aspx.cs" Inherits="BSE_INTEGRATION_ICDMOrder" Async="true" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ICDMOrder.aspx.cs" Inherits="BSE_INTEGRATION_ICDMOrder" Async="true" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,15 +10,69 @@
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    
+
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Flatpickr for Time Picker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <!-- Custom Styles -->
-    <link href="../Style_bse/style.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        /* NavTabs Styling */
+        .nav-tabs .nav-link.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .nav-tabs .nav-link {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .tab-content {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        /* Card Hover Effect */
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .form-control, .form-select {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -27,6 +82,133 @@
 
     <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            // Attach onblur events for individual field validations
+            document.getElementById('<%= txtISIN.ClientID %>').addEventListener("blur", validateISIN);
+                document.getElementById('<%= txtValue.ClientID %>').addEventListener("blur", validateValue);
+                document.getElementById('<%= txtPrice.ClientID %>').addEventListener("blur", validatePrice);
+                document.getElementById('<%= txtYield.ClientID %>').addEventListener("blur", validateYield);
+                document.getElementById('<%= txtBuyerClientId.ClientID %>').addEventListener("blur", validateBuyerClientId);
+                document.getElementById('<%= ddlHours.ClientID %>').addEventListener("change", validateExecutionTime);
+                document.getElementById('<%= ddlMinutes.ClientID %>').addEventListener("change", validateExecutionTime);
+
+                // Validate on submit button click
+                document.getElementById('<%= btnCreateICDM.ClientID %>').addEventListener("click", function (event) {
+                    if (!validateForm()) {
+                        event.preventDefault();  // Stop form submission if validation fails
+                    }
+                });
+
+                // Prevent modal from opening if data is incorrect
+                document.getElementById('orderModal').addEventListener('show.bs.modal', function (event) {
+                    let orderGrid = document.getElementById("gvOrders");  // Ensure GridView has data
+                    // Assuming the first row is the header row; so valid data exists if more than 1 row.
+                    if (!orderGrid || orderGrid.rows.length <= 1) {
+                        alert("No valid order data available.");
+                        event.preventDefault();
+                    }
+                });
+            });
+
+        // Individual Field Validation Functions
+        function validateISIN() {
+            let isin = document.getElementById('<%= txtISIN.ClientID %>').value.trim();
+            if (!/^([A-Za-z0-9]{12})$/.test(isin)) {
+                alert("❌ Invalid ISIN Number. It must be 12 alphanumeric characters.");
+                return false;
+            }
+            return true;
+        }
+
+        function validateValue() {
+            let value = document.getElementById('<%= txtValue.ClientID %>').value.trim();
+            if (!/^\d+(\.\d{1,2})?$/.test(value) || parseFloat(value) <= 0) {
+                alert("❌ Value must be a positive number.");
+                return false;
+            }
+            return true;
+        }
+
+        function validatePrice() {
+            let price = document.getElementById('<%= txtPrice.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(price) || parseFloat(price) <= 0) {
+            alert("❌ Price must be a positive number.");
+            return false;
+        }
+        return true;
+    }
+
+    function validateYield() {
+        let yieldVal = document.getElementById('<%= txtYield.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(yieldVal) || parseFloat(yieldVal) <= 0) {
+            alert("❌ Yield must be a positive number.");
+            return false;
+        }
+        return true;
+    }
+
+    function validateBuyerClientId() {
+        let buyerClientId = document.getElementById('<%= txtBuyerClientId.ClientID %>').value.trim();
+        if (buyerClientId === "") {
+            alert("❌ Buyer Client ID cannot be empty.");
+            return false;
+        }
+        return true;
+    }
+
+    function validateExecutionTime() {
+        let hours = document.getElementById('<%= ddlHours.ClientID %>').value;
+        let minutes = document.getElementById('<%= ddlMinutes.ClientID %>').value;
+        if (hours === "" || minutes === "") {
+            alert("❌ Execution Time must be selected.");
+            return false;
+        }
+        return true;
+    }
+
+    // Form Validation on Submit
+    function validateForm() {
+        let isValid = true;
+        let errorMessage = "";
+
+        // Validate ISIN
+        let isin = document.getElementById('<%= txtISIN.ClientID %>').value.trim();
+        if (!/^([A-Za-z0-9]{12})$/.test(isin)) {
+            errorMessage += "❌ Invalid ISIN Number. It must be 12 alphanumeric characters.\n";
+            isValid = false;
+        }
+
+        // Validate Value
+        let value = document.getElementById('<%= txtValue.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(value) || parseFloat(value) <= 0) {
+            errorMessage += "❌ Value must be a positive number.\n";
+            isValid = false;
+        }
+
+        // Validate Price
+        let price = document.getElementById('<%= txtPrice.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(price) || parseFloat(price) <= 0) {
+            errorMessage += "❌ Price must be a positive number.\n";
+            isValid = false;
+        }
+
+        // Validate Yield
+        let yieldVal = document.getElementById('<%= txtYield.ClientID %>').value.trim();
+        if (!/^\d+(\.\d{1,2})?$/.test(yieldVal) || parseFloat(yieldVal) <= 0) {
+            errorMessage += "❌ Yield must be a positive number.\n";
+            isValid = false;
+        }
+
+        // Validate Execution Time (Hours & Minutes)
+        let hours = document.getElementById('<%= ddlHours.ClientID %>').value;
+        let minutes = document.getElementById('<%= ddlMinutes.ClientID %>').value;
+        if (hours === "" || minutes === "") {
+            errorMessage += "❌ Execution Time must be selected.\n";
+            isValid = false;
+        }
 
     <!-- External JavaScript -->
     <script src="../js/bse_i/timepicker.js"></script>

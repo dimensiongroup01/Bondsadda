@@ -1,12 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RFQQuoteAccept.aspx.cs" Inherits="BSE_INTEGRATION_RFQQuoteAccept" Async="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RFQQuoteAccept.aspx.cs" Inherits="BSE_INTEGRATION_RFQQuoteAccept" Async ="true" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RFQ Quote Accept</title>
 
-    <!-- ✅ Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -14,23 +18,59 @@
     <!-- ✅ Bootstrap Bundle JS (Includes Popper.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <link href="../css/Style_Bse/style.css" rel="stylesheet" />
-
     <script>
-        function showPopup() {
-            var myModal = new bootstrap.Modal(document.getElementById("rfqPopup"));
-            myModal.show();
-            hideEmptyFields();
-        }
+        // JavaScript Validation
+        function validateForm() {
+            let isValid = true;
 
-        function hideEmptyFields() {
-            $(".rfq-field").each(function () {
-                if ($(this).find("span").text().trim() === "") {
-                    $(this).hide(); // Hide row if value is empty
-                } else {
-                    $(this).show(); // Show row if value exists
+            // Validate RFQ Deal ID (Length = 15, Required)
+            let rfqDealID = document.getElementById('txtRFQDealID').value;
+            if (rfqDealID.length !== 15) {
+                alert('RFQ Deal ID must be 15 characters.');
+                isValid = false;
+            }
+
+            // Validate RFQ Order Number (Length = 16, Starts with "R", Required)
+            let rfqOrderNumber = document.getElementById('txtRFQOrderNumber').value;
+            if (rfqOrderNumber.length !== 16 || rfqOrderNumber.charAt(0) !== 'R') {
+                alert('RFQ Order Number must be 16 characters and start with "R".');
+                isValid = false;
+            }
+
+            // Validate ISIN Number (Length = 12, Required)
+            let isinNumber = document.getElementById('txtISINNumber').value;
+            if (isinNumber.length !== 12) {
+                alert('ISIN Number must be 12 characters.');
+                isValid = false;
+            }
+
+            // Validate Value (Must be numeric, greater than or equal to min value, and in multiple of 100)
+            let value = document.getElementById('txtValue').value;
+            let minValue = 1000; // Assuming minimum value is 1000
+            if (isNaN(value) || value < minValue || value % 100 !== 0) {
+                alert('Value must be a number greater than or equal to ' + minValue + ' and in multiples of 100.');
+                isValid = false;
+            }
+
+             Validate Direct Brokered (if Brokered and Quote Type is OFFER/BID)
+            let directBrokered = document.querySelector('input[name="rblDirectBrokered"]:checked');
+            let quoteType = document.getElementById('ddlQuoteType').value;
+            if (directBrokered && directBrokered.value === "YES" && quoteType === 'OFFER') {
+                let sellerBrokerCode = document.getElementById('txtSellerBrokerCode').value;
+                if (sellerBrokerCode.length !== 15) {
+                    alert('Seller Broker Code is required when Direct Brokered is YES and Quote Type is OFFER.');
+                    isValid = false;
                 }
-            });
+            }
+            if (directBrokered && directBrokered.value === "YES" && quoteType === 'BID') {
+                let buyerBrokerCode = document.getElementById('txtBuyerBrokerCode').value;
+                if (buyerBrokerCode.length !== 15) {
+                    alert('Buyer Broker Code is required when Direct Brokered is YES and Quote Type is BID.');
+                    isValid = false;
+                }
+            }
+
+            return isValid;
         }
     </script>
        <%--  /* Custom Styling for the Form */--%>

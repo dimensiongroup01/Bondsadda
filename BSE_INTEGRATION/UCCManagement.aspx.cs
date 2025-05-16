@@ -173,7 +173,7 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
         string apiEndpoint = actionFlag == 1 ? "ADDICDMuccdetails"
                            : actionFlag == 2 ? "MODIFYICDMuccdetails"
                            : "DELETEICDMuccdetails";
-
+         
         string result = await SendUCCRequest(token, jsonPayload, apiEndpoint);
         lblMessage.Text = result;
 

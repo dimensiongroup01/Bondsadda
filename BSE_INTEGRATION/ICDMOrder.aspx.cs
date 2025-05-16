@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http.Routing;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -130,7 +131,7 @@ public partial class BSE_INTEGRATION_ICDMOrder : System.Web.UI.Page
         };
 
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-       // string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
+        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
         return await SendICDMOrderRequest(token, jsonPayload);
     }
@@ -141,14 +142,14 @@ public partial class BSE_INTEGRATION_ICDMOrder : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
                 client.DefaultRequestHeaders.Add("TOKEN", token);
-             
+
                 HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync("AddICDMOrder", content);
                 string responseString = await response.Content.ReadAsStringAsync();
 
-                SaveICDMOrderResponse(responseString); // Save response in DB
+              
                 return await response.Content.ReadAsStringAsync();
             }
         }
@@ -237,17 +238,17 @@ public partial class BSE_INTEGRATION_ICDMOrder : System.Web.UI.Page
         SqlDBHelper.ExecuteNonQuery(query, parameters);
     }
 
-   private void SaveICDMOrderResponse(string jsonResponse)
-{
-    try
+    private void SaveICDMOrderResponse(string jsonResponse)
     {
-        var response = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, JsonElement>>>>(jsonResponse);
-
-        if (response != null && response.ContainsKey("OrderResponseList"))
+        try
         {
-            foreach (var order in response["OrderResponseList"])
+            var response = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, JsonElement>>>>(jsonResponse);
+
+            if (response != null && response.ContainsKey("OrderResponseList"))
             {
-                // 🔍 Debugging: Print/log values before saving
+                foreach (var order in response["OrderResponseList"])
+                {
+                    // 🔍 Debugging: Print/log values before saving
 
 
                     string query = @"
@@ -256,7 +257,7 @@ public partial class BSE_INTEGRATION_ICDMOrder : System.Web.UI.Page
                 VALUES 
                 (@BuyerReferenceNo, @Consideration, @DealTime, @ErrorCode, @ISINNumber, @Message, @ModAccr, @OrderNumber, @Quantity, @SellerReferenceNo, @Status, @Symbol, @Value)";
 
-                Dictionary<string, object> parameters = new Dictionary<string, object>
+                    Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
                     { "@BuyerReferenceNo", GetJsonValue(order, "buyerreferenceno") },
                     { "@Consideration", GetJsonValue(order, "consideration", true) },
@@ -273,21 +274,21 @@ public partial class BSE_INTEGRATION_ICDMOrder : System.Web.UI.Page
                     { "@Value", GetJsonValue(order, "value", true) }
                 };
 
-               
-               
-             
 
-                // Execute the query
-                int rowsAffected = SqlDBHelper.ExecuteNonQuery(query, parameters);
-               
+
+
+
+                    // Execute the query
+                    int rowsAffected = SqlDBHelper.ExecuteNonQuery(query, parameters);
+
+                }
             }
         }
+        catch (Exception ex)
+        {
+            Response.Write("Error saving response: " + ex.Message);
+        }
     }
-    catch (Exception ex)
-    {
-        Response.Write("Error saving response: " + ex.Message);
-    }
-}
 
 
     private object GetJsonValue(Dictionary<string, JsonElement> json, string key, bool isNumeric = false)
@@ -320,9 +321,58 @@ public partial class BSE_INTEGRATION_ICDMOrder : System.Web.UI.Page
 
     protected async void btnCreateICDM_Click(object sender, EventArgs e)
     {
-        SaveICDMOrderLog();
+      
         lblMessage.Text = "Processing order, please wait...";
         string response = await CreateICDMOrder();
-        lblMessage.Text = response;
+
+        // Deserialize JSON response to check error code
+        System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
+        var orderData = js.Deserialize<OrderResponseRoot>(response);
+
+        // Check if order data exists and validate error code
+        if (orderData != null && orderData.OrderResponseList != null && orderData.OrderResponseList.Count > 0)
+        {
+            string errormessage = orderData.OrderResponseList[0].message;
+            int errorCode = orderData.OrderResponseList[0].errorcode;
+            if (errorCode == 0)
+            {
+                SaveICDMOrderLog();
+                lblMessage.Text = errormessage;
+
+                string serializedResponse = js.Serialize(orderData);
+                SaveICDMOrderResponse(serializedResponse); // Save response in DB
+            }
+            else
+            {
+                lblMessage.Text = errormessage;
+            }
+        }
+        else
+        {
+            lblMessage.Text = "Invalid response from server.";
+        }
+    }
+
+    // Model classes for deserialization
+    public class OrderResponseRoot
+    {
+        public List<OrderResponse> OrderResponseList { get; set; }
+    }
+
+    public class OrderResponse
+    {
+        public string buyerreferenceno { get; set; }
+        public string consideration { get; set; }
+        public string dealtime { get; set; }
+        public int errorcode { get; set; }
+        public string isinnumber { get; set; }
+        public string message { get; set; }
+        public string modaccr { get; set; }
+        public string ordernumber { get; set; }
+        public string quantity { get; set; }
+        public string sellerreferenceno { get; set; }
+        public string status { get; set; }
+        public string symbol { get; set; }
+        public string value { get; set; }
     }
 }

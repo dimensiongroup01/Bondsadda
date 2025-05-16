@@ -62,49 +62,74 @@
 
     <!-- ✅ Bootstrap JS (Required for Modals) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/bse_i/rfq.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Initial visibility
+            toggleBidOfferFields();
 
-    <script>
-        function showReceipt(responseData) {
-            // Populate the receipt modal with response data
-            document.getElementById("bidrfqordernumber").textContent = responseData.bidrfqordernumber;
-            document.getElementById("isinnumber").textContent = responseData.isinnumber;
-            document.getElementById("bidprice").textContent = responseData.bidprice.toFixed(2);
-            document.getElementById("bidquantity").textContent = responseData.bidquantity;
-            document.getElementById("bidvalue").textContent = responseData.bidvalue.toFixed(2);
-            document.getElementById("bidyield").textContent = responseData.bidyield.toFixed(2);
-            document.getElementById("settlementdate").textContent = responseData.settlementdate;
-            document.getElementById("orderstatus").textContent = responseData.orderstatus;
-            document.getElementById("message").textContent = responseData.message;
+            // Toggle function when radio button changes
+            $('input[name="orderType"]').change(function () {
+                toggleBidOfferFields();
+            });
 
-            // Show the modal
-            let receiptModal = new bootstrap.Modal(document.getElementById('receiptModal'));
-            receiptModal.show();
-        }
-        function downloadReceipt() {
-            // Select the modal content (excluding close buttons)
-            let receiptModal = document.getElementById("receiptModal");
+            // Function to toggle Bid and Offer fields
+            function toggleBidOfferFields() {
+                if ($('#bid').is(':checked')) {
+                    // Show Bid parameters, hide Offer parameters
+                    $('#bid-parameters').show();
+                    $('#offer-parameters').hide();
+                } else if ($('#offer').is(':checked')) {
+                    // Show Offer parameters, hide Bid parameters
+                    $('#bid-parameters').hide();
+                    $('#offer-parameters').show();
+                }
+            }
+        });
+    </script>
 
-            // Clone only the necessary parts (header + body)
-            let receiptContent = receiptModal.querySelector(".modal-content").cloneNode(true);
+     <script>
+         function showReceipt(responseData) {
+             // Populate the receipt modal with response data
+             document.getElementById("bidrfqordernumber").textContent = responseData.bidrfqordernumber;
+             document.getElementById("isinnumber").textContent = responseData.isinnumber;
+             document.getElementById("bidprice").textContent = responseData.bidprice.toFixed(2);
+             document.getElementById("bidquantity").textContent = responseData.bidquantity;
+             document.getElementById("bidvalue").textContent = responseData.bidvalue.toFixed(2);
+             document.getElementById("bidyield").textContent = responseData.bidyield.toFixed(2);
+             document.getElementById("settlementdate").textContent = responseData.settlementdate;
+             document.getElementById("orderstatus").textContent = responseData.orderstatus;
+             document.getElementById("message").textContent = responseData.message;
 
-            // Remove the close button from the cloned content
-            receiptContent.querySelector(".btn-close").remove();
+             // Show the modal
+             let receiptModal = new bootstrap.Modal(document.getElementById('receiptModal'));
+             receiptModal.show();
+         }
+         function downloadReceipt() {
+             // Select the modal content (excluding close buttons)
+             let receiptModal = document.getElementById("receiptModal");
 
-            // Create a printable area and add the cloned content
-            let printableArea = document.createElement("div");
-            printableArea.style.padding = "20px";
-            printableArea.style.textAlign = "center";
+             // Clone only the necessary parts (header + body)
+             let receiptContent = receiptModal.querySelector(".modal-content").cloneNode(true);
 
-            // Append the company logo and title
-            printableArea.innerHTML = `
+             // Remove the close button from the cloned content
+             receiptContent.querySelector(".btn-close").remove();
+
+             // Create a printable area and add the cloned content
+             let printableArea = document.createElement("div");
+             printableArea.style.padding = "20px";
+             printableArea.style.textAlign = "center";
+
+             // Append the company logo and title
+             printableArea.innerHTML = `
         <div style="text-align: center; margin-bottom: 10px;">
             <img src="/img/logo.png" alt="Company Logo" style="width: 350px; height: 60px; border-radius: 50%;">
             <h2 style="color: #007bff; margin-top: 10px;">Transaction Receipt</h2>
         </div>
     `;
 
-            // Append the receipt details
-            printableArea.appendChild(receiptContent);
+             // Append the receipt details
+             printableArea.appendChild(receiptContent);
 
             // Convert the content to PDF
             html2pdf()
@@ -121,10 +146,93 @@
   
        
     </script>
+        function validateRFQForm() {
+            var isValid = true;
+            var errorMsg = "";
 
+            // Validate Market Tab fields (if any required) and Order Details
+            if ($("#<%= txtISINNumber.ClientID %>").val().trim() === "") {
+            errorMsg += "ISIN Number is required.\n";
+            isValid = false;
+        }
+        if ($("#<%= ddlProClient.ClientID %>").val().trim() === "") {
+            errorMsg += "PRO/CLIENT selection is required.\n";
+            isValid = false;
+        }
 
+        // Validate radio button selection for order type and respective fields
+        var orderType = $("input[name='orderType']:checked").val();
+        if (orderType === "BID") {
+            if ($("#<%= txtBidValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtBidMinValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Minimum Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= ddlBidYieldType.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Yield Type is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtBidYieldValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Yield Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtBidPrice.ClientID %>").val().trim() === "") {
+                errorMsg += "Bid Price is required.\n";
+                isValid = false;
+            }
+        } else if (orderType === "OFFER") {
+            if ($("#<%= txtOfferValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Offer Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtOfferMinValue.ClientID %>").val().trim() === "") {
+                errorMsg += "Offer Minimum Value is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= ddlOfferYieldType.ClientID %>").val().trim() === "") {
+                errorMsg += "Offer Yield Type is required.\n";
+                isValid = false;
+            }
+            if ($("#<%= txtOfferYieldValue.ClientID %>").val().trim() === ""){
+                errorMsg += "Offer Yield Value is required.\n";
+                isValid = false;
+            }
+            if($("#<%= txtOfferPrice.ClientID %>").val().trim() === ""){
+                errorMsg += "Offer Price is required.\n";
+                isValid = false;
+            }
+        } else {
+            errorMsg += "Please select an Order Type (Bid or Offer).\n";
+            isValid = false;
+        }
 
+        // Validate Deal Time if GFD is checked
+        if($("#<%= chkGFD.ClientID %>").is(":checked")){
+            if($("#<%= ddlDealTimeHours.ClientID %>").val().trim() === ""){
+                errorMsg += "Deal Time Hours is required when GFD is checked.\n";
+                isValid = false;
+            }
+            if($("#<%= ddlDealTimeMinutes.ClientID %>").val().trim() === ""){
+                errorMsg += "Deal Time Minutes is required when GFD is checked.\n";
+                isValid = false;
+            }
+        }
 
+    <script>
+        function showReceipt(responseData) {
+            // Populate the receipt modal with response data
+            document.getElementById("bidrfqordernumber").textContent = responseData.bidrfqordernumber;
+            document.getElementById("isinnumber").textContent = responseData.isinnumber;
+            document.getElementById("bidprice").textContent = parseFloat(responseData.bidprice).toFixed(2);
+            document.getElementById("bidquantity").textContent = responseData.bidquantity;
+            document.getElementById("bidvalue").textContent = parseFloat(responseData.bidvalue).toFixed(2);
+            document.getElementById("bidyield").textContent = parseFloat(responseData.bidyield).toFixed(2);
+            document.getElementById("settlementdate").textContent = responseData.settlementdate;
+            document.getElementById("orderstatus").textContent = responseData.orderstatus;
+            document.getElementById("message").textContent = responseData.message;
 
 
     
@@ -138,7 +246,7 @@
     <script type="text/javascript" src="../js/bse_i/rfq.js"></script>
 </head>
 
-
+</head>
 <body>
 <form id="form1" runat="server">
     <div class="container p-4 bg-white shadow rounded mt-4 mb-5 border border-3 border-warning">
