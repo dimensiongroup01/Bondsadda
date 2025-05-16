@@ -7,130 +7,212 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Form</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
+    <style>
+       
+
+        .container {
+           
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #f1c40f, #f39c12);
+            border: none;
+            font-weight: bold;
+            padding: 10px 25px;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, #f39c12, #f1c40f);
+        }
+        .bg-gold{
+            background-color:gold;
+        }
+    </style>
 <body>
+  <form id="form1" runat="server">
+        <div class="container">
+            <h3 class="text-center mb-4">RFQ Approve Form</h3>
 
-<div class="container mt-5">
-    <!-- Nav Tabs for Form Sections -->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="product-info-tab" data-toggle="tab" href="#product-info" role="tab" aria-controls="product-info" aria-selected="true">Product Info</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="client-info-tab" data-toggle="tab" href="#client-info" role="tab" aria-controls="client-info" aria-selected="false">Client Info</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="bank-info-tab" data-toggle="tab" href="#bank-info" role="tab" aria-controls="bank-info" aria-selected="false">Bank Info</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="freeze-info-tab" data-toggle="tab" href="#freeze-info" role="tab" aria-controls="freeze-info" aria-selected="false">Freeze Info</a>
-        </li>
-    </ul>
-
-    <div class="tab-content" id="myTabContent">
-        <!-- Product Info Tab -->
-        <div class="tab-pane fade show active" id="product-info" role="tabpanel" aria-labelledby="product-info-tab">
-            <form id="productForm" runat="server" method="post">
-                <div class="form-group">
-                    <label for="product">Product (ICDM/GSEC):</label>
-                    <input type="text" class="form-control" id="product" name="product" required maxlength="5" placeholder="Enter product">
+            <!-- Product Info -->
+            <div class="form-group">
+                <label>Product (ICDM/GSEC):</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-box-seam"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtProduct" runat="server" CssClass="form-control" MaxLength="5" />
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="usertype">User Type (BROKER):</label>
-                    <input type="text" class="form-control" id="usertype" name="usertype" required maxlength="11" placeholder="Enter user type">
+            <div class="form-group">
+                <label>User Type (BROKER):</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-person-badge"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtUserType" runat="server" CssClass="form-control" MaxLength="11" />
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="isinnumber">ISIN Number:</label>
-                    <input type="text" class="form-control" id="isinnumber" name="isinnumber" required maxlength="12" placeholder="Enter ISIN number">
+            <div class="form-group">
+                <label>ISIN Number:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text  bg-gold"><i class="bi bi-upc-scan"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtISIN" runat="server" CssClass="form-control" MaxLength="12" />
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="rfqdealid">RFQ Deal ID:</label>
-                    <input type="text" class="form-control" id="rfqdealid" name="rfqdealid" required maxlength="15" placeholder="Enter RFQ Deal ID">
+            <div class="form-group">
+                <label>RFQ Deal ID:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-receipt"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtRFQDealID" runat="server" CssClass="form-control" MaxLength="15" />
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="icdmordernumber">ICDM Order Number:</label>
-                    <input type="text" class="form-control" id="icdmordernumber" name="icdmordernumber" required maxlength="15" placeholder="Enter ICDM Order Number">
+            <div class="form-group">
+                <label>ICDM Order Number:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-hash"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtICDMOrderNumber" runat="server" CssClass="form-control" MaxLength="15" />
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="proposeapprove">Propose Approval (APPROVE):</label>
-                    <input type="text" class="form-control" id="proposeapprove" name="proposeapprove" required maxlength="7" placeholder="Enter propose approval">
+            <div class="form-group">
+                <label>Propose Approval (APPROVE):</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-check-circle"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtProposeApproval" runat="server" CssClass="form-control" MaxLength="7" />
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="maturity_call_putdate">Maturity Call/Put Date:</label>
-                    <input type="date" class="form-control" id="maturity_call_putdate" name="maturity_call_putdate" required>
+            <div class="form-group">
+                <label>Maturity Call/Put Date:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-calendar-date"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtMaturityDate" runat="server" CssClass="form-control" TextMode="Date" />
                 </div>
-            </form>
+            </div>
+
+            <!-- Client Info -->
+            <div class="form-group">
+                <label>Client Code:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-person-square"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtClientCode" runat="server" CssClass="form-control" MaxLength="15" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Custodian Code:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-shield-check"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtCustodianCode" runat="server" CssClass="form-control" MaxLength="10" />
+                </div>
+            </div>
+
+            <!-- Bank Info -->
+            <div class="form-group">
+                <label>Bank IFSC:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-bank"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtBankIFSC" runat="server" CssClass="form-control" MaxLength="11" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Account Number:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-123"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtAccountNumber" runat="server" CssClass="form-control" MaxLength="20" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>DP Type:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-ui-checks"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtDPType" runat="server" CssClass="form-control" MaxLength="4" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>DP ID:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-hash"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtDPID" runat="server" CssClass="form-control" MaxLength="8" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>DP Client ID:</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-person-lines-fill"></i></span>
+                    </div>
+                    <asp:TextBox ID="txtDPClientID" runat="server" CssClass="form-control" MaxLength="16" />
+                </div>
+            </div>
+
+            <!-- Freeze Info -->
+            <div class="form-group">
+                <label>Freeze (YES/NO):</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-gold"><i class="bi bi-toggle-on"></i></span>
+                    </div>
+                    <asp:DropDownList ID="ddlFreeze" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="YES" Value="YES" />
+                        <asp:ListItem Text="NO" Value="NO" />
+                    </asp:DropDownList>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold" />
+            <div class="text-center mt-4">
+                <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+            </div>
         </div>
+    </form>
 
-        <!-- Client Info Tab -->
-        <div class="tab-pane fade" id="client-info" role="tabpanel" aria-labelledby="client-info-tab">
-            <div class="form-group">
-                <label for="clientcode">Client Code (BUYER CLIENT CODE):</label>
-                <input type="text" class="form-control" id="clientcode" name="clientcode" required maxlength="15" placeholder="Enter client code">
-            </div>
-
-            <div class="form-group">
-                <label for="custodiancode">Custodian Code:</label>
-                <input type="text" class="form-control" id="custodiancode" name="custodiancode" required maxlength="10" placeholder="Enter custodian code">
-            </div>
-        </div>
-
-        <!-- Bank Info Tab -->
-        <div class="tab-pane fade" id="bank-info" role="tabpanel" aria-labelledby="bank-info-tab">
-            <div class="form-group">
-                <label for="bankifsc">Bank IFSC:</label>
-                <input type="text" class="form-control" id="bankifsc" name="bankifsc" maxlength="11" placeholder="Enter bank IFSC">
-            </div>
-
-            <div class="form-group">
-                <label for="accountnumber">Account Number:</label>
-                <input type="text" class="form-control" id="accountnumber" name="accountnumber" maxlength="20" placeholder="Enter account number">
-            </div>
-
-            <div class="form-group">
-                <label for="dptype">DP Type:</label>
-                <input type="text" class="form-control" id="dptype" name="dptype" maxlength="4" placeholder="Enter DP Type">
-            </div>
-
-            <div class="form-group">
-                <label for="dpid">DP ID:</label>
-                <input type="text" class="form-control" id="dpid" name="dpid" maxlength="8" placeholder="Enter DP ID">
-            </div>
-
-            <div class="form-group">
-                <label for="dpclientid">DP Client ID:</label>
-                <input type="text" class="form-control" id="dpclientid" name="dpclientid" maxlength="16" placeholder="Enter DP Client ID">
-            </div>
-        </div>
-
-        <!-- Freeze Info Tab -->
-        <div class="tab-pane fade" id="freeze-info" role="tabpanel" aria-labelledby="freeze-info-tab">
-            <div class="form-group">
-                <label for="freeze">Freeze (YES/NO):</label>
-                <select class="form-control" id="freeze" name="freeze" required>
-                    <option value="YES">YES</option>
-                    <option value="NO">NO</option>
-                </select>
-            </div>
-            <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold"></asp:Label>
-
-<span class="auto-style1">
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
-</div>
-
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.5/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

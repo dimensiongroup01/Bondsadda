@@ -169,17 +169,27 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
     protected async void btnSubmit_Click(object sender, EventArgs e)
     {
         lblMessage.Text = "Processing RFQ, please wait...";
-        string response = await CreateRFQOrder();
 
+        string response = await CreateRFQOrder(); // JSON string
 
+        RFQResponse rfqResponse = JsonConvert.DeserializeObject<RFQResponse>(response);
 
-                    if (errorCode == 0)
-                    {
-                        SaveRFQOrderResponse(response); // Save response to DB if needed
-                        lblMessage.Text = "✅ RFQ Created Successfully: " + message;
+        if (rfqResponse != null && rfqResponse.errorcode == 0)
+        {
+            string json = JsonConvert.SerializeObject(rfqResponse);
+            SaveRFQOrderResponse(json); // Save as string
+            lblMessage.Text = "✅ RFQ Created Successfully: " + rfqResponse.message;
+        }
+        else
+        {
+            string errorMessage = "Unknown error";
+            if (rfqResponse != null && rfqResponse.message != null)
+            {
+                errorMessage = rfqResponse.message;
+            }
+            lblMessage.Text = "❌ Failed to create RFQ: " + errorMessage;
 
-        SaveRFQOrderResponse(response);
-
+        }
     }
 
 
