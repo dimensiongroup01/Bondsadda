@@ -18,10 +18,10 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["AuthToken"] == null)
-        {
-            Response.Redirect("Login.aspx");
-        }
+        //if (Session["AuthToken"] == null)
+        //{
+        //    Response.Redirect("Login.aspx");
+        //}
     }
 
 
@@ -43,149 +43,115 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
 
     private async Task ManageUCC(int actionFlag)
     {
-        string token = Session["AuthToken"] as string;
-        if (string.IsNullOrEmpty(token))
-        {
-            Response.Redirect("Login.aspx");
-            return;
-        }
+        // Declare variables before using them in out parameters
+        int at1;
+        int accType1 = int.TryParse(ddlBankAccType1.SelectedValue, out at1) ? at1 : 0;
 
-        int accType1;
-        if (!int.TryParse(ddlBankAccType1.SelectedValue, out accType1))
-        {
-            accType1 = 0; // Default value if parsing fails
-        }
-        int pStateValue;
-        if (!int.TryParse(txtState.Text.Trim(), out pStateValue))
-        {
-            pStateValue = 0; // Default value if parsing fails
-        }
-        // Prepare Request Body
+        int stateVal;
+        int pStateValue = int.TryParse(txtState.Text.Trim(), out stateVal) ? stateVal : 0;
+
+        // Build the request body object
         var requestBody = new
         {
             UCCKYCDETAILS = new[]
-           {
-                new
-                {
-                    recordaudflag = actionFlag,  // 1 for Add, 2 for Modify, 3 for Inactivate
-                    clientucc = txtClientUCC.Text.Trim(),
-                    category = ddlCategory.Text.Trim(),
-                    custodiancode = "", // Optional field
-                    dor = "", // Date of Registration, Optional field
-                    firstname = txtFirstName.Text.Trim(),
-                    middlename = txtMiddleName.Text.Trim(),
-                    lastname = txtLastName.Text.Trim(),
-                    gender = ddlGender.SelectedValue.ToUpper(),
-                    mobileno = txtMobileNo.Text.Trim(),
-                    phoneno = txtPhoneNo.Text.Trim(),
-                    emailid = txtEmailID.Text.Trim(),
-                    dob = txtDOB.Text.Trim(),
-                    panno = txtPANNo.Text.Trim(),
-                    aadharno = "", // Optional field
-                    sebiregno = "", // Optional field
-                    communicationaddr = "",
-                    paddr1 = txtAddress.Text.Trim(), // Assuming Address Line 1 is the full address
-                    paddr2 = "", // Optional field
-                    paddr3 = "", // Optional field
-                    pcity = txtCity.Text.Trim(),
-                    pstate = pStateValue,                    
-                    pcountry = txtCountry.Text.Trim(),
-                    ppincode = txtPinCode.Text.Trim(),
-                    incomerange = 0, // Assuming default income range, update if required
-                    contactpersonname = "TEST AK", // Optional field
-                    contactpersondesignation = "", // Optional field
-                    contactpersonaddr = "", // Optional field
-                    autodealconfirm = "N", // Default value, update if needed
-                    autodealsettle = "", // Default value, update if needed
-
-                    // Bank Details
-                    ifsccode1 = txtBankIFSC1.Text.Trim(),
-                    bankaccno1 = txtBankAccNo1.Text.Trim(),
-                    bankacctype1 = accType1,
-                    defaultbank1 = chkDefaultBank1.Checked ? "T" : "F",
-                    bankaccstatus1 = 1, // Assuming Active as default
-
-                    // Placeholder for additional bank details (2-5)
-                    ifsccode2 = (string)null,
-                    bankaccno2 = (string)null,
-                    bankacctype2 = (string)null,
-                    defaultbank2 = (string)null,
-                    bankaccstatus2 = (string)null,
-
-                    ifsccode3 = (string)null,
-                    bankaccno3 = (string)null,
-                    bankacctype3 = (string)null,
-                    defaultbank3 = (string)null,
-                    bankaccstatus3 =(string)null,
-
-                    ifsccode4 = (string)null,
-                    bankaccno4 = (string)null,
-                    bankacctype4 = (string)null,
-                    defaultbank4 = (string)null,
-                    bankaccstatus4 = (string)null,
-
-                    ifsccode5 = (string)null,
-                    bankaccno5 = (string)null,
-                    bankacctype5 = (string)null,
-                    defaultbank5 = (string)null,
-                    bankaccstatus5 = (string)null,
-
-                    // DP Details
-                    dpclientid1 = txtDPClientID1.Text.Trim(), // Example value
-                    dptype1 = ddlDPType1.SelectedValue.ToUpper(), // Example value
-                    defaultdp1 = chkDefaultDP1.Checked ? "T" : "F",
-                    dpstatus1 = 1, // Active by default
-
-                    dpclientid2 = "",
-                    dptype2 = "",
-                    defaultdp2 = "",
-                    dpstatus2 = (string)null,
-
-                    dpclientid3 = (string)null,
-                    dptype3 = (string)null,
-                    defaultdp3 = (string)null,
-                    dpstatus3 = (string)null,
-
-                    dpclientid4 = (string)null,
-                    dptype4 = (string)null,
-                    defaultdp4 = (string)null,
-                    dpstatus4 = (string)null,
-
-                    dpclientid5 = (string)null,
-                    dptype5 = (string)null,
-                    defaultdp5 = (string)null,
-                    dpstatus5 = (string)null,
-
-                    sessionid = "", // Optional field
-                    userid = "DFSPLD", // Replace with actual user ID
-                    legalentityid = "", // Optional field
-                    filler1 = "", // Optional field
-                    filler2 ="", // Optional field
-                    filler3 = (string)null, // Optional field
-                    filler4 = (string)null  // Optional field
-                }
+            {
+            new
+            {
+                recordaudflag = actionFlag,
+                clientucc = txtClientUCC.Text.Trim(),
+                category = ddlCategory.Text.Trim(),
+                custodiancode = "",
+                dor = "",
+                firstname = txtFirstName.Text.Trim(),
+                middlename = txtMiddleName.Text.Trim(),
+                lastname = txtLastName.Text.Trim(),
+                gender = ddlGender.SelectedValue.ToUpper(),
+                mobileno = txtMobileNo.Text.Trim(),
+                phoneno = txtPhoneNo.Text.Trim(),
+                emailid = txtEmailID.Text.Trim(),
+                dob = txtDOB.Text.Trim(),
+                panno = txtPANNo.Text.Trim(),
+                aadharno = "",
+                sebiregno = "",
+                communicationaddr = "",
+                paddr1 = txtAddress.Text.Trim(),
+                paddr2 = "",
+                paddr3 = "",
+                pcity = txtCity.Text.Trim(),
+                pstate = pStateValue,
+                pcountry = txtCountry.Text.Trim(),
+                ppincode = txtPinCode.Text.Trim(),
+                incomerange = 0,
+                contactpersonname = "TEST AK",
+                contactpersondesignation = "",
+                contactpersonaddr = "",
+                autodealconfirm = "N",
+                autodealsettle = "",
+                ifsccode1 = txtBankIFSC1.Text.Trim(),
+                bankaccno1 = txtBankAccNo1.Text.Trim(),
+                bankacctype1 = accType1,
+                defaultbank1 = chkDefaultBank1.Checked ? "T" : "F",
+                bankaccstatus1 = 1,
+                ifsccode2 = (string)null,
+                bankaccno2 = (string)null,
+                bankacctype2 = (string)null,
+                defaultbank2 = (string)null,
+                bankaccstatus2 = (string)null,
+                ifsccode3 = (string)null,
+                bankaccno3 = (string)null,
+                bankacctype3 = (string)null,
+                defaultbank3 = (string)null,
+                bankaccstatus3 = (string)null,
+                ifsccode4 = (string)null,
+                bankaccno4 = (string)null,
+                bankacctype4 = (string)null,
+                defaultbank4 = (string)null,
+                bankaccstatus4 = (string)null,
+                ifsccode5 = (string)null,
+                bankaccno5 = (string)null,
+                bankacctype5 = (string)null,
+                defaultbank5 = (string)null,
+                bankaccstatus5 = (string)null,
+                dpclientid1 = txtDPClientID1.Text.Trim(),
+                dptype1 = ddlDPType1.SelectedValue.ToUpper(),
+                defaultdp1 = chkDefaultDP1.Checked ? "T" : "F",
+                dpstatus1 = 1,
+                dpclientid2 = "",
+                dptype2 = "",
+                defaultdp2 = "",
+                dpstatus2 = (string)null,
+                dpclientid3 = (string)null,
+                dptype3 = (string)null,
+                defaultdp3 = (string)null,
+                dpstatus3 = (string)null,
+                dpclientid4 = (string)null,
+                dptype4 = (string)null,
+                defaultdp4 = (string)null,
+                dpstatus4 = (string)null,
+                dpclientid5 = (string)null,
+                dptype5 = (string)null,
+                defaultdp5 = (string)null,
+                dpstatus5 = (string)null,
+                sessionid = "",
+                userid = "DFSPLD",
+                legalentityid = "",
+                filler1 = "",
+                filler2 = "",
+                filler3 = (string)null,
+                filler4 = (string)null
             }
+        }
         };
 
-        string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
-        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
-
-        string apiEndpoint = actionFlag == 1 ? "ADDICDMuccdetails"
-                           : actionFlag == 2 ? "MODIFYICDMuccdetails"
-                           : "DELETEICDMuccdetails";
-         
-        string result = await SendUCCRequest(token, jsonPayload, apiEndpoint);
-        lblMessage.Text = result;
-
+        // Save to database first
+        var uccDetails = requestBody.UCCKYCDETAILS[0];
         string checkQuery = "SELECT COUNT(*) FROM UCC_Details WHERE ClientUCC = @ClientUCC";
         Dictionary<string, object> checkParams = new Dictionary<string, object>
     {
-        {"@ClientUCC", txtClientUCC.Text.Trim()}
+        { "@ClientUCC", txtClientUCC.Text.Trim() }
     };
 
         int count = Convert.ToInt32(SqlDBHelper.ExecuteScalar(checkQuery, checkParams));
-        var uccDetails = requestBody.UCCKYCDETAILS[0];
-
         if (count > 0)
         {
             UpdateUCCData(uccDetails);
@@ -194,6 +160,25 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
         {
             SaveUCCData(uccDetails);
         }
+
+        // Check login session before sending request
+        string token = Session["AuthToken"] as string;
+        if (string.IsNullOrEmpty(token))
+        {
+            lblMessage.Text = "Data saved locally. Please login to send to server.";
+            return; // Stop here if not logged in
+        }
+
+        // If logged in, continue to send the UCC API request
+        string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
+        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
+
+        string apiEndpoint = actionFlag == 1 ? "ADDICDMuccdetails"
+                            : actionFlag == 2 ? "MODIFYICDMuccdetails"
+                            : "DELETEICDMuccdetails";
+
+        string result = await SendUCCRequest(token, jsonPayload, apiEndpoint);
+        lblMessage.Text = result;
     }
     protected void txtClientUCC_TextChanged(object sender, EventArgs e)
     {

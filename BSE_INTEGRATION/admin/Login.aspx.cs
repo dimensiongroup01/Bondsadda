@@ -21,7 +21,14 @@ public partial class BSE_INTEGRATION_Login : System.Web.UI.Page
         string participantId = txtParticipantID.Text.Trim();
         string dealerId = txtDealerID.Text.Trim();
         string password = txtPassword.Text.Trim();
+        if (!string.IsNullOrEmpty(dealerId))
+        {
+            Session["dealerId"] = dealerId;
+        }
+        else{
+            lblMessage.Text = "unknown dealer";
 
+        }
         if (string.IsNullOrEmpty(participantId) || string.IsNullOrEmpty(dealerId) || string.IsNullOrEmpty(password))
         {
             lblMessage.Text = "All fields are required.";
@@ -33,6 +40,7 @@ public partial class BSE_INTEGRATION_Login : System.Web.UI.Page
         {
             Session["AuthToken"] = token;
             Response.Redirect("Dashboard.aspx");
+            
         }
         else
         {

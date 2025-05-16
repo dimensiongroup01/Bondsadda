@@ -12,11 +12,21 @@ public partial class BSE_INTEGRATION_Dashboard : System.Web.UI.Page
         if (Session["AuthToken"] == null)
         {
             Response.Redirect("Login.aspx");
+            return; // ensure no further execution
         }
 
-        // Display the Dealer ID
-        lblDealerID.Text = Session["DealerID"] as string ?? "Unknown Dealer";
+        string dealerId = Session["dealerId"] as string;
+
+        if (!string.IsNullOrEmpty(dealerId))
+        {
+            lblDealerID.Text = "Your Dealer ID: " + dealerId;
+        }
+        else
+        {
+            lblDealerID.Text = "Your Dealer ID: Unknown Dealer";
+        }
     }
+
 
     protected void btnLogout_Click(object sender, EventArgs e)
     {
