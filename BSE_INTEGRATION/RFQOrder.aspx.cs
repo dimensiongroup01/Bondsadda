@@ -165,21 +165,14 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
 
     protected async void btnSubmit_Click(object sender, EventArgs e)
     {
-        lblMessage.Text = "Processing RFQ, please wait...";
+      
         string response = await CreateRFQOrder();
 
 
 
-                    if (errorCode == 0)
-                    {
-                        SaveRFQOrderResponse(response); // Save response to DB if needed
-                        lblMessage.Text = "✅ RFQ Created Successfully: " + message;
-
-        SaveRFQOrderResponse(response);
+       
 
     }
-
-
     private void SaveRFQOrderLog(dynamic requestBody)
     {
         SqlParameter[] parameters = new SqlParameter[]
