@@ -8,8 +8,6 @@
     <title>Dashboard - BSE API</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
         /* Keyframe Animation for Moving the Form */
@@ -46,38 +44,6 @@
                 margin-bottom: 20px;
             }
         }
-         /* Feature Section */
- .feature-section {
-     background-color: #fff;
-     padding: 40px 0;
-     text-align: center;
- }
-
- .feature-section .feature-card {
-     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-     padding: 20px;
- }
-
- .feature-icon {
-     font-size: 2rem;
-     color: #007bff;
- }
- 
-        /* Footer */
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: #6c757d;
-            padding: 30px;
-            background-color: #f8f9fa;
-        }
-
-        .footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        /* WhatsApp Button - Floating on Right Bottom */
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -184,9 +150,9 @@
         }
 
         /* Card Container */
-        .home-page-investment-option .box {
-            height: 320px; /* Fixed height for all cards */
-          background: rgb(246, 246, 246);
+        /*.home-page-investment-option .box {
+            height: 320px;*/ /* Fixed height for all cards */
+          /*background: rgb(246, 246, 246);
 
             border-radius: 12px;
             margin-bottom: 30px;
@@ -787,132 +753,6 @@ background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, F
             margin-bottom: 30px;
         }
 
-        .home-page-investment-option .row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-       .bgfirst{
-         background: rgb(174,225,238);
-background: linear-gradient(90deg, rgba(174,225,238,1) 0%, rgba(80,195,169,1) 55%);
-       }
-       .bgsecond{
-         background: rgb(237,136,108);
-background: linear-gradient(90deg, rgba(237,136,108,1) 0%, rgba(241,132,81,0.6783088235294117) 55%);
-       }
-       .bgthree{
-           background: rgb(206,235,96);
-background: linear-gradient(90deg, rgba(206,235,96,1) 0%, rgba(159,230,151,0.6783088235294117) 55%);
-       }
-       .bgfourth{
-           background: rgb(231,174,240);
-background: linear-gradient(90deg, rgba(231,174,240,1) 0%, rgba(167,150,235,0.6783088235294117) 55%);
-       }
-       .bgfifith{
-           background: rgb(31,205,130);
-background: linear-gradient(90deg, rgba(31,205,130,1) 0%, rgba(184,245,239,0.6783088235294117) 55%);
-       }
-       .bgsix{
-           background: rgb(205,189,31);
-background: linear-gradient(90deg, rgba(205,189,31,1) 0%, rgba(219,215,61,0.6783088235294117) 55%);
-       }
-       .bgseven{
-background: rgb(232,133,238);
-background: linear-gradient(90deg, rgba(232,133,238,1) 0%, rgba(228,86,148,0.6783088235294117) 55%);
-       }
-       /* Collection Section */
-.collection {
-   
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-}
-
-/* Heading Styles */
-.collection h2 {
-    font-size: 2rem;
-    color: white;
-    text-transform: uppercase;
-}
-
-.collection h2 .text-warning {
-    color: #FFA500; /* Orange color */
-}
-
-/* Box Styling */
-.box {
-    background-color:#333; /* Dark background for each box */
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1rem 0; /* Reduced space between boxes */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    text-align: center;
-}
-
-.box:hover {
-    transform: translateY(-10px);
-}
-
-/* Box Content */
-.box .content p {
-    font-size: 1rem;
-    color: #ddd;
-}
-
-.box .btn {
-    background-color: #333; /* Orange button */
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.box .btn:hover {
-    background-color: #FF8C00; /* Slightly darker orange on hover */
-}
-
-/* Icon Styles */
-.box i {
-    font-size: 2.5rem;
-    color: #FFA500; /* Orange color for icons */
-    margin-bottom: 1rem;
-}
-
-/* Reducing Box Size */
-.box {
-    max-width: 300px; /* Smaller box width */
-    margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    .box {
-        max-width: 280px; /* Smaller box size for mobile */
-    }
-}
-
-/* Container */
-.container {
-    max-width: 1200px; /* Ensuring the container doesn't stretch too wide */
-    margin: 0 auto;
-}
-
-/* Row Adjustments */
-.row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.col-lg-3,
-.col-md-4,
-.col-12 {
-    display: flex;
-    justify-content: center;
-}
-
     </style>
        <!-- Tagline Rotator Script -->
 <script>
@@ -1382,30 +1222,24 @@ background: linear-gradient(90deg, rgba(232,133,238,1) 0%, rgba(228,86,148,0.678
                 <p>Our experts are available to assist you with tailored investment advice.</p>
             </div>
         </div>
-    </div>
-</div>--%>
-           
-                </div>
-  </form>
-        <!-- Footer Section -->
-    <div class="footer text-center mt-2">
         <p>&copy; 2025 BONDSADDA. All Rights Reserved.</p>
-        <p>Contact us at <a href="mailto:customercare@bondsadda.com">customercare@bondsadda.com</a></p>
-    </div>
+</div>--%>
 
 
            
            
 
+=========
+</div>--%>
            
     <!-- WhatsApp Button -->
 <a href="https://wa.me/9650799566" target="_blank">
     <div class="whatsapp-btn">
         <i class="fab fa-whatsapp"></i> <!-- FontAwesome Icon for WhatsApp -->
     </div>
-</a>
-
-            
+           
+           
+>>>>>>>>> Temporary merge branch 2
            
 
            
