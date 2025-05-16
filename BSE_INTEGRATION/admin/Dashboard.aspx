@@ -904,7 +904,7 @@ background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, F
 </div>
 
 
-            <p class="text-center text-muted mt-2">Your Dealer ID: <asp:Label ID="lblDealerID" runat="server" class="font-weight-semibold"></asp:Label></p>
+           <asp:Label ID="lblDealerID" runat="server" CssClass="dealer-label" />
             <section class="pt-md-5 pt-4 collection">
     <div class="container">
         <div class="row py-md-5">

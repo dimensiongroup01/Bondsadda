@@ -19522,7 +19522,7 @@ public partial class CashFlow : System.Web.UI.Page
     protected void lnkConfirmDeal_Click(object sender, EventArgs e)
     {
         DataTable dt = dl.get_DealConfirmation(hfDealConfirmationId.Value, null, GetUserLoggedIn(), null);
-        if(dt.Rows.Count > 0)
+        if (dt.Rows.Count > 0)
         {
             string RMEmail = dt.Rows[0]["RMEmail"].ToString();
             string Email = dt.Rows[0]["CEmail"].ToString();
@@ -19550,11 +19550,24 @@ public partial class CashFlow : System.Web.UI.Page
             string stampduty = dt.Rows[0]["DStampDuty"].ToString();
             string totalconsiderationstamp = dt.Rows[0]["DConsiderationStamp"].ToString();
             string consideration = dt.Rows[0]["DGrossConsideration"].ToString();
-            sms.senddealconfirmation(RMEmail,Email,Mobile,CName,dealdate,sattledate,security,isin,couponrate,ipdate,maturitytype,maturitydate,putdate,calldate,lastipdate,noofdays,facevaluebond,qty,rate,ytm,deal,principalamo,accuredinterest,consideration,stampduty,totalconsiderationstamp);
+
+            sms.senddealconfirmation(
+                RMEmail, Email, Mobile, CName, dealdate, sattledate, security, isin, couponrate,
+                ipdate, maturitytype, maturitydate, putdate, calldate, lastipdate, noofdays,
+                facevaluebond, qty, rate, ytm, deal, principalamo, accuredinterest,
+                consideration, stampduty, totalconsiderationstamp
+            );
         }
+
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Your Deal is Confirmed RM will Contact You.', type: 'success',});", true);
+
+        // Add redirection to UCCManagement.aspx
+        Response.Redirect("~/BSE_INTEGRATION/admin/UCCManagement.aspx", false); // false to allow script to render
+        Context.ApplicationInstance.CompleteRequest(); // ensures no further processing
+
         return;
     }
+
 
     protected void rptstag_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {

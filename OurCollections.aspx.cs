@@ -26,7 +26,7 @@ public partial class OurCollections : System.Web.UI.Page
         {
 
             BindCategory();
-            bindCreditRating();
+           // bindCreditRating();
             CategoryName();
             CategoryTags();
             if (GetUserLoggedIn() !=null)
@@ -334,12 +334,10 @@ public partial class OurCollections : System.Web.UI.Page
         rptData.DataBind();
        
     }
-    
-    private void bindCreditRating()
-    {
-        rptCreditRating.DataSource = dl.get_CreditRating(null, null);
-        rptCreditRating.DataBind();
-    }
+
+ 
+
+
     protected void ddlYield_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (ddlYield.SelectedValue == "")
