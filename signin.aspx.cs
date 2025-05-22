@@ -106,13 +106,13 @@ public partial class login : System.Web.UI.Page
     protected void lnkGetOTP_Click(object sender, EventArgs e)
     {
         string otp = Generate_otp();
-        string Mobile = null,Email = null;
+        string Mobile = null, Email = null;
         if (txtUserName.Text == "")
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Valid Mobile must be Added..!!!', type: 'error',});", true);
             return;
         }
-        if(!IsValidMail(txtUserName.Text))
+        if (!IsValidMail(txtUserName.Text))
         {
             Mobile = txtUserName.Text;
         }
@@ -135,13 +135,13 @@ public partial class login : System.Web.UI.Page
                 pnlResend.Visible = true;
                 ScriptManager.RegisterStartupScript(Page, GetType(), "lnkresendotp", "<script>lnkresendotp()</script>", false);
                 ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Otp send your mobile ...!!!', type: 'success',});", true);
-              
+
             }
             else
             {
                 hfOTP.Value = otp;
-                sendMailMSG91(Email,otp);
-              //  sms.sendSignInOtp(txtUserName.Text,otp);
+                sendMailMSG91(Email, otp);
+                //  sms.sendSignInOtp(txtUserName.Text,otp);
                 votp.Visible = true;
                 txtUserName.ReadOnly = true;
                 lnkSubmit.Visible = true;
@@ -149,7 +149,7 @@ public partial class login : System.Web.UI.Page
                 pnlResend.Visible = true;
                 ScriptManager.RegisterStartupScript(Page, GetType(), "lnkresendotp", "<script>lnkresendotp()</script>", false);
                 ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Otp send your mail plz check mail/span ...!!!', type: 'success',});", true);
-                
+
             }
         }
         else
@@ -169,7 +169,7 @@ public partial class login : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Valid Mobile must be Added..!!!', type: 'error',});", true);
             return;
         }
-        if(!IsValidMail(txtUserName.Text))
+        if (!IsValidMail(txtUserName.Text))
         {
             Mobile = txtUserName.Text;
         }
@@ -180,7 +180,7 @@ public partial class login : System.Web.UI.Page
         DataTable dt = dl.CheckMobileNumberExist(txtUserName.Text);
         if (dt.Rows.Count > 0)
         {
-            if(Mobile !=null)
+            if (Mobile != null)
             {
                 hfOTP.Value = otp;
                 new MSG91SMS().sendOTP("91" + txtUserName.Text, otp);
@@ -191,7 +191,7 @@ public partial class login : System.Web.UI.Page
                 lnkGetOTP.Visible = false;
                 ScriptManager.RegisterStartupScript(Page, GetType(), "lnkresendotp", "<script>lnkresendotp()</script>", false);
                 ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Otp send your mobile ...!!!', type: 'success',});", true);
-                
+
             }
             else
             {
@@ -203,7 +203,7 @@ public partial class login : System.Web.UI.Page
                 lnkGetOTP.Visible = false;
                 ScriptManager.RegisterStartupScript(Page, GetType(), "lnkresendotp", "<script>lnkresendotp()</script>", false);
                 ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Otp send your mail plz check mail/span ...!!!', type: 'success',});", true);
-            
+
             }
         }
     }

@@ -10,27 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
-        /* Keyframe Animation for Moving the Form */
-        /*@keyframes moveForm {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(10px); }
-            100% { transform: translateX(0); }
-        }*/
-
-        /* Applying animation to the container */
-        /*.animated-container {
-            animation: moveForm 1s ease-in-out infinite;
-        }*/
-
-        /* Card hover effect */
-        /*.card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);*/ /* Slight lift effect on hover */
-            /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);*/ /* Shadow increase */
-        /*}*/
+       
 
         /* Logo size */
         .sizelogo {
@@ -149,75 +129,7 @@
             color: #ad5a3b;
         }
 
-        /* Card Container */
-        /*.home-page-investment-option .box {
-            height: 320px;*/ /* Fixed height for all cards */
-          /*background: rgb(246, 246, 246);
-
-            border-radius: 12px;
-            margin-bottom: 30px;
-            padding: 20px;
-            position: relative;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            opacity: 0.8;
-            text-align: center;
-        }
-
-        /* Hover effect: reveal content */
-        .home-page-investment-option .box:hover {
-            opacity: 1;
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Icon styling */
-        .home-page-investment-option .box i {
-            background: #ad5a3b;
-            color: white;
-            margin-bottom: 15px;
-            height: 60px;
-            width: 60px;
-            line-height: 60px;
-            border-radius: 50%;
-            font-size: 30px;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Hover effect for icon */
-        .home-page-investment-option .box:hover i {
-            background-color: #333;
-        }
-
-        /* Title styling */
-        .home-page-investment-option .box h2 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
-            transition: color 0.3s ease;
-        }
-
-        /* Show full content on hover */
-        .home-page-investment-option .box .content {
-            display: none;
-            margin-top: 10px;
-            font-size: 10px;
-            color: #555;
-            transition: opacity 0.3s ease;
-        }
-
-        /* Show content when hovered */
-        .home-page-investment-option .box:hover .content {
-            display: block;
-            opacity: 1;
-        }
-        }
+       
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -727,30 +639,6 @@ background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, F
     }
 
 
-        /* Button styling */
-        .home-page-investment-option .box a {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 12px 25px;
-            border-radius: 30px;
-            background: #ad5a3b;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        /* Hover effect for the Explore button */
-        .home-page-investment-option .box:hover a {
-            background: #333;
-            color: white;
-        }
-
-        /* Responsive Layout */
-        .home-page-investment-option .col-lg-4 {
-            margin-bottom: 30px;
         }
 
     </style>
@@ -786,7 +674,7 @@ background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, F
     }
 
     animateValue("client-count", 0, 100, 2000);
-    animateValue("transaction-count", 0, 200, 2500);
+    animateValue("transaction-count", 0, 200, 2500); 
 </script>
 
 <!-- Sliders & Inputs Sync + Calculation -->
