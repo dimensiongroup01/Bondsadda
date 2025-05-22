@@ -72,6 +72,26 @@
                     padding: 10px;
                     color: #cec072;
                 }
+                .filter-scroll-wrapper {
+        max-height: 600px; /* Adjust height as needed */
+        overflow-y: auto;
+        padding-right: 10px;
+        scrollbar-width: thin; /* Firefox */
+    }
+
+    /* Optional for better styling in WebKit browsers */
+    .filter-scroll-wrapper::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .filter-scroll-wrapper::-webkit-scrollbar-thumb {
+        background-color: #f39c12;
+        border-radius: 10px;
+    }
+
+    .filter-scroll-wrapper::-webkit-scrollbar-track {
+        background-color: #f0f0f0;
+    }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -103,10 +123,10 @@
                 </div>
             </div>
         </section>
-        <section class="collection">
+        <section class="collection ">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 pr-md-0 sidebar overflow-scroll">
+                    <div class="col-lg-3 pr-md-0 sidebar overflow-scroll filter-scroll-wrapper">
                         <div class="main-box px-3 ">
                             <div class="row box ">
                                 <div class="p-4 col-lg-12 col-md-6 font_2">
@@ -872,4 +892,4 @@
          }
      </script>  --%>
 </asp:Content>
-
+  

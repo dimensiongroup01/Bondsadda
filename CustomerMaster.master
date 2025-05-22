@@ -327,6 +327,7 @@
                             <asp:Panel ID="pnlList" runat="server">
                                 <div class="dropdown-menu" style="right: 0px !important; left: unset;"
                                     aria-labelledby="dropdownMenuLink">
+                                   <strong><a class="dropdown-item" href="~/BSE_INTEGRATION/Admin/Dashboard.aspx" runat="server" id="A1">Dashboard</a></strong>
 
                                     <%--                                    <div class="dropdown-item" runat="server" id="divMemberCode"></div>--%>
                                     <strong><a class="dropdown-item" runat="server" id="dropdownMenuLinks"></a></strong>
@@ -337,6 +338,7 @@
                                             <a class="dropdown-item" style="text-transform: capitalize">RM -<%#Eval("FullName") %></a>
                                             <a class="dropdown-item" href="tel:+91<%#Eval("Mobile") %>">RM -<i class="fa fa-phone"></i> <%#Eval("Mobile") %></a>
                                             <a class="dropdown-item" href="mailto:<%#Eval("Email") %>">RM -<i class="fa fa-envelope"></i> <%#Eval("Email") %></a>
+                                          
                                         </ItemTemplate>
                                     </asp:Repeater>
 
