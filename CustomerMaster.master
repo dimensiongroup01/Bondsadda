@@ -331,7 +331,7 @@
                                     <%--                                    <div class="dropdown-item" runat="server" id="divMemberCode"></div>--%>
                                    
                                                                         <strong>
-                                      <a class="dropdown-item" href="~/BSE_INTEGRATION/Admin/Dashboard.aspx" runat="server" id="A1">Dashboard</a>
+                                      <a class="dropdown-item" href="~/BSE_INTEGRATION/Admin/Dashboard.aspx" runat="server" id="A1">Dasboard</a>
                                     </strong>
 
                                     <strong><a class="dropdown-item" runat="server" id="dropdownMenuLinks"></a></strong>

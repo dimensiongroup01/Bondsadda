@@ -161,12 +161,12 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
             SaveUCCData(uccDetails);
         }
 
-        // Check login session before sending request
+        // Check login session before sending 
         string token = Session["AuthToken"] as string;
         if (string.IsNullOrEmpty(token))
         {
             lblMessage.Text = "Data saved locally. Please login to send to server.";
-            return; // Stop here if not logged in
+            return; // Stop here if not logged i
         }
 
         // If logged in, continue to send the UCC API request
