@@ -19559,7 +19559,7 @@ public partial class CashFlow : System.Web.UI.Page
             );
         }
 
-        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Your Deal is Confirmed RM will Contact You.', type: 'success',});", true);
+        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Your Deal is Confirmed RM will Contact You as per your trade.', type: 'success',});", true);
 
         // Add redirection to UCCManagement.aspx
         Response.Redirect("~/BSE_INTEGRATION/admin/UCCManagement.aspx", false); // false to allow script to render
