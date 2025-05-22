@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         a#ContentPlaceHolder1_lnkSearch {
             padding: 10px !important;
@@ -73,15 +76,139 @@
     width: 653.375px;
     display: none;
 }
+        .custom-card {
+      border-radius: 1rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #f8f9fa, #fff);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .custom-card i {
+      font-size: 3rem;
+      color: #ffc107;
+    }
+
+    .custom-card h4 {
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    .btn-golden {
+      background-color: #ffc107;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .btn-golden:hover {
+      background-color: #e0a800;
+      color: #fff;
+    }
+     .counter-card {
+      background: lightblue;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .counter-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .counter-value {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #007bff;
+    }
+
+    .counter-label {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .btn-invest {
+  background: linear-gradient(45deg, #FF0000, #FFD700);
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 30px;
+  transition: transform 0.2s;
+}
+.btn-invest:hover {
+  transform: scale(1.05);
+}
+.new-badge {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: #dc3545;
+      color: #fff;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
 
     </style>
+    <script>
+        const taglines = [
+            "Regular Income",
+            "8% to 12%+ Returns*",
+            "Low Volatility",
+            "Portfolio Diversification",
+            "Peace of Mind"
+        ];
+        let taglineIndex = 0;
+        setInterval(() => {
+            taglineIndex = (taglineIndex + 1) % taglines.length;
+            document.getElementById("taglineDisplay").textContent = taglines[taglineIndex];
+        }, 2000);
+        </script>
+
+        <script>
+            function animateValue(id, start, end, duration, suffix = "") {
+                const range = end - start;
+                let startTime = null;
+
+                const step = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    const current = Math.floor(progress * range + start);
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.innerText = current;
+                    }
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        // After animation, add suffix (like "+" or "Crore+")
+                        element.innerText = end.toLocaleString() + suffix;
+                    }
+                };
+
+                requestAnimationFrame(step);
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                animateValue("client-count", 0, 100, 2000, );
+                animateValue("transaction-count", 0, 200, 2500);
+                animateValue("senior-bonds", 0, 3);
+            });
+        </script>
+
+
+
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:HiddenField ID="hfInputData" runat="server" />
     <section class="banner">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center mx-auto search">
                     <div class="pt-md-5 px-4 row pt-4">
@@ -93,24 +220,74 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-1"></div>
-                <div
-                    class="col-lg-5 py-md-5 py-4 my-lg-5 text-lg-left text-center">
-                    <h1 class="h1">Invest in high rated Bonds<strong class="persent"> Earn </strong><br>
-                        <strong
-                            class="persent">Decent Returns</strong></h1>
-                    <br>
-                    <a href="<%=ResolveUrl("~")%>OurCollections" class="btn btn1">Discover Bonds</a> <a
-                        href="FAQ.aspx" class="px-3  text-dark"><i
-                            class="fa-solid fa-circle-play"></i>What are Bonds?
-                        How can I invest?</a>
-                </div>
-                <div class="col-lg-6 pt-md-5">
-                    <img src="img/blog/banner.svg" width="100%" alt>
+            <div class="row mt-5">
+                <div class="col-5"></div>
+                 <h1 class="display-5 fw-bold" style="color: #001f3f;">
+                        Invest smart, Earn big,<br /> with <span class="gold">BONDSADDA</span>
+                 </h1>
+
+                     <!-- Animated Tagline (Golden, No Icons) -->
+                     <h5 class="rotating-tagline gold fw-semibold" id="taglineDisplay">Regular Income</h5>
+
+                     <div class="row mt-3 ">
+                       <div class="col-3">
+                         <div class="card-stats">
+                           <div class="counter-card">
+                            <div id="client-count" class="counter-value">0</div>
+                            <div class="counter-label"> + Clients</div>
+                          </div>
+                           
+                         </div>
+                       </div>  
+                       <div class="col-3">
+                         <div class="counter-card">
+                                <div id="transaction-count" class="counter-value">0</div>
+                                <div class="counter-label">+ Cr Transactions</div>
+                            </div>
+                       </div>
+                        
+                     </div>
+                   <%-- <div class="row">
+                        <div class="col-md-4 mt-4">
+                            <a href="https://bondsadda.com/OurCollections?oId=17" class="counter-card"  style="text-decoration:none;" target="_blank">
+                                <span class="new-badge">New*</span>
+                                <div id="senior-bonds" class="counter-value ">0</div>
+                                <div class="counter-label">Senior Citizen Bonds</div>
+                              </a>
+                        </div>
+                    </div>--%>
+                      <div class="mt-3">
+                           <a href="https://bondsadda.com/OurCollections" class="btn btn-invest mt-4">Invest Now</a>
+                      </div>
+                <div class="col-lg-7 pt-md-5">
+                   <%-- <img src="img/blog/banner.svg" width="100%" alt--%>
                 </div>
             </div>
         </div>
+    </section>
+    <section>
+        <!-- Modal -->
+<div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0">
+      <!-- Modal Header with Close Button -->
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="custom-card text-center">
+          <i class="bi bi-graph-up-arrow"></i>
+          <h4>High Yield Bonds</h4>
+          <p>Discover high-return bond opportunities now.</p>
+          <a href="https://bondsadda.com/OurCollections?oId=16" class="btn btn-golden mt-3">Explore Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     </section>
     <section class="video-home py-md-5">
         <div class="container">
@@ -125,9 +302,9 @@
                 <div class="col-md-7 p-0 d-flex justify-content-center align-items-end ">
                     <asp:Repeater ID="rptVideo" runat="server">
                         <ItemTemplate>
-                            <iframe width="665" height="356"
+                            <iframe width="665" height="370"
                                 src='<%#Eval("VideoPath")%>'
-                                title="Dummy Video" frameborder="0"
+                                title="Dummy Video" frameborder="1"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
                         </ItemTemplate>
@@ -420,7 +597,16 @@
                                                             </div>
                     </ItemTemplate>
                 </asp:Repeater>--%>
+                         <div class="col-lg-3 col-md-6 col-12">
+                         <div class=" p-4 py-5 box text-center ">
+                             <i class="fa-solid fa-arrow-up-right-dots"></i>
 
+                             <h2 class="font-weight-normal h6">High return bonds</h2>
+                                                             <asp:LinkButton ID="lnkhigh" runat="server" OnClick="lnkhigh_Click">Explore</asp:LinkButton>
+                           <%--  <a href="<%=ResolveUrl("~")%>OurCollections?oId=16">Explore</a>--%>
+                         </div>
+                     </div>
+                       
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="p-4 py-5 box text-center ">
                                 <i class="fa-solid fa-calendar-days"></i>
@@ -453,15 +639,6 @@
                                 <h2 class="font-weight-normal h6">Sovereign Rated bonds / Govt. Securities</h2>
                                                                 <asp:LinkButton ID="lnksaver" runat="server" OnClick="lnksaver_Click">Explore</asp:LinkButton>
                              <%--   <a href="<%=ResolveUrl("~")%>OurCollections?oId=28">Explore</a>--%>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class=" p-4 py-5 box text-center ">
-                                <i class="fa-solid fa-arrow-up-right-dots"></i>
-
-                                <h2 class="font-weight-normal h6">High return bonds</h2>
-                                                                <asp:LinkButton ID="lnkhigh" runat="server" OnClick="lnkhigh_Click">Explore</asp:LinkButton>
-                              <%--  <a href="<%=ResolveUrl("~")%>OurCollections?oId=16">Explore</a>--%>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-12">
@@ -868,6 +1045,8 @@
 </div>
 
 </asp:Content>
+
+
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 
 <%--            <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />--%>
@@ -937,6 +1116,13 @@
 
     prm.add_beginRequest(BeginRequestHandler);
     prm.add_endRequest(EndRequestHandler);
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    window.onload = function () {
+        const promoModal = new bootstrap.Modal(document.getElementById('promoModal'));
+        promoModal.show();
+    };
 </script>
    <%-- <script>
         var myModal = new bootstrap.Modal(document.getElementById('exampleModalLong'), {})

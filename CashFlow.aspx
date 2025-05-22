@@ -79,6 +79,7 @@
                                      <asp:LinkButton ID="lnktab4" runat="server" OnClick="lnktab4_Click" Visible="false">Investment Calculator</asp:LinkButton>
                                       <asp:LinkButton ID="lnktab2" runat="server" OnClick="lnktab2_Click" Visible="false">Your Investment Interest</asp:LinkButton>
                                      <asp:LinkButton ID="lnktab3" runat="server" OnClick="lnktab3_Click">Deal Calculator</asp:LinkButton>
+                                   <%-- <asp:LinkButton ID="lnktab4 " runat="server" OnClick="lnktab4_Click">Deal Confirmed</asp:LinkButton>--%>
                                   <%-- <a href="#" data-tab="1" class="tab-link active">Overview</a>
                                     <a href="#" data-tab="4" class="tab-link">Investment Calculator </a>
                                     <a href="#" data-tab="2" class="tab-link">Your Investment Interest</a>
