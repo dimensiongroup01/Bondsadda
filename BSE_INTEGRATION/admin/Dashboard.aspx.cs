@@ -14,7 +14,6 @@ public partial class BSE_INTEGRATION_Dashboard : System.Web.UI.Page
             Response.Redirect("Login.aspx");
             return; // ensure no further execution
         }
-
         string dealerId = Session["dealerId"] as string;
 
         if (!string.IsNullOrEmpty(dealerId))
@@ -25,13 +24,16 @@ public partial class BSE_INTEGRATION_Dashboard : System.Web.UI.Page
         {
             lblDealerID.Text = "Your Dealer ID: Unknown Dealer";
         }
+
     }
+ 
+
+             protected void btnLogout_Click(object sender, EventArgs e)
+            {
+                Session.Clear();
+                Response.Redirect("Login.aspx");
 
 
-    protected void btnLogout_Click(object sender, EventArgs e)
-    {
-        Session.Clear();
-        Response.Redirect("Login.aspx");
-    }
+            }
 
 }

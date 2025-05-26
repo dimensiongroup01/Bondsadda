@@ -4,6 +4,16 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+   <!-- Splide.js CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+
+<!-- Splide.js JS -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
+
     <style>
         a#ContentPlaceHolder1_lnkSearch {
             padding: 10px !important;
@@ -140,17 +150,105 @@
 .btn-invest:hover {
   transform: scale(1.05);
 }
-.new-badge {
-      position: absolute;
-      top: -12px;
-      right: -12px;
-      background: #dc3545;
-      color: #fff;
-      padding: 0.25rem 0.5rem;
-      font-size: 0.8rem;
+.bond-calculator {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  border: 2px solid #DAA520;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+.form-range {
+  accent-color: #DAA520;
+}
+label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+#result {
+  font-size: 1.3rem;
+  color: #B22222;
+}
+.input-group-text {
+  background: #f7e6b5;
+  border: 1px solid #DAA520;
+}
+h2.title {
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.carousel-container {
+     .carousel-container {
+    margin: 20% auto; /* Horizontally center */
+    width: fit-content;
+    max-width: 100%;
+    height: 300px;
+    perspective: 1000px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* Center the inner track if needed */
+  }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 1s ease-in-out;
+      transform-style: preserve-3d;
+    }
+
+    .carousel-slide {
+      min-width: 300px;
+      height: 300px;
+      margin: 0 20px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      transform: scale(0.66);
+      transition: transform 0.8s ease, opacity 0.5s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+    }
+
+    .carousel-slide.active {
+      transform: scale(0.6) rotateY(0deg);
+      z-index: 10;
+    }
+
+    .carousel-slide.prev,
+    .carousel-slide.next {
+      opacity: 1.2;
+    }
+
+    .cta-button {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin: 20px;
+      text-decoration: none;
       font-weight: bold;
-      border-radius: 0.5rem;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #ffc107;
+    }
+
+    @keyframes enterSlide {
+      0% {
+        transform: translateY(100px) rotate(-10deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+      }
     }
 
     </style>
@@ -167,7 +265,7 @@
             taglineIndex = (taglineIndex + 1) % taglines.length;
             document.getElementById("taglineDisplay").textContent = taglines[taglineIndex];
         }, 2000);
-        </script>
+    </script>
 
         <script>
             function animateValue(id, start, end, duration, suffix = "") {
@@ -194,12 +292,84 @@
             }
 
             document.addEventListener("DOMContentLoaded", function () {
-                animateValue("client-count", 0, 100, 2000, );
+                animateValue("client-count", 0, 100, 2000,);
                 animateValue("transaction-count", 0, 200, 2500);
                 animateValue("senior-bonds", 0, 3);
             });
         </script>
+       <script>
+           document.addEventListener('DOMContentLoaded', () => {
+               const amountRange = document.getElementById("amountRange");
+               const rateRange = document.getElementById("rateRange");
+               const yearsRange = document.getElementById("yearsRange");
 
+               const amountVal = document.getElementById("amountVal");
+               const rateVal = document.getElementById("rateVal");
+               const yearsVal = document.getElementById("yearsVal");
+
+               // Sync input fields with range sliders
+               amountRange.oninput = () => amountVal.value = amountRange.value;
+               rateRange.oninput = () => rateVal.value = rateRange.value;
+               yearsRange.oninput = () => yearsVal.value = yearsRange.value;
+
+               amountVal.oninput = () => amountRange.value = amountVal.value;
+               rateVal.oninput = () => rateRange.value = rateVal.value;
+               yearsVal.oninput = () => yearsRange.value = yearsVal.value;
+
+               // Calculate returns
+               function calculateReturns() {
+                   const amount = parseFloat(amountVal.value);
+                   const rate = parseFloat(rateVal.value);
+                   const years = parseFloat(yearsVal.value);
+                   const finalAmount = amount * Math.pow((1 + rate / 100), years);
+                   document.getElementById("result").textContent = `₹${finalAmount.toFixed(2)}`;
+               }
+
+               // Attach the calculateReturns function to the button
+               document.getElementById("calculateBtn").onclick = calculateReturns;
+           });
+
+          
+       </script>
+   <script>
+       document.addEventListener("DOMContentLoaded", () => {
+           const track = document.getElementById('carouselTrack');
+           const slides = Array.from(track.children);
+           let current = 0;
+
+           function updateSlides() {
+               slides.forEach((slide, index) => {
+                   slide.classList.remove('active', 'prev', 'next');
+                   if (index === current) {
+                       slide.classList.add('active');
+                   } else if (index === (current + 1) % slides.length) {
+                       slide.classList.add('next');
+                   } else if (index === (current - 1 + slides.length) % slides.length) {
+                       slide.classList.add('prev');
+                   }
+               });
+           }
+
+           function moveCarousel() {
+               current = (current + 1) % slides.length;
+               const slideWidth = slides[0].offsetWidth + 40; // slide width + 2x margin (20px each side)
+               const offset = -(slideWidth * current);
+               track.style.transform = `translateX(${offset}px)`;
+               updateSlides();
+           }
+
+           updateSlides();
+           setInterval(moveCarousel, 3000); // autoplay
+       });
+
+
+
+
+   </script>
+
+     
+
+  <!-- Initialize Swiper -->
 
 
 
@@ -207,7 +377,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:HiddenField ID="hfInputData" runat="server" />
-    <section class="banner">
+    <section >
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center mx-auto search">
@@ -220,50 +390,85 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-5"></div>
-                 <h1 class="display-5 fw-bold" style="color: #001f3f;">
-                        Invest smart, Earn big,<br /> with <span class="gold">BONDSADDA</span>
-                 </h1>
+            <div class="container mt-4">
+  <div class="row align-items-center">
+    <!-- Left Section -->
+    <div class="col-12 col-lg-8 mb-4 mb-lg-0">
+      <h1 class="display-5 fw-bold text-primary">
+        Invest smart, Earn big,<br />
+        with <span class="gold">BONDSADDA</span>
+      </h1>
 
-                     <!-- Animated Tagline (Golden, No Icons) -->
-                     <h5 class="rotating-tagline gold fw-semibold" id="taglineDisplay">Regular Income</h5>
+      <!-- Animated Tagline -->
+      <h5 class="rotating-tagline gold fw-semibold" id="taglineDisplay">Regular Income</h5>
 
-                     <div class="row mt-3 ">
-                       <div class="col-3">
-                         <div class="card-stats">
-                           <div class="counter-card">
-                            <div id="client-count" class="counter-value">0</div>
-                            <div class="counter-label"> + Clients</div>
-                          </div>
-                           
-                         </div>
-                       </div>  
-                       <div class="col-3">
-                         <div class="counter-card">
-                                <div id="transaction-count" class="counter-value">0</div>
-                                <div class="counter-label">+ Cr Transactions</div>
-                            </div>
-                       </div>
-                        
-                     </div>
-                   <%-- <div class="row">
-                        <div class="col-md-4 mt-4">
-                            <a href="https://bondsadda.com/OurCollections?oId=17" class="counter-card"  style="text-decoration:none;" target="_blank">
-                                <span class="new-badge">New*</span>
-                                <div id="senior-bonds" class="counter-value ">0</div>
-                                <div class="counter-label">Senior Citizen Bonds</div>
-                              </a>
-                        </div>
-                    </div>--%>
-                      <div class="mt-3">
-                           <a href="https://bondsadda.com/OurCollections" class="btn btn-invest mt-4">Invest Now</a>
-                      </div>
-                <div class="col-lg-7 pt-md-5">
-                   <%-- <img src="img/blog/banner.svg" width="100%" alt--%>
-                </div>
+      <!-- Counters -->
+      <div class="row mt-3">
+        <div class="col-6 col-md-4 mb-3">
+          <div class="card-stats text-center">
+            <div class="counter-card">
+              <div id="client-count" class="counter-value">0</div>
+              <div class="counter-label">+ Clients</div>
             </div>
+          </div>
         </div>
+        <div class="col-6 col-md-4 mb-3">
+          <div class="card-stats text-center">
+            <div class="counter-card">
+              <div id="transaction-count" class="counter-value">0</div>
+              <div class="counter-label">+ Cr Transactions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="mt-4 d-flex flex-column flex-sm-row align-items-start gap-3">
+        <a href="https://bondsadda.com/OurCollections" class="btn btn-invest">Invest Now</a>
+        <a href="https://youtu.be/u57IIt8mwKA" target="_blank" rel="noopener noreferrer" class="text-decoration-none d-flex align-items-center gap-2">
+          <i class="fa fa-play-circle text-danger fs-5"></i>
+          <span>What are Bonds & How do I Invest?</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="col-12 col-lg-4">
+      <div class="bond-calculator text-center p-3 border rounded shadow-sm">
+        <h4 class="mb-3 gold">Bond Calculator</h4>
+        <form>
+          <!-- Amount -->
+          <label for="amountRange" class="form-label small">Investment Amount (₹)</label>
+          <div class="input-group mb-2">
+            <input type="range" class="form-range" min="10000" max="1000000" step="10000" id="amountRange">
+            <input type="number" class="form-control form-control-sm" id="amountVal" value="100000">
+          </div>
+
+          <!-- Rate -->
+          <label for="rateRange" class="form-label small">Yield (%)</label>
+          <div class="input-group mb-2">
+            <input type="range" class="form-range" min="5" max="15" step="0.5" id="rateRange">
+            <input type="number" class="form-control form-control-sm" id="rateVal" value="10">
+          </div>
+
+          <!-- Years -->
+          <label for="yearsRange" class="form-label small">Maturity (Years)</label>
+          <div class="input-group mb-3">
+            <input type="range" class="form-range" min="1" max="10" id="yearsRange">
+            <input type="number" class="form-control form-control-sm" id="yearsVal" value="5">
+          </div>
+
+          <!-- Button & Result -->
+          <button type="button" class="btn btn-invest btn-sm w-100" id="calculateBtn">Calculate</button>
+          <div class="mt-2 small">
+            <strong>Estimated Returns:</strong> <span id="result"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
     </section>
     <section>
         <!-- Modal -->
@@ -286,42 +491,43 @@
     </div>
   </div>
 </div>
+</section>
 
 
-    </section>
-    <section class="video-home py-md-5">
-        <div class="container">
-            <div class="row py-md-5 ">
-                <div class="col-12">
-                    <h2 class="h3 text-center font-weight-normal color1">How to
-                        Invest in <span class="color2">Bonds</span></h2>
+   <section class="mt-5">
+  <div class="container">
+    <h3 class="text-center fw-bold display-6 border-bottom pb-2 mb-4" style="color: #001f3f;">
+      🚀 High Return <span style="color: #ff851b;">BONDS</span>
+    </h3>
 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7 p-0 d-flex justify-content-center align-items-end ">
-                    <asp:Repeater ID="rptVideo" runat="server">
-                        <ItemTemplate>
-                            <iframe width="665" height="370"
-                                src='<%#Eval("VideoPath")%>'
-                                title="Dummy Video" frameborder="1"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                    <%--<iframe width="100%" height="356"
-                        src="https://www.youtube.com/embed/yAoLSRbwxL8"
-                        title="Dummy Video" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>--%>
-                </div>
-                <div class="col-md-5 d-md-block d-none ">
-                    <img src="img/videosvg.svg" alt srcset>
-                </div>
-            </div>
+    <div class="position-relative overflow-hidden">
+      <!-- Carousel Track -->
+      <div class="carousel-container">
+        <div class="carousel-track d-flex" id="carouselTrack">
+          <div class="carousel-slide" style="background-image: url('https://bondsadda.com/VImage/88108team_vedika_logo.jpeg');">
+            <a class="cta-button" href="https://bondsadda.com/CashFlow?oId=4892" target="_blank">Buy Now</a>
+          </div>
+          <div class="carousel-slide" style="background-image: url('https://bondsadda.com/VImage/24414RDC%20CONCRETE(INDIA)%20LIMITED.jpeg');">
+            <a class="cta-button" href="https://bondsadda.com/CashFlow?oId=4878" target="_blank">Buy Now</a>
+          </div>
+          <div class="carousel-slide" style="background-image: url('https://bondsadda.com/VImage/47714Keertana.png');">
+            <a class="cta-button" href="https://bondsadda.com/CashFlow?oId=4862" target="_blank">Buy Now</a>
+          </div>
+          <div class="carousel-slide" style="background-image: url('https://bondsadda.com/VImage/95068indelmoney_logo.jpeg');">
+            <a class="cta-button" href="https://bondsadda.com/CashFlow?oId=4849" target="_blank">Buy Now</a>
+          </div>
+          <div class="carousel-slide" style="background-image: url('https://bondsadda.com/VImage/73786EarlySalary.webp');">
+            <a class="cta-button" href="https://bondsadda.com/CashFlow?oId=4855" target="_blank">Buy Now</a>
+          </div>
         </div>
-    </section>
-    <section class="home-bond-list py-md-5 py-4">
+      </div>
+
+ 
+    </div>
+  </div>
+</section>
+
+    <section ">
         <asp:HiddenField ID="hfIPDateaaa" runat="server" />
         <asp:HiddenField ID="hfFrequencyType" runat="server" />
         <asp:HiddenField ID="hfQuar" runat="server" />
@@ -333,7 +539,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="h3 text-white font-weight-normal py-4 color"></h2>
+                    <h2 ></h2>
                 </div>
 
                 <link rel="stylesheet"
@@ -498,7 +704,7 @@
                 </div>
 
             </div>
-            <div class="row">
+            <%--<div class="row">
                 <div class="col-md-5"></div>
                 <div class="col-md-4">
 
@@ -509,7 +715,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <%-- <script>
                 left = '<svg width="50" height="50" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 20L15.6464 19.6464L15.2929 20L15.6464 20.3536L16 20ZM21.6464 13.6464L15.6464 19.6464L16.3536 20.3536L22.3536 14.3536L21.6464 13.6464ZM15.6464 20.3536L21.6464 26.3536L22.3536 25.6464L16.3536 19.6464L15.6464 20.3536Z" fill="white"/><circle cx="20" cy="20" r="19.5" stroke="white"/></svg>';
                 right = '<svg width="50" height="50" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 20L24.3536 20.3536L24.7071 20L24.3536 19.6464L24 20ZM18.3536 26.3536L24.3536 20.3536L23.6464 19.6464L17.6464 25.6464L18.3536 26.3536ZM24.3536 19.6464L18.3536 13.6464L17.6464 14.3536L23.6464 20.3536L24.3536 19.6464Z" fill="white"/><circle cx="20" cy="20" r="19.5" transform="rotate(180 20 20)" stroke="white"/></svg>';
