@@ -4,12 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ScriptManager ID="ScriptManager1" EnableCdn="true" runat="server"></asp:ScriptManager>
-        <section class="py-3">
+        <section class="py-3" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);" >
         <div class="container ">
             <div class="row">
                 <div class="col-md-6 order-md-1 order-2 align-items-center d-flex">
                     <div class="">
-                        <h2 class="h3 font-weight-normal color1">About <span class="color2">Bonds Adda</span></h2>
+                        <h2 class="h3 font-weight-normal color2">About <span class="color2">Bonds Adda</span></h2>
                         <p>Bonda Adda is an online platform or market place powered by Dimension Financial Solutions Pvt
                             Ltd to buy or sell bonds. Where we can make investment in fixed return bonds and can sell
                             bonds. Bonds Adda is online platform to invest in fixed income bonds also earn high returns.
@@ -444,7 +444,7 @@
             
         </div>
     </section>
-    <section class="py-md-5">
+    <section class="py-md-5" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -475,7 +475,7 @@
             </div>
         </div>
     </section>
-    <section class=" py-md-5 py-4">
+   <%-- <section class=" py-md-5 py-4">
         <div class="container-fluid">
             <div class="row py-md-5 ">
                 <div class="col-12">
@@ -489,8 +489,8 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section class="subscribe pb-md-5 pb-3">
+    </section>--%>
+    <section class="subscribe pb-md-5 pb-3" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -500,7 +500,7 @@
                                 class="col-md-7 p-md-5 p-5 text-md-left text-center d-flex justify-content-center align-items-center">
                                 <div
                                     class="">
-                                    <h2 class="font-weight-normal color1 h3">Subscribe
+                                    <h2 class="font-weight-normal color2 h3">Subscribe
                                         to
                                         our <span class="color2">Newsletter</span></h2>
                                     <p>DON’T FALL BEHIND<br />

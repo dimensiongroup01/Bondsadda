@@ -243,7 +243,7 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-light d-md-flex d-none">
+        <nav class="navbar navbar-expand-lg navbar-light d-md-flex d-none" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #56aadc, #F57C00);opacity: 0.98;">
             <a class="navbar-brand " href="<%=ResolveUrl("~")%>Index">
                 <img src="img/logo.png" alt="">
             </a>
@@ -450,7 +450,7 @@
 
 
         <!--mobile-->
-        <nav class="navbar navbar-expand-lg navbar-light d-md-none">
+        <nav class="navbar navbar-expand-lg navbar-light d-md-none" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
             <div class="col-7 px-0">
                 <a class="navbar-brand " href="<%=ResolveUrl("~")%>Index">
                     <img src="img/logo.png" class="col-12 p-0" style="height: auto;" alt="">

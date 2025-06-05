@@ -17,7 +17,7 @@
             z-index: 0;
         }
     </style>
-    <section>
+    <section style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);  ">
            <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
         <div class="container">
 

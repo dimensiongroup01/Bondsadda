@@ -110,12 +110,12 @@
     <asp:HiddenField ID="hfInvest" runat="server" />
     
     <div class="gradient">
-        <section class="breadcrumb-collection py-md-4">
+        <section class="breadcrumb-collection py-md-4" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
             <div class="container">
                 <div class="row">
                     <div class="col-12 p-md-0 p-0">
                         <div class="breadcrumbs py-md-2 pt-md-3 px-md-5 pt-3 py-2  px-3 text-white">
-                            <h1 class="h3 font-weight-normal ">Our
+                            <h1 class="h3 font-weight-normal " >Our
                             Collections</h1>
                             <p class=" font_2">Home / Collections</p>
                         </div>
@@ -123,7 +123,7 @@
                 </div>
             </div>
         </section>
-        <section class="collection ">
+        <section class="collection " style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 pr-md-0 sidebar overflow-scroll filter-scroll-wrapper">

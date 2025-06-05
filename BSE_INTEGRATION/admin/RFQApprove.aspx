@@ -98,13 +98,26 @@
             </div>
 
             <div class="form-group">
-                <label>Propose Approval (APPROVE):</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-gold"><i class="bi bi-check-circle"></i></span>
-                    </div>
-                    <asp:TextBox ID="txtProposeApproval" runat="server" CssClass="form-control" MaxLength="7" />
+                <div class="mb-3">
+                    <label for="ddlProposeApproval" class="form-label">
+                        <i class="bi bi-check-circle me-2 text-warning"></i>Propose Approval
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-gold">
+                            <i class="bi bi-check-circle text-white"></i>
+                        </span>
+                        <asp:DropDownList 
+                            ID="ddlProposeApproval" 
+                            runat="server" 
+                            CssClass="form-select" 
+                            AppendDataBoundItems="true">
+                            <asp:ListItem Text="-- Select Status --" Value="" />
+                            <asp:ListItem Text="Approve" Value="Approve" />
+                            <asp:ListItem Text="Purpose" Value="Purpose" />
+                        </asp:DropDownList>
                 </div>
+            </div>
+
             </div>
 
             <div class="form-group">
@@ -170,13 +183,26 @@
             </div>
 
             <div class="form-group">
-                <label>DP ID:</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-gold"><i class="bi bi-hash"></i></span>
+               <div class="mb-3">
+                    <label for="ddlDPID" class="form-label">
+                        <i class="bi bi-hash me-2 text-warning"></i>DP ID:
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-gold">
+                            <i class="bi bi-hash text-white"></i>
+                        </span>
+                        <asp:DropDownList 
+                            ID="ddlDPID" 
+                            runat="server" 
+                            CssClass="form-select" 
+                            AppendDataBoundItems="true">
+                            <asp:ListItem Text="-- Select DP ID --" Value="" />
+                            <asp:ListItem Text="NSDL" Value="NSDL" />
+                            <asp:ListItem Text="CDSL" Value="CDSL" />
+                        </asp:DropDownList>
                     </div>
-                    <asp:TextBox ID="txtDPID" runat="server" CssClass="form-control" MaxLength="8" />
                 </div>
+
             </div>
 
             <div class="form-group">

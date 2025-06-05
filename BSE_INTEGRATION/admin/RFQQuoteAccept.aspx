@@ -189,6 +189,22 @@
             </div>
 
             <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="txtBuyerBrokerCode" class="form-label">
+                        <i class="bi bi-person-badge me-2 text-warning"></i>Buyer Broker Participant ID
+                        <small class="text-muted">(Required if DirectBrokered is <strong>Brokered</strong> and Quote Type is <strong>BID</strong>)</small>
+                    </label>
+                    <asp:TextBox 
+                        ID="txtBuyerBrokerCode" 
+                        runat="server" 
+                        CssClass="form-control" 
+                        MaxLength="15" 
+                        placeholder="Enter Buyer Broker Code" />
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
                 <label class="form-label fw-semibold"><i class="bi bi-person-vcard text-warning me-2"></i>Direct/Brokered</label>
                 <asp:RadioButtonList ID="rblDirectBrokered" runat="server" CssClass="form-control">
                     <asp:ListItem Text="BROKERED" Value="BROKERED" />
@@ -210,11 +226,51 @@
             </div>
 
             <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="txtResponderReferenceNumber" class="form-label">
+                        <i class="bi bi-123 me-2 text-warning"></i>Responder Reference Number
+                        <small class="text-muted">(Optional)</small>
+                    </label>
+                    <asp:TextBox 
+                        ID="txtResponderReferenceNumber" 
+                        runat="server" 
+                        CssClass="form-control" 
+                        MaxLength="50" 
+                        placeholder="Enter responder reference number (optional)" />
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
                 <label class="form-label fw-semibold"><i class="bi bi-people-fill text-warning me-2"></i>User Type</label>
                 <asp:DropDownList ID="lblUserType" runat="server" CssClass="form-control">
                     <asp:ListItem Text="Brokered" Value="BROKER" />
                     <asp:ListItem Text="Direct" Value="DIRECT" />
                 </asp:DropDownList>
+            </div>
+
+            <div class="col-md-6">
+               <div class="mb-3">
+                <label for="ddlOBPPlatform" class="form-label">
+                    <i class="bi bi-diagram-3 me-2 text-warning"></i>OBP Platform
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                    <span class="input-group-text bg-gold">
+                        <i class="bi bi-diagram-3 text-white"></i>
+                    </span>
+                    <asp:DropDownList 
+                        ID="ddlOBPPlatform" 
+                        runat="server" 
+                        CssClass="form-select" 
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Text="-- Select --" Value="" />
+                        <asp:ListItem Text="YES" Value="YES" />
+                        <asp:ListItem Text="NO" Value="NO" />
+                    </asp:DropDownList>
+                </div>
+            </div>
+
             </div>
         </div>
 

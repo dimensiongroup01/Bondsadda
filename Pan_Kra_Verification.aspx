@@ -15,7 +15,7 @@
                                                                   
                         <h1 class="h3 font-weight-normal color1 text-center">PAN KRA <span class="color2">VERIFICATION</span> </h1>
                                                                                           <div class="form-box px-lg-5">
-            <div class="row mb-4">
+            <div class="row mb-4" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="MemberCodeTextBox">PAN NUMBER:</label>

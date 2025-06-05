@@ -62,6 +62,9 @@
         border-color: #d4af37;
         box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
     }
+     .sizelogo{
+     width:250px;
+ }
 
         /*.nav-tabs .nav-link {
             border-radius: 12px 12px 0 0;
@@ -176,6 +179,7 @@
         transform: scale(1.03);
         transition: all 0.2s ease-in-out;
     }
+       
     </style>
 </head>
 
@@ -183,8 +187,13 @@
   <form id="form1" runat="server">
     <div class="container">
         <!-- Page Header -->
-        <h4 class="mb-3">UCC Management</h4>
+       <div class="d-flex justify-content-between align-items-center mb-4">
+  <img src="https://bondsadda.com/img/logo.png" alt="Bondsadda Logo" class="sizelogo" />
+  <h4 class="mb-0">UCC Management</h4>
+</div>
 
+
+  
         <!-- Error Message -->
         <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold mb-3 d-block"></asp:Label>
 
