@@ -146,6 +146,39 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
         };
         SqlDBHelper.ExecuteNonQuery("SaveRFQQuoteAccept", parameters);
     }
+    private void SaveRFQQuoteAcceptResponse(dynamic responseItem)
+    {
+        SqlParameter[] parameters = new SqlParameter[]
+        {
+        new SqlParameter("@AccruedInterest", responseItem.accuredinterest),
+        new SqlParameter("@BuyerClientCode", responseItem.buyerclientcode ?? string.Empty),
+        new SqlParameter("@Consideration", responseItem.consideration),
+        new SqlParameter("@DealTime", DateTime.ParseExact((string)responseItem.dealtime, "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)),
+        new SqlParameter("@DirectBrokered", responseItem.directbrokered),
+        new SqlParameter("@ErrorCode", responseItem.errorcode),
+        new SqlParameter("@Filler2", responseItem.filler2 ?? string.Empty),
+        new SqlParameter("@Filler3", responseItem.filler3 ?? string.Empty),
+        new SqlParameter("@Filler4", responseItem.filler4 ?? string.Empty),
+        new SqlParameter("@Filler5", responseItem.filler5 ?? string.Empty),
+        new SqlParameter("@ISINNumber", responseItem.isinnumber),
+        new SqlParameter("@Message", responseItem.message),
+        new SqlParameter("@OBPPlatform", responseItem.obpplatform),
+        new SqlParameter("@OrderStatus", responseItem.orderstatus),
+        new SqlParameter("@OtMoTo", responseItem.otmoto),
+        new SqlParameter("@Price", responseItem.price),
+        new SqlParameter("@QuoteType", responseItem.quotetype),
+        new SqlParameter("@ResponderBrokerCode", responseItem.responderbrokercode),
+        new SqlParameter("@ResponderReferenceNumber", responseItem.responderreferencenumber ?? string.Empty),
+        new SqlParameter("@RFQDealId", responseItem.rfqdealid),
+        new SqlParameter("@RFQOrderNumber", responseItem.rfqordernumber),
+        new SqlParameter("@SellerClientCode", responseItem.sellerclientcode),
+        new SqlParameter("@Value", responseItem.value),
+        new SqlParameter("@Yield", responseItem.yield)
+        };
+
+        SqlDBHelper.ExecuteNonQuery("SaveRFQQuoteAcceptResponse", parameters);
+    }
+
     protected void txtISINNumber_TextChanged(object sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(txtRFQDealID.Text.Trim()))
@@ -253,14 +286,40 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
     {
         try
         {
-            string response = await RFQQuoteAccept(); // Assuming this handles saving or processing
-            lblMessage.Text = response; // Show a success or failure message
+            // Save original request before making API call (optional)
+            // SaveRFQOrderLog(requestObject); // Uncomment if you have access to request before call
+
+            string response = await RFQQuoteAccept(); // Make API call
+            RFQResponse rfqResponse = JsonConvert.DeserializeObject<RFQResponse>(response);
+
+            if (rfqResponse != null && rfqResponse.RFQQuoteAcceptResponseList != null && rfqResponse.RFQQuoteAcceptResponseList.Count > 0)
+
+            {
+                var responseItem = rfqResponse.RFQQuoteAcceptResponseList[0];
+
+                if (responseItem.errorcode == 0)
+                {
+                    SaveRFQQuoteAcceptResponse(responseItem); // Save response object
+                    SaveRFQOrderLog(responseItem); // Save as request log (if fields match)
+
+                    lblMessage.Text = "✅ RFQ Accepted Successfully: " + responseItem.message;
+                }
+                else
+                {
+                    lblMessage.Text = "❌ RFQ Failed: " + responseItem.message;
+                }
+            }
+            else
+            {
+                lblMessage.Text = "❌ Invalid or empty response.";
+            }
         }
         catch (Exception ex)
         {
-            lblMessage.Text = "Submission failed: " + ex.Message;
+            lblMessage.Text = "❌ Error during submission: " + ex.Message;
         }
     }
+   
 
     protected void btnShowPopup_Click(object sender, EventArgs e)
     {
@@ -279,5 +338,37 @@ public partial class BSE_INTEGRATION_RFQQuoteAccept : System.Web.UI.Page
     //        btnCloseModal.Attributes["data-bs-dismiss"] = "modal";
     //    }
     //}
+    public class RFQQuoteAcceptResponseItem
+    {
+        public decimal accuredinterest { get; set; }
+        public string buyerclientcode { get; set; }
+        public decimal consideration { get; set; }
+        public string dealtime { get; set; }
+        public string directbrokered { get; set; }
+        public int errorcode { get; set; }
+        public string filler2 { get; set; }
+        public string filler3 { get; set; }
+        public string filler4 { get; set; }
+        public string filler5 { get; set; }
+        public string isinnumber { get; set; }
+        public string message { get; set; }
+        public string obpplatform { get; set; }
+        public string orderstatus { get; set; }
+        public string otmoto { get; set; }
+        public decimal price { get; set; }
+        public string quotetype { get; set; }
+        public string responderbrokercode { get; set; }
+        public string responderreferencenumber { get; set; }
+        public string rfqdealid { get; set; }
+        public string rfqordernumber { get; set; }
+        public string sellerclientcode { get; set; }
+        public decimal value { get; set; }
+        public decimal yield { get; set; }
+    }
+
+    public class RFQResponse
+    {
+        public List<RFQQuoteAcceptResponseItem> RFQQuoteAcceptResponseList { get; set; }
+    }
 
 }

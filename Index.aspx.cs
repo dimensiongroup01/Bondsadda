@@ -22,7 +22,7 @@ public partial class Index : System.Web.UI.Page
         {
             BindData();
             NewsData();
-            //BindVideo();
+            BindVideo();
             CollectionBind();
             generateCaptcha();
         }
@@ -30,20 +30,20 @@ public partial class Index : System.Web.UI.Page
 
     private void CollectionBind()
     {
-        //rptCollection.DataSource = dl.get_Category(null,null);
+        //rptCollection.DataSource = dl.get_Category(null, null);
         //rptCollection.DataBind();
     }
-    //private void BindVideo()
-    //{
-    //    DataTable dt = dl.get_VideoOne(null, null);
-    //    if(dt.Rows.Count > 0)
-    //    {
-    //        rptVideo.DataSource = dt;
-    //        rptVideo.DataBind();
-    //    }
+    private void BindVideo()
+    {
+        //DataTable dt = dl.get_VideoOne(null, null);
+        //if (dt.Rows.Count > 0)
+        //{
+        //    rptVideo.DataSource = dt;
+        //    rptVideo.DataBind();
+        //}
 
 
-    //}
+    }
     private double CalculateXIRR(double[] cashFlows, DateTime[] dates, double guess = 0.1)
     {
         const double tol = 0.0001; // tolerance for accuracy

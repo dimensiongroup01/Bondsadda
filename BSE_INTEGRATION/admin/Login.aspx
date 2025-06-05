@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="BSE_INTEGRATION_Login" Async="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="BSE_INTEGRATION_Login" Async="true"  %>
 
 <!DOCTYPE html>
 <html lang="en">

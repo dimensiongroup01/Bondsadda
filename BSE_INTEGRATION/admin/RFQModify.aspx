@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RFQModify.aspx.cs" Inherits="BSE_INTEGRATION_RFQModify" Async="true" %>
+﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeFile="RFQModify.aspx.cs" Inherits="BSE_INTEGRATION_RFQModify" Async="true" %>
 
 
 <!DOCTYPE html>

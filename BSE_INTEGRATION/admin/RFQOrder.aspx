@@ -13,7 +13,7 @@
 <!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
-
+     <script type="text/javascript" src=".../js/bse_i/rfq.js"></script>
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -135,7 +135,7 @@
 
 
     <!-- Custom JavaScript File -->
-    <script type="text/javascript" src="../js/bse_i/rfq.js"></script>
+   
 </head>
 
 
@@ -148,7 +148,11 @@
             <h3 class="text-warning fw-bold"><i class="bi bi-pencil-square me-2"></i>RFQ Order Entry</h3>
         </div>
         <asp:Label ID="lblMessage" runat="server" Text="Status will appear here." ForeColor="Blue" Font-Bold="true" />
-
+         <div class="col-md-4">
+     <label class="form-label text-muted"><i class="bi bi-telephone me-2 text-warning"></i>
+Customer Mobile no</label>
+     <asp:TextBox ID="txtcustmob" runat="server" CssClass="form-control border-warning" />
+ </div>
         <!-- Market Info -->
         <div class="row g-3">
             <div class="col-md-6">

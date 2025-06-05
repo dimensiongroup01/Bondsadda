@@ -22,7 +22,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Check if AuthToken is present in the session
+        
         if (Session["AuthToken"] == null)
         {
             Response.Redirect("Login.aspx");
@@ -78,8 +78,8 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     usertype = "BROKER",
                     quotetype = ddlQuoteType.SelectedValue,
                     isinnumber = txtISINNumber.Text.Trim(),
-                    rating = txtRating.Text.Trim(),
-                    ratingagency = ddlRatingAgency.Text.Trim(),
+                    rating = txtRating.SelectedValue.Trim(),
+                    ratingagency = ddlRatingAgency.SelectedValue.Trim(),
                     bidvalue = isBidSelected ? (string.IsNullOrWhiteSpace(txtBidValue.Text) ? 0 : Convert.ToInt64(txtBidValue.Text)) : 0,
                     offervalue = isOfferSelected ? (string.IsNullOrWhiteSpace(txtOfferValue.Text) ? 0 : Convert.ToInt64(txtOfferValue.Text)) : 0,
                     bidminvalue = isBidSelected ? (string.IsNullOrWhiteSpace(txtBidMinValue.Text) ? 0 : Convert.ToInt64(txtBidMinValue.Text)) : 0,
@@ -96,8 +96,8 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     dealtimeminutes = ddlDealTimeMinutes.SelectedValue,
                     otmoto = ddlOtoOtm.SelectedValue,
                     proclient = ddlProClient.SelectedValue,
-                    buyerclientcode = "BSEFI",
-                    sellerclientcode = "DFSPL",
+                    buyerclientcode = "DFSPL",
+                    sellerclientcode = "DFSPLD",
                     directbrokered = ddlUserType.SelectedValue,
                     sellerbrokercode = "",
                     buyerbrokercode = txtBrokerName.Text.Trim(),
@@ -118,8 +118,8 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
 
 
 
-        SaveRFQOrderLog(requestBody);
 
+        SaveRFQOrderLog(requestBody);
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
         string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
@@ -133,10 +133,10 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
-                client.DefaultRequestHeaders.Add("PARTICIPANTID", "DIMENSIONFSL");
-                client.DefaultRequestHeaders.Add("DEALERID", "DIMENSIONFSLD");
-                client.DefaultRequestHeaders.Add("PASSWORD", "Ravi@1234");
+                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
+                client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
+                client.DefaultRequestHeaders.Add("PASSWORD", "Ravi@2025");
                 client.DefaultRequestHeaders.Add("TOKEN", token);
                
 
@@ -198,6 +198,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         SqlParameter[] parameters = new SqlParameter[]
         {
         new SqlParameter("@Product", requestBody.RFQORDERDETAILS[0].product),
+       
         new SqlParameter("@UserType", requestBody.RFQORDERDETAILS[0].usertype),
         new SqlParameter("@QuoteType", requestBody.RFQORDERDETAILS[0].quotetype),
         new SqlParameter("@ISINNumber", requestBody.RFQORDERDETAILS[0].isinnumber),
@@ -232,7 +233,9 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         new SqlParameter("@Filler2", requestBody.RFQORDERDETAILS[0].filler2),
         new SqlParameter("@Filler3", requestBody.RFQORDERDETAILS[0].filler3),
         new SqlParameter("@Filler4", requestBody.RFQORDERDETAILS[0].filler4),
-        new SqlParameter("@Filler5", requestBody.RFQORDERDETAILS[0].filler5)
+        new SqlParameter("@Filler5", requestBody.RFQORDERDETAILS[0].filler5),
+         new SqlParameter("@custmobno", int.Parse(txtcustmob.Text))
+
         };
 
         SqlDBHelper.ExecuteNonQuery("SaveRFQOrderLog", parameters);
@@ -252,6 +255,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     SqlParameter[] parameters = new SqlParameter[]
                     {
                     new SqlParameter("@BidMinValue", (decimal)response.bidminvalue),
+                   
                     new SqlParameter("@BidPrice", (decimal)response.bidprice),
                     new SqlParameter("@BidQuantity", (int)response.bidquantity),
                     new SqlParameter("@BidRFQOrderNumber", (string)response.bidrfqordernumber),
@@ -282,15 +286,18 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     new SqlParameter("@ProClient", (string)response.proclient),
                     new SqlParameter("@QuoteType", (string)response.quotetype),
                     new SqlParameter("@RFQDealId", (string)response.rfqdealid),
-                    new SqlParameter("@SettlementDate", DateTime.ParseExact((string)response.settlementdate, "dd-MM-yyyy", CultureInfo.InvariantCulture))
-                    };
+                    new SqlParameter("@SettlementDate", DateTime.ParseExact((string)response.settlementdate, "dd-MM-yyyy", CultureInfo.InvariantCulture)),
+                    new SqlParameter("@custmobno", txtcustmob.Text.Trim())
+
+
+                    };  
 
                     // Call stored procedure
                     SqlDBHelper.ExecuteNonQuery("SaveRFQOrderResponse", parameters);
                 }
             }
             else
-            {
+             {
                 Console.WriteLine("Invalid JSON format or missing RFQOrderResponseList.");
             }
         }
