@@ -60,11 +60,18 @@
             <h3 class="text-center mb-4">RFQ Product Entry</h3>
 
             <!-- Product Option -->
-            <div class="form-group">
-                <label><i class="bi bi-box-seam mr-2 bg-gold"></i>Product Option:</label><br />
-                <asp:RadioButton ID="icdmRadio" runat="server" GroupName="productOption" Text=" ICDM " />
-                <asp:RadioButton ID="gsecRadio" runat="server" GroupName="productOption" Text=" GSEC " />
-            </div>
+            <div class="form-group mb-3">
+                <label for="ddlProduct" class="form-label">
+                    <i class="bi bi-box-seam me-2 text-warning"></i>Product :
+                    <span class="text-danger">*</span>
+                </label>
+                <asp:DropDownList ID="ddlProduct" runat="server" CssClass="form-select" AppendDataBoundItems="true" required="true">
+                    <asp:ListItem Text="-- Select Product --" Value="" />
+                    <asp:ListItem Text="ICDM" Value="ICDM" />
+                    <asp:ListItem Text="GSEC" Value="GSEC" />
+                </asp:DropDownList>
+           </div>
+
 
             <!-- User Type -->
             <div class="form-group">
@@ -92,20 +99,44 @@
                     ErrorMessage="ISIN Number is required" ForeColor="Red" Display="Dynamic" />
             </div>
 
-            <!-- Yield Type -->
-            <div class="form-group">
-                <label><i class="bi bi-percent mr-2"></i>Yield Type:</label><br />
-                <asp:RadioButton ID="ytmRadio" runat="server" GroupName="yieldType" Text=" YTM " />
-                <asp:RadioButton ID="ytpRadio" runat="server" GroupName="yieldType" Text=" YTP " />
-                <asp:RadioButton ID="ytcRadio" runat="server" GroupName="yieldType" Text=" YTC " />
+            <div class=" form-group mb-3">
+                <label for="txtRFQOrder" class="form-label">
+                    <i class="bi bi-hash me-2 text-warning"></i>Internal RFQ Order Number
+                    <span class="text-danger">*</span>
+                </label>
+                <asp:TextBox 
+                    ID="txtRFQOrder" 
+                    runat="server" 
+                    CssClass="form-control" 
+                    MaxLength="16" 
+                    placeholder="Starts with 'R'" />
             </div>
 
-            <!-- Quote Accepted -->
+            <div class=" form-group col-md-6">
+                        <label for="txtRFQDealID" class="form-label required">RFQ Deal ID</label>
+                        <asp:TextBox ID="txtRFQDealID" runat="server" CssClass="form-control" MaxLength="15" placeholder="Unique RFQ Deal ID" required="true" />
+             </div>
+            <!-- Yield Type -->
+           <div class="form-group mb-3">
+                <label for="ddlYieldType" class="form-label">
+                    <i class="bi bi-percent me-2 text-warning"></i>Yield Type:
+                    <span class="text-danger">*</span>
+                </label>
+                <asp:DropDownList ID="ddlYieldType" runat="server" CssClass="form-select" AppendDataBoundItems="true">
+                    <asp:ListItem Text="-- Select Yield Type --" Value="" />
+                    <asp:ListItem Text="YTM" Value="YTM" />
+                    <asp:ListItem Text="YTP" Value="YTP" />
+                    <asp:ListItem Text="YTC" Value="YTC" />
+                </asp:DropDownList>
+        </div>
+
+
+      <%--      <!-- Quote Accepted -->
             <div class="form-group">
                 <label><i class="bi bi-check-circle mr-2"></i>Quote Accepted:</label><br />
                 <asp:RadioButton ID="QuoteAcceptedPrice" runat="server" GroupName="quoteAccepted" Text=" Price " />
                 <asp:RadioButton ID="QuoteAcceptedYield" runat="server" GroupName="quoteAccepted" Text=" Yield " />
-            </div>
+            </div>--%>
 
             <!-- Yield -->
             <div class="form-group">
@@ -128,6 +159,76 @@
                     <asp:TextBox ID="price" runat="server" CssClass="form-control" />
                 </div>
             </div>
+            <div class=" form-group mb-3">
+                <label for="txtModacrint" class="form-label">
+                    <i class="bi bi-cash-stack me-2 text-warning"></i>Modified Accrued Interest (Modacrint)
+                    <span class="text-danger">*</span>
+                </label>
+                <asp:TextBox 
+                    ID="txtModacrint" 
+                    runat="server" 
+                    CssClass="form-control" 
+                    MaxLength="27" 
+                    placeholder="e.g. 1234567890123456789012.34" />
+            </div>
+
+            <div class=" form-group mb-3">
+                <label for="txtConsideration" class="form-label">
+                    <i class="bi bi-currency-rupee me-2 text-warning"></i>Consideration
+                    <span class="text-danger">*</span>
+                </label>
+                <asp:TextBox 
+                    ID="txtConsideration" 
+                    runat="server" 
+                    CssClass="form-control" 
+                    MaxLength="27" 
+                    placeholder="e.g. 1000000000000000000000.00" />
+            </div>
+            <!-- Maturity / Call / Put Date -->
+                <div class=" form-group mb-3">
+                    <label for="txtMaturityDate" class="form-label">
+                        <i class="bi bi-calendar-event me-2 text-warning"></i>Maturity / Call / Put Date
+                        <span class="text-danger">*</span>
+                        <small class="text-muted">(Format: DD-MM-YYYY)</small>
+                    </label>
+                    <asp:TextBox 
+                        ID="txtMaturityDate" 
+                        runat="server" 
+                        CssClass="form-control" 
+                        MaxLength="10" 
+                        placeholder="DD-MM-YYYY" />
+                </div>
+
+                <!-- Settlement Date -->
+                <div class="form-group mb-3">
+                    <label for="txtSettlementDate" class="form-label">
+                        <i class="bi bi-calendar-check me-2 text-warning"></i>Settlement Date
+                        <span class="text-danger">*</span>
+                        <small class="text-muted">(Format: DD-MM-YYYY)</small>
+                    </label>
+                    <asp:TextBox 
+                        ID="txtSettlementDate" 
+                        runat="server" 
+                        CssClass="form-control" 
+                        MaxLength="10" 
+                        placeholder="DD-MM-YYYY" />
+                </div>
+
+                <!-- Client Code -->
+                <div class=" form-group mb-3">
+                    <label for="txtClientCode" class="form-label">
+                        <i class="bi bi-person-badge me-2 text-warning"></i>Seller Client Code
+                        <span class="text-danger">*</span>
+                    </label>
+                    <asp:TextBox 
+                        ID="txtClientCode" 
+                        runat="server" 
+                        CssClass="form-control" 
+                        MaxLength="15" 
+                        placeholder="Enter Seller Client Code" />
+                </div>
+
+
 
             <!-- Custodian Code -->
             <div class="form-group">
@@ -163,15 +264,26 @@
             </div>
 
             <!-- DP Type -->
-            <div class="form-group">
-                <label><i class="bi bi-database mr-2"></i>DP Type:</label>
+           <div class="form-group mb-3">
+                <label for="ddlDPType" class="form-label">
+                    <i class="bi bi-database me-2 text-warning"></i>DP Type:
+                </label>
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-gold"><i class="bi bi-database"></i></span>
-                    </div>
-                    <asp:TextBox ID="dptype" runat="server" CssClass="form-control" />
+                    <span class="input-group-text bg-gold">
+                        <i class="bi bi-database text-white"></i>
+                    </span>
+                    <asp:DropDownList 
+                        ID="ddlDPType" 
+                        runat="server" 
+                        CssClass="form-select" 
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Text="-- Select DP Type --" Value="" />
+                        <asp:ListItem Text="NSDL" Value="NSDL" />
+                        <asp:ListItem Text="CDSL" Value="CDSL" />
+                    </asp:DropDownList>
                 </div>
             </div>
+
 
             <!-- DP ID -->
             <div class="form-group">
@@ -194,6 +306,54 @@
                     <asp:TextBox ID="dpclientid" runat="server" CssClass="form-control" />
                 </div>
             </div>
+
+            <div class="form-group mb-3">
+                <label for="txtReferenceNumber" class="form-label">
+                    <i class="bi bi-hash me-2 text-warning"></i>Seller Reference Number
+                    <small class="text-muted">(Optional)</small>
+                </label>
+                <asp:TextBox 
+                    ID="txtReferenceNumber" 
+                    runat="server" 
+                    CssClass="form-control" 
+                    MaxLength="50" 
+                    placeholder="Enter reference number (if any)" />
+            </div>
+
+            <div class=" form-group mb-3">
+                <label for="ddlProposeApprove" class="form-label">
+                    <i class="bi bi-check2-square me-2 text-warning"></i>Propose / Approve
+                    <span class="text-danger">*</span>
+                </label>
+                <asp:DropDownList 
+                    ID="ddlProposeApprove" 
+                    runat="server" 
+                    CssClass="form-select" 
+                    AppendDataBoundItems="true">
+                    <asp:ListItem Text="-- Select --" Value="" />
+                    <asp:ListItem Text="PROPOSE" Value="PROPOSE" />
+                    <%-- If needed in future, you can add APPROVE or REJECT etc. --%>
+                    <%-- <asp:ListItem Text="APPROVE" Value="APPROVE" /> --%>
+                </asp:DropDownList>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="ddlFreeze" class="form-label">
+                    <i class="bi bi-lock-fill me-2 text-warning"></i>Freeze
+                    <span class="text-danger">*</span>
+                </label>
+                <asp:DropDownList 
+                    ID="ddlFreeze" 
+                    runat="server" 
+                    CssClass="form-select" 
+                    AppendDataBoundItems="true">
+                    <asp:ListItem Text="-- Select --" Value="" />
+                    <asp:ListItem Text="YES" Value="YES" />
+                    <asp:ListItem Text="NO" Value="NO" />
+                </asp:DropDownList>
+            </div>
+
 
             <!-- Message & Submit -->
             <asp:Label ID="lblMessage" runat="server" CssClass="text-danger font-weight-bold" />

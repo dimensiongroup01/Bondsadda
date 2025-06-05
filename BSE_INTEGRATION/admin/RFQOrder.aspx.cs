@@ -23,10 +23,10 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         // Check if AuthToken is present in the session
-        if (Session["AuthToken"] == null)
-        {
-            Response.Redirect("Login.aspx");
-        }
+        //if (Session["AuthToken"] == null)
+        //{ 
+        //    Response.Redirect("Login.aspx");
+        //}
 
         // Handle Bid and Offer visibility based on selected Quote Type
         //if (!IsPostBack)

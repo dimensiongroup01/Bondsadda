@@ -55,7 +55,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ScriptManager ID="SM1" EnableCdn="true" runat="server"></asp:ScriptManager>
     <asp:HiddenField ID ="hfDataa" runat="server" />
-    <section class="breadcrumb-collection  py-md-4 gradient">
+    <section class="breadcrumb-collection  py-md-4 gradient" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
             <div class="container">
                 <div class="row">
                     <div class="col-12 p-md-3 p-0">
@@ -69,7 +69,7 @@
                 
             </div>
         </section>
-        <section class="news-page mb-md-5 mb-3">
+        <section class="news-page  " style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
             <div class="container">
                 <div class="row">
 
@@ -269,7 +269,7 @@
             </div>
                 </div>
         </section>
-        <section class="subscribe pb-md-5 pb-3">
+        <section class="subscribe pb-md-5 pb-3" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -279,7 +279,7 @@
                                     class="col-md-7 p-md-5 p-5 text-md-left text-center d-flex justify-content-center align-items-center">
                                     <div
                                         class>
-                                        <h2 class="font-weight-normal color1 h3">Subscribe
+                                        <h2 class="font-weight-normal color2 h3">Subscribe
                                             to
                                             our <span class="color2">Newsletter</span></h2>
                                          <p>DON’T FALL BEHIND<br />

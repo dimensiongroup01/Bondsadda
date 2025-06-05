@@ -22,7 +22,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="SM1" EnableCdn="true" runat="server"></asp:ScriptManager>
-    <section class="py-md-5 py-4">
+    <section class="py-md-5 py-4" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
         <div class="container">
             <div class="row">
 
@@ -86,7 +86,7 @@
                 </div>--%>
                 <div class="col-lg-4 pr-md-0">
                     <div class="main-box px-3 ">
-                        <div class="row">
+                        <div class="row" >
                             <div class="box p-4 col-lg-12 col-md-6 font_2">
                                 <h2 class="h4 font-weight-normal color2">Filter</h2>
                                 <hr>

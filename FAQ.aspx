@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <section class="breadcrumb-collection  py-md-4 gradient">
+    <section class="breadcrumb-collection  py-md-4 gradient" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);">
             <div class="container">
                 <div class="row">
                     <div class="col-12 p-md-3 p-0">
@@ -19,7 +19,7 @@
                 
             </div>
         </section>
-    <section class="my-md-5 my-5 faq">
+    <section class=" faq" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
