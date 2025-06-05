@@ -566,6 +566,7 @@ h2.title {
         const btnLeft = document.getElementById('btnLeft');
         const btnRight = document.getElementById('btnRight');
 
+
         btnLeft.addEventListener('click', () => {
             track.scrollBy({ left: -280, behavior: 'smooth' });
         });
@@ -1708,7 +1709,7 @@ h2.title {
 <%--            <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />--%>
    <%-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>--%>
     <%--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> --%> 
-type="text/javascript">
+<script type="text/javascript">
 
 
 
