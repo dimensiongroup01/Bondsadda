@@ -26,14 +26,14 @@ public partial class BSE_INTEGRATION_Dashboard : System.Web.UI.Page
         }
 
     }
- 
-
-             protected void btnLogout_Click(object sender, EventArgs e)
-            {
-                Session.Clear();
-                Response.Redirect("Login.aspx");
 
 
-            }
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session.Clear();
+        Response.Redirect("Login.aspx");
+
+
+    }
 
 }

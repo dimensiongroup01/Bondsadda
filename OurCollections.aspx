@@ -92,6 +92,54 @@
     .filter-scroll-wrapper::-webkit-scrollbar-track {
         background-color: #f0f0f0;
     }
+    .highlight-marquee {
+  background-color: white;
+  color: #1f3f66;
+  border: 2px solid #5082BD;
+  border-radius: 12px;
+  padding: 14px 0;
+  overflow: hidden;
+  font-size: 1.1rem;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0 0 12px rgba(80, 130, 189, 0.6);
+  position: relative;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
+  animation: marqueeGlow 2s ease-in-out infinite alternate;
+}
+
+.highlight-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollLeft 12s linear infinite;
+}
+
+.highlight-marquee:hover .highlight-track {
+  animation-play-state: paused;
+}
+
+.highlight-text {
+  display: inline-block;
+  padding-right: 40px;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(80, 130, 189, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 18px rgba(80, 130, 189, 0.8);
+  }
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -119,6 +167,16 @@
                             Collections</h1>
                             <p class=" font_2">Home / Collections</p>
                         </div>
+                        <div class="highlight-marquee">
+  <div class="highlight-track">
+    <span class="highlight-text">
+      🔔 <strong>Important:</strong> The mentioned rates are subject to market conditions & availability. Please confirm the rates and availability of securities before finalizing.
+    </span>
+    <span class="highlight-text">
+      🔔 <strong>Important:</strong> The mentioned rates are subject to market conditions & availability. Please confirm the rates and availability of securities before finalizing.
+    </span>
+  </div>
+</div>
                     </div>
                 </div>
             </div>
