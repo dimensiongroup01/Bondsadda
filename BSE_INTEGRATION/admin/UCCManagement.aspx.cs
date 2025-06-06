@@ -201,7 +201,7 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
 
         using (HttpClient client = new HttpClient())
         {
-            client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
+            client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc /");
             client.DefaultRequestHeaders.Add("PARTICIPANTID", "DIMENSIONFSL");
             client.DefaultRequestHeaders.Add("DEALERID", "DIMENSIONFSLD");
             client.DefaultRequestHeaders.Add("PASSWORD", "Ravi#1234");

@@ -521,7 +521,79 @@ h2.title {
    color: white;
    cursor: pointer;
  }
+  @keyframes slideInRightToLeft {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
 
+    /* Float up and down */
+    @keyframes floatUpDown {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .hero-img {
+      animation: slideInRightToLeft 2.5s ease-out forwards;
+    }
+
+    /* Add float animation after slide-in finishes */
+    .hero-img.float {
+      animation: floatUpDown 2s ease-in-out infinite;
+      animation-delay: 2.5s; /* Wait until slide animation finishes */
+    }
+     @keyframes slideInLeftToRight {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .slide-in-ltr {
+      animation: slideInLeftToRight 1.8s ease-out forwards;
+    }
+
+    .features-section {
+      background: linear-gradient(to right, #085D94, #F57C00);
+      color: white;
+    }
+
+    .feature-card {
+      background: transparent;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .bounce-animation {
+      animation-name: bounce;
+      animation-duration: 2.5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+    }
 </style>
     <script>
         // Tagline Rotator
@@ -651,8 +723,39 @@ h2.title {
             setupCarouselAutoplay();
             setupCarouselScroll();
         });
-    </script>
 
+         // Add float class after slide animation ends
+    window.addEventListener('DOMContentLoaded', () => {
+      const img = document.getElementById('animatedImg');
+      img.addEventListener('animationend', () => {
+        img.classList.add('float');
+      });
+    });
+    </script>
+    <script>
+         function animateCounter(id, endValue, duration) {
+    const el = document.getElementById(id);
+    let startValue = 0;
+    const interval = 20; // ms
+    const step = Math.ceil((endValue * interval) / duration);
+
+    const timer = setInterval(() => {
+      startValue += step;
+      if (startValue >= endValue) {
+        el.innerText = endValue;
+        clearInterval(timer);
+      } else {
+        el.innerText = startValue;
+      }
+    }, interval);
+  }
+
+  // Wait for DOM to load
+  window.addEventListener('DOMContentLoaded', () => {
+    animateCounter("client-count", 100, 2000);        // count to 100 in 2 sec
+    animateCounter("transaction-count", 200, 2500);    // count to 200 in 2.5 sec
+  });
+    </script>
 <!-- Bootstrap Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -686,7 +789,7 @@ h2.title {
     <div class="row align-items-center mt-4">
       
       <!-- Left Content -->
-      <div class="col-lg-6 mb-4 text-lg-start text-center">
+      <div class="col-lg-6 mb-4 text-lg-start text-center slide-in-ltr">
         <h1 class="fw-bold">
           Invest smart, Earn big,<br />
           <span class="color2">BONDSADDA</span>
@@ -694,22 +797,21 @@ h2.title {
         <h2 class="rotating-tagline color2" id="taglineDisplay">Regular Income</h2>
 
         <!-- Counters -->
-        <div class="row mt-4 justify-content-center justify-content-lg-start">
-          <div class="col-6 col-md-4 mb-3">
-            <div class="counter-value" id="client-count">0</div>
-            <div class="counter-label">+ Clients</div>
-          </div>
-          <div class="col-6 col-md-4 mb-3">
-            <div class="counter-value" id="transaction-count">0</div>
-            <div class="counter-label">+ Cr Transactions</div>
-          </div>
-        </div>
-
+       <div class="row justify-content-center">
+            <div class="col-6 col-md-4 mb-3 text-center">
+              <div class="counter-value" id="client-count">0</div>
+              <div class="counter-label">+ Clients</div>
+            </div>
+            <div class="col-6 col-md-4 mb-3 text-center">
+              <div class="counter-value" id="transaction-count">0</div>
+              <div class="counter-label">+ Cr Transactions</div>
+            </div>
+       </div>
         <!-- Buttons -->
         <div class="mt-4 d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-lg-start gap-3">
           <a href="OurCollections.aspx" class="btn btn-invest color2">Invest Now</a>
           <a href="https://youtu.be/u57IIt8mwKA" target="_blank" class="text-white d-flex align-items-center gap-2 fs-5">
-            <i class="fa fa-play-circle text-danger"></i>
+            <i class="fa-solid fa-circle-play text-danger fs-1"></i>
             <span>What are Bonds & How do I Invest?</span>
           </a>
         </div>
@@ -726,12 +828,12 @@ h2.title {
 
 
 <!-- Features Section -->
-<section class="features-section py-5" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white;">
+<section class="features-section py-5">
   <div class="container">
     <div class="row text-center g-4">
       
       <div class="col-12 col-sm-6 col-lg-4">
-        <div class="feature-card p-4 rounded bg-transparent shadow-sm h-100">
+        <div class="feature-card p-4 rounded shadow-sm h-100 bounce-animation" style="animation-delay: 0s;">
           <i class="fa-solid fa-shield-halved fa-2x mb-3"></i>
           <h5 class="feature-title fw-bold">SEBI Registered</h5>
           <p class="mb-0">Secure investing with SEBI-regulated partners.</p>
@@ -739,7 +841,7 @@ h2.title {
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
-        <div class="feature-card p-4 rounded bg-transparent shadow-sm h-100">
+        <div class="feature-card p-4 rounded shadow-sm h-100 bounce-animation" style="animation-delay: 0.2s;">
           <i class="fa-solid fa-wallet fa-2x mb-3"></i>
           <h5 class="feature-title fw-bold">Easy Payments</h5>
           <p class="mb-0">Fast and flexible online transactions.</p>
@@ -747,7 +849,7 @@ h2.title {
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
-        <div class="feature-card p-4 rounded bg-transparent shadow-sm h-100">
+        <div class="feature-card p-4 rounded shadow-sm h-100 bounce-animation" style="animation-delay: 0.4s;">
           <i class="fa-solid fa-certificate fa-2x mb-3"></i>
           <h5 class="feature-title fw-bold">Verified Bonds</h5>
           <p class="mb-0">Invest in pre-verified high-grade bond listings.</p>
@@ -755,7 +857,7 @@ h2.title {
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
-        <div class="feature-card p-4 rounded bg-transparent shadow-sm h-100">
+        <div class="feature-card p-4 rounded shadow-sm h-100 bounce-animation" style="animation-delay: 0.6s;">
           <i class="fa-solid fa-bolt fa-2x mb-3"></i>
           <h5 class="feature-title fw-bold">Instant Allotment</h5>
           <p class="mb-0">Get instant allotment confirmation after payment.</p>
@@ -763,7 +865,7 @@ h2.title {
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
-        <div class="feature-card p-4 rounded bg-transparent shadow-sm h-100">
+        <div class="feature-card p-4 rounded shadow-sm h-100 bounce-animation" style="animation-delay: 0.8s;">
           <i class="fa-solid fa-headset fa-2x mb-3"></i>
           <h5 class="feature-title fw-bold">Dedicated Support</h5>
           <p class="mb-0">Call or chat with bond experts anytime you need help.</p>
@@ -771,7 +873,7 @@ h2.title {
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
-        <div class="feature-card p-4 rounded bg-transparent shadow-sm h-100">
+        <div class="feature-card p-4 rounded shadow-sm h-100 bounce-animation" style="animation-delay: 1s;">
           <i class="fa-solid fa-chart-line fa-2x mb-3"></i>
           <h5 class="feature-title fw-bold">High Returns</h5>
           <p class="mb-0">Grow your wealth with bonds offering superior returns.</p>
@@ -780,10 +882,9 @@ h2.title {
 
     </div>
   </div>
-</section>
-
-
-      <!-- Modal -->
+</section>     
+    
+<!-- Modal -->
  <section>
     <div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
