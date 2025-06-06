@@ -162,7 +162,11 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
         }
 
         // Check login session before sending 
-        string token = Session["AuthToken"] as string;
+        var participantId = Session["participantId"] as string;
+        var dealerId = Session["dealerId"] as string;
+        var password = Session["password"] as string;
+        var token = Session["AuthToken"] as string;
+
         if (string.IsNullOrEmpty(token))
         {
             lblMessage.Text = "Data saved locally. Please login to send to server.";
@@ -177,7 +181,7 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
                             : actionFlag == 2 ? "MODIFYICDMuccdetails"
                             : "DELETEICDMuccdetails";
 
-        string result = await SendUCCRequest(token, jsonPayload, apiEndpoint);
+        string result = await SendUCCRequest(token, jsonPayload, password, participantId, dealerId);
         lblMessage.Text = result;
     }
     protected void txtClientUCC_TextChanged(object sender, EventArgs e)
@@ -195,16 +199,16 @@ public partial class BSE_INTEGRATION_UCCManagement : System.Web.UI.Page
         int count = (result != null) ? Convert.ToInt32(result) : 0;
         return count > 0;
     }
-    private async Task<string> SendUCCRequest(string token, string jsonPayload, string endPoint)
+    private async Task<string> SendUCCRequest(string token, string jsonPayload, string password, string participantid, string dealerid)
     {
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
         using (HttpClient client = new HttpClient())
         {
-            client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc /");
-            client.DefaultRequestHeaders.Add("PARTICIPANTID", "DIMENSIONFSL");
-            client.DefaultRequestHeaders.Add("DEALERID", "DIMENSIONFSLD");
-            client.DefaultRequestHeaders.Add("PASSWORD", "Ravi#1234");
+            client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
+            client.DefaultRequestHeaders.Add("PARTICIPANTID", participantid);
+            client.DefaultRequestHeaders.Add("DEALERID", dealerid);
+            client.DefaultRequestHeaders.Add("PASSWORD", password);
             client.DefaultRequestHeaders.Add("TOKEN", token);
           //  client.DefaultRequestHeaders.Add("CHECKSUM", checksum);
 
