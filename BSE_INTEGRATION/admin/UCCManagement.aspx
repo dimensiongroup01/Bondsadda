@@ -1,195 +1,31 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UCCManagement.aspx.cs" Inherits="BSE_INTEGRATION_UCCManagement" Async="true" %>
-
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <title>UCC Management</title>
-    <link href="../css/Style_Bse/style.css" rel="stylesheet" />
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">>
+
+    <!-- Bootstrap CSS (fixed extra '>' character) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-
-
-    <style>
-        body {
-            font-size: 14px;
-            background-color: #f4f7fc;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 85%;
-           
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            overflow: hidden; /* Prevent scrolling */
-        }
-
-        /* Header Styling */
-        h4 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        /* Error Message */
-        .error-message {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-         .card-gold {
-        border: 1px solid #d4af37;
-        box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
-        border-radius: 12px;
-    }
-
-    .card-gold .card-header {
-        background: linear-gradient(90deg, #fceabb 0%, #f8b500 100%);
-        color: #fff;
-        border-bottom: 1px solid #e0c97d;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-    }
-
-    .card-gold .form-label {
-        color: #b8860b;
-        font-weight: 600;
-    }
-
-    .form-control-sm:focus {
-        border-color: #d4af37;
-        box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
-    }
-     .sizelogo{
-     width:250px;
- }
-
-        /*.nav-tabs .nav-link {
-            border-radius: 12px 12px 0 0;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 12px;
-        }
-
-        .nav-tabs .nav-link.active {
-            background-color: #343a40;
-            color: white;
-        }
-
-        .tab-content {
-            flex-grow: 1;*/ /* Allows the content to take the remaining space */
-            /*background-color: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-radius: 0 0 12px 12px;
-            overflow: auto;
-        }*/
-
-        /* Card Styling */
-        /*.card {
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        .card:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .card-header {
-            background-color: #343a40;
-            color: white;
-            font-size: 16px;
-            padding: 12px;
-        }
-
-        .card-body {
-            padding: 20px;
-        }*/
-
-        /* Button Styling */
-        /*.btn-custom {
-            font-size: 14px;
-            padding: 12px 20px;
-            text-transform: uppercase;
-            border-radius: 30px;
-            border: none;
-            transition: all 0.3s ease-in-out;
-            min-width: 150px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn-custom:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }*/
-
-        /* Specific Button Colors */
-        /*.btn-success-custom {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .btn-success-custom:hover {
-            background-color: #218838;
-        }
-
-        .btn-warning-custom {
-            background-color: #ffc107;
-            color: white;
-        }
-
-        .btn-warning-custom:hover {
-            background-color: #e0a800;
-        }
-
-        .btn-danger-custom {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .btn-danger-custom:hover {
-            background-color: #c82333;
-        }
-
-        .btn-custom:focus {
-            outline: none;
-        }*/
-
-        /* Form Elements */
-        /*.form-label {
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .form-control {
-            font-size: 14px;
-            padding: 8px;
-            border-radius: 8px;
-            width: 100%;
-        }*/
-        .btn:hover {
-        transform: scale(1.03);
-        transition: all 0.2s ease-in-out;
-    }
-       
-    </style>
+    <!-- Custom CSS (make sure path is correct relative to this .aspx file) -->
+    <link href="../../css/Style_Bse/style.css" rel="stylesheet" />
 </head>
+
 
 <body>
   <form id="form1" runat="server">
     <div class="container">
         <!-- Page Header -->
        <div class="d-flex justify-content-between align-items-center mb-4">
-  <img src="https://bondsadda.com/img/logo.png" alt="Bondsadda Logo" class="sizelogo" />
-  <h4 class="mb-0">UCC Management</h4>
+  <a href="Dashboard.aspx">
+    <img src="https://bondsadda.com/img/logo.png" alt="Bondsadda Logo" class="sizelogo" />
+</a>
+
+  <h4 class="mb-0">Client Details</h4>
 </div>
 
 
@@ -573,7 +409,7 @@
     <!-- Delete UCC Button -->
     <asp:Button ID="btnDeleteUCC" runat="server"
         Text=' Delete UCC'
-        CssClass="btn btn-danger btn-lg shadow-sm px-4 fw-semibold d-flex align-items-center gap-2"
+        CssClass="btn  shadow-sm px-4 fw-semibold d-flex align-items-center gap-2"
         OnClick="btnDeleteUCC_Click"
         UseSubmitBehavior="false" />
 

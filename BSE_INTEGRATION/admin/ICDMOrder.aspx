@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <!-- Custom Styles -->
-    <link href="../Style_bse/style.css" rel="stylesheet" />
+    <link href="../../css/Style_Bse/style.css" rel="stylesheet" />
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -31,189 +31,226 @@
     <!-- External JavaScript -->
     <script src="../js/bse_i/timepicker.js"></script>
 </head>
-    <style>
-        .container{
-            width:85%;
-            margin:0 auto;
-        }
-       .gold-label {
-        font-weight: bold;
-        color: #b8860b;
-    }
-    .input-group-text {
-        background: linear-gradient(45deg, #FFD700, #FFA500);
-        color: black;
-        border: none;
-    }
-    .form-label {
-        font-weight: bold;
-    }
-    .btn-gold {
-        background: linear-gradient(45deg, #FFD700, #FFA500);
-        color: black;
-        font-weight: bold;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background 0.3s;
-    }
-    .btn-gold:hover {
-        background: linear-gradient(45deg, #FFA500, #FFD700);
-    }
-    </style>
+
 
 <body>
+    <div class="container">
+        
+           <div class="d-flex justify-content-between align-items-center mb-4">
+  <a href="Dashboard.aspx">
+    <img src="https://bondsadda.com/img/logo.png" alt="Bondsadda Logo" class="sizelogo" />
+</a>
+
+  <h4 class="mb-0">ICDM Order</h4>
+</div>
+
+
    <form id="form1" runat="server">
-    <div class="container p-3">
-        <div class="card border shadow-sm rounded-3 p-3">
-            <h5 class="mb-3 text-primary fw-semibold">
-                <i class="fas fa-file-invoice me-2"></i> ICDM Order Entry
-            </h5>
-
-            <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold mb-2 d-block"></asp:Label>
-
-            <div class="row g-3">
-    <!-- ISIN -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-barcode me-1"></i>ISIN Number</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-barcode"></i></span>
-            <asp:TextBox ID="txtISIN" runat="server" CssClass="form-control" placeholder="Enter ISIN" required></asp:TextBox>
-        </div>
+<!-- ICDM Order Entry Card -->
+<div class="card card-gold mb-4">
+    <div class="card-header py-2">
+        <h6 class="mb-0"><i class="fas fa-file-invoice me-2"></i>ICDM Order Entry</h6>
     </div>
+    <div class="card-body px-4 py-3">
+        <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold mb-2 d-block"></asp:Label>
 
-    <!-- Order Type -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-exchange-alt me-1"></i>Order Type</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-exchange-alt"></i></span>
-            <asp:DropDownList ID="ddlOrderType" runat="server" CssClass="form-select">
-                <asp:ListItem Text="SELL" Value="1" />
-                <asp:ListItem Text="BOTH (CROSS DEAL)" Value="2" />
-            </asp:DropDownList>
+        <!-- Row 1 -->
+        <div class="row mb-3">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtISIN" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-barcode me-1"></i>ISIN Number
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtISIN" runat="server" CssClass="form-control form-control-sm" placeholder="Enter ISIN" />
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="ddlOrderType" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-exchange-alt me-1"></i>Order Type
+                </label>
+                <div class="col-7">
+                    <asp:DropDownList ID="ddlOrderType" runat="server" CssClass="form-control form-control-sm">
+                        <asp:ListItem Text="SELL" Value="1" />
+                        <asp:ListItem Text="BOTH (CROSS DEAL)" Value="2" />
+                    </asp:DropDownList>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="ddlIssueType" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-file-invoice-dollar me-1"></i>Issue Type
+                </label>
+                <div class="col-7">
+                    <asp:DropDownList ID="ddlIssueType" runat="server" CssClass="form-control form-control-sm">
+                        <asp:ListItem Text="ICDM" Value="ICDM" />
+                        <asp:ListItem Text="CP" Value="CP" />
+                        <asp:ListItem Text="CD" Value="CD" />
+                    </asp:DropDownList>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Issue Type -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-file-invoice-dollar me-1"></i>Issue Type</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-file-invoice-dollar"></i></span>
-            <asp:DropDownList ID="ddlIssueType" runat="server" CssClass="form-select">
-                <asp:ListItem Text="ICDM" Value="ICDM" />
-                <asp:ListItem Text="CP" Value="CP" />
-                <asp:ListItem Text="CD" Value="CD" />
-            </asp:DropDownList>
+        <!-- Row 2 -->
+        <div class="row mb-3">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="chkpreviousdaydeal" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-calendar-day me-1"></i>Prev Day Deal
+                </label>
+                <div class="col-7 d-flex align-items-center">
+                    <asp:CheckBox ID="chkpreviousdaydeal" runat="server" CssClass="form-check-input me-2" />
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtValue" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-rupee-sign me-1"></i>Value
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtValue" runat="server" CssClass="form-control form-control-sm" placeholder="Enter Value" />
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtPrice" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-percentage me-1"></i>Price
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control form-control-sm" placeholder="Enter Price" />
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Previous Day Deal -->
-    <div class="col-md-4 d-flex align-items-end">
-        <div class="form-check">
-            <asp:CheckBox ID="chkpreviousdaydeal" runat="server" CssClass="form-check-input" />
-            <label class="form-check-label gold-label ms-1"><i class="fas fa-calendar-day me-1"></i>Previous Day Deal</label>
+        <!-- Row 3 -->
+        <div class="row">
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="ddlSettleDays" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-calendar-check me-1"></i>Settle Days
+                </label>
+                <div class="col-7">
+                    <asp:DropDownList ID="ddlSettleDays" runat="server" CssClass="form-control form-control-sm">
+                        <asp:ListItem Text="T+0" Value="0" />
+                        <asp:ListItem Text="T+1" Value="1" />
+                        <asp:ListItem Text="T+2" Value="2" />
+                    </asp:DropDownList>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center">
+                <label for="txtModAcrr" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-calculator me-1"></i>Mod.Accr.Int
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control form-control-sm" />
+                </div>
+            </div>
         </div>
-    </div>
-
-    <!-- Value -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-rupee-sign me-1"></i>Value</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
-            <asp:TextBox ID="txtValue" runat="server" CssClass="form-control" placeholder="Enter Value" required></asp:TextBox>
-        </div>
-    </div>
-
-    <!-- Price -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-percentage me-1"></i>Price</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-percentage"></i></span>
-            <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" placeholder="Enter Price" required></asp:TextBox>
-        </div>
-    </div>
-
-    <!-- Settle Days -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-calendar-check me-1"></i>Settle Days</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
-            <asp:DropDownList ID="ddlSettleDays" runat="server" CssClass="form-select">
-                <asp:ListItem Text="T+0" Value="0" />
-                <asp:ListItem Text="T+1" Value="1" />
-                <asp:ListItem Text="T+2" Value="2" />
-            </asp:DropDownList>
-        </div>
-    </div>
-
-    <!-- Mod Accr Int -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-calculator me-1"></i>Mod.Accr.Int</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-calculator"></i></span>
-            <asp:TextBox ID="txtModAcrr" runat="server" CssClass="form-control" required></asp:TextBox>
-        </div>
-    </div>
-
-    <!-- Seller Participant -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-user-tag me-1"></i>Seller Participant Id</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
-            <asp:TextBox ID="txtSellerParticipantLoginId" runat="server" CssClass="form-control" ReadOnly="true" Text="BSEFI"></asp:TextBox>
-        </div>
-    </div>
-
-    <!-- Seller Dealer -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-user-tie me-1"></i>Seller Dealer Id</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-            <asp:TextBox ID="txtSellerDealerLoginId" runat="server" CssClass="form-control" ReadOnly="true" Text="BSEFID1"></asp:TextBox>
-        </div>
-    </div>
-
-    <!-- Seller Client -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-users me-1"></i>Seller Client Id</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-users"></i></span>
-            <asp:TextBox ID="txtSellerClientLoginId" runat="server" CssClass="form-control" ReadOnly="true" Text="BSEFI"></asp:TextBox>
-        </div>
-    </div>
-
-    <!-- Buyer Dealer -->
-<div class="col-md-4">
-    <label class="form-label gold-label"><i class="fas fa-user-shield me-1"></i>Buyer Dealer Id</label>
-    <div class="input-group">
-        <span class="input-group-text"><i class="fas fa-user-shield"></i></span>
-        <asp:TextBox ID="txtBuyerDealerId" runat="server" CssClass="form-control" ReadOnly="true" Text="BSEFID1"></asp:TextBox>
     </div>
 </div>
-
-<!-- Buyer Client -->
-<div class="col-md-4">
-    <label class="form-label gold-label"><i class="fas fa-user-friends me-1"></i>Buyer Client Id</label>
-    <div class="input-group">
-        <span class="input-group-text"><i class="fas fa-user-friends"></i></span>
-        <asp:TextBox ID="txtBuyerClientId" runat="server" CssClass="form-control"></asp:TextBox>
+<!-- Trade Execution Details Card -->
+<div class="card card-gold mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-file-contract me-2"></i>Trade Execution Details</h5>
     </div>
-</div>
+    <div class="card-body px-3 py-2">
+        <div class="row mb-3">
 
+            <!-- Mod Accr Int -->
+            <div class="col-md-4 d-flex">
+                <label for="txtModAcrr" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-calculator me-1"></i>Mod.Accr.Int
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtModAcrr" runat="server" CssClass="form-control form-control-sm" required="true"></asp:TextBox>
+                </div>
+            </div>
 
+            <!-- Seller Participant -->
+            <div class="col-md-4 d-flex">
+                <label for="txtSellerParticipantLoginId" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user-tag me-1"></i>Seller Participant Id
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtSellerParticipantLoginId" runat="server" CssClass="form-control form-control-sm" ReadOnly="true" Text="BSEFI"></asp:TextBox>
+                </div>
+            </div>
+
+            <!-- Seller Dealer -->
+            <div class="col-md-4 d-flex">
+                <label for="txtSellerDealerLoginId" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user-tie me-1"></i>Seller Dealer Id
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtSellerDealerLoginId" runat="server" CssClass="form-control form-control-sm" ReadOnly="true" Text="BSEFID1"></asp:TextBox>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <!-- Seller Client -->
+            <div class="col-md-4 d-flex">
+                <label for="txtSellerClientLoginId" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-users me-1"></i>Seller Client Id
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtSellerClientLoginId" runat="server" CssClass="form-control form-control-sm" ReadOnly="true" Text="BSEFI"></asp:TextBox>
+                </div>
+            </div>
+
+            <!-- Buyer Dealer -->
+            <div class="col-md-4 d-flex">
+                <label for="txtBuyerDealerId" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user-shield me-1"></i>Buyer Dealer Id
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtBuyerDealerId" runat="server" CssClass="form-control form-control-sm" ReadOnly="true" Text="BSEFID1"></asp:TextBox>
+                </div>
+            </div>
+
+            <!-- Buyer Client -->
+            <div class="col-md-4 d-flex">
+                <label for="txtBuyerClientId" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user-friends me-1"></i>Buyer Client Id
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtBuyerClientId" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
+                </div>
+            </div>
+        </div>
+
+       <div class="row">
     <!-- Execution Time -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-clock me-1"></i>Execution Time (HH:MM)</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-clock"></i></span>
-            <asp:DropDownList ID="ddlHours" runat="server" CssClass="form-select w-50"></asp:DropDownList>
-            <span class="input-group-text">:</span>
-            <asp:DropDownList ID="ddlMinutes" runat="server" CssClass="form-select w-50"></asp:DropDownList>
+    <div class="col-md-4 d-flex align-items-center">
+        <label for="ddlHours" class="col-5 col-form-label text-end pe-2">
+            <i class="fas fa-clock me-1"></i>Execution Time (HH:MM)
+        </label>
+        <div class="col-7 d-flex align-items-center">
+            <asp:DropDownList ID="ddlHours" runat="server" CssClass="form-select form-select-sm me-1 w-50"></asp:DropDownList>
+            <span class="input-group-text px-2">:</span>
+            <asp:DropDownList ID="ddlMinutes" runat="server" CssClass="form-select form-select-sm ms-1 w-50"></asp:DropDownList>
         </div>
     </div>
 
     <!-- Yield Type -->
-    <div class="col-md-4">
+    <div class="col-md-4 d-flex align-items-center">
+        <label for="ddlYieldType" class="col-5 col-form-label text-end pe-2">
+            <i class="fas fa-chart-line me-1"></i>Yield Type
+        </label>
+        <div class="col-7">
+            <asp:DropDownList ID="ddlYieldType" runat="server" CssClass="form-control form-control-sm">
+                <asp:ListItem Text="YTM" Value="YTM" />
+                <asp:ListItem Text="YTP" Value="YTP" />
+                <asp:ListItem Text="YTC" Value="YTV" />
+            </asp:DropDownList>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    <!-- Yield Type -->
+  <%--  <div class="col-md-4">
         <label class="form-label gold-label"><i class="fas fa-chart-line me-1"></i>Yield Type</label>
         <div class="input-group">
             <span class="input-group-text"><i class="fas fa-chart-line"></i></span>
@@ -223,50 +260,73 @@
                 <asp:ListItem Text="YTC" Value="YTV" />
             </asp:DropDownList>
         </div>
-    </div>
+    </div>--%>
 
     <!-- Is Broker -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-handshake me-1"></i>Is Broker</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-handshake"></i></span>
-            <asp:DropDownList ID="ddlIsBroker" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlIsBroker_SelectedIndexChanged">
-                <asp:ListItem Text="DIRECT" Value="DIRECT" />
-                <asp:ListItem Text="BROKERED" Value="BROKERED" />
-            </asp:DropDownList>
-        </div>
+   <!-- Order Details Card -->
+<div class="card card-gold mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Order Details</h5>
     </div>
+    <div class="card-body px-3 py-2">
 
-    <!-- Yield -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-percentage me-1"></i>Yield</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-percentage"></i></span>
-            <asp:TextBox ID="txtYield" runat="server" CssClass="form-control" required></asp:TextBox>
+        <div class="row mb-3">
+            <!-- Is Broker -->
+            <div class="col-md-4 d-flex">
+                <label for="ddlIsBroker" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-handshake me-1"></i>Is Broker
+                </label>
+                <div class="col-7">
+                    <asp:DropDownList ID="ddlIsBroker" runat="server" CssClass="form-select form-select-sm"
+                        AutoPostBack="true" OnSelectedIndexChanged="ddlIsBroker_SelectedIndexChanged">
+                        <asp:ListItem Text="DIRECT" Value="DIRECT" />
+                        <asp:ListItem Text="BROKERED" Value="BROKERED" />
+                    </asp:DropDownList>
+                </div>
+                 
+            </div>
+             <!-- Yield -->
+         <div class="col-md-4 d-flex">
+             <label for="txtYield" class="col-5 col-form-label text-end pe-2">
+                 <i class="fas fa-percentage me-1"></i>Yield
+             </label>
+             <div class="col-7">
+                 <asp:TextBox ID="txtYield" runat="server" CssClass="form-control form-control-sm" required></asp:TextBox>
+             </div>
+         </div>
+          
+
+            <!-- Brokered Name -->
+            <div class="col-md-4 d-flex">
+                <label for="txtBrokeredName" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-user-circle me-1"></i>Brokered Name
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtBrokeredName" runat="server" CssClass="form-control form-control-sm" Enabled="false"></asp:TextBox>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Brokered Name -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-user-circle me-1"></i>Brokered Name</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
-            <asp:TextBox ID="txtBrokeredName" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+        <!-- Row 2 -->
+        <div class="row mb-3">
+            <!-- Reference Number -->
+            <div class="col-md-4 d-flex">
+                <label for="txtSellerReferenceno" class="col-5 col-form-label text-end pe-2">
+                    <i class="fas fa-hashtag me-1"></i>Reference Number
+                </label>
+                <div class="col-7">
+                    <asp:TextBox ID="txtSellerReferenceno" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Reference Number -->
-    <div class="col-md-4">
-        <label class="form-label gold-label"><i class="fas fa-hashtag me-1"></i>Reference Number</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
-            <asp:TextBox ID="txtSellerReferenceno" runat="server" CssClass="form-control"></asp:TextBox>
+        <!-- Submit Button -->
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <asp:Button ID="btnCreateICDM" runat="server" Text="Create Order"  CssClass="btn w-100" OnClick="btnCreateICDM_Click" />
+            </div>
         </div>
-    </div>
 
-    <!-- Submit Button -->
-    <div class="col-12 mt-3">
-        <asp:Button ID="btnCreateICDM" runat="server" Text="Create Order" CssClass="btn-gold w-100" OnClick="btnCreateICDM_Click" />
     </div>
 </div>
 
@@ -281,6 +341,7 @@
         });
     </script>
 </form>
+    </div>
 
 </body>
 </html>
