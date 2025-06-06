@@ -24,7 +24,11 @@ public partial class BSE_INTEGRATION_RFQDealPropose : System.Web.UI.Page
 
     private async Task<string> RFQQuotePropose()
     {
-        string token = Session["AuthToken"] as string;
+        var participantId = Session["participantId"] as string;
+        var dealerId = Session["dealerId"] as string;
+        var password = Session["password"] as string;
+        var token = Session["AuthToken"] as string;
+
         if (string.IsNullOrEmpty(token))
         {
             Response.Redirect("Login.aspx");
@@ -91,7 +95,7 @@ public partial class BSE_INTEGRATION_RFQDealPropose : System.Web.UI.Page
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
        string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
-        string apiResponse= await SendRFQQuotePropose(token, jsonPayload);
+        string apiResponse= await SendRFQQuotePropose(token, jsonPayload, password, participantId, dealerId);
 
         dynamic responseObject = JsonConvert.DeserializeObject<dynamic>(apiResponse);
         var dealResponseList = (responseObject != null) ? responseObject.RFQPROPOSEDEALRESPONSE : null;
@@ -125,16 +129,16 @@ public partial class BSE_INTEGRATION_RFQDealPropose : System.Web.UI.Page
 
 
 
-    private async Task<string> SendRFQQuotePropose(string token, string jsonPayload)
+    private async Task<string> SendRFQQuotePropose(string token, string jsonPayload, string password, string participantid, string dealerid)
     {
         try
         {
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
-                client.DefaultRequestHeaders.Add("PARTICIPANTID", "DFSPL");
-                client.DefaultRequestHeaders.Add("DEALERID", "DFSPLD");
-                client.DefaultRequestHeaders.Add("PASSWORD", "Dfspld@2025");
+                client.DefaultRequestHeaders.Add("PARTICIPANTID", participantid);
+                client.DefaultRequestHeaders.Add("DEALERID", dealerid);
+                client.DefaultRequestHeaders.Add("PASSWORD", password);
                 client.DefaultRequestHeaders.Add("TOKEN", token);
 
                 HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
