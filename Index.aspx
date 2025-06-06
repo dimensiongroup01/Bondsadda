@@ -707,7 +707,7 @@ h2.title {
 
         <!-- Buttons -->
         <div class="mt-4 d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-lg-start gap-3">
-          <a href="OurCollections.aspx" class="btn btn-invest">Invest Now</a>
+          <a href="OurCollections.aspx" class="btn btn-invest color2">Invest Now</a>
           <a href="https://youtu.be/u57IIt8mwKA" target="_blank" class="text-white d-flex align-items-center gap-2 fs-5">
             <i class="fa fa-play-circle text-danger"></i>
             <span>What are Bonds & How do I Invest?</span>

@@ -7,252 +7,26 @@
     <title>RFQ Order Entry</title>
 
     <!-- CSS -->
-    <link href="../css/Style_Bse/style.css" rel="stylesheet" />
+    <link href="../../css/Style_Bse/style.css" rel="stylesheet" />
     <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
-     <script type="text/javascript" src=".../js/bse_i/rfq.js"></script>
+     <script type="text/javascript" src="../../js/bse_i/rfq.js"></script>
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
      <!-- External JavaScript -->
- <script src="../js/bse_i/timepicker.js"></script>
+ <script src="../../js/bse_i/timepicker.js"></script>
 
-    <style>
-        .container{
-            width:100;
-            margin:0 auto;
-        }
-        .input-icon {
-            position: relative;
-        }
-        
-        .input-icon input {
-            padding-left: 2.5rem;
-        }
-        
-        .input-icon i {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #f39c12; /* Gold Icon */
-        }
-
-        .form-control.border-warning {
-            border-color: #f39c12; /* Gold Border */
-        }
-
-        .btn-warning {
-            background-color: #f39c12; /* Gold Button */
-            color: white;
-        }
-
-        .btn-warning:hover {
-            background-color: #e67e22;
-        }
-
-        .form-label {
-            color: #6c757d; /* Muted label color */
-        }
-
-    </style>
+   
      <!-- Custom JavaScript File -->
  <script type="text/javascript" src="../js/bse_i/rfq.js"></script>
     <!-- ✅ Bootstrap JS (Required for Modals) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-        function showReceipt(responseData) {
-            // Populate the receipt modal with response data
-            document.getElementById("bidrfqordernumber").textContent = responseData.bidrfqordernumber;
-            document.getElementById("isinnumber").textContent = responseData.isinnumber;
-            document.getElementById("bidprice").textContent = responseData.bidprice.toFixed(2);
-            document.getElementById("bidquantity").textContent = responseData.bidquantity;
-            document.getElementById("bidvalue").textContent = responseData.bidvalue.toFixed(2);
-            document.getElementById("bidyield").textContent = responseData.bidyield.toFixed(2);
-            document.getElementById("settlementdate").textContent = responseData.settlementdate;
-            document.getElementById("orderstatus").textContent = responseData.orderstatus;
-            document.getElementById("message").textContent = responseData.message;
-
-            // Show the modal
-            let receiptModal = new bootstrap.Modal(document.getElementById('receiptModal'));
-            receiptModal.show();
-        }
-        function downloadReceipt() {
-            // Select the modal content (excluding close buttons)
-            let receiptModal = document.getElementById("receiptModal");
-
-            // Clone only the necessary parts (header + body)
-            let receiptContent = receiptModal.querySelector(".modal-content").cloneNode(true);
-
-            // Remove the close button from the cloned content
-            receiptContent.querySelector(".btn-close").remove();
-
-            // Create a printable area and add the cloned content
-            let printableArea = document.createElement("div");
-            printableArea.style.padding = "20px";
-            printableArea.style.textAlign = "center";
-
-            // Append the company logo and title
-            printableArea.innerHTML = `
-        <div style="text-align: center; margin-bottom: 10px;">
-            <img src="/img/logo.png" alt="Company Logo" style="width: 350px; height: 60px; border-radius: 50%;">
-            <h2 style="color: #007bff; margin-top: 10px;">Transaction Receipt</h2>
-        </div>
-    `;
-
-            // Append the receipt details
-            printableArea.appendChild(receiptContent);
-
-            // Convert the content to PDF
-            html2pdf()
-                .from(printableArea)
-                .set({
-                    margin: 10,
-                    filename: 'Transaction_Receipt.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                })
-                .save();
-        }
   
-       
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            toggleFields();
-            toggleDealTime();
-            populateDropdown('ddlDealTimeHours', 0, 23, 1);
-            populateDropdown('ddlDealTimeMinutes', 0, 59, 1);
-            updateSettleType();
-            toggleBrokerName();
-
-            // Attach event listeners
-            var ddlQuoteType = document.getElementById('ddlQuoteType');
-            var chkGFD = document.getElementById('chkGFD');
-            var ddlProduct = document.getElementById('ddlProduct');
-            var ddlUserType = document.getElementById('ddlUserType');
-
-            if (ddlQuoteType) ddlQuoteType.addEventListener('change', toggleFields);
-            if (chkGFD) chkGFD.addEventListener('change', toggleDealTime);
-            if (ddlProduct) ddlProduct.addEventListener('change', updateSettleType);
-            if (ddlUserType) ddlUserType.addEventListener('change', toggleBrokerName);
-        });
-
-        // ✅ Toggle fields based on Quote Type (BID/OFFER)
-        function toggleFields() {
-            var ddlQuoteType = document.getElementById('ddlQuoteType');
-            if (!ddlQuoteType) return;
-
-            var quoteType = ddlQuoteType.options[ddlQuoteType.selectedIndex].text.trim();
-            var bidFields = getElements(['txtBidValue', 'txtBidMinValue', 'ddlBidYieldType', 'txtBidYieldValue', 'txtBidPrice']);
-            var offerFields = getElements(['txtOfferValue', 'txtOfferMinValue', 'ddlOfferYieldType', 'txtOfferYieldValue', 'txtOfferPrice']);
-
-            if (quoteType === "BID") {
-                setFieldsState(bidFields, true);
-                setFieldsState(offerFields, false);
-            } else if (quoteType === "OFFER") {
-                setFieldsState(bidFields, false);
-                setFieldsState(offerFields, true);
-            } else {
-                setFieldsState(bidFields, false);
-                setFieldsState(offerFields, false);
-            }
-        }
-
-        // ✅ Enable/disable fields
-        function setFieldsState(fields, enable) {
-            fields.forEach(function (element) {
-                if (element) {
-                    element.disabled = !enable;
-                    if (!enable) element.value = ""; // Clear value when disabled
-                }
-            });
-        }
-
-        // ✅ Toggle Deal Time fields based on GFD checkbox
-        function toggleDealTime() {
-            var chkGFD = document.getElementById('chkGFD');
-            var hoursDropdown = document.getElementById('ddlDealTimeHours');
-            var minutesDropdown = document.getElementById('ddlDealTimeMinutes');
-
-            if (!chkGFD || !hoursDropdown || !minutesDropdown) return;
-
-            if (chkGFD.checked) {
-                hoursDropdown.disabled = false;
-                minutesDropdown.disabled = false;
-            } else {
-                hoursDropdown.disabled = true;
-                minutesDropdown.disabled = true;
-                hoursDropdown.value = "";
-                minutesDropdown.value = "";
-            }
-        }
-
-        // ✅ Populate dropdown with hours/minutes
-        function populateDropdown(selector, start, end, step) {
-            var dropdown = document.getElementById(selector);
-            if (!dropdown) return;
-
-            dropdown.innerHTML = "";
-            for (var i = start; i <= end; i += step) {
-                var value = i.toString().padStart(2, "0");
-                var option = document.createElement("option");
-                option.value = value;
-                option.text = value;
-                dropdown.appendChild(option);
-            }
-        }
-
-        // ✅ SettleType logic based on Market selection
-        function updateSettleType() {
-            var ddlProduct = document.getElementById('ddlProduct');
-            var ddlSettleType = document.getElementById('ddlSettleType');
-
-            if (!ddlProduct || !ddlSettleType) return;
-
-            if (ddlProduct.value === "GSEC") {
-                ddlSettleType.value = "T+1"; // Set to T+1 when Market is GSEC
-            }
-        }
-
-        // ✅ Toggle Broker Name field based on User Type selection
-        function toggleBrokerName() {
-            var ddlUserType = document.getElementById('ddlUserType');
-            var brokerNameContainer = document.getElementById("brokerNameContainer");
-
-            if (!ddlUserType || !brokerNameContainer) return;
-
-            if (ddlUserType.value === "BROKERED") {
-                brokerNameContainer.style.display = "block";
-            } else {
-                brokerNameContainer.style.display = "none";
-            }
-        }
-
-        // ✅ Handle partial postbacks in UpdatePanel
-        if (typeof Sys !== "undefined" && Sys.WebForms) {
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
-                toggleFields();
-                toggleDealTime();
-                updateSettleType();
-                toggleBrokerName();
-            });
-        }
-
-        // ✅ Utility: Get multiple elements by IDs
-        function getElements(ids) {
-            return ids.map(id => document.getElementById(id)).filter(el => el);
-        }
-
-
-    </script>
-
 
 
 
@@ -264,196 +38,377 @@
 
 
 <body>
+<div class="container">
+                               <div class="d-flex justify-content-between align-items-center mb-4">
+  <a href="Dashboard.aspx">
+    <img src="https://bondsadda.com/img/logo.png" alt="Bondsadda Logo" class="sizelogo" />
+</a>
+
+  <h4 class="mb-0">RFQ Order</h4>
+</div>
+   
 <form id="form1" runat="server">
-    <div class="container p-4 bg-white shadow rounded mt-4 mb-5 border border-3 border-warning">
+   <div class="container">
 
-        <!-- Title -->
-        <div class="mb-4 border-bottom pb-2 text-center">
-            <h3 class="text-warning fw-bold"><i class="bi bi-pencil-square me-2"></i>RFQ Order Entry</h3>
-        </div>
-        <asp:Label ID="lblMessage" runat="server" Text="Status will appear here." ForeColor="Blue" Font-Bold="true" />
-         <div class="col-md-4">
-     <label class="form-label text-muted"><i class="bi bi-telephone me-2 text-warning"></i>
-Customer Mobile no</label>
-     <asp:TextBox ID="txtcustmob" runat="server" CssClass="form-control border-warning" />
- </div>
-        <!-- Market Info -->
-        <div class="row g-3">
-            <div class="col-md-6">
-                <label class="form-label text-muted fw-semibold"><i class="bi bi-globe2 me-2 text-warning"></i>Market</label>
-                <asp:DropDownList ID="ddlProduct" runat="server" CssClass="form-select">
-                       <asp:ListItem Text="ICDM" Value="ICDM" />
-                       <asp:ListItem Text="GSEC" Value="GSEC" />
-                       <asp:ListItem Text="CP" Value="CP" />
-                       <asp:ListItem Text="CD" Value="CD" />
-                   </asp:DropDownList>
-            </div>
-            <div class="col-md-6">
-                <label class="form-label  fw-semibold">
-                    <i class="fa-solid fa-arrow-left-right me-2 text-warning"></i>Quote Type
-                </label>
-                <asp:DropDownList ID="ddlQuoteType" runat="server" CssClass="form-select">
-                    <asp:ListItem Text="--Select--" Value="" />
-                    <asp:ListItem Text="BID" Value="BID" />
-                    <asp:ListItem Text="OFFER" Value="OFFER" />
-                </asp:DropDownList>
-
-            </div>
-            <div class="col-md-4">
-                <label class="form-label text-muted"><i class="bi bi-upc-scan me-2 text-warning"></i>ISIN Number</label>
-                <asp:TextBox ID="txtISINNumber" runat="server" CssClass="form-control border-warning" />
-            </div>
-            <div class="col-md-6">
-                <label class="form-label text-muted"><i class="bi bi-person-badge me-2 text-warning"></i>PRO/CLIENT</label>
-                <asp:DropDownList ID="ddlProClient" runat="server" CssClass="form-select">
-                       <asp:ListItem Value="PRO">PRO</asp:ListItem>
-                       <asp:ListItem Value="CLIENT">CLIENT</asp:ListItem>
-                   </asp:DropDownList>
-            </div>
+    <!-- ICDM Order Entry Card -->
+    <div class="card border border-warning shadow-sm">
+        <div class="card-header py-2 bg-warning bg-gradient">
+            <h6 class="mb-0 text-dark fw-bold"><i class="fas fa-file-invoice me-2"></i>ICDM Order Entry</h6>
         </div>
 
-        <!-- Bid and Offer Section -->
-        <div class="row g-4 mt-4">
-            <!-- BID -->
-            <div class="col-md-6 border-end" id="bidSection">
-                <h5 class="text-primary"><i class="bi bi-graph-up-arrow me-2"></i>Bid Parameters</h5>
-                <label>Bid Value</label>
-                <asp:TextBox ID="txtBidValue" runat="server" CssClass="form-control border-warning" TextMode="Number" />
-                <label>Bid Min Value</label>
-                <asp:TextBox ID="txtBidMinValue" runat="server" CssClass="form-control border-warning" TextMode="Number" />
-                <label>Bid Yield Type</label>
-                <asp:DropDownList ID="ddlBidYieldType" runat="server" CssClass="form-control">
-                       <asp:ListItem Text="YTM" Value="YTM"></asp:ListItem>
-                       <asp:ListItem Text="YTP" Value="YTP"></asp:ListItem>
-                       <asp:ListItem Text="YTC" Value="YTC"></asp:ListItem>
-                   </asp:DropDownList>
-                <label>Bid Yield Value</label>
-                <asp:TextBox ID="txtBidYieldValue" runat="server" CssClass="form-control border-warning" TextMode="Number" />
-                <label>Bid Price</label>
-                <asp:TextBox ID="txtBidPrice" runat="server" CssClass="form-control border-warning" />
-            </div>
+        <div class="card-body px-4 py-3">
+            <asp:Label ID="lblMessage" runat="server" CssClass="text-danger fw-bold mb-2 d-block"></asp:Label>
 
-            <!-- OFFER -->
-            <div class="col-md-6" id="offerSection" >
-                <h5 class="text-danger"><i class="bi bi-graph-down-arrow me-2"></i>Offer Parameters</h5>
-                <label>Offer Value</label>
-                <asp:TextBox ID="txtOfferValue" runat="server" CssClass="form-control border-warning" TextMode="Number" />
-                <label>Offer Min Value</label>
-                <asp:TextBox ID="txtOfferMinValue" runat="server" CssClass="form-control border-warning" TextMode="Number" />
-                <label>Offer Yield Type</label>
-                <asp:DropDownList ID="ddlOfferYieldType" runat="server" CssClass="form-control">
-                       <asp:ListItem Text="YTM" Value="YTM"></asp:ListItem>
-                       <asp:ListItem Text="YTP" Value="YTP"></asp:ListItem>
-                       <asp:ListItem Text="YTC" Value="YTC"></asp:ListItem>
-                   </asp:DropDownList>
-                <label>Offer Yield Value</label>
-                <asp:TextBox ID="txtOfferYieldValue" runat="server" CssClass="form-control border-warning" />
-                <label>Offer Price</label>
-                <asp:TextBox ID="txtOfferPrice" runat="server" CssClass="form-control border-warning" />
-            </div>
-        </div>
+            <!-- Row 1 -->
+            <div class="row mb-3">
+                <!-- Customer Mobile no -->
+                <div class="col-md-4 d-flex align-items-center">
+                    <label for="txtcustmob" class="col-5 col-form-label text-end pe-2">
+                        <i class="bi bi-telephone-fill me-1"></i>Customer Mobile no
+                    </label>
+                    <div class="col-7">
+                        <asp:TextBox ID="txtcustmob" runat="server" CssClass="form-control form-control-sm border-warning border-2" />
+                    </div>
+                </div>
 
-        <!-- Validity & Deal Time -->
-        <div class="row g-3 mt-4">
-            <div class="col-md-6">
-                <label><i class="bi bi-calendar-check me-2 text-warning"></i>Validity Time</label>
-                <div class="form-check">
-                    <asp:CheckBox ID="chkGFD" runat="server" CssClass="form-check-input border-warning" />
-                    <label class="form-check-label ms-2">GFD</label>
+                <!-- Product -->
+                <div class="col-md-4 d-flex align-items-center">
+                    <label for="ddlProduct" class="col-5 col-form-label text-end pe-2">
+                        <i class="bi bi-globe2 me-1"></i>Product
+                    </label>
+                    <div class="col-7">
+                        <asp:DropDownList ID="ddlProduct" runat="server" CssClass="form-select form-select-sm border-warning border-2">
+                            <asp:ListItem Text="ICDM" Value="ICDM" />
+                            <asp:ListItem Text="GSEC" Value="GSEC" />
+                            <asp:ListItem Text="CP" Value="CP" />
+                            <asp:ListItem Text="CD" Value="CD" />
+                        </asp:DropDownList>
+                    </div>
+                </div>
+
+                <!-- Quote Type -->
+                <div class="col-md-4 d-flex align-items-center">
+                    <label for="ddlQuoteType" class="col-5 col-form-label text-end pe-2">
+                        <i class="bi bi-arrow-left-right me-1"></i>Quote Type
+                    </label>
+                    <div class="col-7">
+                        <asp:DropDownList ID="ddlQuoteType" runat="server" CssClass="form-select form-select-sm border-warning border-2">
+                            <asp:ListItem Text="--Select--" Value="" />
+                            <asp:ListItem Text="BID" Value="BID" />
+                            <asp:ListItem Text="OFFER" Value="OFFER" />
+                        </asp:DropDownList>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <label><i class="bi bi-clock me-2 text-warning"></i>Deal Time (Hours)</label>
-                <asp:DropDownList ID="ddlDealTimeHours" runat="server" CssClass="form-select border-warning" />
-            </div>
-            <div class="col-md-3">
-                <label><i class="bi bi-clock-history me-2 text-warning"></i>Deal Time (Minutes)</label>
-                <asp:DropDownList ID="ddlDealTimeMinutes" runat="server" CssClass="form-select border-warning" />
+
+            <!-- Row 2 -->
+            <div class="row mb-3">
+                <!-- ISIN Number -->
+                <div class="col-md-4 d-flex align-items-center">
+                    <label for="txtISINNumber" class="col-5 col-form-label text-end pe-2">
+                        <i class="bi bi-upc-scan me-1"></i>ISIN Number
+                    </label>
+                    <div class="col-7">
+                        <asp:TextBox ID="txtISINNumber" runat="server" CssClass="form-control form-control-sm border-warning border-2" />
+                    </div>
+                </div>
+
+                <!-- PRO/CLIENT -->
+                <div class="col-md-4 d-flex align-items-center">
+                    <label for="ddlProClient" class="col-5 col-form-label text-end pe-2">
+                        <i class="bi bi-person-badge me-1"></i>PRO/CLIENT
+                    </label>
+                    <div class="col-7">
+                        <asp:DropDownList ID="ddlProClient" runat="server" CssClass="form-select form-select-sm border-warning border-2">
+                            <asp:ListItem Value="PRO">PRO</asp:ListItem>
+                            <asp:ListItem Value="CLIENT">CLIENT</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                </div>
+
+                <!-- Example Field -->
+                <div class="col-md-4 d-flex align-items-center">
+                    <label for="txtExample" class="col-5 col-form-label text-end pe-2">
+                        <i class="bi bi-cash-coin me-1"></i>Example Field
+                    </label>
+                    <div class="col-7">
+                        <asp:TextBox ID="txtExample" runat="server" CssClass="form-control form-control-sm border-warning border-2" placeholder="Enter Value" />
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Other Details -->
-        <div class="row g-3 mt-4">
-            <div class="col-md-6">
-                <label><i class="bi bi-arrows-move me-2 text-warning"></i>Negotiable</label>
-                <asp:DropDownList ID="ddlNegotiableTag" runat="server" CssClass="form-control">
-                       <asp:ListItem Text="YES" Value="YES"></asp:ListItem>
-                       <asp:ListItem Text="NO" Value="NO"></asp:ListItem>
-                   </asp:DropDownList>
-                <label><i class="bi bi-hdd-network me-2 text-warning"></i>OBP Platform</label>
-                 <asp:DropDownList ID="ddlObpPlatform" runat="server" CssClass="form-control">
+    <!-- Bid & Offer Section -->
+    <div class="card border border-warning shadow-sm mt-4">
+        <div class="card-header py-2 bg-warning bg-gradient">
+            <h6 class="mb-0 text-dark fw-bold"><i class="fas fa-scale-balanced me-2"></i>Bid & Offer Parameters</h6>
+        </div>
+
+        <div class="card-body px-4 py-3">
+            <div class="row">
+
+                <!-- Bid Section -->
+                <div class="col-md-6 border-end pe-md-4">
+                    <h5 class="text-primary mb-3"><i class="bi bi-graph-up-arrow me-2"></i>Bid Parameters</h5>
+
+                    <div class="mb-3 row">
+                        <label for="txtBidValue" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-currency-rupee me-1"></i>Bid Value
+                        </label>
+                        <div class="col-7">
+                            <asp:TextBox ID="txtBidValue" runat="server" CssClass="form-control form-control-sm border-warning border-2" TextMode="Number" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="txtBidMinValue" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-arrow-down-short me-1"></i>Bid Min Value
+                        </label>
+                        <div class="col-7">
+                            <asp:TextBox ID="txtBidMinValue" runat="server" CssClass="form-control form-control-sm border-warning border-2" TextMode="Number" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="ddlBidYieldType" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-percent me-1"></i>Yield Type
+                        </label>
+                        <div class="col-7">
+                            <asp:DropDownList ID="ddlBidYieldType" runat="server" CssClass="form-select form-select-sm border-warning border-2">
+                                <asp:ListItem Text="YTM" Value="YTM" />
+                                <asp:ListItem Text="YTP" Value="YTP" />
+                                <asp:ListItem Text="YTC" Value="YTC" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="txtBidYieldValue" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-graph-up me-1"></i>Yield Value
+                        </label>
+                        <div class="col-7">
+                            <asp:TextBox ID="txtBidYieldValue" runat="server" CssClass="form-control form-control-sm border-warning border-2" TextMode="Number" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="txtBidPrice" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-tags me-1"></i>Bid Price
+                        </label>
+                        <div class="col-7">
+                            <asp:TextBox ID="txtBidPrice" runat="server" CssClass="form-control form-control-sm border-warning border-2" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offer Section -->
+                <div class="col-md-6 ps-md-4">
+                    <h5 class="text-danger mb-3"><i class="bi bi-graph-down-arrow me-2"></i>Offer Parameters</h5>
+
+                    <div class="mb-3 row">
+                        <label for="txtOfferValue" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-currency-rupee me-1"></i>Offer Value
+                        </label>
+                        <div class="col-7">
+                            <asp:TextBox ID="txtOfferValue" runat="server" CssClass="form-control form-control-sm border-warning border-2" TextMode="Number" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="txtOfferMinValue" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-arrow-down-short me-1"></i>Offer Min Value
+                        </label>
+                        <div class="col-7">
+                            <asp:TextBox ID="txtOfferMinValue" runat="server" CssClass="form-control form-control-sm border-warning border-2" TextMode="Number" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="ddlOfferYieldType" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-percent me-1"></i>Yield Type
+                        </label>
+                        <div class="col-7">
+                            <asp:DropDownList ID="ddlOfferYieldType" runat="server" CssClass="form-select form-select-sm border-warning border-2">
+                                <asp:ListItem Text="YTM" Value="YTM" />
+                                <asp:ListItem Text="YTP" Value="YTP" />
+                                <asp:ListItem Text="YTC" Value="YTC" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="txtOfferYieldValue" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-graph-down me-1"></i>Yield Value
+                        </label>
+                        <div class="col-7">
+                            <asp:TextBox ID="txtOfferYieldValue" runat="server" CssClass="form-control form-control-sm border-warning border-2" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="txtOfferPrice" class="col-5 col-form-label text-end pe-2">
+                            <i class="bi bi-tags me-1"></i>Offer Price
+                        </label>
+                        <div class="col-7">
+                            <asp:TextBox ID="txtOfferPrice" runat="server" CssClass="form-control form-control-sm border-warning border-2" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+     <div class="container">
+            <div class="card">
+       <div class="card-header py-2">
+           <h6 class="mb-0"><i class="fas fa-stopwatch me-2"></i>Validity & Deal Time</h6>
+       </div>
+       <div class="card-body px-4 py-3">
+           <div class="row mb-3 align-items-center">
+               <div class="col-md-6">
+                   <div class="row">
+                       <label class="col-5 col-form-label text-end pe-2" for="<%= chkGFD.ClientID %>">
+                           <i class="fas fa-calendar-check text-warning me-1"></i>Validity Time
+                       </label>
+                       <div class="col-7 d-flex align-items-center">
+                           <asp:CheckBox ID="chkGFD" runat="server" CssClass="form-check-input border-warning me-2" />
+                           <label class="form-check-label" for="<%= chkGFD.ClientID %>">GFD</label>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-md-3">
+                   <div class="row">
+                       <label for="<%= ddlDealTimeHours.ClientID %>" class="col-5 col-form-label text-end pe-2">
+                           <i class="fas fa-clock text-warning me-1"></i>Hours
+                       </label>
+                       <div class="col-7">
+                           <asp:DropDownList ID="ddlDealTimeHours" runat="server" CssClass="form-select form-select-sm border-warning" />
+                       </div>
+                   </div>
+               </div>
+               <div class="col-md-3">
+                   <div class="row">
+                       <label for="<%= ddlDealTimeMinutes.ClientID %>" class="col-5 col-form-label text-end pe-2">
+                           <i class="fas fa-clock text-warning me-1"></i>Minutes
+                       </label>
+                       <div class="col-7">
+                           <asp:DropDownList ID="ddlDealTimeMinutes" runat="server" CssClass="form-select form-select-sm border-warning" />
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Other Details -->
+           <div class="row g-3 mt-4">
+               <div class="col-md-6">
+                   <label for="<%= ddlNegotiableTag.ClientID %>" class="form-label d-block">
+                       <i class="bi bi-arrows-move me-2 text-warning"></i>Negotiable
+                   </label>
+                   <asp:DropDownList ID="ddlNegotiableTag" runat="server" CssClass="form-control">
                        <asp:ListItem Text="YES" Value="YES" />
                        <asp:ListItem Text="NO" Value="NO" />
                    </asp:DropDownList>
-               <label><i class="bi bi-stars me-2 text-warning"></i>Rating</label>
-                    <asp:DropDownList ID="txtRating" runat="server" CssClass="form-select border-warning">
-                        <asp:ListItem Text="AAA" Value="AAA" />
-                        <asp:ListItem Text="AA+" Value="AA+" />
-                        <asp:ListItem Text="AA" Value="AA" />
-                        <asp:ListItem Text="AA-" Value="AA-" />
-                        <asp:ListItem Text="A+" Value="A+" />
-                        <asp:ListItem Text="A" Value="A" />
-                        <asp:ListItem Text="A-" Value="A-" />
-                        <asp:ListItem Text="BBB+" Value="BBB+" />
-                        <asp:ListItem Text="BBB" Value="BBB" />
-                        <asp:ListItem Text="BBB-" Value="BBB-" />
-                        <asp:ListItem Text="BB+" Value="BB+" />
-                        <asp:ListItem Text="BB" Value="BB" />
-                        <asp:ListItem Text="BB-" Value="BB-" />
-                        <asp:ListItem Text="B+" Value="B+" />
-                        <asp:ListItem Text="B" Value="B" />
-                        <asp:ListItem Text="B-" Value="B-" />
-                        <asp:ListItem Text="C+" Value="C+" />
-                        <asp:ListItem Text="C" Value="C" />
-                        <asp:ListItem Text="C-" Value="C-" />
-                        <asp:ListItem Text="SOVEREIGN" Value="SOVEREIGN" />
-                    </asp:DropDownList>
 
-               <label><i class="bi bi-building me-2 text-warning"></i>Rating Agency</label>
-                <asp:DropDownList ID="ddlRatingAgency" runat="server" CssClass="form-select border-warning">
-                    <asp:ListItem Text="Acuite Ratings & Research Limited " Value="ACUITE" />
-                    <asp:ListItem Text="Brickwork Ratings" Value="BRICKWORK" />
-                    <asp:ListItem Text="Care Rating" Value="CARE" />
-                    <asp:ListItem Text="ICRA" Value="ICRA" />
-                    <asp:ListItem Text="Infomerics" Value="INFOMERICS" />
-                    <asp:ListItem Text="SOVEREIGN" Value="SOVEREIGN" />
-                    <asp:ListItem Text="India Ratings" Value="INDIARATING" />
-                </asp:DropDownList>
-
-            </div>
-            <div class="col-md-6">
-                <label><i class="bi bi-person-check me-2 text-warning"></i>User Type</label>
-                <asp:DropDownList ID="ddlUserType" runat="server" CssClass="form-control">
-                       <asp:ListItem Text="BROKERED" Value="BROKERED"></asp:ListItem>
-                       <asp:ListItem Text="DIRECT" Value="DIRECT"></asp:ListItem>
+                   <label for="<%= ddlObpPlatform.ClientID %>" class="form-label d-block mt-3">
+                       <i class="bi bi-hdd-network me-2 text-warning"></i>OBP Platform
+                   </label>
+                   <asp:DropDownList ID="ddlObpPlatform" runat="server" CssClass="form-control">
+                       <asp:ListItem Text="YES" Value="YES" />
+                       <asp:ListItem Text="NO" Value="NO" />
                    </asp:DropDownList>
-                <div id="brokerNameContainer" style="display:none;">
-                    <label><i class="bi bi-person-lines-fill me-2 text-warning"></i>Broker Name</label>
-                    <asp:TextBox ID="txtBrokerName" runat="server" CssClass="form-control border-warning" />
-                </div>
-                <label><i class="bi bi-box-arrow-in-right me-2 text-warning"></i>Settlement Type</label>
-                <asp:DropDownList ID="ddlSettleType" runat="server" CssClass="form-control">
+
+                   <label for="<%= txtRating.ClientID %>" class="form-label d-block mt-3">
+                       <i class="bi bi-stars me-2 text-warning"></i>Rating
+                   </label>
+                   <asp:DropDownList ID="txtRating" runat="server" CssClass="form-select border-warning">
+                       <asp:ListItem Text="AAA" Value="AAA" />
+                       <asp:ListItem Text="AA+" Value="AA+" />
+                       <asp:ListItem Text="AA" Value="AA" />
+                       <asp:ListItem Text="AA-" Value="AA-" />
+                       <asp:ListItem Text="A+" Value="A+" />
+                       <asp:ListItem Text="A" Value="A" />
+                       <asp:ListItem Text="A-" Value="A-" />
+                       <asp:ListItem Text="BBB+" Value="BBB+" />
+                       <asp:ListItem Text="BBB" Value="BBB" />
+                       <asp:ListItem Text="BBB-" Value="BBB-" />
+                       <asp:ListItem Text="BB+" Value="BB+" />
+                       <asp:ListItem Text="BB" Value="BB" />
+                       <asp:ListItem Text="BB-" Value="BB-" />
+                       <asp:ListItem Text="B+" Value="B+" />
+                       <asp:ListItem Text="B" Value="B" />
+                       <asp:ListItem Text="B-" Value="B-" />
+                       <asp:ListItem Text="C+" Value="C+" />
+                       <asp:ListItem Text="C" Value="C" />
+                       <asp:ListItem Text="C-" Value="C-" />
+                       <asp:ListItem Text="SOVEREIGN" Value="SOVEREIGN" />
+                   </asp:DropDownList>
+
+                   <label for="<%= ddlRatingAgency.ClientID %>" class="form-label d-block mt-3">
+                       <i class="bi bi-building me-2 text-warning"></i>Rating Agency
+                   </label>
+                   <asp:DropDownList ID="ddlRatingAgency" runat="server" CssClass="form-select border-warning">
+                       <asp:ListItem Text="Acuite Ratings & Research Limited" Value="ACUITE" />
+                       <asp:ListItem Text="Brickwork Ratings" Value="BRICKWORK" />
+                       <asp:ListItem Text="Care Rating" Value="CARE" />
+                       <asp:ListItem Text="ICRA" Value="ICRA" />
+                       <asp:ListItem Text="Infomerics" Value="INFOMERICS" />
+                       <asp:ListItem Text="SOVEREIGN" Value="SOVEREIGN" />
+                       <asp:ListItem Text="India Ratings" Value="INDIARATING" />
+                   </asp:DropDownList>
+               </div>
+
+               <div class="col-md-6">
+                   <label for="<%= ddlUserType.ClientID %>" class="form-label d-block">
+                       <i class="bi bi-person-check me-2 text-warning"></i>User Type
+                   </label>
+                   <asp:DropDownList ID="ddlUserType" runat="server" CssClass="form-control">
+                       <asp:ListItem Text="BROKERED" Value="BROKERED" />
+                       <asp:ListItem Text="DIRECT" Value="DIRECT" />
+                   </asp:DropDownList>
+
+                   <div id="brokerNameContainer" style="display:none;">
+                       <label for="<%= txtBrokerName.ClientID %>" class="form-label d-block mt-3">
+                           <i class="bi bi-person-lines-fill me-2 text-warning"></i>Broker Name
+                       </label>
+                       <asp:TextBox ID="txtBrokerName" runat="server" CssClass="form-control border-warning" />
+                   </div>
+
+                   <label for="<%= ddlSettleType.ClientID %>" class="form-label d-block mt-3">
+                       <i class="bi bi-box-arrow-in-right me-2 text-warning"></i>Settlement Type
+                   </label>
+                   <asp:DropDownList ID="ddlSettleType" runat="server" CssClass="form-control">
                        <asp:ListItem Text="T+0" Value="0" />
                        <asp:ListItem Text="T+1" Value="1" />
                    </asp:DropDownList>
-                <label><i class="bi bi-eye me-2 text-warning"></i>Disclosed Identity</label>
-               <asp:DropDownList ID="ddlDisclosedIdentity" runat="server" CssClass="form-control">
+
+                   <label for="<%= ddlDisclosedIdentity.ClientID %>" class="form-label d-block mt-3">
+                       <i class="bi bi-eye me-2 text-warning"></i>Disclosed Identity
+                   </label>
+                   <asp:DropDownList ID="ddlDisclosedIdentity" runat="server" CssClass="form-control">
                        <asp:ListItem Text="NO" Value="NO" />
                        <asp:ListItem Text="YES" Value="YES" />
                    </asp:DropDownList>
-                <label><i class="bi bi-gear-fill me-2 text-warning"></i>OTO/MOTO</label>
-                <asp:DropDownList ID="ddlOtoOtm" runat="server" CssClass="form-control">
+
+                   <label for="<%= ddlOtoOtm.ClientID %>" class="form-label d-block mt-3">
+                       <i class="bi bi-gear-fill me-2 text-warning"></i>OTO/MOTO
+                   </label>
+                   <asp:DropDownList ID="ddlOtoOtm" runat="server" CssClass="form-control">
                        <asp:ListItem Value="OTO">OTO</asp:ListItem>
                        <asp:ListItem Value="OTM">OTM</asp:ListItem>
                    </asp:DropDownList>
-            </div>
-        </div>
+               </div>
+           </div>
 
-        <!-- Submit Button -->
-        <div class="text-center mt-4">
-            <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-warning px-4 text-dark fw-bold" Text="Submit" OnClick="btnSubmit_Click" />
-        </div>
-    </div>
+           <!-- Submit Button -->
+           <div class="text-center mt-4">
+               <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-warning px-4 text-dark fw-bold" Text="Submit" OnClick="btnSubmit_Click" />
+           </div>    
+      </div>
 </form>
    <!-- Bootstrap Modal for Receipt -->
       
@@ -512,5 +467,7 @@ Customer Mobile no</label>
          </div>
      </div>
     
+</div>
+                        
 </body>
 </html>
