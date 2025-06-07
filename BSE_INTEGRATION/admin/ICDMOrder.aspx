@@ -171,7 +171,7 @@
                     <i class="fas fa-user-tag me-1"></i>Seller Participant Id
                 </label>
                 <div class="col-7">
-                    <asp:TextBox ID="txtSellerParticipantLoginId" runat="server" CssClass="form-control form-control-sm" ReadOnly="true" Text="BSEFI"></asp:TextBox>
+                    <asp:TextBox ID="txtSellerParticipantLoginId" runat="server" CssClass="form-control form-control-sm" ReadOnly="true" Text="DFSPL"></asp:TextBox>
                 </div>
             </div>
 
@@ -181,7 +181,7 @@
                     <i class="fas fa-user-tie me-1"></i>Seller Dealer Id
                 </label>
                 <div class="col-7">
-                    <asp:TextBox ID="txtSellerDealerLoginId" runat="server" CssClass="form-control form-control-sm" ReadOnly="true" Text="BSEFID1"></asp:TextBox>
+                    <asp:TextBox ID="txtSellerDealerLoginId" runat="server" CssClass="form-control form-control-sm" ReadOnly="true" Text="DFSPLD"></asp:TextBox>
                 </div>
             </div>
         </div>

@@ -991,10 +991,10 @@ h2.title {
   </div>
 </section>--%>
    <!-- High Yield Bonds Section --><!-- High Yield Bonds Section -->
-<section class="py-5" style="background: #f2f2f2;">
+<section class="py-5" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; text-align: center; display: flex; align-items: center; justify-content: center; ">
   <div class="container">
-    <h3 class="text-center fw-bold display-6 mb-4" style="color: #001f3f;">
-      💰 High Yield <span style="color: #ff851b;">Bonds</span>
+    <h3 class="text-center   mb-4" style="color: white;">
+      💰 High Yield <span class="text-warning">Bonds</span>
     </h3>
 
     <div class="auto-slider">

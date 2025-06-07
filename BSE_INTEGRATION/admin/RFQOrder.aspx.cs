@@ -123,7 +123,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
 
 
 
-        SaveRFQOrderLog(requestBody);
+      //  SaveRFQOrderLog(requestBody);
         string jsonPayload = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
         string checksum = SecurityHelper.GenerateChecksum(jsonPayload);
 
