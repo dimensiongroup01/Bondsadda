@@ -12200,7 +12200,7 @@ public partial class CashFlow : System.Web.UI.Page
                                         float totalpercent = (Pers + perce);
                                         Pers = totalpercent;
                                         hfTotalPercent.Value = totalpercent.ToString();
-                                    }
+                                    } 
                                 }
                                 else
                                 {
