@@ -97,7 +97,7 @@ public partial class CashFlow : System.Web.UI.Page
                 BindFlowChart(Request.QueryString["oId"].ToString());
                 BindDataaa(Request.QueryString["oId"].ToString());
                 BindDDataaa(Request.QueryString["oId"].ToString());
-                getYieldWithXIRR();
+               // getYieldWithXIRR();
                 BindOverViews(Request.QueryString["oId"].ToString());
                 BindOverView(Request.QueryString["oId"].ToString());
                 FrequencyTypeView();
@@ -602,7 +602,7 @@ public partial class CashFlow : System.Web.UI.Page
 
     private void getYieldWithXIRR()
     {
-
+     
         float rate = 0,couponrate=0;
         DateTime d1 = DateTime.Now;
         DateTime d2 = DateTime.ParseExact(hfLastIPDateXIRR.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -2445,10 +2445,12 @@ public partial class CashFlow : System.Web.UI.Page
             hfPaymentType.Value = PaymentType;
             string MaturityType = dt.Rows[0]["MaturityType"].ToString();
             hfMaturityType.Value = MaturityType;
-
+            string ipdate = dt.Rows[0]["IPDate"].ToString();
+            hfLastIPDateXIRR.Value = ipdate;
             lblISIN.Text = dt.Rows[0]["ISINNumber"].ToString();
             lblFaceValue.Text = dt.Rows[0]["FaceValueForBond"].ToString();
-           // lblYield.Text = dt.Rows[0]["YTM"].ToString();
+            string ytm = dt.Rows[0]["YTM"].ToString();
+            hfYieldValue.Value = ytm;
             lblCouponRates.Text = dt.Rows[0]["CouponRate"].ToString();
             lblYTC.Text = dt.Rows[0]["YTCYieldSemi"].ToString();
             lblMaturity.Text = dt.Rows[0]["MaturityDate"].ToString();
@@ -2788,6 +2790,7 @@ public partial class CashFlow : System.Web.UI.Page
                     lblIPDate.Text = IP.ToString("dd/MM/yyyy").Replace("-", "/");
                     hfLastIPDateXIRR.Value = IP.ToString("dd/MM/yyyy").Replace("-", "/");
                 }
+              
             }
         }
     }

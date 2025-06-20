@@ -594,6 +594,32 @@ h2.title {
       animation-iteration-count: infinite;
       animation-fill-mode: both;
     }
+    
+  .custom-modal-gradient {
+    background:  linear-gradient(to right, #085D94, #F57C00);/* unified gradient */
+    color: white;
+  }
+
+  .icon-glow i {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+  }
+
+  .btn-golden {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: #000;
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+  }
+
+  .btn-golden:hover {
+    background: linear-gradient(45deg, #FFA500, #FFD700);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
 </style>
     <script>
         // Tagline Rotator
@@ -885,27 +911,31 @@ h2.title {
 </section>     
     
 <!-- Modal -->
- <section>
-    <div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <!-- Modal Header with Close Button -->
-          <div class="modal-header border-0">
-            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-      
-          <div class="modal-body">
-            <div class="custom-card text-center">
-              <i class="bi bi-graph-up-arrow"></i>
-              <h4>High Yield Bonds</h4>
-              <p>Discover high-return bond opportunities now.</p>
-              <a href="https://bondsadda.com/OurCollections?oId=16" class="btn btn-golden mt-3">Explore Now</a>
-            </div>
-          </div>
+<section>
+  <div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 text-white custom-modal-gradient rounded-4 shadow-lg">
+        
+        <!-- Modal Header -->
+        <div class="modal-header border-0">
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        
+        <!-- Modal Body -->
+        <div class="modal-body text-center px-4 py-3">
+          <div class="icon-glow mb-3">
+            <i class="bi bi-graph-up-arrow fs-1"></i>
+          </div>
+          <h4 class="fw-bold">High Yield Bonds</h4>
+          <p>Discover high-return bond opportunities now.</p>
+          <a href="https://bondsadda.com/OurCollections?oId=16" class="btn btn-golden btn-lg mt-3 px-4 py-2 fw-semibold shadow">Explore Now</a>
+        </div>
+
       </div>
     </div>
+  </div>
 </section>
+
 
 
    

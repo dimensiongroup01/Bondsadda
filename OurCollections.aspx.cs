@@ -26,7 +26,7 @@ public partial class OurCollections : System.Web.UI.Page
         {
 
             BindCategory();
-           // bindCreditRating();
+           bindCreditRating();
             CategoryName();
             CategoryTags();
             if (GetUserLoggedIn() !=null)
@@ -73,6 +73,11 @@ public partial class OurCollections : System.Web.UI.Page
     {
         rptData.DataSource = dl.get_Products(null, null, null, null);
         rptData.DataBind();
+    }
+    private void bindCreditRating()
+    {
+        rptCreditRating.DataSource = dl.get_CreditRating(null, null);
+        rptCreditRating.DataBind();
     }
     private string GetUserLoggedIn()
     {

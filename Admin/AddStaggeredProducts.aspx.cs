@@ -356,7 +356,7 @@ public partial class Admin_AddStaggeredProducts : System.Web.UI.Page
                 TextBox txtRemark = (TextBox)rpt.FindControl("txtRemark");
 
                 // Assuming you have a method to save to the database
-                dl.add_MaturityTypeValue(null, ViewState["Id"].ToString(), ddlMaturityTypeDate.SelectedValue, txtPercentage.Text, txtRemark.Text, GetUserLoggedIn());
+                dl.add_MaturityTypeValue(null, ViewState["Id"].ToString(), ddlMaturityTypeDate.Text, txtPercentage.Text, txtRemark.Text, GetUserLoggedIn());
 
             }
             clear();
