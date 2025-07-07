@@ -1733,16 +1733,7 @@ public partial class CashFlow : System.Web.UI.Page
                         int y = Convert.ToInt32(year.ToString());
                         int m = Convert.ToInt32(monthDay.ToString());
                         int d = Convert.ToInt32(day.ToString());
-                        //if (InsDate == d3)
-                        //{
-                        //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                        //    cashFlowss.Add(100 + cop);
-
-                        //    dateList.Add(new DateTime(y, m, d));
-
-                        //}
-                        //else
-                        //{
+                        
                         if (d3 > InsDate)
                         {
                             if (i == 1)
@@ -1771,15 +1762,7 @@ public partial class CashFlow : System.Web.UI.Page
 
                             ldate = InsDate;
                         }
-                        //else
-                        //{
-                        //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                        //    TimeSpan tm = d3 - ldate;
-                        //    double cd = tm.TotalDays;
-                        //    double c = 100 + (couponrate * (cd) / 365);
-                        //    cashFlowss.Add(c);
-                        //    dateList.Add(new DateTime(y, m, d));
-                        //}
+                    
 
                     }
                 }
@@ -2645,6 +2628,7 @@ public partial class CashFlow : System.Web.UI.Page
             
             if (GetUserLoggedIn() != null)
             {
+                lblPriceDate.Visible = true;
                 pnlPrice.Visible = true;
                 pnlYield.Visible = true;
                 pnlPriceView.Visible = false;
@@ -2652,6 +2636,7 @@ public partial class CashFlow : System.Web.UI.Page
             }
             else
             {
+                lblPriceDate.Visible = false;
                 pnlPrice.Visible = false;
                 pnlYield.Visible = false;
                 pnlPriceView.Visible = true;
@@ -9899,7 +9884,7 @@ public partial class CashFlow : System.Web.UI.Page
                     //    //Save this in Year field
                     //    string year = splitedDate[2];
                     //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
+                    //    int y = Convert.ToInt32(year.ToString()); 
                     //    int m = Convert.ToInt32(monthDay.ToString());
                     //    int d = Convert.ToInt32(day.ToString());
                     //    TimeSpan tt = d3 - ldate;
@@ -10168,23 +10153,13 @@ public partial class CashFlow : System.Web.UI.Page
                                 int y = Convert.ToInt32(year.ToString());
                                 int m = Convert.ToInt32(monthDay.ToString());
                                 int d = Convert.ToInt32(day.ToString());
-                                // if (InsDate == d3)
-                                //{
-                                //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                                //    cashFlowss.Add(100 + cop);
-
-                                //    dateList.Add(new DateTime(y, m, d));
-
-                                //}
-                                //else
-                                //{
+                        
 
                                 if (d3 > InsDate)
                                 {
                                     if (i == 1)
                                     {
-                                        //if (d3 > InsDate)
-                                        //{
+                                        
 
                                         double cop = Convert.ToDouble(couponrate.ToString("0.00"));
 
@@ -10194,14 +10169,11 @@ public partial class CashFlow : System.Web.UI.Page
                                         double c = (ratevalue * couponrate * (cd) / 36500);
                                         cashFlowss.Add(c);
                                         dateList.Add(new DateTime(y, m, d));
-                                        // }
-
-                                        //}
+                                        
                                     }
                                     else
                                     {
-                                        //if (d3 > InsDate)
-                                        //{
+                                      
 
                                         double cop = Convert.ToDouble(couponrate.ToString("0.00"));
 
@@ -10210,9 +10182,7 @@ public partial class CashFlow : System.Web.UI.Page
                                         double c = (ratevalue * couponrate * (cd) / 36500);
                                         cashFlowss.Add(c);
                                         dateList.Add(new DateTime(y, m, d));
-                                        // }
-
-                                        // }
+                                      
                                     }
                                 }
                                 ldate = InsDate;
@@ -10230,22 +10200,12 @@ public partial class CashFlow : System.Web.UI.Page
                             int y = Convert.ToInt32(year.ToString());
                             int m = Convert.ToInt32(monthDay.ToString());
                             int d = Convert.ToInt32(day.ToString());
-                            // if (InsDate == d3)
-                            //{
-                            //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                            //    cashFlowss.Add(100 + cop);
-
-                            //    dateList.Add(new DateTime(y, m, d));
-
-                            //}
-                            //else
-                            //{
+                        
                             if (d3 > InsDate)
                             {
                                 if (i == 1)
                                 {
-                                    //if (d3 > InsDate)
-                                    //{
+                                  
 
                                     double cop = Convert.ToDouble(couponrate.ToString("0.00"));
 
@@ -10255,14 +10215,11 @@ public partial class CashFlow : System.Web.UI.Page
                                     double c = ratevalue * couponrate * (cd) / 36500;
                                     cashFlowss.Add(c);
                                     dateList.Add(new DateTime(y, m, d));
-                                    // }
-
-                                    //}
+                                 
                                 }
                                 else
                                 {
-                                    //if (d3 > InsDate)
-                                    //{
+                                   
 
                                     double cop = Convert.ToDouble(couponrate.ToString("0.00"));
 
@@ -10271,24 +10228,12 @@ public partial class CashFlow : System.Web.UI.Page
                                     double c = ratevalue * couponrate * (cd) / 36500;
                                     cashFlowss.Add(c);
                                     dateList.Add(new DateTime(y, m, d));
-                                    // }
-
-                                    // }
+                                  
                                 }
                             }
                             ldate = InsDate;
                         }
-                        //else
-                        //{
-                        //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-
-                        //    TimeSpan tm = d3 - ldate;
-                        //    double cd = tm.TotalDays;
-                        //    double c = 100 + (couponrate * (cd) / 365);
-                        //    cashFlowss.Add(c);
-                        //    dateList.Add(new DateTime(y, m, d));
-                        //}
-                        // ldate = InsDate;
+                   
                     }
                     if (d3 > ldate || d3 == ldate)
                     {
@@ -10342,45 +10287,7 @@ public partial class CashFlow : System.Web.UI.Page
 
                     }
 
-                    //if(ldate == d3)
-                    //{
-                    //    string date = d3.ToString("dd/MM/yyyy").Replace("-", "/");
-                    //    string[] splitedDate = date.Split('/');
-                    //    //Save this in MonthDay field
-                    //    string monthDay = string.Join("/", splitedDate[1]);
-                    //    //Save this in Year field
-                    //    string year = splitedDate[2];
-                    //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
-                    //    int m = Convert.ToInt32(monthDay.ToString());
-                    //    int d = Convert.ToInt32(day.ToString());
-                    //    TimeSpan tt = d3 - ldate;
-                    //    double noday = tt.TotalDays;
-                    //    float nday = float.Parse(noday.ToString("0"));
-
-                    //    float cop = 100 + (couponrate);
-                    //    cashFlowss.Add(cop);
-                    //    dateList.Add(new DateTime(y, m, d));
-                    //}
-                    //else
-                    //{
-                    //    string date = d3.ToString("dd/MM/yyyy").Replace("-", "/");
-                    //    string[] splitedDate = date.Split('/');
-                    //    //Save this in MonthDay field
-                    //    string monthDay = string.Join("/", splitedDate[1]);
-                    //    //Save this in Year field
-                    //    string year = splitedDate[2];
-                    //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
-                    //    int m = Convert.ToInt32(monthDay.ToString());
-                    //    int d = Convert.ToInt32(day.ToString());
-                    //    TimeSpan tt = d3 - ldate;
-                    //    double noday = tt.TotalDays;
-                    //    float nday = float.Parse(noday.ToString("0"));
-                    //    float cop = 100 + (couponrate * nday / 365)+ couponrate;
-                    //    cashFlowss.Add(cop);
-                    //    dateList.Add(new DateTime(y, m, d));
-                    //}
+                  
                 }
                 if (hfPaymentType.Value == "Yearly")
                 {
@@ -10407,16 +10314,7 @@ public partial class CashFlow : System.Web.UI.Page
                                 int y = Convert.ToInt32(year.ToString());
                                 int m = Convert.ToInt32(monthDay.ToString());
                                 int d = Convert.ToInt32(day.ToString());
-                                //if (InsDate == d3)
-                                //{
-                                //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                                //    cashFlowss.Add(100 + cop);
-
-                                //    dateList.Add(new DateTime(y, m, d));
-
-                                //}
-                                //else
-                                //{
+                           
                                 if (d3 > InsDate)
                                 {
                                     if (i == 1)
@@ -10460,16 +10358,7 @@ public partial class CashFlow : System.Web.UI.Page
                                 int y = Convert.ToInt32(year.ToString());
                                 int m = Convert.ToInt32(monthDay.ToString());
                                 int d = Convert.ToInt32(day.ToString());
-                                //if (InsDate == d3)
-                                //{
-                                //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                                //    cashFlowss.Add(100 + cop);
-
-                                //    dateList.Add(new DateTime(y, m, d));
-
-                                //}
-                                //else
-                                //{
+                           
                                 if (d3 > InsDate)
                                 {
                                     if (i == 1)
@@ -10512,16 +10401,7 @@ public partial class CashFlow : System.Web.UI.Page
                             int y = Convert.ToInt32(year.ToString());
                             int m = Convert.ToInt32(monthDay.ToString());
                             int d = Convert.ToInt32(day.ToString());
-                            //if (InsDate == d3)
-                            //{
-                            //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                            //    cashFlowss.Add(100 + cop);
-
-                            //    dateList.Add(new DateTime(y, m, d));
-
-                            //}
-                            //else
-                            //{
+                      
                             if (d3 > InsDate)
                             {
                                 if (i == 1)
@@ -10550,15 +10430,7 @@ public partial class CashFlow : System.Web.UI.Page
 
                                 ldate = InsDate;
                             }
-                            //else
-                            //{
-                            //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                            //    TimeSpan tm = d3 - ldate;
-                            //    double cd = tm.TotalDays;
-                            //    double c = 100 + (couponrate * (cd) / 365);
-                            //    cashFlowss.Add(c);
-                            //    dateList.Add(new DateTime(y, m, d));
-                            //}
+                     
 
                         }
                     }
@@ -10610,44 +10482,6 @@ public partial class CashFlow : System.Web.UI.Page
                     }
 
 
-                    //if (ldate == d3)
-                    //{
-                    //    string date = d3.ToString("dd/MM/yyyy").Replace("-", "/");
-                    //    string[] splitedDate = date.Split('/');
-                    //    //Save this in MonthDay field
-                    //    string monthDay = string.Join("/", splitedDate[1]);
-                    //    //Save this in Year field
-                    //    string year = splitedDate[2];
-                    //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
-                    //    int m = Convert.ToInt32(monthDay.ToString());
-                    //    int d = Convert.ToInt32(day.ToString());
-                    //    TimeSpan tt = d3 - ldate;
-                    //    double noday = tt.TotalDays;
-                    //    float nday = float.Parse(noday.ToString("0"));
-                    //    float cop = 100 + couponrate;
-                    //    cashFlowss.Add(cop);
-                    //    dateList.Add(new DateTime(y, m, d));
-                    //}
-                    //else
-                    //{
-                    //    string date = d3.ToString("dd/MM/yyyy").Replace("-", "/");
-                    //    string[] splitedDate = date.Split('/');
-                    //    //Save this in MonthDay field
-                    //    string monthDay = string.Join("/", splitedDate[1]);
-                    //    //Save this in Year field
-                    //    string year = splitedDate[2];
-                    //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
-                    //    int m = Convert.ToInt32(monthDay.ToString());
-                    //    int d = Convert.ToInt32(day.ToString());
-                    //    TimeSpan tt = d3 - ldate;
-                    //    double noday = tt.TotalDays;
-                    //    float nday = float.Parse(noday.ToString("0"));
-                    //    float cop = 100 + (couponrate * (nday / 365) + couponrate);
-                    //    cashFlowss.Add(cop);
-                    //    dateList.Add(new DateTime(y, m, d));
-                    //}
                 }
                 if (hfPaymentType.Value == "Quarterly")
                 {
@@ -10673,16 +10507,7 @@ public partial class CashFlow : System.Web.UI.Page
                                 int y = Convert.ToInt32(year.ToString());
                                 int m = Convert.ToInt32(monthDay.ToString());
                                 int d = Convert.ToInt32(day.ToString());
-                                //if (InsDate == d3)
-                                //{
-                                //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                                //    cashFlowss.Add(100 + cop);
-
-                                //    dateList.Add(new DateTime(y, m, d));
-
-                                //}
-                                //else
-                                //{
+                                
                                 if (d3 > InsDate)
                                 {
                                     if (i == 1)
@@ -10720,16 +10545,7 @@ public partial class CashFlow : System.Web.UI.Page
                                 int y = Convert.ToInt32(year.ToString());
                                 int m = Convert.ToInt32(monthDay.ToString());
                                 int d = Convert.ToInt32(day.ToString());
-                                //if (InsDate == d3)
-                                //{
-                                //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                                //    cashFlowss.Add(100 + cop);
-
-                                //    dateList.Add(new DateTime(y, m, d));
-
-                                //}
-                                //else
-                                //{
+                                
                                 if (d3 > InsDate)
                                 {
                                     if (i == 1)
@@ -10768,16 +10584,7 @@ public partial class CashFlow : System.Web.UI.Page
                             int y = Convert.ToInt32(year.ToString());
                             int m = Convert.ToInt32(monthDay.ToString());
                             int d = Convert.ToInt32(day.ToString());
-                            //if (InsDate == d3)
-                            //{
-                            //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                            //    cashFlowss.Add(100 + cop);
-
-                            //    dateList.Add(new DateTime(y, m, d));
-
-                            //}
-                            //else
-                            //{
+                            
                             if (d3 > InsDate)
                             {
                                 if (i == 1)
@@ -10801,18 +10608,7 @@ public partial class CashFlow : System.Web.UI.Page
                                 ldate = InsDate;
                             }
                         }
-                        //else
-                        //{
-                        //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                        //    TimeSpan tm = d3 - ldate;
-                        //    double cd = tm.TotalDays;
-                        //    double c = 100 + (couponrate * (cd) / 365);
-                        //    cashFlowss.Add(c);
-                        //    dateList.Add(new DateTime(y, m, d));
-                        //}
-
-
-                        //}
+                        
                     }
                     if (d3 > ldate || d3 == ldate)
                     {
@@ -10859,44 +10655,7 @@ public partial class CashFlow : System.Web.UI.Page
                             dateList.Add(new DateTime(y, m, d));
                         }
                     }
-                    //if (ldate == d3)
-                    //{
-                    //    string date = d3.ToString("dd/MM/yyyy").Replace("-", "/");
-                    //    string[] splitedDate = date.Split('/');
-                    //    //Save this in MonthDay field
-                    //    string monthDay = string.Join("/", splitedDate[1]);
-                    //    //Save this in Year field
-                    //    string year = splitedDate[2];
-                    //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
-                    //    int m = Convert.ToInt32(monthDay.ToString());
-                    //    int d = Convert.ToInt32(day.ToString());
-                    //    TimeSpan tt = d3 - ldate;
-                    //    double noday = tt.TotalDays;
-                    //    float nday = float.Parse(noday.ToString("0"));
-                    //    float cop = 100 + (couponrate/3);
-                    //    cashFlowss.Add(cop);
-                    //    dateList.Add(new DateTime(y, m, d));
-                    //}
-                    //else
-                    //{
-                    //    string date = d3.ToString("dd/MM/yyyy").Replace("-", "/");
-                    //    string[] splitedDate = date.Split('/');
-                    //    //Save this in MonthDay field
-                    //    string monthDay = string.Join("/", splitedDate[1]);
-                    //    //Save this in Year field
-                    //    string year = splitedDate[2];
-                    //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
-                    //    int m = Convert.ToInt32(monthDay.ToString());
-                    //    int d = Convert.ToInt32(day.ToString());
-                    //    TimeSpan tt = d3 - ldate;
-                    //    double noday = tt.TotalDays;
-                    //    float nday = float.Parse(noday.ToString("0"));
-                    //    float cop = 100 + (couponrate * (nday / 365) + couponrate);
-                    //    cashFlowss.Add(cop);
-                    //    dateList.Add(new DateTime(y, m, d));
-                    //}
+                  
                 }
                 if (hfPaymentType.Value == "Half Yearly")
                 {
@@ -10922,16 +10681,7 @@ public partial class CashFlow : System.Web.UI.Page
                                 int y = Convert.ToInt32(year.ToString());
                                 int m = Convert.ToInt32(monthDay.ToString());
                                 int d = Convert.ToInt32(day.ToString());
-                                //if (InsDate == d3)
-                                //{
-                                //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                                //    cashFlowss.Add(100 + cop);
-
-                                //    dateList.Add(new DateTime(y, m, d));
-
-                                //}
-                                //else
-                                //{
+                              
                                 if (d3 > InsDate)
                                 {
 
@@ -10993,18 +10743,7 @@ public partial class CashFlow : System.Web.UI.Page
                                     ldate = InsDate;
                                 }
                             }
-                            //else
-                            //{
-                            //    double cop = Convert.ToDouble(couponrate.ToString("0.00"));
-                            //    TimeSpan tm = d3 - ldate;
-                            //    double cd = tm.TotalDays;
-                            //    double c = 100 + (couponrate * (cd) / 365);
-                            //    cashFlowss.Add(c);
-                            //    dateList.Add(new DateTime(y, m, d));
-                            //}
-
-
-                            // }
+                          
                         }
                     }
                     if (d3 > ldate || d3 == ldate)
@@ -11073,44 +10812,7 @@ public partial class CashFlow : System.Web.UI.Page
                         }
                     }
 
-                    //if (ldate == d3)
-                    //{
-                    //    string date = d3.ToString("dd/MM/yyyy").Replace("-", "/");
-                    //    string[] splitedDate = date.Split('/');
-                    //    //Save this in MonthDay field
-                    //    string monthDay = string.Join("/", splitedDate[1]);
-                    //    //Save this in Year field
-                    //    string year = splitedDate[2];
-                    //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
-                    //    int m = Convert.ToInt32(monthDay.ToString());
-                    //    int d = Convert.ToInt32(day.ToString());
-                    //    TimeSpan tt = d3 - ldate;
-                    //    double noday = tt.TotalDays;
-                    //    float nday = float.Parse(noday.ToString("0"));
-                    //    float cop = 100 + (couponrate/2);
-                    //    cashFlowss.Add(cop);
-                    //    dateList.Add(new DateTime(y, m, d));
-                    //}
-                    //else
-                    //{
-                    //    string date = d3.ToString("dd/MM/yyyy").Replace("-", "/");
-                    //    string[] splitedDate = date.Split('/');
-                    //    //Save this in MonthDay field
-                    //    string monthDay = string.Join("/", splitedDate[1]);
-                    //    //Save this in Year field
-                    //    string year = splitedDate[2];
-                    //    string day = splitedDate[0];
-                    //    int y = Convert.ToInt32(year.ToString());
-                    //    int m = Convert.ToInt32(monthDay.ToString());
-                    //    int d = Convert.ToInt32(day.ToString());
-                    //    TimeSpan tt = d3 - ldate;
-                    //    double noday = tt.TotalDays;
-                    //    float nday = float.Parse(noday.ToString("0"));
-                    //    float cop = 100 + (couponrate * (nday / 365) + couponrate);
-                    //    cashFlowss.Add(cop);
-                    //    dateList.Add(new DateTime(y, m, d));
-                    //}
+                 
                 }
 
                 double[] cashflows = cashFlowss.ToArray();
@@ -11126,8 +10828,7 @@ public partial class CashFlow : System.Web.UI.Page
                 hfYieldValue.Value = xir.ToString("0.000");
             }
 
-            //  Response.Write(xir);
-            // lblXIRR.Text = xir.ToString("0.00");
+           
         }
          
     }
@@ -11534,9 +11235,7 @@ public partial class CashFlow : System.Web.UI.Page
 
 
 
-            //TimeSpan objFirstInt = IPDate - Sattle;
-            //float FirstDay = (float)objFirstInt.TotalDays;
-            //hfFirstIntDay.Value = FirstDay.ToString();
+          
 
             TimeSpan objSecondInt = Maturity - IPDate;
             float SecondDay = (float)objSecondInt.TotalDays;
@@ -11684,6 +11383,7 @@ public partial class CashFlow : System.Web.UI.Page
         float FaceValue = float.Parse(hfFacrValueForDeal.Value);
         DateTime IPDate = DateTime.ParseExact(hfIPDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
         DateTime Sattle = DateTime.ParseExact(hfSattlementDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
 
 
         if (ViewState["Id"] == null)
@@ -17269,966 +16969,6 @@ public partial class CashFlow : System.Web.UI.Page
             hfCouponRate.Value = txtCouponRate.Text;
 
 
-            //if (hfMaturityType.Value == "Bullet")
-            //{
-
-            //    lblYield.Text = hfYieldValue.Value;
-            //    //  TextBox txtFaceValueDeal = (TextBox)item.FindControl("txtFaceValueDeal");
-
-
-            //    lblPrice.Text = Rate.ToString();
-            //    hfRatePrice.Value = Rate.ToString("0.00");
-
-            //    hfFacrValueForDeal.Value = FaceValue.ToString();
-            //    txtPrincipalAmount.Text = Convert.ToDecimal(Rate * FaceValue / 100).ToString("0.00");
-            //    hfPrincipalAmount.Value = txtPrincipalAmount.Text;
-            //    float Principle = float.Parse(txtPrincipalAmount.Text);
-            //    hfCouponRate.Value = Coupon.ToString();
-            //    int NDay = 0;
-            //    try
-            //    {
-            //        NDay = int.Parse(hfDayValue.Value);
-            //    }
-            //    catch (Exception ex) { }
-            //    float Numbers = NDay;
-            //    txtAccured.Text = Convert.ToDecimal(FaceValue * Coupon * NDay / 36500).ToString("0.00");
-            //    hfTotalAssuredInterest.Value = txtAccured.Text;
-            //    float Accured = float.Parse(txtAccured.Text);
-            //    txtGrossConder.Text = Convert.ToDecimal((Rate * FaceValue / 100) + (FaceValue * Coupon * NDay / 36500)).ToString("0.00");
-            //    hfGrossConsideration.Value = txtGrossConder.Text;
-            //    float GrossCo = float.Parse(txtGrossConder.Text);
-            //    txtStampDuty.Text = Convert.ToInt32(GrossCo * 0.0001 / 100).ToString();
-            //    // txtQuantity.Text = (FaceValue / FacevalueBond).ToString();
-            //    hfQuantity.Value = txtQty.Text;
-            //    float StampDuty = float.Parse(txtStampDuty.Text);
-            //    txtConsiderationStamp.Text = Convert.ToDecimal(GrossCo + (GrossCo * 0.0001 / 100)).ToString("0.00");
-            //    hfTotalConserationAmount.Value = txtConsiderationStamp.Text;
-            //}
-
-            //if (hfMaturityType.Value == "Cumulative")
-            //{
-
-            //    // TextBox txtCouponRate = (TextBox)item.FindControl("txtCouponRate");
-            //    // TextBox txtRate = (TextBox)item.FindControl("txtRate");
-            //    // TextBox txtPrincipalAmount = (TextBox)item.FindControl("txtPrincipalAmount");
-            //    //// TextBox txtLastIP = (TextBox)item.FindControl("txtLastIP");
-            //    // TextBox txtAccured = (TextBox)item.FindControl("txtAccured");
-            //    // TextBox txtGrossConder = (TextBox)item.FindControl("txtGrossConder");
-            //    // TextBox txtStampDuty = (TextBox)item.FindControl("txtStampDuty");
-            //    // TextBox txtConsiderationStamp = (TextBox)item.FindControl("txtConsiderationStamp");
-            //    // TextBox txtSattlementdate = (TextBox)item.FindControl("txtSattlementdate");
-            //    //  TextBox txtFaceValueDeal = (TextBox)item.FindControl("txtFaceValueDeal");
-
-            //    // float Rates = float.Parse(txtRate.Text);
-            //    hfRatePrice.Value = Rate.ToString("0.00");
-            //    //float FacevalueBond = float.Parse(txtFaceValueBond.Text);
-            //    //float FaceValue = float.Parse(txtFaceValueDeal.Text);
-            //    hfFacrValueForDeal.Value = FaceValue.ToString();
-            //    txtPrincipalAmount.Text = Convert.ToDecimal(Rate * FaceValue / 100).ToString("0.00");
-            //    hfPrincipalAmount.Value = txtPrincipalAmount.Text;
-            //    float Principle = float.Parse(txtPrincipalAmount.Text);
-            //    //float Coupon = float.Parse(txtCouponRate.Text);
-            //    hfCouponRate.Value = Coupon.ToString();
-            //    int NDay = 0;
-            //    try
-            //    {
-            //        NDay = int.Parse(hfDayValue.Value);
-            //    }
-            //    catch (Exception ex) { }
-            //    float Numbers = NDay;
-            //    txtAccured.Text = Convert.ToDecimal(FaceValue * Coupon * NDay / 36500).ToString("0.00");
-            //    hfTotalAssuredInterest.Value = txtAccured.Text;
-            //    float Accured = float.Parse(txtAccured.Text);
-            //    txtGrossConder.Text = Convert.ToDecimal((Rate * FaceValue / 100) + (FaceValue * Coupon * NDay / 36500)).ToString("0.00");
-            //    hfGrossConsideration.Value = txtGrossConder.Text;
-            //    float GrossCo = float.Parse(txtGrossConder.Text);
-            //    txtStampDuty.Text = Convert.ToInt32(GrossCo * 0.0001 / 100).ToString();
-            //    //  txtQuantity.Text = (FaceValue / FacevalueBond).ToString();
-            //    hfQuantity.Value = txtQty.Text;
-            //    float StampDuty = float.Parse(txtStampDuty.Text);
-            //    txtConsiderationStamp.Text = Convert.ToDecimal(GrossCo + (GrossCo * 0.0001 / 100)).ToString("0.00");
-            //    float total = float.Parse(txtConsiderationStamp.Text);
-            //    hfTotalConserationAmount.Value = txtConsiderationStamp.Text;
-            //    float TotalGrossAmount = FaceValue + total;
-            //    hfTotalGrossAmount.Value = TotalGrossAmount.ToString();
-            //}
-
-            //if (hfMaturityType.Value == "Staggered")
-            //{
-
-            //    lblYield.Text = hfYieldValue.Value;
-            //    hfRatePrice.Value = Rate.ToString("0.00");
-            //    hfFacrValueForDeal.Value = FaceValue.ToString();
-            //    if (hfPaymentType.Value == "Monthly")
-            //    {
-            //        if (IPDate < Sattle)
-            //        {
-            //            DateTime Salltle = DateTime.ParseExact(hfSattlementDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            DateTime InstallDate = DateTime.ParseExact(hfIPDates.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-            //            TimeSpan FirstDay = (InstallDate - Salltle);
-            //            DataTable dtc = dl.CheckMaturityTypeValue(hfProductsId.Value, hfIPDates.Value);
-            //            if (dtc.Rows.Count > 0)
-            //            {
-            //                string Percentage = dtc.Rows[0]["MaturityTypePercentage"].ToString();
-
-            //                float percent = float.Parse(Percentage.ToString());
-
-            //                float fday = (float)FirstDay.TotalDays;
-            //                float FirstMonth = (((Deal * coupon * fday) / 36500) + (FaceValue * percent / 100));
-            //                float Principal = (FaceValue * percent / 100);
-            //                hfFirstMonthly.Value = FirstMonth.ToString();
-            //                float face = (Deal - (FaceValue * percent / 100));
-            //                hfLastDates.Value = InstallDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                DateTime lastDate = InstallDate;
-            //                float intfirst = ((Deal * coupon * fday) / 36500);
-            //                hfIntFirst.Value = intfirst.ToString();
-            //                float per = percent;
-            //                hfPercentFirst.Value = per.ToString();
-            //                int UnitCount = Convert.ToInt32(hfMonth.Value);
-            //                float interest = 0;
-            //                float Pers = 0;
-            //                for (int i = 1; i < UnitCount + 1; i++)
-            //                {
-
-            //                    DateTime InsDate = InstallDate.AddMonths(i);
-            //                    DataTable dtm = dl.CheckMaturityTypeValue(hfProductsId.Value, InsDate.ToString("dd/MM/yyyy").Replace("-", "/"));
-            //                    if (dtm.Rows.Count > 0)
-            //                    {
-            //                        //float fas = float.Parse(hfFaceee.Value);
-            //                        string Perc = dtm.Rows[0]["MaturityTypePercentage"].ToString();
-            //                        if (Perc == null || Perc == "")
-            //                        {
-            //                        }
-            //                        else
-            //                        {
-            //                            float perce = float.Parse(Perc);
-            //                            TimeSpan objTimeSpan = InsDate - lastDate;
-            //                            float days = (float)objTimeSpan.TotalDays;
-            //                            float monthlyinterest = (((face * coupon * days) / 36500) + (FaceValue * perce / 100));
-            //                            float principal = ((FaceValue * perce / 100));
-            //                            hfMonthlyInterest.Value = monthlyinterest.ToString();
-            //                            lastDate = InsDate;
-            //                            float Faces = (face - (FaceValue * perce / 100));
-            //                            hfFaces.Value = Faces.ToString();
-            //                            float total = (interest + ((face * coupon * days) / 36500));
-            //                            face = Faces;
-            //                            interest = total;
-            //                            hfTotalInt.Value = interest.ToString();
-            //                            float totalpercent = (Pers + perce);
-            //                            Pers = totalpercent;
-            //                            hfTotalPercent.Value = totalpercent.ToString();
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-
-            //                        TimeSpan objTimeSpan = InsDate - lastDate;
-            //                        float days = (float)objTimeSpan.TotalDays;
-            //                        float monthlyinterest = (((face * coupon * days) / 36500));
-            //                        hfMonthlyInterest.Value = monthlyinterest.ToString();
-            //                        lastDate = InsDate;
-            //                        float total = (interest + (face * coupon * days) / 36500);
-            //                        interest = total;
-            //                        hfTotalInt.Value = interest.ToString();
-
-            //                    }
-
-            //                }
-
-            //                DataTable dtn = dl.CheckMaturityTypeValue(hfProductsId.Value, hfMaturityDate.Value);
-            //                float facelast = float.Parse(hfFaces.Value);
-            //                float intLast = float.Parse(hfTotalInt.Value);
-            //                float lastpercent = float.Parse(hfTotalPercent.Value);
-
-            //                if (dtn.Rows.Count > 0)
-            //                {
-
-            //                    string Perc = dtn.Rows[0]["MaturityTypePercentage"].ToString();
-            //                    if (Perc == null || Perc == "")
-            //                    {
-
-            //                    }
-            //                    else
-            //                    {
-            //                        float Percs = float.Parse(Perc);
-            //                        float Fulltotapercent = (per + lastpercent + Percs);
-            //                        float remainingpercent = (100 - Fulltotapercent);
-            //                        float LastMonthInt = float.Parse(hfRemainingDay.Value);
-            //                        float LastMonth = (((facelast * coupon * LastMonthInt) / 36500) + (FaceValue * Percs / 100) + (FaceValue * remainingpercent / 100));
-            //                        float principal = (FaceValue * Percs / 100);
-            //                        hfLastMonthly.Value = LastMonth.ToString();
-            //                        float LastInterest = (intfirst + intLast + ((facelast * coupon * LastMonthInt) / 36500));
-            //                        hfTotalFullInt.Value = LastInterest.ToString();
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    float remainingpercent = (100 - lastpercent);
-            //                    float LastMonthInt = float.Parse(hfRemainingDay.Value);
-            //                    float LastMonth = (((facelast * coupon * LastMonthInt) / 36500) + (FaceValue * remainingpercent / 100));
-            //                    hfLastMonthly.Value = LastMonth.ToString();
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * LastMonthInt) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //            }
-            //            else
-            //            {
-            //                float fday = (float)FirstDay.TotalDays;
-            //                float FirstMonth = ((Deal * coupon * fday) / 36500);
-            //                hfFirstMonthly.Value = FirstMonth.ToString();
-            //                DateTime lastDate = InstallDate;
-            //                float intfirst = ((Deal * coupon * fday) / 36500);
-            //                float interest = 0;
-            //                float Pers = 0;
-            //                int UnitCount = Convert.ToInt32(hfMonth.Value);
-            //                for (int i = 1; i < UnitCount + 1; i++)
-            //                {
-
-            //                    DateTime InsDate = InstallDate.AddMonths(i);
-            //                    DataTable dtm = dl.CheckMaturityTypeValue(hfProductsId.Value, InsDate.ToString("dd/MM/yyyy").Replace("-", "/"));
-            //                    if (dtm.Rows.Count > 0)
-            //                    {
-            //                        string Perc = dtm.Rows[0]["MaturityTypePercentage"].ToString();
-            //                        if (Perc == null || Perc == "")
-            //                        {
-
-            //                        }
-            //                        else
-            //                        {
-            //                            float perce = float.Parse(Perc);
-
-            //                            TimeSpan objTimeSpan = InsDate - lastDate;
-            //                            float days = (float)objTimeSpan.TotalDays;
-            //                            float monthlyinterest = (((Deal * coupon * days) / 36500) + (FaceValue * perce / 100));
-            //                            float principal = (FaceValue * perce / 100);
-            //                            hfMonthlyInterest.Value = monthlyinterest.ToString();
-            //                            lastDate = InsDate;
-            //                            float Faces = (Deal - (FaceValue * perce / 100));
-            //                            hfFaces.Value = Faces.ToString();
-            //                            float total = (interest + ((Deal * coupon * days) / 36500));
-            //                            Deal = Faces;
-            //                            interest = total;
-            //                            hfTotalInt.Value = interest.ToString();
-            //                            float totalpercent = (Pers + perce);
-            //                            Pers = totalpercent;
-            //                            hfTotalPercent.Value = totalpercent.ToString();
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-
-            //                        TimeSpan objTimeSpan = InsDate - lastDate;
-            //                        float days = (float)objTimeSpan.TotalDays;
-            //                        float monthlyinterest = (((Deal * coupon * days) / 36500));
-            //                        hfMonthlyInterest.Value = monthlyinterest.ToString();
-            //                        lastDate = InsDate;
-            //                        float total = (interest + (Deal * coupon * days) / 36500);
-            //                        interest = total;
-            //                        hfTotalInt.Value = interest.ToString();
-            //                    }
-
-            //                }
-
-            //                DataTable dtn = dl.CheckMaturityTypeValue(hfProductsId.Value, hfMaturityDate.Value);
-            //                float intLast = float.Parse(hfTotalInt.Value);
-            //                float facelast = float.Parse(hfFaces.Value);
-            //                float lastpercent = float.Parse(hfTotalPercent.Value);
-            //                if (dtn.Rows.Count > 0)
-            //                {
-            //                    string Perc = dtn.Rows[0]["MaturityTypePercentage"].ToString();
-            //                    if (Perc == null || Perc == "")
-            //                    {
-
-            //                    }
-            //                    else
-            //                    {
-            //                        float Percs = float.Parse(Perc);
-            //                        float Fulltotapercent = (lastpercent + Percs);
-            //                        float remainingpercent = (100 - Fulltotapercent);
-            //                        float LastMonthInt = float.Parse(hfRemainingDay.Value);
-            //                        float LastMonth = (((facelast * coupon * LastMonthInt) / 36500) + (FaceValue * Percs / 100) + (FaceValue * remainingpercent / 100));
-            //                        float principal = (FaceValue * Percs / 100);
-            //                        hfLastMonthly.Value = LastMonth.ToString();
-            //                        float LastInterest = (intfirst + intLast + ((facelast * coupon * LastMonthInt) / 36500));
-            //                        hfTotalFullInt.Value = LastInterest.ToString();
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    float remainingpercent = (100 - lastpercent);
-            //                    float LastMonthInt = float.Parse(hfRemainingDay.Value);
-            //                    float LastMonth = (((facelast * coupon * LastMonthInt) / 36500) + (FaceValue * remainingpercent / 100));
-            //                    hfLastMonthly.Value = LastMonth.ToString();
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * LastMonthInt) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //            }
-            //            // txt.Text = (FaceValue / FacevalueBond).ToString();
-            //            hfQuantity.Value = txtQty.Text;
-            //            txtPrincipalAmount.Text = Convert.ToDecimal(Rate * FaceValue / 100).ToString("0.00");
-            //            hfPrincipalAmount.Value = txtPrincipalAmount.Text;
-            //            txtAccured.Text = Convert.ToDecimal(hfTotalFullInt.Value).ToString("0.00");
-            //            float Accured = float.Parse(txtAccured.Text);
-            //            hfTotalAssuredInterest.Value = txtAccured.Text;
-            //            txtGrossConder.Text = Convert.ToDecimal((Rate * FaceValue / 100) + Accured).ToString("0.00");
-            //            float GrossCo = float.Parse(txtGrossConder.Text);
-            //            hfGrossConsideration.Value = txtGrossConder.Text;
-            //            txtStampDuty.Text = Convert.ToInt32(GrossCo * 0.0001 / 100).ToString();
-            //            txtConsiderationStamp.Text = Convert.ToDecimal(GrossCo + (GrossCo * 0.0001 / 100)).ToString("0.00");
-            //            hfTotalConserationAmount.Value = txtConsiderationStamp.Text;
-            //        }
-            //    }
-
-            //    if (hfPaymentType.Value == "Yearly")
-            //    {
-            //        DateTime InstallDate = DateTime.ParseExact(hfIPDates.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //        DateTime Salltle = DateTime.ParseExact(hfSattlementDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //        TimeSpan FirstDay = (InstallDate - Salltle);
-            //        float fday = (float)FirstDay.TotalDays;
-            //        DataTable dt = dl.CheckMaturityTypeValue(hfProductsId.Value, hfIPDates.Value);
-            //        if (dt.Rows.Count > 0)
-            //        {
-            //            string Percentage = dt.Rows[0]["MaturityTypePercentage"].ToString();
-            //            float Percent = float.Parse(Percentage);
-            //            float FirstYear = (((Deal * coupon * fday) / 36500) + (FaceValue * Percent / 100));
-            //            float Principal = (FaceValue * Percent / 100);
-            //            hfFirstYearly.Value = FirstYear.ToString();
-            //            DateTime lastDate = InstallDate;
-            //            float face = (FaceValue - (FaceValue * Percent / 100));
-            //            float intfirst = ((Deal * coupon * fday) / 36500);
-            //            hfIntFirst.Value = intfirst.ToString();
-            //            float per = Percent;
-            //            float Pers = 0;
-            //            float interest = 0;
-            //            int UnitCount = Convert.ToInt32(hfYearly.Value);
-            //            for (int i = 1; i < UnitCount + 1; i++)
-            //            {
-
-            //                DateTime InsDate = InstallDate.AddMonths(i * 12);
-            //                DataTable dtm = dl.CheckMaturityTypeValue(hfProductsId.Value, InsDate.ToString("dd/MM/yyyy").Replace("-", "/"));
-            //                if (dtm.Rows.Count > 0)
-            //                {
-
-            //                    string Perc = dtm.Rows[0]["MaturityTypePercentage"].ToString();
-            //                    if (Perc == null || Perc == "")
-            //                    {
-
-            //                    }
-            //                    else
-            //                    {
-            //                        float perce = float.Parse(Perc);
-            //                        TimeSpan objTimeSpan = InsDate - lastDate;
-            //                        float days = (float)objTimeSpan.TotalDays;
-            //                        float yearlyInterest = (((face * coupon * days) / 36500) + (FaceValue * perce / 100));
-            //                        float principal = (FaceValue * perce / 100);
-            //                        hfYearlyInterest.Value = yearlyInterest.ToString();
-            //                        lastDate = InsDate;
-            //                        hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                        float Faces = (face - (FaceValue * perce / 100));
-            //                        hfFaces.Value = Faces.ToString();
-            //                        float total = (interest + ((face * coupon * days) / 36500));
-            //                        interest = total;
-            //                        face = Faces;
-            //                        hfTotalInt.Value = interest.ToString();
-            //                        float totalpercent = (Pers + perce);
-            //                        Pers = totalpercent;
-            //                        hfTotalPercent.Value = totalpercent.ToString();
-            //                    }
-            //                }
-            //                else
-            //                {
-
-            //                    TimeSpan objTimeSpan = InsDate - lastDate;
-            //                    float days = (float)objTimeSpan.TotalDays;
-            //                    float yearlyInterest = (((face * coupon * days) / 36500));
-            //                    hfYearlyInterest.Value = yearlyInterest.ToString();
-            //                    lastDate = InsDate;
-            //                    hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                    float total = (interest + ((face * coupon * days) / 36500));
-            //                    interest = total;
-            //                    hfTotalInt.Value = interest.ToString();
-            //                }
-
-            //            }
-
-            //            //DateTime Maturity = DateTime.ParseExact(hfMaturityDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            DateTime Last = DateTime.ParseExact(hfLastDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            TimeSpan objtime = (Maturity - Last);
-            //            float dayss = (float)objtime.TotalDays;
-            //            float facelast = float.Parse(hfFaces.Value);
-            //            float intLast = float.Parse(hfTotalInt.Value);
-            //            float lastpercent = float.Parse(hfTotalPercent.Value);
-            //            DataTable dtn = dl.CheckMaturityTypeValue(hfProductsId.Value, hfMaturityDate.Value);
-            //            if (dtn.Rows.Count > 0)
-            //            {
-
-            //                string Perc = dtn.Rows[0]["MaturityTypePercentage"].ToString();
-            //                if (Perc == null || Perc == "")
-            //                {
-
-            //                }
-            //                else
-            //                {
-            //                    float Percs = float.Parse(Perc);
-            //                    float Fulltotapercent = (per + lastpercent + Percs);
-            //                    float remainingpercent = (100 - Fulltotapercent);
-            //                    float LastYearly = (((facelast * coupon * dayss) / 36500) + (FaceValue * Percs / 100) + (FaceValue * remainingpercent / 100));
-            //                    float principal = (FaceValue * Percs / 100);
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //            }
-            //            else
-            //            {
-            //                float remainingpercent = (100 - lastpercent);
-            //                float LastYearly = (((facelast * coupon * dayss) / 36500) + (FaceValue * remainingpercent / 100));
-            //                float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                hfTotalFullInt.Value = LastInterest.ToString();
-
-            //            }
-
-            //        }
-            //        else
-            //        {
-
-            //            float FirstYear = ((Deal * coupon * fday) / 36500);
-            //            hfFirstYearly.Value = FirstYear.ToString();
-            //            float intfirst = ((Deal * coupon * fday) / 36500);
-            //            DateTime lastDate = InstallDate;
-            //            float interest = 0;
-            //            float Pers = 0;
-            //            int UnitCount = Convert.ToInt32(hfYearly.Value);
-            //            for (int i = 1; i < UnitCount + 1; i++)
-            //            {
-            //                DateTime InsDate = InstallDate.AddMonths(i * 12);
-            //                DataTable dtm = dl.CheckMaturityTypeValue(hfProductsId.Value, InsDate.ToString("dd/MM/yyyy").Replace("-", "/"));
-            //                if (dtm.Rows.Count > 0)
-            //                {
-            //                    string Perc = dtm.Rows[0]["MaturityTypePercentage"].ToString();
-            //                    if (Perc == null || Perc == "")
-            //                    {
-
-            //                    }
-            //                    else
-            //                    {
-            //                        float perce = float.Parse(Perc);
-            //                        TimeSpan objTimeSpan = InsDate - lastDate;
-            //                        float days = (float)objTimeSpan.TotalDays;
-            //                        float yearlyInterest = (((Deal * coupon * days) / 36500) + (FaceValue * perce / 100));
-            //                        hfYearlyInterest.Value = yearlyInterest.ToString();
-            //                        float principal = (FaceValue * perce / 100);
-            //                        lastDate = InsDate;
-            //                        hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                        float Faces = (Deal - (FaceValue * perce / 100));
-            //                        hfFaces.Value = Faces.ToString();
-            //                        float total = (interest + ((Deal * coupon * days) / 36500));
-            //                        Deal = Faces;
-            //                        interest = total;
-            //                        hfTotalInt.Value = interest.ToString();
-            //                        float totalpercent = (Pers + perce);
-            //                        Pers = totalpercent;
-            //                        hfTotalPercent.Value = totalpercent.ToString();
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    TimeSpan objTimeSpan = InsDate - lastDate;
-            //                    float days = (float)objTimeSpan.TotalDays;
-            //                    float yearlyInterest = (((Deal * coupon * days) / 36500));
-            //                    hfYearlyInterest.Value = yearlyInterest.ToString();
-            //                    lastDate = InsDate;
-            //                    hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                    float total = (interest + ((Deal * coupon * days) / 36500));
-            //                    interest = total;
-            //                    hfTotalInt.Value = interest.ToString();
-
-            //                }
-
-
-            //            }
-            //            // DateTime Maturity = DateTime.ParseExact(hfMaturityDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            DateTime Last = DateTime.ParseExact(hfLastDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            TimeSpan objtime = (Maturity - Last);
-            //            float dayss = (float)objtime.TotalDays;
-            //            float facelast = float.Parse(hfFaces.Value);
-            //            float intLast = float.Parse(hfTotalInt.Value);
-            //            float lastpercent = float.Parse(hfTotalPercent.Value);
-            //            DataTable dtn = dl.CheckMaturityTypeValue(hfProductsId.Value, hfMaturityDate.Value);
-            //            if (dtn.Rows.Count > 0)
-            //            {
-            //                string Perc = dtn.Rows[0]["MaturityTypePercentage"].ToString();
-            //                if (Perc == null || Perc == "")
-            //                {
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //                else
-            //                {
-            //                    float Percs = float.Parse(Perc);
-            //                    float Fulltotapercent = (lastpercent + Percs);
-            //                    float remainingpercent = (100 - Fulltotapercent);
-            //                    float LastYearly = (((facelast * coupon * dayss) / 36500) + (FaceValue * Percs / 100) + (FaceValue * remainingpercent / 100));
-            //                    float principal = (FaceValue * Percs / 100);
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-
-            //            }
-            //            else
-            //            {
-            //                float remainingpercent = (100 - lastpercent);
-            //                float LastYearly = (((facelast * coupon * dayss) / 36500) + (FaceValue * remainingpercent / 100));
-            //                float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                hfTotalFullInt.Value = LastInterest.ToString();
-
-            //            }
-
-            //        }
-            //        // txtQuantity.Text = (FaceValue / FacevalueBond).ToString();
-            //        hfQuantity.Value = txtQty.Text;
-            //        txtPrincipalAmount.Text = Convert.ToDecimal(Rate * FaceValue / 100).ToString("0.00");
-            //        hfPrincipalAmount.Value = txtPrincipalAmount.Text;
-            //        txtAccured.Text = Convert.ToDecimal(hfTotalFullInt.Value).ToString("0.00");
-            //        hfTotalAssuredInterest.Value = txtAccured.Text;
-            //        float Accured = float.Parse(txtAccured.Text);
-            //        txtGrossConder.Text = Convert.ToDecimal((Rate * FaceValue / 100) + Accured).ToString("0.00");
-            //        hfGrossConsideration.Value = txtGrossConder.Text;
-            //        float GrossCo = float.Parse(txtGrossConder.Text);
-            //        txtStampDuty.Text = Convert.ToInt32(GrossCo * 0.0001 / 100).ToString();
-            //        txtConsiderationStamp.Text = Convert.ToDecimal(GrossCo + (GrossCo * 0.0001 / 100)).ToString("0.00");
-            //        hfTotalConserationAmount.Value = txtConsiderationStamp.Text;
-
-            //    }
-
-            //    if (hfPaymentType.Value == "Quarterly")
-            //    {
-            //        DateTime InstallDate = DateTime.ParseExact(hfIPDates.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //        DateTime Salltle = DateTime.ParseExact(hfSattlementDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //        TimeSpan FirstDay = (InstallDate - Salltle);
-            //        float fday = (float)FirstDay.TotalDays;
-            //        DataTable dtc = dl.CheckMaturityTypeValue(hfProductsId.Value, hfIPDates.Value);
-            //        if (dtc.Rows.Count > 0)
-            //        {
-            //            string Percentage = dtc.Rows[0]["MaturityTypePercentage"].ToString();
-            //            float percent = float.Parse(Percentage.ToString());
-            //            float FirstQuarterly = (((Deal * coupon * fday) / 36500) + (FaceValue * percent / 100));
-            //            hfFirstQuarterly.Value = FirstQuarterly.ToString();
-            //            float Principal = (FaceValue * percent / 100);
-            //            float face = (Deal - (FaceValue * percent / 100));
-            //            float intfirst = ((Deal * coupon * fday) / 36500);
-            //            float interest = 0;
-            //            float per = percent;
-            //            float Pers = 0;
-            //            DateTime lastDate = InstallDate;
-            //            int UnitCount = Convert.ToInt32(hfQuerterly.Value);
-            //            for (int i = 1; i < UnitCount + 1; i++)
-            //            {
-            //                DateTime InsDate = InstallDate.AddMonths(i * 3);
-            //                DataTable dtm = dl.CheckMaturityTypeValue(hfProductsId.Value, InsDate.ToString("dd/MM/yyyy").Replace("-", "/"));
-            //                if (dtm.Rows.Count > 0)
-            //                {
-            //                    string Perc = dtm.Rows[0]["MaturityTypePercentage"].ToString();
-            //                    if (Perc == null || Perc == "")
-            //                    {
-
-            //                    }
-            //                    else
-            //                    {
-            //                        float perce = float.Parse(Perc);
-            //                        TimeSpan objTimeSpan = InsDate - lastDate;
-            //                        float days = (float)objTimeSpan.TotalDays;
-            //                        float QuertarlyInterest = (((face * coupon * days) / 36500) + (FaceValue * perce / 100));
-            //                        hfQuarterlyInterest.Value = QuertarlyInterest.ToString();
-            //                        float principal = (FaceValue * perce / 100);
-            //                        lastDate = InsDate;
-            //                        hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                        float Faces = (face - (FaceValue * perce / 100));
-            //                        hfFaces.Value = Faces.ToString();
-            //                        float total = (interest + ((face * coupon * days) / 36500));
-            //                        face = Faces;
-            //                        interest = total;
-            //                        hfTotalInt.Value = interest.ToString();
-            //                        float totalpercent = (Pers + perce);
-            //                        Pers = totalpercent;
-            //                        hfTotalPercent.Value = totalpercent.ToString();
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    TimeSpan objTimeSpan = InsDate - lastDate;
-            //                    float days = (float)objTimeSpan.TotalDays;
-            //                    float QuertarlyInterest = (((face * coupon * days) / 36500));
-            //                    hfQuarterlyInterest.Value = QuertarlyInterest.ToString();
-            //                    lastDate = InsDate;
-            //                    hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                    float total = (interest + ((face * coupon * days) / 36500));
-            //                    interest = total;
-            //                    hfTotalInt.Value = interest.ToString();
-            //                }
-
-            //            }
-            //            //DateTime Maturity = DateTime.ParseExact(hfMaturityDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            DateTime Last = DateTime.ParseExact(hfLastDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            TimeSpan objtime = (Maturity - Last);
-            //            float dayss = (float)objtime.TotalDays;
-            //            float intLast = float.Parse(hfTotalInt.Value);
-            //            float lastpercent = float.Parse(hfTotalPercent.Value);
-            //            DataTable dtn = dl.CheckMaturityTypeValue(hfProductsId.Value, hfMaturityDate.Value);
-            //            float facelast = float.Parse(hfFaces.Value);
-            //            if (dtn.Rows.Count > 0)
-            //            {
-            //                string Perc = dtn.Rows[0]["MaturityTypePercentage"].ToString();
-            //                if (Perc == null || Perc == "")
-            //                {
-
-            //                }
-            //                else
-            //                {
-            //                    float Percs = float.Parse(Perc);
-            //                    float Fulltotapercent = (per + lastpercent + Percs);
-            //                    float remainingpercent = (100 - Fulltotapercent);
-            //                    float LastYearly = (((facelast * coupon * dayss) / 36500) + (FaceValue * Percs / 100) + (FaceValue * remainingpercent / 100));
-            //                    float principal = (FaceValue * Percs / 100);
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //            }
-            //            else
-            //            {
-            //                float remainingpercent = (100 - lastpercent);
-            //                float LastYearly = (((facelast * coupon * dayss) / 36500));
-            //                float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500) + (FaceValue * remainingpercent / 100));
-            //                hfTotalFullInt.Value = LastInterest.ToString();
-            //            }
-
-            //        }
-            //        else
-            //        {
-            //            float FirstQuarterly = ((Deal * coupon * fday) / 36500);
-            //            hfFirstQuarterly.Value = FirstQuarterly.ToString();
-            //            float intfirst = ((Deal * coupon * fday) / 36500);
-            //            DateTime lastDate = InstallDate;
-            //            float interest = 0;
-            //            float Pers = 0;
-            //            int UnitCount = Convert.ToInt32(hfQuerterly.Value);
-            //            for (int i = 1; i < UnitCount + 1; i++)
-            //            {
-            //                DateTime InsDate = InstallDate.AddMonths(i * 3);
-            //                DataTable dtm = dl.CheckMaturityTypeValue(hfProductsId.Value, InsDate.ToString("dd/MM/yyyy").Replace("-", "/"));
-            //                if (dtm.Rows.Count > 0)
-            //                {
-            //                    string Perc = dtm.Rows[0]["MaturityTypePercentage"].ToString();
-            //                    if (Perc == null || Perc == "")
-            //                    {
-
-            //                    }
-            //                    else
-            //                    {
-            //                        float perce = float.Parse(Perc);
-            //                        TimeSpan objTimeSpan = InsDate - lastDate;
-            //                        float days = (float)objTimeSpan.TotalDays;
-            //                        float QuertarlyInterest = (((Deal * coupon * days) / 36500) + (FaceValue * perce / 100));
-            //                        hfQuarterlyInterest.Value = QuertarlyInterest.ToString();
-            //                        float principal = (FaceValue * perce / 100);
-            //                        lastDate = InsDate;
-            //                        hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                        float Faces = (Deal - (FaceValue * perce / 100));
-            //                        hfFaces.Value = Faces.ToString();
-            //                        float total = (interest + ((Deal * coupon * days) / 36500));
-            //                        Deal = Faces;
-            //                        interest = total;
-            //                        hfTotalInt.Value = interest.ToString();
-            //                        float totalpercent = (Pers + perce);
-            //                        Pers = totalpercent;
-            //                        hfTotalPercent.Value = totalpercent.ToString();
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    TimeSpan objTimeSpan = InsDate - lastDate;
-            //                    float days = (float)objTimeSpan.TotalDays;
-            //                    float QuertarlyInterest = (((Deal * coupon * days) / 36500));
-            //                    hfQuarterlyInterest.Value = QuertarlyInterest.ToString();
-            //                    lastDate = InsDate;
-            //                    hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                    float total = (interest + ((Deal * coupon * days) / 36500));
-            //                    interest = total;
-            //                    hfTotalInt.Value = interest.ToString();
-            //                }
-
-            //            }
-
-            //            //  DateTime Maturity = DateTime.ParseExact(hfMaturityDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            DateTime Last = DateTime.ParseExact(hfLastDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            TimeSpan objtime = (Maturity - Last);
-            //            float dayss = (float)objtime.TotalDays;
-            //            DataTable dtn = dl.CheckMaturityTypeValue(hfProductsId.Value, hfMaturityDate.Value);
-            //            float intLast = float.Parse(hfTotalInt.Value);
-            //            float facelast = float.Parse(hfFaces.Value);
-            //            float lastpercent = float.Parse(hfTotalPercent.Value);
-            //            if (dtn.Rows.Count > 0)
-            //            {
-            //                string Perc = dtn.Rows[0]["MaturityTypePercentage"].ToString();
-            //                if (Perc == null || Perc == "")
-            //                {
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //                else
-            //                {
-            //                    float Percs = float.Parse(Perc);
-            //                    float Fulltotapercent = (lastpercent + Percs);
-            //                    float remainingpercent = (100 - Fulltotapercent);
-            //                    float LastYearly = (((facelast * coupon * dayss) / 36500) + (FaceValue * Percs / 100) + (FaceValue * remainingpercent / 100));
-            //                    float principal = (FaceValue * Percs / 100);
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //            }
-            //            else
-            //            {
-            //                float remainingpercent = (100 - lastpercent);
-            //                float LastYearly = (((facelast * coupon * dayss) / 36500));
-            //                float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500) + (FaceValue * remainingpercent / 100));
-            //                hfTotalFullInt.Value = LastInterest.ToString();
-            //            }
-            //        }
-            //        // txtQuantity.Text = (FaceValue / FacevalueBond).ToString();
-            //        hfQuantity.Value = txtQty.Text;
-            //        txtPrincipalAmount.Text = Convert.ToDecimal(Rate * FaceValue / 100).ToString("0.00");
-            //        hfPrincipalAmount.Value = txtPrincipalAmount.Text;
-            //        txtAccured.Text = Convert.ToDecimal(hfTotalFullInt.Value).ToString("0.00");
-            //        float Accured = float.Parse(txtAccured.Text);
-            //        hfTotalAssuredInterest.Value = txtAccured.Text;
-            //        txtGrossConder.Text = Convert.ToDecimal((Rate * FaceValue / 100) + Accured).ToString("0.00");
-            //        float GrossCo = float.Parse(txtGrossConder.Text);
-            //        hfGrossConsideration.Value = txtGrossConder.Text;
-            //        txtStampDuty.Text = Convert.ToInt32(GrossCo * 0.0001 / 100).ToString();
-            //        txtConsiderationStamp.Text = Convert.ToDecimal(GrossCo + (GrossCo * 0.0001 / 100)).ToString("0.00");
-            //        hfTotalConserationAmount.Value = txtConsiderationStamp.Text;
-
-            //    }
-
-            //    if (hfPaymentType.Value == "Half Yearly")
-            //    {
-            //        DateTime InstallDate = DateTime.ParseExact(hfIPDates.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //        DateTime Salltle = DateTime.ParseExact(hfSattlementDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //        TimeSpan FirstDay = (InstallDate - Salltle);
-            //        float fday = (float)FirstDay.TotalDays;
-            //        DataTable dtc = dl.CheckMaturityTypeValue(hfProductsId.Value, hfIPDates.Value);
-            //        if (dtc.Rows.Count > 0)
-            //        {
-            //            string Percentage = dtc.Rows[0]["MaturityTypePercentage"].ToString();
-            //            float percent = float.Parse(Percentage.ToString());
-            //            float FirstHalfY = (((Deal * coupon * fday) / 36500) + (FaceValue * percent / 100));
-            //            hfFirstHalf.Value = FirstHalfY.ToString();
-            //            float Principal = (FaceValue * percent / 100);
-            //            DateTime lastDate = InstallDate;
-            //            float intfirst = ((Deal * coupon * fday) / 36500);
-            //            float face = (Deal - (FaceValue * percent / 100));
-            //            float per = percent;
-            //            float Pers = 0;
-            //            float interest = 0;
-            //            int UnitCount = Convert.ToInt32(hfHalfYearly.Value);
-            //            for (int i = 1; i < UnitCount + 1; i++)
-            //            {
-            //                DateTime InsDate = InstallDate.AddMonths(i * 6);
-            //                DataTable dtm = dl.CheckMaturityTypeValue(hfProductsId.Value, InsDate.ToString("dd/MM/yyyy").Replace("-", "/"));
-            //                if (dtm.Rows.Count > 0)
-            //                {
-            //                    string Perc = dtm.Rows[0]["MaturityTypePercentage"].ToString();
-            //                    if (Perc == null || Perc == "")
-            //                    {
-
-            //                    }
-            //                    else
-            //                    {
-            //                        float perce = float.Parse(Perc);
-            //                        TimeSpan objTimeSpan = InsDate - lastDate;
-            //                        float days = (float)objTimeSpan.TotalDays;
-            //                        float halfInterest = (((face * coupon * days) / 36500) + (FaceValue * perce / 100));
-            //                        hfHalfYearlyInterest.Value = Convert.ToDecimal(halfInterest).ToString();
-            //                        float principal = (FaceValue * perce / 100);
-            //                        lastDate = InsDate;
-            //                        hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                        float Faces = (face - (FaceValue * perce / 100));
-            //                        hfFaces.Value = Faces.ToString();
-            //                        float total = (interest + ((face * coupon * days) / 36500));
-            //                        face = Faces;
-            //                        interest = total;
-            //                        hfTotalInt.Value = interest.ToString();
-            //                        float totalpercent = (Pers + perce);
-            //                        Pers = totalpercent;
-            //                        hfTotalPercent.Value = totalpercent.ToString();
-            //                    }
-
-            //                }
-            //                else
-            //                {
-            //                    TimeSpan objTimeSpan = InsDate - lastDate;
-            //                    float days = (float)objTimeSpan.TotalDays;
-            //                    float halfInterest = (((face * coupon * days) / 36500));
-            //                    hfHalfYearlyInterest.Value = Convert.ToDecimal(halfInterest).ToString();
-            //                    lastDate = InsDate;
-            //                    hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                    float total = (interest + ((face * coupon * days) / 36500));
-            //                    interest = total;
-            //                    hfTotalInt.Value = interest.ToString();
-            //                }
-
-            //            }
-            //            // DateTime Maturity = DateTime.ParseExact(hfMaturityDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            DateTime Last = DateTime.ParseExact(hfLastDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            TimeSpan objtime = (Maturity - Last);
-            //            float dayss = (float)objtime.TotalDays;
-            //            DataTable dtn = dl.CheckMaturityTypeValue(hfProductsId.Value, hfMaturityDate.Value);
-            //            float intLast = float.Parse(hfTotalInt.Value);
-            //            float facelast = float.Parse(hfFaces.Value);
-            //            float lastpercent = float.Parse(hfTotalPercent.Value);
-            //            if (dtn.Rows.Count > 0)
-            //            {
-            //                string Perc = dtn.Rows[0]["MaturityTypePercentage"].ToString();
-            //                if (Perc == null || Perc == "")
-            //                {
-
-            //                }
-            //                else
-            //                {
-            //                    float Percs = float.Parse(Perc);
-            //                    float Fulltotapercent = (per + lastpercent + Percs);
-            //                    float remainingpercent = (100 - Fulltotapercent);
-            //                    float LastYearly = (((facelast * coupon * dayss) / 36500) + (FaceValue * Percs / 100) + (FaceValue * remainingpercent / 100));
-            //                    float principal = (FaceValue * Percs / 100);
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //            }
-            //            else
-            //            {
-            //                float remainingpercent = (100 - lastpercent);
-            //                float LastYearly = (((facelast * coupon * dayss) / 36500) + (FaceValue * remainingpercent / 100));
-            //                float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                hfTotalFullInt.Value = LastInterest.ToString();
-            //            }
-
-            //        }
-            //        else
-            //        {
-            //            float FirstHalfY = ((Deal * coupon * fday) / 36500);
-            //            hfFirstHalf.Value = FirstHalfY.ToString();
-            //            DateTime lastDate = InstallDate;
-            //            float intfirst = ((Deal * coupon * fday) / 36500);
-            //            float interest = 0;
-            //            float Pers = 0;
-            //            int UnitCount = Convert.ToInt32(hfHalfYearly.Value);
-            //            for (int i = 1; i < UnitCount + 1; i++)
-            //            {
-            //                DateTime InsDate = InstallDate.AddMonths(i * 6);
-            //                DataTable dtm = dl.CheckMaturityTypeValue(hfProductsId.Value, InsDate.ToString("dd/MM/yyyy").Replace("-", "/"));
-            //                if (dtm.Rows.Count > 0)
-            //                {
-            //                    string Perc = dtm.Rows[0]["MaturityTypePercentage"].ToString();
-            //                    if (Perc == null || Perc == "")
-            //                    {
-
-            //                    }
-            //                    else
-            //                    {
-            //                        float perce = float.Parse(Perc);
-            //                        TimeSpan objTimeSpan = InsDate - lastDate;
-            //                        float days = (float)objTimeSpan.TotalDays;
-            //                        float halfInterest = (((Deal * coupon * days) / 36500) + (FaceValue * perce / 100));
-            //                        float principal = (FaceValue * perce / 100);
-            //                        hfHalfYearlyInterest.Value = Convert.ToDecimal(halfInterest).ToString();
-            //                        lastDate = InsDate;
-            //                        hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                        float Faces = (Deal - (FaceValue * perce / 100));
-            //                        hfFaces.Value = Faces.ToString();
-            //                        float total = (interest + ((Deal * coupon * days) / 36500));
-            //                        Deal = Faces;
-            //                        interest = total;
-            //                        hfTotalInt.Value = interest.ToString();
-            //                        float totalpercent = (Pers + perce);
-            //                        Pers = totalpercent;
-            //                        hfTotalPercent.Value = totalpercent.ToString();
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    TimeSpan objTimeSpan = InsDate - lastDate;
-            //                    float days = (float)objTimeSpan.TotalDays;
-            //                    float halfInterest = (((Deal * coupon * days) / 36500));
-            //                    hfHalfYearlyInterest.Value = Convert.ToDecimal(halfInterest).ToString();
-            //                    lastDate = InsDate;
-            //                    hfLastDate.Value = lastDate.ToString("dd/MM/yyyy").Replace("-", "/");
-            //                    float total = (interest + ((Deal * coupon * days) / 36500));
-            //                    interest = total;
-            //                    hfTotalInt.Value = interest.ToString();
-            //                }
-
-            //            }
-            //            // DateTime Maturity = DateTime.ParseExact(hfMaturityDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            DateTime Last = DateTime.ParseExact(hfLastDate.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //            TimeSpan objtime = (Maturity - Last);
-            //            float dayss = (float)objtime.TotalDays;
-            //            DataTable dtn = dl.CheckMaturityTypeValue(hfProductsId.Value, hfMaturityDate.Value);
-            //            float intLast = float.Parse(hfTotalInt.Value);
-            //            float facelast = float.Parse(hfFaces.Value);
-            //            float lastpercent = float.Parse(hfTotalPercent.Value);
-            //            if (dtn.Rows.Count > 0)
-            //            {
-            //                string Perc = dtn.Rows[0]["MaturityTypePercentage"].ToString();
-            //                if (Perc == null || Perc == "")
-            //                {
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //                else
-            //                {
-            //                    float Percs = float.Parse(Perc);
-            //                    float Fulltotapercent = (lastpercent + Percs);
-            //                    float remainingpercent = (100 - Fulltotapercent);
-            //                    float LastYearly = (((Deal * coupon * dayss) / 36500) + (FaceValue * Percs / 100) + (FaceValue * remainingpercent / 100));
-            //                    float principal = (FaceValue * Percs / 100);
-            //                    float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                    hfTotalFullInt.Value = LastInterest.ToString();
-            //                }
-            //            }
-            //            else
-            //            {
-            //                float remainingpercent = (100 - lastpercent);
-            //                float LastYearly = (((Deal * coupon * dayss) / 36500) + (FaceValue * remainingpercent / 100));
-            //                float LastInterest = (intfirst + intLast + ((facelast * coupon * dayss) / 36500));
-            //                hfTotalFullInt.Value = LastInterest.ToString();
-            //            }
-
-            //        }
-            //        //txtQuantity.Text = (FaceValue / FacevalueBond).ToString();
-            //        hfQuantity.Value = txtQty.Text;
-            //        txtPrincipalAmount.Text = Convert.ToDecimal(Rate * FaceValue / 100).ToString("0.00");
-            //        hfPrincipalAmount.Value = txtPrincipalAmount.Text;
-            //        txtAccured.Text = Convert.ToDecimal(hfTotalFullInt.Value).ToString("0.00");
-            //        if (txtAccured.Text == null || txtAccured.Text == "")
-            //        {
-
-            //        }
-            //        else
-            //        {
-            //            float Accured = float.Parse(txtAccured.Text);
-
-            //            hfTotalAssuredInterest.Value = txtAccured.Text;
-            //            txtGrossConder.Text = Convert.ToDecimal((Rate * FaceValue / 100) + Accured).ToString("0.00");
-            //            float GrossCo = float.Parse(txtGrossConder.Text);
-            //            hfGrossConsideration.Value = txtGrossConder.Text;
-            //            txtStampDuty.Text = Convert.ToInt32(GrossCo * 0.0001 / 100).ToString();
-            //            float stamp = float.Parse(txtStampDuty.Text);
-            //            txtConsiderationStamp.Text = Convert.ToDecimal(GrossCo + (GrossCo * 0.0001 / 100)).ToString("0.00");
-            //            hfTotalConserationAmount.Value = txtConsiderationStamp.Text;
-            //        }
-            //    }
-
-            //}
 
 
             createPerticularsTable();

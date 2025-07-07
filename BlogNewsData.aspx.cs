@@ -44,6 +44,7 @@ public partial class BlogNewsData : System.Web.UI.Page
     }
     private void getData(string Data)
     {
+
         rptNews.DataSource = dl.get_BlogNews(null,Data,true);
         rptNews.DataBind();
         hfDataa.Value = Data;
@@ -56,14 +57,20 @@ public partial class BlogNewsData : System.Web.UI.Page
     private void BindData()
     {
         DataTable dt = dl.get_BlogNews(null, null, true);
+
         if (hfDataa.Value == "")
         {
-
-            rptNews.DataSource = dt;
-            rptNews.DataBind();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                DataView dv = new DataView(dt);
+                dv.Sort = "BlogDate DESC"; // ensure this matches your column name exactly
+                rptNews.DataSource = dv;
+                rptNews.DataBind();
+            }
         }
-
     }
+
+
     public bool IsValidMail(string emailaddress)
     {
         try

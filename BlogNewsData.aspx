@@ -82,16 +82,15 @@
                                 <div class="box">
                                     <img src='<%#Eval("BlogImage").ToString().Replace("~/","") %>' class="col-12 p-0" alt="" />
                                     <div class="details p-3 ">
-                                        <small class="text-danger font_2"><strong> Date:</strong> <%--20 June  2022--%><%#Eval("BlogDate") %> | <strong> Author:</strong> <%--Admin | Investment--%><%#Eval("AuthorBy") %> </small>
+                                        <small class="text-danger font_2"><strong> Date:</strong> <%--20 June  2022--%><%#Eval("FormattedBlogDate") %> | <strong> Author:</strong> <%--Admin | Investment--%><%#Eval("AuthorBy") %> </small>
                                         <span class="abcd">
                                             <a href="<%=ResolveUrl("~")%>BlogNewsDetails?oId=<%#Eval("BlogId") %>">
-                           <h4 class="h5 font_2 font-weight-normal" style="color:black; text-decoration:blink;"><%--Sovereign Gold Bond Scheme 2023-24--%><%#Eval("BlogTitle") %>:  <%--An Attractive Investment Opportunity--%> <%#Eval("BlogSubTitle") %></h4></a>
+                           <h4 class="h5 font_2 font-weight-normal" style="color:black; text-decoration:blink;"><%#Eval("BlogTitle") %>: <%#Eval("BlogSubTitle") %></h4></a>
                                              </span>
                                         <span class="defg">
-                                                                                    <p><small><%--Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?--%> <%#Eval("MetaDescription") %></small></p>
+                                                                                    <p><small><%#Eval("MetaDescription") %></small></p>
                                         </span>
                                         <asp:LinkButton ID="lnkviewdetails" runat="server" CssClass="color1 font_1" CommandArgument='<%#Eval("BlogId") %>' OnClick="lnkviewdetails_Click">Read More</asp:LinkButton>
-<%--                                        <a href="<%=ResolveUrl("~")%>BlogNewsDetails?oId=<%#Eval("BlogId") %>" class="color1 font_1">Read More</a>--%>
                                     </div>
                                 </div>
                             </div>
@@ -100,73 +99,7 @@
                         </asp:Repeater>
 
 
-                                                            <%--<asp:Panel ID="pnlDefailBlog" runat="server">
-                                                                  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="mp4/bg.mp4" type="video/mp4">
-  </video>
-
-  <div class="masthead">
-    <div class="masthead-bg"></div>
-    <div class="container h-100">
-      <div class="row h-100">
-        <div class="col-12 my-auto">
-          <div class="masthead-content text-white py-5 py-md-0">
-            <h1 class="mb-3">Coming Soon!</h1>
-            <p class="mb-5">We're working hard to finish the development of website.<br /> Have patience and wait till launching!</p>
-            <img src="logo.png" class="img-thumbnail" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-                                                            </asp:Panel>--%>
-                                                            </div>
-                        <%--<div class="row">
-                            <div class="col-md-6 py-2">
-                                <div class="box">
-                                    <img src="img/blog/blog1.png" class="col-12 p-0" alt="">
-                                    <div class="details p-3 ">
-                                        <small class="text-danger font_2"><strong> Date:</strong> 20 June  2022 | <strong> Author:</strong> Admin | Investment </small>
-                                        <h4 class="h5 font_2 font-weight-normal">Sovereign Gold Bond Scheme 2023-24:  An Attractive Investment Opportunity</h4>
-                                        <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?</small></p>
-                                        <a href="#" class="color1 font_1">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 py-2">
-                                <div class="box">
-                                    <img src="img/blog/blog1.png" class="col-12 p-0" alt="">
-                                    <div class="details p-3 ">
-                                        <small class="text-danger font_2"><strong> Date:</strong> 20 June  2022 | <strong> Author:</strong> Admin | Investment </small>
-                                        <h4 class="h5 font_2 font-weight-normal">Sovereign Gold Bond Scheme 2023-24:  An Attractive Investment Opportunity</h4>
-                                        <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?</small></p>
-                                        <a href="#" class="color1 font_1">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 py-2">
-                                <div class="box">
-                                    <img src="img/blog/blog1.png" class="col-12 p-0" alt="">
-                                    <div class="details p-3 ">
-                                        <small class="text-danger font_2"><strong> Date:</strong> 20 June  2022 | <strong> Author:</strong> Admin | Investment </small>
-                                        <h4 class="h5 font_2 font-weight-normal">Sovereign Gold Bond Scheme 2023-24:  An Attractive Investment Opportunity</h4>
-                                        <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?</small></p>
-                                        <a href="#" class="color1 font_1">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 py-2">
-                                <div class="box">
-                                    <img src="img/blog/blog1.png" class="col-12 p-0" alt="">
-                                    <div class="details p-3 ">
-                                        <small class="text-danger font_2"><strong> Date:</strong> 20 June  2022 | <strong> Author:</strong> Admin | Investment </small>
-                                        <h4 class="h5 font_2 font-weight-normal">Sovereign Gold Bond Scheme 2023-24:  An Attractive Investment Opportunity</h4>
-                                        <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?</small></p>
-                                        <a href="#" class="color1 font_1">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>--%>
+                  
                     </div>
                     
                     
@@ -216,55 +149,7 @@
                         </div>
                     </div>
                 </div>
-                    <%--<div class="col-md-4 mt-md-2">
-                        <div class="box p-4">
-                            <div class="box ">
-                                <div class="offer-banner bg-light p-2  text-dark">
-                                   <p class=""> <span class="h4 font_2  ">Blog Categories</span></p>
-<%--                                    <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias qui quibusdam molestias, ipsam cum, suscipit eius inventore sed explicabo eum cumque error perferendis consectetur optio libero unde, iusto ipsa dolorem.</small>---
-                                     
-                                    <asp:Repeater ID ="rptTagss" runat="server">
-                                        <ItemTemplate>
-
-                                              <ul class="ul_style">
-                                                  <li>
-                                                      <a style="text-decoration: none;
-    color: #000;" href="BlogNewsDetails.aspx?oId=<%#Eval("BlogId") %>"><%#Eval("BlogcategoryHead") %></a>
-                                                  </li>
-                                              </ul>
-                                                    
-                                                
-<%--                                                                               <span class="h3_style"><a style="text-decoration: none;" href="BlogNewsDetails.aspx?oId=<%#Eval("BlogId") %>"><%#Eval("BlogcategoryHead") %></a></span>---
-                                            
-
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                             
-                                </div>
-                            </div>
-                            <div class="Recent-Post my-md-4 my-3">
-                                <h2 class="h5 font-weight-normal py-2 color1">Latest <span class="color2">News</span></h2>
-                                <div class="recent-post-list">
-                                    <asp:Repeater ID ="rptNewsSide" runat="server">
-                                        <ItemTemplate>
-                                <a href="BlogNewsDetails.aspx?oId=<%#Eval("BlogId") %>" class="text-dark"><%#Eval("BlogTitle") %>: <%#Eval("BlogSubTitle") %></a>
-                                    <hr>
-                                        </ItemTemplate>
-                                    </asp:Repeater> 
-<%--                                <a href="" class="text-dark">Sovereign Gold Bond Scheme 2023-24: An Attractive Investment Opportunity</a>
-                                    <hr>
-                                    <a href="" class="text-dark">Sovereign Gold Bond Scheme 2023-24: An Attractive Investment Opportunity</a>
-                                    <hr>
-                                    <a href="" class="text-dark">Sovereign Gold Bond Scheme 2023-24: An Attractive Investment Opportunity</a>
-                                    <hr>
-                                    <a href="" class="text-dark">Sovereign Gold Bond Scheme 2023-24: An Attractive Investment Opportunity</a>
-                                    <hr>
-                                    <a href="" class="text-dark">Sovereign Gold Bond Scheme 2023-24: An Attractive Investment Opportunity</a>--
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>--%>
+             
                 
             </div>
                 </div>

@@ -82,7 +82,7 @@ public partial class BSE_INTEGRATION_RFQApprove : System.Web.UI.Page
                }
 
             }
-        };
+        }; 
 
 
 

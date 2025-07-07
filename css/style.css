@@ -1,11 +1,125 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
-/**
-*
-* Testing
-*
-**/
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+}
+.breadcrumb-wrapper {
+    background: linear-gradient(135deg, #1f3b73, #4a69bd);
+    position: relative;
+    z-index: 1;
+    border-left: 5px solid #ffc107;
+    border-radius: 10px;
+}
+
+    .breadcrumb-wrapper .bg-overlay {
+        position: absolute;
+        content: "";
+        background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+        opacity: 0.1;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+    }
+
+    .breadcrumb-wrapper h1,
+    .breadcrumb-wrapper p {
+        position: relative;
+        z-index: 2;
+    }
+
+    .breadcrumb-wrapper h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .breadcrumb-wrapper p {
+        font-size: 1rem;
+        color: #f8f9fa;
+    }
+
+.accordion {
+    background-color: #2C3E50;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #3d566e;
+    transition: all 0.3s ease-in-out;
+}
+
+.accordion-header {
+    background-color: #34495E;
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .accordion-header:hover {
+        background-color: #3b5b75;
+    }
+
+    .accordion-header h3 {
+        margin: 0;
+        font-size: 16px;
+        color: #fff;
+    }
+
+.accordion .close {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+    .accordion .close span {
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background: white;
+        top: 50%;
+        left: 0;
+        transition: transform 0.3s ease;
+    }
+
+        .accordion .close span:first-child {
+            transform: rotate(45deg);
+        }
+
+        .accordion .close span:last-child {
+            transform: rotate(-45deg);
+        }
+
+.accordion-body {
+    display: none;
+    padding: 16px 20px;
+    background-color: #1c2833;
+    color: #ecf0f1;
+    font-size: 14px;
+    text-align: justify;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.accordion.active .accordion-body {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .h1,
 .h2,
 .h3,
@@ -214,3 +328,55 @@ nav .menu2 .dropdown-menu {
   outline: 0;
   box-shadow: unset;
 }/*# sourceMappingURL=style.css.map */
+
+
+
+
+ /*nav bar*/
+
+.custom-navbar {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #004d7a, #008793, #00bf72);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0.98;
+    border-bottom: 3px solid #ffc107;
+}
+
+    .custom-navbar .navbar-brand img {
+        max-height: 50px;
+    }
+
+    .custom-navbar .nav-link {
+        color: #ffffff !important;
+        font-weight: 600;
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+        .custom-navbar .nav-link:hover,
+        .custom-navbar .dropdown-menu a:hover {
+            color: #ffc107 !important;
+            text-decoration: none;
+        }
+
+    .custom-navbar .dropdown-menu {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .custom-navbar .dropdown-item {
+        color: #333333;
+        padding: 10px 20px;
+        transition: background-color 0.2s ease;
+    }
+
+        .custom-navbar .dropdown-item:hover {
+            background-color: #f0f0f0;
+            color: #007bff;
+        }
+
+.navbar-toggler {
+    border: none;
+    background-color: #ffc107;
+}

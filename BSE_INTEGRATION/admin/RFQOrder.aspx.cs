@@ -100,14 +100,14 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
                     dealtimeminutes = ddlDealTimeMinutes.SelectedValue,
                     otmoto = ddlOtoOtm.SelectedValue,
                     proclient = ddlProClient.SelectedValue,
-                    buyerclientcode = "DFSPL",
-                    sellerclientcode = "DFSPLD",
+                    buyerclientcode = "GENEVCAP",
+                    sellerclientcode = "DIMENSIONFSLD",
                     directbrokered = ddlUserType.SelectedValue,
                     sellerbrokercode = "",
                     buyerbrokercode = txtBrokerName.Text.Trim(),
                     negotiableflag = ddlNegotiableTag.SelectedValue,
                     disclosedidentity = ddlDisclosedIdentity.SelectedValue,
-                    initiatorreferencenumber = "",
+                    initiatorreferencenumber = "txttxtBrokerName.text.trim()",
                     initiatorcomment = "Done thrugh online ",
                     obpplatform = ddlObpPlatform.SelectedValue,
                     filler2="",
@@ -137,7 +137,7 @@ public partial class BSE_INTEGRATION_RFQOrder : System.Web.UI.Page
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://appdemo.bseindia.com/ICDMAPI/ICDMService.svc/");
+                client.BaseAddress = new Uri("https://nds.bseindia.com/ICDM_API/ICDMService.svc/");
                 client.DefaultRequestHeaders.Add("PARTICIPANTID", participantid);
                 client.DefaultRequestHeaders.Add("DEALERID", dealerid);
                 client.DefaultRequestHeaders.Add("PASSWORD", password);

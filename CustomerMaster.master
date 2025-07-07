@@ -14,6 +14,9 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 
     <!-- Whatsapp CSS Here -->
     <link rel="stylesheet" href="whatsapp.css">
@@ -50,10 +53,161 @@
     <link href="Signup/css/style.css" rel="stylesheet" />
     <link href="Signup/css/cashflowstyle.css" rel="stylesheet" />
     <style>
-        nav.navbar.navbar-expand-lg.navbar-light.transpatent {
-            z-index: 100 !important;
+    .navbar-nav {
+        width: 100%;
+        justify-content: center;
+        position: relative;
+    }
+
+    .nav-item {
+        margin: 0 10px;
+        position: relative;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        color: white !important;
+        font-size: 2rem;
+        padding: 5px 12px;
+    }
+
+    .nav-icon {
+        font-size: 2rem;
+        transition: all 0.3s ease;
+        margin-right: 6px;
+        color: #FE5C36; /* Neon green */
+    }
+
+    .nav-link:hover .nav-icon {
+        color: #085D94; /* Pink on hover */
+        transform: scale(1.2);
+    }
+
+    .nav-text {
+        opacity: 20;
+        transform: translateX(10px);
+        transition: all 0.3s ease;
+        font-size: 1.5rem;
+        color: black;
+    }
+
+    .nav-link:hover .nav-text {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .profile-icon {
+        font-size: 2rem;
+        color: #00bbf9; /* Cyan blue */
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover .profile-icon {
+        color: #f15bb5;
+        transform: scale(1.2);
+    }
+
+    .position-absolute.right-end {
+        right: 0;
+        top: 0;
+    }
+
+    @media (max-width: 991.98px) {
+        .nav-text {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+    }
+        /* Show dropdown on hover */
+    .navbar-nav .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0; /* optional: remove jump */
+    }
+
+    /* Optional: Add transition for dropdown */
+    .dropdown-menu {
+        transition: all 0.3s ease-in-out;
+        border-radius: 0.5rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Smooth hover icon & text */
+    .nav-link .nav-icon {
+        transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-link:hover .nav-icon {
+        transform: scale(1.1);
+        color: #085D94;
+    }
+
+    .nav-link:hover .nav-text {
+        color: black;
+        margin-left: 4px;
+    }
+
+
+   /*Footer*/
+      .footer {
+        font-family: 'Segoe UI', sans-serif;
+        background: black;
+        color: black;
+        padding-top: 40px;
+    }
+
+    .footer h2 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 5px;
+    }
+
+    .footer .btn-link {
+        display: inline-block;
+        margin: 4px 0;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+
+    .footer .btn-link:hover {
+        text-decoration: underline;
+        color: #fffbe0;
+    }
+
+    .footer i {
+        margin-right: 8px;
+        color: #ffeb3b;
+    }
+
+    .footer .read-more-content {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .footer .read-more-toggle {
+        cursor: pointer;
+        font-weight: 500;
+        display: inline-block;
+        margin-top: 10px;
+        text-decoration: underline;
+        color: #ffffff;
+    }
+
+    @media (max-width: 767.98px) {
+        .footer .col-lg-3,
+        .footer .col-lg-2,
+        .footer .col-lg-4 {
+            margin-bottom: 25px;
         }
 
+        .footer h2 {
+            font-size: 1rem;
+        }
+    }
         nav.navbar.navbar-expand-lg.navbar-light {
             z-index: 100 !important;
         }
@@ -212,245 +366,190 @@
         gtag('js', new Date());
 
         gtag('config', 'G-V0VBF5EPEG');
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var input = document.getElementById("txtResult");
+            var searchBtn = document.getElementById("lnkSerch");
+
+            if (input && searchBtn) {
+                input.addEventListener("keypress", function (e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        searchBtn.click();
+
+                    }
+                });
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var input = document.getElementById("txtResult");
+            var btn = document.getElementById("<%= lnkSerch.ClientID %>");
+
+             if (input && btn) {
+                 input.addEventListener("keypress", function (e) {
+                     if (e.key === "Enter") {
+                         e.preventDefault();
+                         btn.click(); // Triggers ASP.NET search button
+                     }
+                 });
+             }
+         });
+
     </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
-
+<body style="   background: linear-gradient(to right,
+    rgba(15, 32, 39, 0.12),
+    rgba(32, 58, 67, 0.12),
+    rgba(44, 83, 100, 0.12)
+);">
+    
 
     <form id="form2" runat="server">
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="margin: 0 auto; padding-top: 50px; max-width: 650px;">
+        <div class="modal-content" style="background-color: rgba(30, 30, 30, 0.25); border-radius: 12px; border: none;">
+            <div class="modal-body p-3">
+                <div class="d-flex align-items-center">
+                    
+                    <!-- Search Input -->
+                    <asp:TextBox ID="txtResult" runat="server" ClientIDMode="Static"
+                        placeholder="Search for Bonds..."
+                        class="form-control text-white"
+                        style="border: none; border-bottom: 2px solid #0d6efd; border-radius: 0; background: transparent; font-size: 18px; padding: 8px 12px; width: 100%;">
+                    </asp:TextBox>
 
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered moda-lg" role="document" style="max-width: 800px;">
-                <div class="modal-content" style="background: none; border: none;">
-
-                    <div class="modal-body">
-                        <div class="">
-                            <div class="row text-center search">
-
-                                <asp:TextBox ID="txtResult" style="height:45px;" runat="server" class="col-md-10 col-10 p-0" type="search" name
-                                    placeholder="Search For Bonds" ClientIDMode="Static"></asp:TextBox>
-                                <asp:LinkButton ID="lnkSerch" runat="server" type="submit" class="lnkSerch bg2 col-md-2 col-2" OnClick="lnkSerch_Click"><i
-                                class="text-white fa-solid fa-magnifying-glass"></i></asp:LinkButton>
-
-
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Search Button -->
+                    <asp:LinkButton ID="lnkSerch" runat="server" OnClick="lnkSerch_Click"
+                        class="btn"
+                        style="background: none; border: none; color: #0d6efd; font-size: 20px; margin-left: 12px;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </asp:LinkButton>
 
                 </div>
             </div>
         </div>
-
-        <nav class="navbar navbar-expand-lg navbar-light d-md-flex d-none" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #56aadc, #F57C00);opacity: 0.98;">
-            <a class="navbar-brand " href="<%=ResolveUrl("~")%>Index">
-                <img src="img/logo.png" alt="">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarText" aria-controls="navbarText"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse font_1 " id="navbarText">
-                <ul class="navbar-nav ml-auto text-dark menu1">
-                    <%--<li class="nav-item active">
-                        <div class="dropdown ">
-                            <a
-                                class=" dropdown-toggle nav-link font-weight-bold"
-                                href="#"
-                                role="button"
-                                id="dropdownMenuLink"
-                                data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Bonds
-                            </a>
-
-                            <div class="dropdown-menu"
-                                    aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another
-                                        action</a>
-                                    <a class="dropdown-item" href="#">Something
-                                        else here</a>
-                                </div>
-                        </div>
-                    </li>--%>
-                    <li class="nav-item active">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle nav-link font-weight-bold" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Investment
-                            Options</a>
-                            <div class="dropdown-menu"
-                                aria-labelledby="dropdownMenuLink">
-                                <asp:Repeater ID="rptcategory" runat="server">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="lnkcategory" runat="server" CssClass="dropdown-item" CommandArgument='<%#Eval("CategoryId") %>' OnClick="lnkcategory_Click"><%#Eval("CategoryHead") %></asp:LinkButton>
-                                        <%--                                   <a class="dropdown-item" href="<%=ResolveUrl("~")%>OurCollections?oId=<%#Eval("CategoryId") %>"><%#Eval("CategoryHead") %></a>--%>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>BlogNewsData">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>Partner">Partner
-                            with us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>about">About</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>SellBonds">Sell</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>FAQ">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" target="_blank" href="https://camskra.com/">Check KYC</a>
-                    </li>
-                    <li class="nav-item">
-<%--                        <a class="nav-link font-weight-bold" href="RFQ.aspx">RFQ Integration</a>--%>
-                        <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>Pan_Kra_Verification">PAN KRA Verification</a>
-                    </li>
-                    
-                    <li>
-                        <a data-toggle="modal" class="nav-link header-icons" data-target="#exampleModalCenter">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="header-icons nav-link font-weight-bold" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-regular fa-user"></i></a>
-                            <asp:Panel ID="pnlList" runat="server">
-                                <div class="dropdown-menu" style="right: 0px !important; left: unset;"
-                                    aria-labelledby="dropdownMenuLink">
-                                   
-
-                                    <%--                                    <div class="dropdown-item" runat="server" id="divMemberCode"></div>--%>
-                                   
-                                                                        <strong>
-                                      <a class="dropdown-item" href="~/BSE_INTEGRATION/users/user_Dashboard.aspx" runat="server" id="A1">Dashboard</a>
-                                    </strong>
-
-                                    <strong><a class="dropdown-item" runat="server" id="dropdownMenuLinks"></a></strong>
-                                    <strong>
-                                        <a class="dropdown-item" runat="server" id="divMemberCode"></a></strong>
-                                    <asp:Repeater ID="rptdata" runat="server">
-                                        <ItemTemplate>
-                                            <a class="dropdown-item" style="text-transform: capitalize">RM -<%#Eval("FullName") %></a>
-                                            <a class="dropdown-item" href="tel:+91<%#Eval("Mobile") %>">RM -<i class="fa fa-phone"></i> <%#Eval("Mobile") %></a>
-                                            <a class="dropdown-item" href="mailto:<%#Eval("Email") %>">RM -<i class="fa fa-envelope"></i> <%#Eval("Email") %></a>
-                                          
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-
-                                    <a class="dropdown-item" href="<%=ResolveUrl("~")%>Requirement">KYC Status</a>
-                                    <a class="dropdown-item" href="<%=ResolveUrl("~")%>ChangePassword">Change Password</a>
-                                    <asp:LinkButton ID="LinkButton1" CssClass="dropdown-item" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
-                                    <%-- <a class="dropdown-item" href="#">Another
-                                        action</a>
-
-                                    <a class="dropdown-item" href="#">Something
-                                        else here</a>--%>
-                                </div>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlSign" runat="server">
-
-                                <div class="dropdown-menu" style="right: 0px !important; left: unset;"
-                                    aria-labelledby="dropdownMenuLink">
-                                    <asp:LinkButton ID="lnkSignin" CssClass="dropdown-item" runat="server" OnClick="lnkSignin_Click">Login</asp:LinkButton>
-                                    <asp:LinkButton ID="lnkSignup" CssClass="dropdown-item" runat="server" OnClick="lnkSignup_Click">Sign Up</asp:LinkButton>
-                                    <%--                                    <a class="dropdown-item" href="signin.aspx">Sign In</a>
-                                    <a class="dropdown-item" href="Signup.aspx">Sign Up</a>--%>
-
-                                    <%-- <a class="dropdown-item" href="#">Another
-                                        action</a>
-
-                                    <a class="dropdown-item" href="#">Something
-                                        else here</a>--%>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                    </li>
-                    <li>
-                        <ul class="navbar-nav mr-auto menu2">
-                            <%--<li class="nav-item ">
-                            <div class="dropdown ">
-                                <a class=" dropdown-toggle nav-link pl-md-5"
-                                    href="#"
-                                    role="button"
-                                    id="dropdownMenuLink"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    Help
-                                </a>
-
-                                <div class="dropdown-menu"
-                                    aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="tel:+91 920-523-0117">+91 920-523-0117</a>
-                                    <a class="dropdown-item" href="mailto:info@bondsadda.com">info@bondsadda.com</a>
-                                  <%-- <a class="dropdown-item" href="<%=ResolveUrl("~")%>FAQ">FAQ</a>--%>
-                            <%-- <a class="dropdown-item" href="#">Something
-                                        else here</a>--%
-                                </div>
-                            </div>
-                        </li>--%>
-                            <asp:Panel ID="pnlRM" runat="server">
-                                <%--<li class="nav-item ">
-                            <div class="dropdown ">
-                                <a class=" dropdown-toggle nav-link pl-md-5"
-                                    href="#"
-                                    role="button"
-                                    id="dropdownMenuLinked" runat="server"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    
-                                </a>
-                                <asp:Repeater ID ="rptRMDetails" runat="server">
-                                    <ItemTemplate>
-                                        <div class="dropdown-menu"
-                                    aria-labelledby="dropdownMenuLinked">
-                                 <a class="dropdown-item" style="text-transform:capitalize"><%#Eval("FullName") %></a>
-                                    <a class="dropdown-item" href="tel:+91<%#Eval("Mobile") %>"><%#Eval("Mobile") %></a>
-                                    <a class="dropdown-item" href="mailto:<%#Eval("Email") %>"><%#Eval("Email") %></a>
-                                  
-                                    <%-- <a class="dropdown-item" href="#">Something
-                                        else here</a>--%
-                                </div>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                                
-                            </div>
-                        </li>--%>
-                            </asp:Panel>
-
-                            <%--<li class="nav-item">
-                           
-                                <div class="nav-link pl-md-5" runat="server" id="divRMData"></div>
-                        </li>--%>
-
-                            <li>
-                                <a class="nav-link" href="#"></a>
-                            </li>
-                        </ul>
-
-                    </li>
-
-                </ul>
+    </div>
+</div>
 
 
 
 
+
+
+<nav class="navbar navbar-expand-lg custom-navbar navbar-dark d-md-flex d-none">
+    <a class="navbar-brand" href="<%=ResolveUrl("~")%>Index">
+        <img src="img/logo.png" alt="Logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav w-100 justify-content-center align-items-center position-relative">
+    <!-- Investment Options -->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown">
+            <i class="fas fa-chart-line nav-icon"></i><span class="nav-text">Investment</span>
+        </a>
+        <div class="dropdown-menu">
+            <asp:Repeater ID="rptcategory" runat="server">
+                <ItemTemplate>
+                    <asp:LinkButton ID="lnkcategory" runat="server" CssClass="dropdown-item"
+                        CommandArgument='<%#Eval("CategoryId") %>' OnClick="lnkcategory_Click">
+                        <%#Eval("CategoryHead") %>
+                    </asp:LinkButton>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+    </li>
+
+    <!-- Main Nav Items -->
+   <li class="nav-item">
+    <a class="nav-link" href="<%=ResolveUrl("~")%>about">
+        <i class="fas fa-info-circle nav-icon" ></i>
+        <span class="nav-text">About Us</span>
+    </a>
+</li>
+
+<!-- Sell -->
+<li class="nav-item">
+    <a class="nav-link" href="<%=ResolveUrl("~")%>SellBonds">
+        <i class="fas fa-hand-holding-usd nav-icon"></i>
+        <span class="nav-text">Sell</span>
+    </a>
+</li>
+
+<!-- FAQ -->
+<li class="nav-item">
+    <a class="nav-link" href="<%=ResolveUrl("~")%>FAQ">
+        <i class="fas fa-question nav-icon"></i>
+        <span class="nav-text">FAQ</span>
+    </a>
+</li>
+
+<!-- More Dropdown -->
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" data-toggle="dropdown">
+        <i class="fas fa-ellipsis-h nav-icon"></i><span class="nav-text">More</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="<%=ResolveUrl("~")%>BlogNewsData">News</a>
+        <a class="dropdown-item" href="<%=ResolveUrl("~")%>Partner">Partner with Us</a>
+        <a class="dropdown-item" href="<%=ResolveUrl("~")%>Pan_Kra_Verification">PAN KRA Verification</a>
+        <a class="dropdown-item" target="_blank" href="https://camskra.com/">Check KYC</a>
+    </div>
+</li>
+
+<!-- Profile Icon Right-Aligned -->
+<li class="nav-item dropdown position-absolute right-end">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown">
+        <i class="fas fa-user-circle profile-icon"></i>
+    </a>
+        <asp:Panel ID="pnlList" runat="server">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="~/BSE_INTEGRATION/users/user_Dashboard.aspx" runat="server" id="A1"><strong>Dashboard</strong></a>
+                <a class="dropdown-item" runat="server" id="dropdownMenuLinks"></a>
+                <a class="dropdown-item" runat="server" id="divMemberCode"></a>
+                <asp:Repeater ID="rptdata" runat="server">
+                    <ItemTemplate>
+                        <a class="dropdown-item">RM - <%#Eval("FullName") %></a>
+                        <a class="dropdown-item" href="tel:+91<%#Eval("Mobile") %>"><i class="fa fa-phone"></i> <%#Eval("Mobile") %></a>
+                        <a class="dropdown-item" href="mailto:<%#Eval("Email") %>"><i class="fa fa-envelope"></i> <%#Eval("Email") %></a>
+                    </ItemTemplate>
+                </asp:Repeater>
+                <a class="dropdown-item" href="<%=ResolveUrl("~")%>Requirement">KYC Status</a>
+                <a class="dropdown-item" href="<%=ResolveUrl("~")%>ChangePassword">Change Password</a>
+                <asp:LinkButton ID="LinkButton1" CssClass="dropdown-item" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
             </div>
-        </nav>
+        </asp:Panel>
+
+        <asp:Panel ID="pnlRM" runat="server" Visible="false"></asp:Panel>
+
+        <asp:Panel ID="pnlSign" runat="server">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <asp:LinkButton ID="lnkSignin" CssClass="dropdown-item" runat="server" OnClick="lnkSignin_Click">Login</asp:LinkButton>
+                <asp:LinkButton ID="lnkSignup" CssClass="dropdown-item" runat="server" OnClick="lnkSignup_Click">Sign Up</asp:LinkButton>
+            </div>
+        </asp:Panel>
+    </li>
+</ul>
+
+    </div>
+</nav>
+
 
 
         <!--mobile-->
-        <nav class="navbar navbar-expand-lg navbar-light d-md-none" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
+<nav class="navbar navbar-expand-lg navbar-light d-md-none sticky-navbar" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
             <div class="col-7 px-0">
                 <a class="navbar-brand " href="<%=ResolveUrl("~")%>Index">
                     <img src="img/logo.png" class="col-12 p-0" style="height: auto;" alt="">
@@ -518,28 +617,7 @@
 
             <div class=" collapse navbar-collapse font_1 " id="navbarTexts">
                 <ul class="navbar-nav ml-auto text-dark menu1 pl-3">
-                    <%--<li class="nav-item active">
-                        <div class="dropdown ">
-                            <a
-                                class=" dropdown-toggle nav-link font-weight-bold"
-                                href="#"
-                                role="button"
-                                id="dropdownMenuLink"
-                                data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Bonds
-                            </a>
-
-                            <div class="dropdown-menu"
-                                    aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another
-                                        action</a>
-                                    <a class="dropdown-item" href="#">Something
-                                        else here</a>
-                                </div>
-                        </div>
-                    </li>--%>
+                  
                     <li class="nav-item active">
                         <div class="dropdown">
                             <a class="dropdown-toggle nav-link font-weight-bold" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Investment
@@ -747,206 +825,159 @@
                     </div>--%>
 
 
-         <section class="breadcrumb-collection  py-md-4 gradient" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
-     <div class="container">
-         <div class="row" >
-             <div class="col-12 p-md-3 p-0">
-                 <div
-                     class="breadcrumbs py-md-2 pt-md-3 px-md-5 pt-3 py-2  px-3 text-white">
-                     <h1 class="h3 font-weight-normal ">FAQ</h1>
-                     <p class=" font_2">Home / FAQ</p>
-                 </div>
-             </div>
-         </div>
-
-     </div>
- </section>
- <section  style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
-
-     <div class="container">
-         <asp:Repeater ID="rptFAQ" runat="server">
-             <ItemTemplate>
-                 <div class="accordion">
-                     <div class="accordion-header">
-                         <h3 class="h5 font-weight-normal text-white"><%#Eval("Question") %></h3>
-                         <div class="close">
-                             <span></span>
-                             <span></span>
-                         </div>
-                     </div>
-                     <div class="accordion-body">
-                         <p  class= "text-white " style="text-align: justify;"><%#Eval("Answer") %></p>
-                     </div>
-                     
-                 </div>
-             </ItemTemplate>
-         </asp:Repeater>
-     </div>
-
- </section>
-
-
-
-        <footer class="footer  text-white font_2" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 py-3">
-                        <img src="img/logo2.png" class="col-8 p-0" alt="" srcset="">
-                        <p>Bonds Adda is an online platform or market place powered by Dimension Financial Solutions Pvt Ltd to buy or sell bonds. Where we can make investment in fixed return bonds and can sell bonds.</p>
-                    </div>
-                    <div class="col-lg-3 py-3">
-                        <h2 class="h5 font-weight-normal">Quick Links</h2>
-                        <a href="" class="btn-link text-white">Bonds</a><br>
-                        <a href="<%=ResolveUrl("~")%>OurCollections" class="btn-link text-white">Collections</a><br>
-                        <a href="<%=ResolveUrl("~")%>PrivacyPolicy" class="btn-link text-white">Privacy Policy</a><br>
-                        <a href="<%=ResolveUrl("~")%>BlogNewsData" class="btn-link text-white">Blogs</a><br>
-                        <a href="<%=ResolveUrl("~")%>TermsAndCondition" class="btn-link text-white">Terms and Conditions</a><br />
-                        <a href="<%=ResolveUrl("~")%>FAQ" class="btn-link text-white">FAQ</a><br />
-                        <a href="<%=ResolveUrl("~")%>Contact" class="btn-link text-white">Contact Us</a><br />
-                        <a href="<%=ResolveUrl("~")%>CodeOfConduct" class="btn-link text-white">Code of Conduct</a><br />
-                        <a href="Image/Investor%20Grievance_DFS.pdf" download class="btn-link text-white">Investor Grievance</a>
-                    </div>
-                    <div class="col-lg-4 py-3">
-                        <h2 class="h5 font-weight-normal font_1">Corporate  Office</h2>
-                        <div class="row mb-2">
-                            <div class="col-1">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="col-10">
-                                KAUSHAMBI, GHAZIABAD
-                                <br />
-                                Dimension Tower, Plot No-10, 3rd Floor, Commercial Area, Kaushambi, Ghaziabad, U.P-201010.
-
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-1">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-10">
-                                0120-4376552, 0120-4151349
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-1">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-10">
-                                customercare@bondsadda.com
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-1">
-                            </div>
-                            <div class="col-10">
-                                SEBI REGISTRATION No.: INZ000313233
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-1">
-                            </div>
-                            <div class="col-10">
-                                BSE Member ID: 6824
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 py-3">
-                        <h2 class="h5 font-weight-normal font_1">Follow us</h2>
-                        <a href="https://www.facebook.com/profile.php?id=100094572825123" class="btn-link text-white" target="_blank">
-                            <div class="row mb-2">
-
-                                <div class="col-1">
-                                    <i class="fa-brands fa-facebook"></i>
-                                </div>
-                                <div class="col-9">
-                                    Facebook
-                                </div>
-
-                            </div>
-                        </a>
-                        <a href="https://www.instagram.com/bondsadda/" class="btn-link text-white" target="_blank">
-                            <div class="row mb-2">
-                                <div class="col-1">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </div>
-                                <div class="col-10">
-                                    Instagram
-                                </div>
-                            </div>
-                        </a>
-                        <a href="https://twitter.com/bondsadda" class="btn-link text-white" target="_blank">
-                            <div class="row mb-2">
-                                <div class="col-1">
-                                    <i class="fa-brands fa-twitter"></i>
-                                </div>
-                                <div class="col-10">
-                                    Twitter
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
+        
+<div class="container">
+    <div class="row">
+        <div class="col-12 p-md-4 p-3">
+            <div class="breadcrumb-wrapper text-white rounded shadow-lg position-relative overflow-hidden px-md-5 py-md-4 px-3 py-3">
+                <div class="bg-overlay"></div>
+                <h1 class="text-dark fw-bold">Frequently Asked Questions</h1>
+                <p class="text-dark lead mb-0">Home / <span class="text-dark">FAQ</span></p>
             </div>
+        </div>
+    </div>
+</div>
 
-            <div class="container" style="padding: 25px;">
-                <hr />
-                <div class="row">
-                    <h3 class="text-light">Welcome to BondsAdda</h3>
-                    <p>Dimension Financial Solutions Private Limited | SEBI Registration No.: INZ000313233</p>
-                    <p style="margin-bottom: -1px;">BondsAdda is a brand name of the website of Dimension Financial Solutions Private Limited - a SEBI registered and  BSE debt market broker which provide an Online Bond Providing Platform (OBPP) that enables investors to trade bonds and debentures through exchange in the secondary market.</p>
-                    <p style="margin-bottom: -1px;"> Before you proceed with using our website and its services, we ask that you carefully read and understand the following disclaimer:</p>
-                    <p>*** Investments in debt securities are subject to market risks. Read all the offer/scheme related documents carefully before investing. ***</p>
+ 
 
-                </div>
-                <div class="row">
-                    <p style="margin-bottom: -1px;"><strong>1. Investment Risks:</strong></p>
-                    <p style="margin-bottom: -1px;">BondsAdda.com is a marketplace that facilitates the buying and selling of bonds. All investments involve risks, and past performance is not indicative of future results. Users are advised to conduct thorough research and seek professional advice before making investment decisions.</p>
-                    <p style="margin-bottom: -1px;"><strong>2. Information Accuracy:</strong></p>
-                    <p style="margin-bottom: -1px;">While we strive to provide accurate and up-to-date information, BondsAdda.com does not guarantee the accuracy, completeness, or reliability of any information on the platform. Users should independently verify information before making financial decisions.</p>
-                    <p style="margin-bottom: -1px;"><strong>3. Financial Advice:</strong></p>
-                    <p style="margin-bottom: -1px;">BondsAdda.com does not provide personalized financial advice. The information presented on the platform is for general informational purposes only. Users are encouraged to consult with financial advisors or professionals to assess their individual financial situations and goals.</p>
-                    <p style="margin-bottom: -1px;"><strong>4. User Responsibility:</strong></p>
-                    <p style="margin-bottom: -1px;">Users are solely responsible for their investment decisions, actions, and outcomes. BondsAdda.com and Dimension Group are not liable for any financial losses or damages resulting from the use of the platform or the information provided.</p>
-                    <p style="margin-bottom: -1px;"><strong>5. Third-Party Links:</strong></p>
-                    <p style="margin-bottom: -1px;">BondsAdda.com may include links to third-party websites. These links are provided for convenience, and we do not endorse or guarantee the content, services, or products offered by third parties. Users should review the terms and policies of external websites.</p>
-                    <p style="margin-bottom: -1px;"><strong>6. Regulatory Compliance:</strong></p>
-                    <p style="margin-bottom: -1px;">Users are responsible for ensuring compliance with applicable laws and regulations related to investments in their jurisdiction. BondsAdda.com and the Company are not responsible for any legal consequences arising from non-compliance.</p>
-                    <p style="margin-bottom: -1px;"><strong>7. Platform Modifications:</strong></p>
-                    <p style="margin-bottom: -1px;">BondsAdda.com reserves the right to modify, suspend, or discontinue any aspect of the platform at any time without prior notice. We may also update this disclaimer, and users are encouraged to review it periodically.</p>
-                    <p style="margin-bottom: -1px;">By using BondsAdda.com, you acknowledge that you have read, understood, and agreed to the terms of this disclaimer. If you do not agree with any part of this disclaimer, please refrain from using our services.</p>
-                    <p style="margin-bottom: -1px;">For further inquiries or clarifications, please contact us at <a href="https://bondsadda.com/">customercare@bondsadda.com</a> </p>
-                </div>
-                <div class="row">
-                    <p style="margin-bottom: -1px;"><strong>Compliance Officer: RAVI KANT MATHUR</strong></p>
-                </div>
-                <div class="row">
-                    <p style="margin-bottom: -1px;"><strong>Contact Details:</strong></p>
-                </div>
-                <div class="row">
-
-                    <p style="margin-bottom: -1px;">Tel. No.: 0120-4151349 ,</p>
-                </div>
-                <div class="row">
-                    <p style="margin-bottom: -1px;">Email ID: compliance@dimensiongroup.co.in</p>
-                </div>
-                <div class="row">
-                    <p>(for any compliance & grievance related complaints)</p>
-                </div>
-                <div class="row">
-                    <p><strong>Directors: RAVI KANT MATHUR, PRACHI CHOPRA & VIVEK GAUTAM</strong></p>
-                </div>
-                <div class="row">
-                    <p>Thank you for choosing BondsAdda.com for your financial needs.</p>
-                </div>
-                <div class="row">
-
-                    <p>Important links: Indian Clearing Corporation Ltd(ICCL) | NSDL | CDSL | BSE</p>
-                </div>
-
+    <div class="container">
+  <asp:Repeater ID="rptFAQ" runat="server">
+    <ItemTemplate>
+        <div class="accordion">
+            <div class="accordion-header">
+                <h3 class="h5 font-weight-normal"><%# Eval("Question") %></h3>
+                <div class="icon">+</div>
             </div>
-            
-        </footer>
+            <div class="accordion-body">
+                <p class="text-dark" style="text-align: justify;"><%# Eval("Answer") %></p>
+            </div>
+        </div>
+    </ItemTemplate>
+</asp:Repeater>
+
+</div>
+
+ 
+
+
+<footer class="footer text-white font_2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 py-3">
+        <img src="img/logo2.png" class="col-8 p-0" alt="" srcset="">
+        <p>Bonds Adda is an online platform or market place powered by Dimension Financial Solutions Pvt Ltd to buy or sell bonds. Where we can make investment in fixed return bonds and can sell bonds.</p>
+      </div>
+      <div class="col-lg-3 py-3">
+  <h2 class="h5 font-weight-normal">Quick Links</h2>
+  <div class="row">
+    <div class="col-6">
+      <a href="" class="btn-link text-white">Bonds</a><br>
+      <a href="<%=ResolveUrl("~")%>OurCollections" class="btn-link text-white">Collections</a><br>
+      <a href="<%=ResolveUrl("~")%>PrivacyPolicy" class="btn-link text-white">Privacy Policy</a><br>
+      <a href="<%=ResolveUrl("~")%>BlogNewsData" class="btn-link text-white">Blogs</a><br>
+      <a href="<%=ResolveUrl("~")%>TermsAndCondition" class="btn-link text-white">Terms & Conditions</a><br>
+    </div>
+    <div class="col-6">
+      <a href="<%=ResolveUrl("~")%>FAQ" class="btn-link text-white">FAQ</a><br>
+      <a href="<%=ResolveUrl("~")%>Contact" class="btn-link text-white">Contact Us</a><br>
+      <a href="<%=ResolveUrl("~")%>CodeOfConduct" class="btn-link text-white">Code of Conduct</a><br>
+      <a href="Image/Investor%20Grievance_DFS.pdf" download class="btn-link text-white">Grievance</a>
+    </div>
+  </div>
+</div>
+
+      <div class="col-lg-4 py-3">
+        <h2 class="h5 font-weight-normal font_1">Corporate  Office</h2>
+        <div class="row mb-2">
+          <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="col-10">
+            KAUSHAMBI, GHAZIABAD<br />
+            Dimension Tower, Plot No-10, 3rd Floor, Commercial Area, Kaushambi, Ghaziabad, U.P-201010.
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-1"><i class="fa fa-phone" aria-hidden="true"></i></div>
+          <div class="col-10">0120-4376552, 0120-4151349</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-1"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+          <div class="col-10">customercare@bondsadda.com</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-1"></div>
+          <div class="col-10">SEBI REGISTRATION No.: INZ000313233</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-1"></div>
+          <div class="col-10">BSE Member ID: 6824</div>
+        </div>
+      </div>
+      <div class="col-lg-2 py-3">
+        <h2 class="h5 font-weight-normal font_1">Follow us</h2>
+        <a href="https://www.facebook.com/profile.php?id=100094572825123" class="btn-link text-white" target="_blank">
+          <div class="row mb-2">
+            <div class="col-1"><i class="fa-brands fa-facebook"></i>Facebook</div>
+            <div class="col-9">    </div>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/bondsadda/" class="btn-link text-white" target="_blank">
+          <div class="row mb-2">
+            <div class="col-1"><i class="fa-brands fa-instagram"></i>Instagram</div>
+            <div class="col-10">      </div>
+          </div>
+        </a>
+        <a href="https://twitter.com/bondsadda" class="btn-link text-white" target="_blank">
+          <div class="row mb-2">
+            <div class="col-1"><i class="fa-brands fa-twitter"></i>Twitter</div>
+            <div class="col-10">    </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding: 25px;">
+    <hr />
+    <div class="row">
+      <h3 class="text-light">Welcome to BondsAdda</h3>
+      <p>Dimension Financial Solutions Private Limited | SEBI Registration No.: INZ000313233</p>
+    </div>
+
+    <div id="readMoreContent" class="read-more-content">
+      <div class="row">
+        <p style="margin-bottom: -1px;">BondsAdda is a brand name of the website of Dimension Financial Solutions Private Limited - a SEBI registered and  BSE debt market broker which provide an Online Bond Providing Platform (OBPP) that enables investors to trade bonds and debentures through exchange in the secondary market.</p>
+        <p style="margin-bottom: -1px;"> Before you proceed with using our website and its services, we ask that you carefully read and understand the following disclaimer:</p>
+        <p>*** Investments in debt securities are subject to market risks. Read all the offer/scheme related documents carefully before investing. ***</p>
+        <p style="margin-bottom: -1px;"><strong>1. Investment Risks:</strong></p>
+        <p style="margin-bottom: -1px;">BondsAdda.com is a marketplace that facilitates the buying and selling of bonds. All investments involve risks, and past performance is not indicative of future results. Users are advised to conduct thorough research and seek professional advice before making investment decisions.</p>
+        <p style="margin-bottom: -1px;"><strong>2. Information Accuracy:</strong></p>
+        <p style="margin-bottom: -1px;">While we strive to provide accurate and up-to-date information, BondsAdda.com does not guarantee the accuracy, completeness, or reliability of any information on the platform. Users should independently verify information before making financial decisions.</p>
+        <p style="margin-bottom: -1px;"><strong>3. Financial Advice:</strong></p>
+        <p style="margin-bottom: -1px;">BondsAdda.com does not provide personalized financial advice. The information presented on the platform is for general informational purposes only. Users are encouraged to consult with financial advisors or professionals to assess their individual financial situations and goals.</p>
+        <p style="margin-bottom: -1px;"><strong>4. User Responsibility:</strong></p>
+        <p style="margin-bottom: -1px;">Users are solely responsible for their investment decisions, actions, and outcomes. BondsAdda.com and Dimension Group are not liable for any financial losses or damages resulting from the use of the platform or the information provided.</p>
+        <p style="margin-bottom: -1px;"><strong>5. Third-Party Links:</strong></p>
+        <p style="margin-bottom: -1px;">BondsAdda.com may include links to third-party websites. These links are provided for convenience, and we do not endorse or guarantee the content, services, or products offered by third parties. Users should review the terms and policies of external websites.</p>
+        <p style="margin-bottom: -1px;"><strong>6. Regulatory Compliance:</strong></p>
+        <p style="margin-bottom: -1px;">Users are responsible for ensuring compliance with applicable laws and regulations related to investments in their jurisdiction. BondsAdda.com and the Company are not responsible for any legal consequences arising from non-compliance.</p>
+        <p style="margin-bottom: -1px;"><strong>7. Platform Modifications:</strong></p>
+        <p style="margin-bottom: -1px;">BondsAdda.com reserves the right to modify, suspend, or discontinue any aspect of the platform at any time without prior notice. We may also update this disclaimer, and users are encouraged to review it periodically.</p>
+        <p style="margin-bottom: -1px;">By using BondsAdda.com, you acknowledge that you have read, understood, and agreed to the terms of this disclaimer. If you do not agree with any part of this disclaimer, please refrain from using our services.</p>
+        <p style="margin-bottom: -1px;">For further inquiries or clarifications, please contact us at <a href="https://bondsadda.com/">customercare@bondsadda.com</a></p>
+        <p style="margin-bottom: -1px;"><strong>Compliance Officer: RAVI KANT MATHUR</strong></p>
+        <p style="margin-bottom: -1px;"><strong>Contact Details:</strong></p>
+        <p style="margin-bottom: -1px;">Tel. No.: 0120-4151349 ,</p>
+        <p style="margin-bottom: -1px;">Email ID: compliance@dimensiongroup.co.in</p>
+        <p>(for any compliance & grievance related complaints)</p>
+        <p><strong>Directors: RAVI KANT MATHUR, PRACHI CHOPRA & VIVEK GAUTAM</strong></p>
+        <p>Thank you for choosing BondsAdda.com for your financial needs.</p>
+        <p>Important links: Indian Clearing Corporation Ltd(ICCL) | NSDL | CDSL | BSE</p>
+      </div>
+    </div>
+
+    <span id="readMoreToggle" class="read-more-toggle" onclick="toggleReadMore()">View More ▼</span>
+  </div>
+</footer>
         
 
       <span style="display: block; background: #000; color: #fff; text-align: center; padding: 10px 0; font-weight: 500;">
@@ -1045,7 +1076,17 @@
             });
 
 
-
+            function toggleReadMore() {
+                var content = document.getElementById("readMoreContent");
+                var toggle = document.getElementById("readMoreToggle");
+                if (content.style.display === "none" || content.style.display === "") {
+                    content.style.display = "block";
+                    toggle.innerText = "View Less ▲";
+                } else {
+                    content.style.display = "none";
+                    toggle.innerText = "View More ▼";
+                }
+            }
 
 
             // It is important to place this JavaScript code after ScriptManager1
@@ -1054,7 +1095,7 @@
 
             function BeginRequestHandler(sender, args) {
                 if ($get('.table-responsive') != null) {
-                    // Get X and Y positions of scrollbar before the partial postback
+                    // Get X and Y positions of scrollbar before the partial postbackF
                     xPos = $get('.myDiv').scrollLeft;
                     yPos = $get('.myDiv').scrollTop;
                 }
