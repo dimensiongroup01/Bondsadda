@@ -1,16 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="About" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+        <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ScriptManager ID="ScriptManager1" EnableCdn="true" runat="server"></asp:ScriptManager>
-        <section class="py-3" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);" >
+        <section class="py-3" style="font-family: 'Segoe UI', sans-serif;color:black; " >
         <div class="container ">
             <div class="row">
                 <div class="col-md-6 order-md-1 order-2 align-items-center d-flex">
-                    <div class="">
+                    <div class="p-2">
                         <h2 class="h3 font-weight-normal color2">About <span class="color2">Bonds Adda</span></h2>
-                        <p>Bonda Adda is an online platform or market place powered by Dimension Financial Solutions Pvt
+                        <p class="text-black mt-2"  >Bonda Adda is an online platform or market place powered by Dimension Financial Solutions Pvt
                             Ltd to buy or sell bonds. Where we can make investment in fixed return bonds and can sell
                             bonds. Bonds Adda is online platform to invest in fixed income bonds also earn high returns.
                             Bonds Adda’s motive is to reach bonds and debentures to retail investors at single market
@@ -444,7 +451,7 @@
             
         </div>
     </section>
-    <section class="py-md-5" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);">
+    <section class="py-md-5" style="font-family: 'Segoe UI', sans-serif;color:black; ">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -490,7 +497,27 @@
             </div>
         </div>
     </section>--%>
-    <section class="subscribe pb-md-5 pb-3" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);">
+       <section class="subscribe py-5" style="background: #1f3c88; color: #fff;">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <h2 class="fw-bold mb-3">📬 Subscribe to our <span style="color: #ffcb05;">Newsletter</span></h2>
+        <p class="mb-4">DON’T FALL BEHIND. Stay current with a recap of today’s computing news from Digital Trend — by <strong>Bonds Adda</strong>.</p>
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+          <ContentTemplate>
+            <div class="input-group shadow-lg">
+              <asp:TextBox ID="txtEmail" runat="server" class="form-control form-control-lg border-0" placeholder="Enter your Email Address" />
+              <asp:Button ID="btnSubsccribe" runat="server" Text="Subscribe Now" class="btn btn-warning btn-lg px-4 fw-semibold" OnClick="btnSubscribe_Click" />
+            </div>
+          </ContentTemplate>
+        </asp:UpdatePanel>
+      </div>
+    </div>
+  </div>
+</section>
+
+   <%-- <section class="subscribe pb-md-5 pb-3" style="font-family: 'Segoe UI', sans-serif;color:white; background: linear-gradient(to right, #085D94, #F57C00);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -534,8 +561,10 @@
             </div>
         </div>
         
-    </section>
+    </section>--%>
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+
 </asp:Content>
 

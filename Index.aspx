@@ -8,6 +8,11 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
    <!-- Splide.js CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
 
@@ -15,201 +20,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- Required CSS/JS Libraries -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <!-- Optional custom CSS -->
     <style>
-        .bg-orange {
-            background-color: #FF6B00;
-        }
-              .bg {
-    font-family: 'Poppins', sans-serif;
-  linear-gradient(
-    to right,
-    rgba(15, 32, 39, 0.15),
-    rgba(32, 58, 67, 0.15),
-    rgba(44, 83, 100, 0.15)
-  ),
-  #ffffff; /* solid white background */
-    
+       /* Organized & Cleaned CSS */
 
-           .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
-  }
-
-  .fade-delay-1 { animation-delay: 0.1s; }
-  .fade-delay-2 { animation-delay: 0.2s; }
-  .fade-delay-3 { animation-delay: 0.3s; }
-  .fade-delay-4 { animation-delay: 0.4s; }
-  .fade-delay-5 { animation-delay: 0.5s; }
-  .fade-delay-6 { animation-delay: 0.6s; }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
- @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(-20px);
-  }
-
-  60% {
-    transform: translateY(-10px);
-  }
-}
-
-.bounce-animation {
-  animation: bounce 1.5s ease infinite;
-}
-.bounce-animation {
-  animation: bounce 1.5s ease 1;
-}
-  
-    </style>
-
-       
-
-        
-    
-    
-
-
-
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:HiddenField ID="hfInputData" runat="server" />
-<!-- Hero + Search + Carousel Section -->
-<section style="background: linear-gradient(to bottom, #e0e0e0 0%, #ffffff 100%); padding: 60px 0; font-family: 'Segoe UI', sans-serif;">
-  <div class="container">
-
-    <!-- Search Bar -->
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-10 col-lg-8">
-        <div class="bg-white rounded-5 shadow-sm px-3 py-2 d-flex align-items-center justify-content-between" style="border: 1px solid #dee2e6;">
-          <asp:TextBox ID="txtResult" runat="server" ClientIDMode="Static"
-            placeholder="Search for Bonds..."
-            class="form-control border-0"
-            style="border-radius: 50px; height: 50px; font-size: 17px; background-color: #f9fafb; padding-left: 20px;">
-          </asp:TextBox>
-          <asp:LinkButton ID="lnkSerch" runat="server" OnClick="lnkSerch_Click"
-            class="btn"
-            style="background: linear-gradient(135deg, #007bff, #0056d2); color: white; border-radius: 30px; padding: 10px 20px; font-size: 16px;">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </asp:LinkButton>
-        </div>
-      </div>
-    </div>
-
-    <!-- Carousel -->
-    <div id="bondsaddaCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
-      <div class="carousel-inner">
-
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-          <div class="row align-items-center g-5 min-vh-50">
-            <div class="col-lg-6 text-lg-start text-center">
-              <span class="badge-gradient-text">BondsAdda</span>
-              <h1 class="fw-bold display-5 text-dark">Maximize Your Savings with Bonds</h1>
-              <p class="lead text-muted mt-3 mb-4">
-                India's trusted platform to invest in Bonds with up to <span class="text-warning fw-bold">14%</span> returns.
-                100% digital. 100% secure.
-              </p>
-              <a href="OurCollections.aspx" class="btn btn-lg px-4 text-white fw-semibold bg-orange">
-                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i> Start Investing
-              </a>
-            </div>
-            <div class="col-lg-6 chart-bg">
-              <div class="bg-light rounded-4 p-4 shadow-sm text-center position-relative">
-                <h4 class="fw-bold text-dark mb-3">Return Comparison</h4>
-                <canvas id="bondChart" height="150"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-          <div class="row align-items-center g-5 min-vh-50">
-            <div class="col-lg-6 text-lg-start text-center">
-              <span class="badge-gradient-text">BondsAdda</span>
-              <h1 class="fw-bold display-5 text-dark">Smart Banking with Fixed Deposits</h1>
-              <p class="lead text-muted mt-3 mb-4">
-                Invest in high-yield FDs from top banks with up to <span class="text-warning fw-bold">12%</span> interest.
-                Fast, safe, and flexible.
-              </p>
-              <a href="OurCollections.aspx" class="btn btn-lg px-4 text-white fw-semibold bg-orange">
-                <i class="fa-solid fa-arrow-up-right-from-square me-2"></i> Compare FDs
-              </a>
-            </div>
-            <div class="col-lg-6 chart-bg">
-              <div class="bg-light rounded-4 p-4 shadow-sm text-center position-relative">
-                <h4 class="fw-bold text-dark mb-3">Return Comparison</h4>
-                <canvas id="fdChart" height="150"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-          <div class="row align-items-center g-5 min-vh-50">
-            <div class="col-lg-6 text-lg-start text-center">
-              <span class="badge-gradient-text">BondsAdda</span>
-              <h1 class="fw-bold display-5 text-dark">Explore NCD IPOs</h1>
-              <p class="lead text-muted mt-3 mb-4">
-                Discover top-rated IPOs with expert insights. Get in early and grow your portfolio smartly.
-              </p>
-              <a href="IPOs.aspx" class="btn btn-lg px-4 text-white fw-semibold bg-orange">
-                <i class="fa-solid fa-eye me-2"></i> View IPOs
-              </a>
-            </div>
-            <div class="col-lg-6 chart-bg">
-              <div class="bg-light rounded-4 p-4 shadow-sm text-center position-relative">
-                <h4 class="fw-bold text-dark mb-3">Return Comparison</h4>
-                <canvas id="ipoChart" height="150"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Custom Styles -->
-<style>
-.badge-gradient-text {
-  display: inline-block;
-  padding: 0.5rem 1.25rem;
-  background-color: #fff;
-  font-weight: 600;
-  border-radius: 50rem;
-  font-size: 0.95rem;
-  border: 2px solid #cc6600;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(to right, #003366, #cc6600);
-  transition: all 0.3s ease;
-}
-.badge-gradient-text:hover {
-  background-image: linear-gradient(to right, #cc6600, #003366);
-}
-
-.min-vh-50 {
-  min-height: 50vh;
+/* ==== Backgrounds ==== */
+body,
+.bg {
+  background: linear-gradient(to bottom, #001f3f, #ffffff);
 }
 
 .bg-orange {
@@ -217,186 +42,31 @@
   border: none;
 }
 
-/* Right Column Background Image */
-.chart-bg {
-  background: url('https://raw.githubusercontent.com/codewithsadee/desinic/master/assets/images/hero-banner.png') no-repeat center right;
-  background-size: contain;
-  position: relative;
-}
-.chart-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-.chart-bg::before {
-  content: "";
-  background: url('https://raw.githubusercontent.com/codewithsadee/desinic/master/assets/images/hero-banner.png') no-repeat center right;
-  background-size: contain;
-  opacity: 0.15; /* control visibility */
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.chart-bg .bg-light {
-  position: relative;
-  z-index: 2;
-}
-
-</style>
-
- <!-- Hero -->
-<!-- Slider Section -->
- 
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-
-<!-- Required CSS/JS Libraries -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-
-<section class="collection-section py-5 bg-light position-relative overflow-hidden">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold display-6 heading-glow" data-aos="fade-up">
-        Our <span class="text-gradient">Products</span>
-      </h2>
-    </div>
-
-    <div class="row g-4 justify-content-center">
-      <!-- Reusable Cards -->
-      <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-        <div class="wow-card" data-tilt>
-          <div class="icon-glow"><i class="fa-solid fa-arrow-up-right-dots"></i></div>
-          <h5>High Return Bonds</h5>
-          <asp:LinkButton ID="lnkhigh" runat="server" CssClass="btn btn-glow" OnClick="lnkhigh_Click">Explore</asp:LinkButton>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-        <div class="wow-card" data-tilt>
-          <div class="icon-glow"><i class="fa-solid fa-calendar-days"></i></div>
-          <h5>Monthly Income Bonds</h5>
-          <asp:LinkButton ID="lnkmonth" runat="server" CssClass="btn btn-glow" OnClick="lnkmonth_Click">Explore</asp:LinkButton>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-        <div class="wow-card" data-tilt>
-          <div class="icon-glow"><i class="fa-solid fa-lock"></i></div>
-          <h5>Bank/PSU/PVT Bonds</h5>
-          <asp:LinkButton ID="lnkpsu" runat="server" CssClass="btn btn-glow" OnClick="lnkpsu_Click">Explore</asp:LinkButton>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-        <div class="wow-card" data-tilt>
-          <div class="icon-glow"><i class="fa-solid fa-people-group"></i></div>
-          <h5>Public Sector Bonds</h5>
-          <asp:LinkButton ID="lnkpublic" runat="server" CssClass="btn btn-glow" OnClick="lnkpublic_Click">Explore</asp:LinkButton>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="wow-card" data-tilt>
-          <div class="icon-glow"><i class="fa-solid fa-crown"></i></div>
-          <h5>Sovereign Rated Bonds</h5>
-          <asp:LinkButton ID="lnksaver" runat="server" CssClass="btn btn-glow" OnClick="lnksaver_Click">Explore</asp:LinkButton>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="wow-card" data-tilt>
-          <div class="icon-glow"><i class="fa-solid fa-seedling"></i></div>
-          <h5>Tax Free Bonds</h5>
-          <asp:LinkButton ID="lnktax" runat="server" CssClass="btn btn-glow" OnClick="lnktax_Click">Explore</asp:LinkButton>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="wow-card" data-tilt>
-          <div class="icon-glow"><i class="fa-solid fa-money-bill-1-wave"></i></div>
-          <h5>Capital Gain Bonds (54EC)</h5>
-          <asp:LinkButton ID="lnkcapital" runat="server" CssClass="btn btn-glow" OnClick="lnkcapital_Click">Explore</asp:LinkButton>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="wow-card" data-tilt>
-          <div class="icon-glow"><i class="fa-solid fa-timeline"></i></div>
-          <h5>Fixed Deposit</h5>
-          <asp:HyperLink ID="lnkFD" runat="server" NavigateUrl="https://www.dimensiongroup.co.in/fixed-deposit.html" Target="_blank" CssClass="btn btn-glow">Explore</asp:HyperLink>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Custom CSS -->
-<style>
+/* ==== Typography & Headings ==== */
 .heading-glow {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: #00558C;
 }
 
-.text-gradient {
-  background: linear-gradient(90deg, #00558C, #F15A29);
+.text-gradient,
+.fd-heading {
+  background: linear-gradient(90deg, #00558C, #FF8746);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientMove 4s infinite linear;
+  background-size: 200% auto;
+  animation: shine 5s linear infinite;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
-.wow-card {
-  background: #fff;
-  border-radius: 1.5rem;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: all 0.4s ease;
-  overflow: hidden;
-  border: 2px solid transparent;
-  animation: pulseBorder 3s infinite;
-  box-shadow: 0 0 0 2px transparent;
+.highlight-orange {
+  color: #FF8746;
 }
 
-.wow-card:hover {
-  box-shadow: 0 12px 30px rgba(0, 85, 140, 0.15);
-  border-image: linear-gradient(45deg, #00558C, #cc6600) 1;
-}
-
-.icon-glow {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: linear-gradient(135deg,#F15A29, #F15A29);
-  color: #fff;
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  animation: float 2.5s ease-in-out infinite, glow 3s ease-in-out infinite;
-  box-shadow: 0 0 15px rgba(0, 85, 140, 0.4);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 10px #cc6600; }
-  50% { box-shadow: 0 0 20px #00558C; }
-}
-
+/* ==== Buttons ==== */
 .btn-glow {
   border-radius: 30px;
   padding: 8px 20px;
@@ -414,28 +84,113 @@
   box-shadow: 0 0 12px #cc6600;
 }
 
-@keyframes pulseBorder {
-  0% {
-    box-shadow: 0 0 0 0 rgba(204, 102, 0, 0.3);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(204, 102, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(204, 102, 0, 0);
-  }
+.btn-fd {
+  background: linear-gradient(to right, #FF8746, #00558C);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
 }
+
+.btn-fd:hover {
+  background: linear-gradient(to right, #00558C, #FF8746);
+  box-shadow: 0 0 12px rgba(255, 135, 70, 0.5);
+  transform: scale(1.05);
+}
+
+/* ==== Badge & Text Effects ==== */
+.badge-gradient-text {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  border-radius: 50rem;
+  font-size: 0.95rem;
+  border: 2px solid #cc6600;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #003366, #cc6600);
+  transition: all 0.3s ease;
+}
+
+.badge-gradient-text:hover {
+  background-image: linear-gradient(to right, #cc6600, #003366);
+}
+
+.min-vh-50 {
+  min-height: 50vh;
+}
+
+/* ==== Animations ==== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px #cc6600; }
+  50% { box-shadow: 0 0 20px #00558C; }
+}
+
+@keyframes pulseBorder {
+  0% { box-shadow: 0 0 0 0 rgba(204, 102, 0, 0.3); }
+  70% { box-shadow: 0 0 0 10px rgba(204, 102, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(204, 102, 0, 0); }
+}
+
+/* ==== Card Styles ==== */
+.wow-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  border: 2px solid transparent;
+  animation: pulseBorder 3s infinite;
+  box-shadow: 0 0 0 2px transparent;
+}
+
+.wow-card:hover {
+  box-shadow: 0 12px 30px rgba(0, 85, 140, 0.15);
+  border-image: linear-gradient(45deg, #00558C, #cc6600) 1;
+}
+
+.icon-glow,
 .icon-glow-dual {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00558C, #FF8746);
   font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
-  animation: glowPulse 3s ease-in-out infinite;
+  animation: float 2.5s ease-in-out infinite, glow 3s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(0, 85, 140, 0.4);
+}
+
+.icon-glow {
+  background: linear-gradient(135deg,#F15A29, #F15A29);
+  color: #fff;
+}
+
+.icon-glow-dual {
+  background: linear-gradient(135deg, #00558C, #FF8746);
   box-shadow: 0 0 15px rgba(255, 135, 70, 0.5);
 }
 
@@ -443,74 +198,1401 @@
   color: #FF8746 !important;
 }
 
-</style>
+/* ==== FD Cards ==== */
+.swiper-slide { display: flex; justify-content: center; }
+
+.fd-card {
+  width: 320px;
+  background: linear-gradient(135deg, #fff5eb, #e8f4fd);
+  border-radius: 1.5rem;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: all 0.4s ease-in-out;
+  position: relative;
+}
+
+.fd-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(255, 135, 70, 0.2);
+  background: linear-gradient(135deg, #fef1e6, #e0f0ff);
+  border-color: #FF8746;
+}
+
+.fd-card-img {
+  width: 100%; height: 150px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.fd-card-img img {
+  width: 100%; height: 100%; object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.fd-card:hover img { transform: scale(1.05); }
+
+.fd-card h5 {
+  font-size: 1.1rem; font-weight: 600; color: #003366; margin-bottom: 0.5rem;
+}
+
+.rate-text {
+  font-weight: 500;
+  color: #FF8746;
+  margin-bottom: 1rem;
+}
+
+.rate-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #FF8746;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ==== Utilities ==== */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hover-effect {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.collection h5 {
+  min-height: 50px;
+}
+.shadow-effect {
+      background: #1f3c88;
+      padding: 30px 25px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #273d70;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .shadow-effect p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #e0e0e0;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-name {
+      background: #ff7a00;
+      display: inline-block;
+      padding: 8px 25px;
+      border-radius: 20px;
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 6px 12px rgba(255, 122, 0, 0.3);
+    }
+
+    #customers-testimonials .item {
+      padding: 20px;
+      opacity: 0.3;
+      transform: scale(0.9);
+      transition: all 0.3s ease-in-out;
+    }
+
+    #customers-testimonials .owl-item.active.center .item {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #customers-testimonials.owl-carousel .owl-dots {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin: 5px;
+      background: #ccc;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    #customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
+    #customers-testimonials.owl-carousel .owl-dots .owl-dot:hover span {
+      background: #ff7a00;
+      transform: scale(1.2);
+    }
+
+    .text-orange {
+      color: #ff7a00 !important;
+    }
+    .collection-section {
+  background: linear-gradient(to bottom right, #f4f7fb, #ffffff);
+}
+
+.sparkle-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: sparkleMove 15s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+@keyframes sparkleMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* Updated card background to light blue */
+.wow-card {
+  background: linear-gradient(135deg, #e6f0fa, #f5faff);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #d3e5f4;
+
+  /* 🔷 Equal width/height ratio */
+  aspect-ratio: 1 / 1;
+  height: auto;
+
+  /* Flex to align button at bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.icon-glow svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 4px rgba(0, 123, 255, 0.3));
+}
+.wow-card:hover .icon-glow svg {
+  filter: drop-shadow(0 0 6px rgba(255, 123, 0, 0.5));
+}
+
+.wow-card h5 {
+  min-height: 48px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Force square ratio in IE/fallback (if needed) */
+@supports not (aspect-ratio: 1 / 1) {
+  .wow-card::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+}
+
+/* Optional: Responsive fix */
+@media (max-width: 767px) {
+  .wow-card {
+    aspect-ratio: unset;
+    height: auto;
+    min-height: 320px;
+  }
+}
+.wow-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ICON GLOW with consistent size */
+.icon-glow svg {
+  width: 44px;
+  height: 44px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 4px rgba(0, 123, 255, 0.3));
+}
+.wow-card:hover .icon-glow svg {
+  filter: drop-shadow(0 0 6px rgba(255, 123, 0, 0.5));
+}
+
+/* Heading glow */
+.heading-glow {
+  animation: glow 2.5s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  0% { text-shadow: 0 0 5px rgba(255, 115, 0, 0.3), 0 0 10px rgba(0, 86, 179, 0.3); }
+  100% { text-shadow: 0 0 12px rgba(255, 115, 0, 0.6), 0 0 20px rgba(0, 86, 179, 0.5); }
+}
+
+/* Gradient text effect */
+.text-gradient {
+  background: linear-gradient(to right, #ff7300, #0056b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card badge styling */
+.card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(to right, #ff6f00, #ffa500);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+  z-index: 2;
+}
+
+/* Explore button */
+.btn-glow {
+  background: linear-gradient(to right, #ff7300, #ffaf00);
+  color: white;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(255, 115, 0, 0.4);
+  transition: all 0.3s ease;
+  border: none;
+}
+.btn-glow:hover {
+  background: linear-gradient(to right, #ff9600, #ffc400);
+  box-shadow: 0 6px 16px rgba(255, 123, 0, 0.6);
+  transform: scale(1.05);
+}
+
+/* Optional responsiveness */
+@media (max-width: 576px) {
+  .wow-card {
+    padding: 25px 15px;
+  }
+  .icon-glow svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+.bond-card {
+      background-color: #fff;
+      border: 1px solid #dbe1ea;
+      border-left: 5px solid #003366;
+      border-radius: 16px;
+      padding: 20px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .bond-card:hover {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      transform: translateY(-6px);
+    }
+
+    .bond-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .bond-badge {
+      display: inline-block;
+      background: #ffcb05;
+      color: #000;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .bond-info {
+      font-size: 0.9rem;
+      color: #222;
+      flex-grow: 1;
+    }
+
+    .bond-info i {
+      color: #003366;
+      margin-right: 8px;
+      width: 18px;
+    }
+
+    .btn-buy {
+      background: #003366;
+      color: #fff;
+      padding: 6px 16px;
+      font-size: 0.9rem;
+      border-radius: 50px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-buy:hover {
+      background: #001d3d;
+    }
+
+    .btn-share {
+      border: 1px solid #003366;
+      color: #003366;
+      background: transparent;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      border-radius: 50px;
+      margin-left: 10px;
+    }
+
+    .btn-share:hover {
+      background-color: #003366;
+      color: #fff;
+    }
+
+    .section-title {
+      color: #000;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .swiper {
+      padding-bottom: 50px;
+    }
+
+   
+.swiper-slide {
+  display: flex;
+  height: auto;
+  width: auto;
+}
+
+.bond-card {
+  width: 100%;
+  height :510px;
+  min-height: 450px; /* Set desired minimum height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card {
+      background-color: #fff;
+      border: 1px solid #dbe1ea;
+      border-left: 5px solid #003366;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      transform: translateY(-6px);
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+
+    .product-badge {
+      display: inline-block;
+      background: #ffcb05;
+      color: #000;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .btn-explore {
+      background: #003366;
+      color: #fff;
+      padding: 6px 16px;
+      font-size: 0.9rem;
+      border-radius: 50px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-explore:hover {
+      background: #001d3d;
+    }
+
+ .products-fd-section {
+      background-color: #f8f9fa;
+    }
+
+    .fd-heading {
+      font-size: 1.75rem;
+      text-shadow: 0 0 10px rgba(255, 106, 0, 0.3);
+    }
+
+    .text-highlight-orange {
+      color: #FF6A00;
+    }
+
+    .swiper-slide {
+      display: flex;
+      height: 100%;
+    }
+
+    .fd-product-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      border-left: 5px solid #003366;
+      transition: all 0.3s ease;
+      width: 100%;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .fd-product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0, 51, 102, 0.2);
+      border-left-color: #0055aa;
+    }
+
+    .fd-product-logo img {
+      max-width: 80px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .fd-rate-badge {
+      background: radial-gradient(circle at center, #FF6A00, #ff9800);
+      color: white;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 0 12px rgba(255, 106, 0, 0.5);
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 12px rgba(255, 106, 0, 0.5); }
+      50% { transform: scale(1.08); box-shadow: 0 0 20px rgba(255, 106, 0, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 12px rgba(255, 106, 0, 0.5); }
+    }
+
+    .fd-rate-text {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .fd-buy-btn,
+    .fd-share-btn {
+      background: #FF6A00;
+      color: #fff;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .fd-share-btn {
+      background: #003366;
+    }
+
+    .fd-buy-btn:hover,
+    .fd-share-btn:hover {
+      background: #e55a00;
+      color: #fff;
+    }
+
+
+
+    /*.hero-section {
+      position: relative;
+     style="background: linear-gradient(to bottom, #00558C, #ffffff);"
+      color: white;
+      overflow: hidden;
+      padding: 80px 20px 160px;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 140px;
+     
+      z-index: 0;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-left {
+      flex: 1 1 50%;
+      min-width: 280px;
+    }
+
+    .hero-badge {
+      font-weight: 600;
+      font-size: 1.1rem;
+      background: linear-gradient(90deg, #e45005, #fd7e14);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      margin: 1rem 0 1.5rem;
+      color: #000;
+    }
+
+    .hero-desc span {
+      color: #ec6c07;
+      font-weight: bold;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background-color: #fd7e14;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .hero-right {
+      flex: 1 1 45%;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    .hero-right img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 12px;
+      
+    }*/
+
+    /* Dynamic Text */
+    /*.dynamic-text span {
+      font-weight: bold;
+      color: #ec6c07;
+      display: inline-block;
+      min-width: 80px;
+      transition: opacity 0.5s ease;
+    }
+
+    @media (max-width: 768px) {
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+    }*/
+.hero-section {
+      padding: 60px 20px;
+      position: relative;
+    }
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-left {
+      flex: 1 1 50%;
+      min-width: 280px;
+    }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #f1f1f1;
+    }
+    .hero-desc span {
+      color: #ffd700;
+      font-weight: bold;
+    }
+    .btn {
+      background-color: #fd7e14;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .hero-right {
+      flex: 1 1 45%;
+      min-width: 280px;
+      position: relative;
+    }
+    .graph-container {
+      background-color: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(4px);
+      padding: 30px;
+      border-radius: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .ball-svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      animation: bounce 2s infinite ease-in-out;
+      transform: scale(1.5);
+      opacity: 0.3;
+      z-index: 0;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) scale(1.5); }
+      50% { transform: translateY(-20px) scale(1.5); }
+    }
+    canvas#graphChart {
+      width: 100% !important;
+      max-width: 100%;
+      height: 250px !important;
+      position: relative;
+      z-index: 2;
+    }
+    .dynamic-text span {
+      font-weight: bold;
+      color: #ffd700;
+      display: inline-block;
+      min-width: 80px;
+      transition: opacity 0.5s ease;
+    }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2rem; text-align: center; }
+      .hero-content { flex-direction: column; text-align: center; }
+    }.glow-wrapper {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      padding: 2px;
+      margin-top: 60px;
+    }
+
+    .glow-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 400%;
+      top: -150%;
+      left: -50%;
+      background: conic-gradient(from 0deg, #f7941d, #fdd835, #f7941d);
+      animation: rotateGlow 4s linear infinite;
+      z-index: 0;
+    }
+
+    .glow-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      background: white;
+      border-radius: 12px;
+      z-index: 1;
+    }
+
+    @keyframes rotateGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .glow-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 24px 20px;
+      border-radius: 12px;
+    }
+
+    /* Hover Glow on Each Feature Item */
+.feature-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+.feature-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(255, 166, 0, 0.4);
+  background: rgba(255, 238, 200, 0.2);
+  cursor: pointer;
+}
+
+/* Adjust | Separator to work with rounded glow */
+.feature-item:not(.last)::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: #ccc;
+  font-size: 20px;
+  pointer-events: none;
+}
+
+/* Add spacing above the CTA button */
+.hero-left .btn {
+  margin-top: 24px;
+}
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .glow-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+    /* Smaller Glow Wrapper */
+.glow-wrapper.small-glow {
+  margin-top: 20px;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 2px;
+  height: auto;
+}
+
+/* Animate border with visible color motion */
+.glow-wrapper.small-glow::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 400%;
+  top: -150%;
+  left: -50%;
+  background: conic-gradient(from 0deg, #ff8800, #fdd835, #ffa500, #ff8800);
+  animation: rotateGlow 3s linear infinite;
+  z-index: 0;
+}
+
+.glow-wrapper.small-glow::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+/* Compact Layout */
+.glow-content.compact {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.feature-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 10px;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 6px;
+}
+
+.feature-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.2;
+}
+
+/* | Separator */
+.feature-item:not(.last)::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: #ccc;
+  font-size: 20px;
+}
+
+/* Animation */
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fd{
+scroll-behavior: smooth;
+}
+ 
+        a#ContentPlaceHolder1_lnkSearch {
+            padding: 10px !important;
+            border: none;
+            border: 1px solid black;
+            border-radius: 0 20px 20px 0 !important;
+            margin-left: -6px;
+        }
+
+        .button1 {
+            text-align: center;
+        }
+
+        img.col-12.p-0.def {
+            height: 200px;
+        }
+
+        span.abcd {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        span.kgs {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* number of lines to show */
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        span.abs {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1; /* number of lines to show */
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        span.mmm {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1; /* number of lines to show */
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        span.defg {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* number of lines to show */
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        a.btn.btn1.ase {
+            width: 185px;
+        }
+        ul#ui-id-2 {
+    position: absolute;
+    margin-top: 210px;
+    margin-left: 395px;
+    width: 653.375px;
+    display: none;
+}
+/* Search container wrapper styling */
+.search-container {
+  background-color: #ffffff;
+  border-radius: 50px;
+  border: 1px solid #dee2e6;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-container:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Gradient button style */
+.search-btn {
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  color: white;
+  font-size: 16px;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+  background: linear-gradient(135deg, #0056d2, #0040a3);
+  color: #fff;
+}
+
+/* Optional: Icon sizing */
+.search-btn i {
+  font-size: 18px;
+}
+
+.fd-card {
+  min-height: 260px;
+  background: linear-gradient(to right, #e3f2fd, #ffe0b2);
+  transition: transform 0.3s ease;
+}
+.fd-card:hover {
+  transform: translateY(-4px);
+}
+
+
+
+    </style>
+
+       
+
+        
+    
+    
+
+
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:HiddenField ID="hfInputData" runat="server" />
+<!-- Hero + Search + Carousel Section -->
+<%--<section style="padding: 30px 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #1f3c88 0%, #ffffff 100%); position: relative; overflow: hidden;">
+  <div class="container">
+
+    <!-- Search Bar -->
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-10 col-lg-8">
+        <div class="bg-white rounded-5 shadow-sm px-2 py-1 d-flex align-items-center justify-content-between" style="border: 1px solid #dee2e6;">
+          <asp:TextBox ID="txtResult" runat="server" ClientIDMode="Static"
+            placeholder="Search for Bonds..."
+            CssClass="form-control border-0"
+            Style="border-radius: 50px; height: 45px; font-size: 16px; background-color: #f9fafb; padding-left: 15px;">
+          </asp:TextBox>
+          <asp:LinkButton ID="lnkSerch" runat="server" OnClick="lnkSerch_Click"
+            CssClass="btn"
+            Style="background: linear-gradient(135deg, #007bff, #0056d2); color: white; border-radius: 30px; padding: 8px 16px; font-size: 15px;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </asp:LinkButton>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section position-relative" style="color: white; overflow: hidden; border-radius: 12px;">
+      <div class="hero-container d-flex flex-wrap align-items-center justify-content-between gap-3">
+
+        <!-- Left Column -->
+        <div style="flex: 1 1 50%; min-width: 280px;">
+          <h1 data-aos="fade-up" style="font-size: 2.4rem; font-weight: bold;">
+            Maximize Your Savings with 
+            <span class="dynamic-text"><span id="changing-word">FD</span></span>
+          </h1>
+          <p style="font-size: 1rem; margin: 0.8rem 0 1rem; color: #f1f1f1;">
+            India's trusted platform to invest in Bonds with up to 
+            <span style="color: #ffd700; font-weight: bold;">14%</span> returns. <br />
+            100% digital. 100% secure.
+          </p>
+          <a href="OurCollections.aspx" class="btn" style="background-color: #fd7e14; color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 1rem;">
+            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i> Start Investing
+          </a>
+        </div>
+
+        <!-- Right Column -->
+        <div class="text-center position-relative" style="flex: 1 1 45%; min-width: 280px;">
+          <!-- Decorative SVG Ball -->
+          <svg style="position: absolute; top: -40px; right: -40px; z-index: 0; transform: scale(1.3); opacity: 0.5;" width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="200" r="200" fill="url(#darkGradient)"/>
+            <defs>
+              <linearGradient id="darkGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0b1e3d"/>
+                <stop offset="100%" stop-color="#192b4d"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <!-- Foreground Image -->
+          <img src="https://raw.githubusercontent.com/codewithsadee/desinic/master/assets/images/hero-banner.png"
+               alt="Hero Investment"
+               style="width: 100%; max-width: 440px; border-radius: 12px; position: relative; z-index: 1;" />
+        </div>
+
+      </div> <!-- End Hero Container -->
+    </div> <!-- End Hero Section -->
+
+  </div> <!-- End Container -->
+</section>
+<script>
+  const words = ["FD", "Bonds", "IPO"];
+  let index = 0;
+  const el = document.getElementById("changing-word");
+
+  setInterval(() => {
+    index = (index + 1) % words.length;
+    el.style.opacity = 0;
+    setTimeout(() => {
+      el.textContent = words[index];
+      el.style.opacity = 1;
+    }, 300);
+  }, 2000);
+</script>
+
+<!-- Font Awesome CDN -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+<%--<!-- Dynamic Text Script -->
+<script>
+  const words = ["FD", "Bonds", "IPO"];
+  let index = 0;
+  const el = document.getElementById("changing-word");
+
+  setInterval(() => {
+    index = (index + 1) % words.length;
+    el.style.opacity = 0;
+    setTimeout(() => {
+      el.textContent = words[index];
+      el.style.opacity = 1;
+    }, 300);
+  }, 2000);
+</script>
+
+<!-- Font Awesome (optional) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>--%>
+
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">  
+
+ 
+<!-- 🟠 START OF HERO SECTION -->
+<section class="hero-section" style="background: linear-gradient(to bottom, #00558C, #ffffff);">
+  <div class="container py-3">
+
+    <!-- 🔍 Search Bar -->
+   <div class="row justify-content-center mb-5">
+  <div class="col-md-8 col-lg-6">
+  <div class="position-relative">
+
+    <!-- Stylish Search Box -->
+    <div class="search-container d-flex align-items-center shadow-sm px-2 py-1">
+      <asp:TextBox ID="txtResult" runat="server"
+        CssClass="form-control border-0 flex-grow-1 px-3 bg-light rounded-start-pill"
+        ClientIDMode="Static"
+        Style="height: 48px; font-size: 15px;"
+        placeholder="🔍 Search For Bonds...">
+      </asp:TextBox>
+
+      <asp:LinkButton ID="lnkSerch" runat="server" OnClick="lnkSerch_Click"
+        CssClass="btn search-btn rounded-end-pill d-flex align-items-center justify-content-center px-4"
+        Style="height: 48px;">
+        <i class="fa-solid fa-magnifying-glass text-white"></i>
+      </asp:LinkButton>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+    <!-- 🔥 Hero Content -->
+    <div class="hero-content row align-items-start gx-4 gy-4">
+      
+      <!-- ✅ LEFT SECTION -->
+      <div class="col-md-6 hero-left text-white">
+
+        <!-- Title & Description -->
+        <div class="text-left px-2">
+          <h1 class="display-5 fw-bold mb-2">
+            Maximize Your Savings with
+            <span class="text-warning fw-bold" id="changing-word">FD</span>
+          </h1>
+          <p class="lead fw-medium mb-3">
+            Invest in top-rated <span id="product-label" class="fw-bold text-warning">Fixed Deposits</span> and earn up to 
+            <span class="fw-bold text-success">14%</span> returns. <br />
+            <span class="text-light">Fully digital, secure & hassle-free.</span>
+          </p>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="glow-wrapper small-glow">
+          <div class="glow-content compact d-flex flex-wrap gap-3 px-2">
+            <div class="feature-item text-white">
+              <img src="https://img.icons8.com/fluency/30/percentage.png" alt="returns" class="feature-icon mb-1" />
+              <p class="feature-title mb-0 fw-medium">Upto 14%<br>Returns</p>
+            </div>
+            <div class="feature-item text-white">
+              <img src="https://img.icons8.com/fluency/30/combo-chart.png" alt="stable" class="feature-icon mb-1" />
+              <p class="feature-title mb-0 fw-medium">Stable<br>Returns</p>
+            </div>
+            <div class="feature-item text-white">
+              <img src="https://img.icons8.com/fluency/30/conference-call.png" alt="users" class="feature-icon mb-1" />
+              <p class="feature-title mb-0 fw-medium">10k+<br>Visitors</p>
+            </div>
+            <div class="feature-item text-white">
+              <img src="https://img.icons8.com/fluency/30/rupee.png" alt="min invest" class="feature-icon mb-1" />
+              <p class="feature-title mb-0 fw-medium">Minimum<br>Investment 10K</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-3 px-2">
+          <a href="OurCollections.aspx" class="btn btn-warning fw-bold rounded-pill px-4 py-2">
+            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i> Start Investing
+          </a>
+        </div>
+      </div>
+
+      <!-- ✅ RIGHT SECTION -->
+      <div class="col-md-6 hero-right text-center">
+        <svg class="ball-svg mb-3" id="ballSvg" width="220" height="300" viewBox="0 0 400 400" fill="none">
+          <circle cx="200" cy="200" r="200" fill="#ffd700" />
+        </svg>
+        <div class="graph-container">
+          <canvas id="graphChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 🔚 END HERO SECTION -->
+
+
+   
+
+<section class="collection-section py-5 position-relative overflow-hidden">
+  <!-- Optional Sparkle Background -->
+  <div class="container py-5">
+    <div class="row g-4 justify-content-center">
+   <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-3">
+    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
+        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+      Our <span style="color: #F15A29; font-weight: 700;">Products</span>
+    </h3>
+  </div>
+</section>
+
+
+
+
+      <!-- 8 Product Cards -->
+      <!-- CARD 1 -->
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="w-100 p-4 rounded-4 shadow text-center"
+             style="background: linear-gradient(to right, #e3f2fd, #ffe0b2);">
+          <div class="badge bg-warning text-dark mb-3">Top Rated</div>
+          <i class="bi bi-graph-up" style="font-size: 2rem; color: #003366;"></i>
+          <h5 class="fw-bold mt-3">High Return Bonds</h5>
+          <a href="OurCollections?oId=16" class="btn mt-3"
+             style="background: #003366; color: white; border-radius: 30px; padding: 6px 20px;">Explore</a>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="w-100 p-4 rounded-4 shadow text-center"
+             style="background: linear-gradient(to right, #e3f2fd, #ffe0b2);">
+          <div class="badge bg-success mb-3">New</div>
+          <i class="bi bi-stars" style="font-size: 2rem; color: #003366;"></i>
+          <h5 class="fw-bold mt-3">Monthly Income Bonds</h5>
+          <a href="OurCollections?oId=13" class="btn mt-3"
+             style="background: #003366; color: white; border-radius: 30px; padding: 6px 20px;">Explore</a>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="w-100 p-4 rounded-4 shadow text-center"
+             style="background: linear-gradient(to right, #e3f2fd, #ffe0b2);">
+          <div class="badge bg-info text-dark mb-3">Popular</div>
+          <i class="bi bi-bank" style="font-size: 2rem; color: #003366;"></i>
+          <h5 class="fw-bold mt-3">Bank/PSU/PVT Bonds</h5>
+          <a href="OurCollections?oId=26" class="btn mt-3"
+             style="background: #003366; color: white; border-radius: 30px; padding: 6px 20px;">Explore</a>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="w-100 p-4 rounded-4 shadow text-center"
+             style="background: linear-gradient(to right, #e3f2fd, #ffe0b2);">
+          <div class="badge bg-danger mb-3">Govt</div>
+          <i class="bi bi-building" style="font-size: 2rem; color: #003366;"></i>
+          <h5 class="fw-bold mt-3">Public Sector Bonds</h5>
+          <a href="OurCollections?oId=33" class="btn mt-3"
+             style="background: #003366; color: white; border-radius: 30px; padding: 6px 20px;">Explore</a>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="w-100 p-4 rounded-4 shadow text-center"
+             style="background: linear-gradient(to right, #e3f2fd, #ffe0b2);">
+          <div class="badge bg-primary mb-3">Secure</div>
+          <i class="bi bi-shield-lock" style="font-size: 2rem; color: #003366;"></i>
+          <h5 class="fw-bold mt-3">Sovereign Rated Bonds</h5>
+          <a href="OurCollections?oId=28" class="btn mt-3"
+             style="background: #003366; color: white; border-radius: 30px; padding: 6px 20px;">Explore</a>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="w-100 p-4 rounded-4 shadow text-center"
+             style="background: linear-gradient(to right, #e3f2fd, #ffe0b2);">
+          <div class="badge bg-secondary mb-3">Tax Free</div>
+          <i class="bi bi-cash-coin" style="font-size: 2rem; color: #003366;"></i>
+          <h5 class="fw-bold mt-3">Tax Free Bonds</h5>
+          <a href="OurCollections?oId=17" class="btn mt-3"
+             style="background: #003366; color: white; border-radius: 30px; padding: 6px 20px;">Explore</a>
+        </div>
+      </div>
+
+      <!-- CARD 7 -->
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="w-100 p-4 rounded-4 shadow text-center"
+             style="background: linear-gradient(to right, #e3f2fd, #ffe0b2);">
+          <div class="badge bg-dark mb-3">54EC</div>
+          <i class="bi bi-box-seam" style="font-size: 2rem; color: #ffffff;"></i>
+          <h5 class="fw-bold mt-3">Capital Gain Bonds (54EC)</h5>
+          <a href="OurCollections?oId=27" class="btn mt-3"
+             style="background: #003366; color: white; border-radius: 30px; padding: 6px 20px;">Explore</a>
+        </div>
+      </div>
+
+      <!-- CARD 8 -->
+      <div class="col-lg-3 col-md-6 d-flex">
+        <div class="w-100 p-4 rounded-4 shadow text-center"
+             style="background: linear-gradient(to right, #e3f2fd, #ffe0b2);">
+          <div class="badge bg-warning text-dark mb-3">FD</div>
+          <i class="bi bi-piggy-bank" style="font-size: 2rem; color: #003366;"></i>
+          <h5 class="fw-bold mt-3">Fixed Deposit</h5>
+          <a href="#fd-section"  class="btn mt-3 fd "
+             style="background: #003366; color: white; border-radius: 30px; padding: 6px 20px;">Explore</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Custom CSS -->
+
 
 
 <!-- Init AOS & Tilt -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
 <script>
-    AOS.init();
-    VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+  AOS.init();
+  VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2
+  });
 </script>
-<!-- Features Section -->
-<!-- Why Choose Us Section -->
-<%--<section class="py-5 bgsebi">
-  <div class="container">
-    <div class="text-center mb-5 bounce-animation">
-      <p class="text-dark">Powerful benefits for smart bond investors</p>
-    </div>
 
-    <div class="row g-4">
-      <!-- Repeat structure for each card -->
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="text-center p-4 rounded-4 bg-white shadow-sm h-100 border border-warning border-opacity-25 bounce-animation">
-          <i class="fa-solid fa-shield-halved fa-2x mb-3" style="color: #cc6600;"></i>
-          <h5 class="fw-semibold" style="color: #003366;">SEBI Registered</h5>
-          <p class="mb-0" style="color: #000;">Secure investing with SEBI-regulated partners.</p>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="text-center p-4 rounded-4 bg-white shadow-sm h-100 border border-warning border-opacity-25 bounce-animation">
-          <i class="fa-solid fa-wallet fa-2x mb-3" style="color: #cc6600;"></i>
-          <h5 class="fw-semibold" style="color: #003366;">Easy Payments</h5>
-          <p class="mb-0" style="color: #000;">Fast and flexible online transactions.</p>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="text-center p-4 rounded-4 bg-white shadow-sm h-100 border border-warning border-opacity-25 bounce-animation">
-          <i class="fa-solid fa-certificate fa-2x mb-3" style="color: #cc6600;"></i>
-          <h5 class="fw-semibold" style="color: #003366;">Verified Bonds</h5>
-          <p class="mb-0" style="color: #000;">Invest in pre-verified high-grade bond listings.</p>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="text-center p-4 rounded-4 bg-white shadow-sm h-100 border border-warning border-opacity-25 bounce-animation">
-          <i class="fa-solid fa-bolt fa-2x mb-3" style="color: #cc6600;"></i>
-          <h5 class="fw-semibold" style="color: #003366;">Instant Allotment</h5>
-          <p class="mb-0" style="color: #000;">Get instant allotment confirmation after payment.</p>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="text-center p-4 rounded-4 bg-white shadow-sm h-100 border border-warning border-opacity-25 bounce-animation">
-          <i class="fa-solid fa-headset fa-2x mb-3" style="color: #cc6600;"></i>
-          <h5 class="fw-semibold" style="color: #003366;">Dedicated Support</h5>
-          <p class="mb-0" style="color: #000;">Call or chat with bond experts anytime you need help.</p>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="text-center p-4 rounded-4 bg-white shadow-sm h-100 border border-warning border-opacity-25 bounce-animation">
-          <i class="fa-solid fa-chart-line fa-2x mb-3" style="color: #cc6600;"></i>
-          <h5 class="fw-semibold" style="color: #003366;">High Returns</h5>
-          <p class="mb-0" style="color: #000;">Grow your wealth with bonds offering superior returns.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>--%>
 
 <!-- Modal -->
 <section>
@@ -542,201 +1624,218 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Auto show and close after 5 seconds -->
-<script>
-
-</script>
 
 
 
    
    <!-- High Yield Bonds Section --><!-- High Yield Bonds Section -->
 <!-- Swiper CSS -->
-<!-- Swiper CSS -->
-<!-- Swiper CSS -->
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 
 <section class="py-5 bg-light position-relative overflow-hidden">
   <div class="container">
-    <h5 class="text-center mb-5 fw-bold fd-heading display-6">
-      💰 Top <span class="highlight-orange">High-Yield Bonds</span> Above 14%
-    </h5>
+         <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-3">
+    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
+        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+      High Yield Bonds <span style="color: #F15A29; font-weight: 700;">Above 14%</span>
+    </h3>
+  </div>
+</section>
+ 
 
-    <!-- Swiper Carousel -->
-    <div class="swiper fd-swiper">
-      <div class="swiper-wrapper">
-
-        <!-- Slide 1 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <span class="rate-badge">Up to 14.25%</span>
-            <div class="fd-card-img">
-              <img src="https://bondsadda.com/vimage/88108team_vedika_logo.jpeg" alt="Team Vedika" />
-            </div>
-            <h5>Team Vedika</h5>
-            <p class="rate-text">Corporate Bond | Secured</p>
-            <a href="https://bondsadda.com/cashflow?oid=4892" target="_blank" class="btn-fd">Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <span class="rate-badge">Up to 13.80%</span>
-            <div class="fd-card-img">
-              <img src="https://bondsadda.com/vimage/24414rdc%20concrete(india)%20limited.jpeg" alt="RDC Concrete" />
-            </div>
-            <h5>RDC Concrete</h5>
-            <p class="rate-text">AAA Rated | Private Bond</p>
-            <a href="https://bondsadda.com/cashflow?oid=4878" target="_blank" class="btn-fd">Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <span class="rate-badge">Up to 13.75%</span>
-            <div class="fd-card-img">
-              <img src="https://bondsadda.com/vimage/47714keertana.png" alt="Keertana" />
-            </div>
-            <h5>Keertana</h5>
-            <p class="rate-text">Monthly Return | Unlisted</p>
-            <a href="https://bondsadda.com/cashflow?oid=4862" target="_blank" class="btn-fd">Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <span class="rate-badge">Up to 13.60%</span>
-            <div class="fd-card-img">
-              <img src="https://bondsadda.com/vimage/95068indelmoney_logo.jpeg" alt="Indel Money" />
-            </div>
-            <h5>Indel Money</h5>
-            <p class="rate-text">Quarterly Interest | NBFC</p>
-            <a href="https://bondsadda.com/cashflow?oid=4849" target="_blank" class="btn-fd">Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <span class="rate-badge">Up to 13.50%</span>
-            <div class="fd-card-img">
-              <img src="https://bondsadda.com/vimage/73786earlysalary.webp" alt="EarlySalary" />
-            </div>
-            <h5>EarlySalary</h5>
-            <p class="rate-text">Short Tenure | Digital NBFC</p>
-            <a href="https://bondsadda.com/cashflow?oid=4855" target="_blank" class="btn-fd">Buy Now</a>
-          </div>
-        </div>
-
+    <!-- Swiper -->
+    <div class="swiper mySwiper mt-4">
+      <div class="swiper-wrapper" id="bond-list">
+        <!-- Slides will be inserted here dynamically -->
       </div>
-      <%--<div class="swiper-pagination mt-4"></div>--%>
     </div>
   </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    const bondsData = [
+      {
+        "Company": "VEDIKA CREDIT CAPITAL LIMITED",
+        "Face Value": "₹100000",
+        "ISIN No": "INE04HY07289",
+        "Credit Rating": "A-",
+        "Coupon Rate": "12.00%",
+        "Rate": "₹ 35.54",
+        "Rating Agencies": "CARE",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "04/04/2023",
+        "Maturity Date": "04/04/2029",
+        "Guaranteed By": "N/A",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4892",
+        "Image": "https://bondsadda.com/vimage/88108team_vedika_logo.jpeg"
+      },
+      {
+        "Company": "EarlySalary Services Pvt Ltd",
+        "Face Value": "₹100000",
+        "ISIN No": "INE01I0743Z4",
+        "Credit Rating": "BBB+",
+        "Coupon Rate": "10.30%",
+        "Rate": "₹ 38.23",
+        "Rating Agencies": "CRISIL",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "04/10/2027",
+        "Maturity Date": "04/10/2027",
+        "Guaranteed By": "Social Worth Technologies Private Limited",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4855",
+        "Image": "https://bondsadda.com/vimage/73786earlysalary.webp"
+      },
+      {
+        "Company": "INDEL MONEY LIMITED",
+        "Face Value": "₹100000",
+        "ISIN No": "INE08US08G9",
+        "Credit Rating": "BBB- BBB",
+        "Coupon Rate": "11.00%",
+        "Rate": "₹ 37.31",
+        "Rating Agencies": "CRISIL",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "11/11/2026",
+        "Maturity Date": "11/11/2026",
+        "Guaranteed By": "N/A",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4849",
+        "Image": "https://bondsadda.com/vimage/95068indelmoney_logo.jpeg"
+      },
+      {
+        "Company": "KEERTANA FINSERY PRIVATE LIMITED",
+        "Face Value": "₹100000",
+        "ISIN No": "INE0NFS01626",
+        "Credit Rating": "BBB- BBB",
+        "Coupon Rate": "11.30%",
+        "Rate": "₹ 37.18",
+        "Rating Agencies": "CRISIL ICRA IND",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "06/03/2027",
+        "Maturity Date": "06/03/2027",
+        "Guaranteed By": "N/A",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4862",
+        "Image": "https://bondsadda.com/vimage/47714keertana.png"
+      },
+      {
+        "Company": "RDC CONCRETE(INDIA) LIMITED",
+        "Face Value": "₹100000",
+        "ISIN No": "INE067I07020",
+        "Credit Rating": "A-",
+        "Coupon Rate": "11.00%",
+        "Rate": "₹ 37",
+        "Rating Agencies": "IND",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "12/03/2028",
+        "Maturity Date": "12/03/2028",
+        "Guaranteed By": "Robu Sildem Private Limited & Halls Infra Market Limited",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4878",
+        "Image": "	https://bondsadda.com/vimage/24414rdc%20concrete(india)%20limited.jpeg"
+      }
+    ];
+
+    const bondList = document.getElementById('bond-list');
+
+    bondsData.forEach(bond => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+
+      slide.innerHTML = `
+        <div class="bond-card w-100 p-3 shadow-sm border border-2 border-primary rounded-4">
+  <div>
+    <!-- Image -->
+    <img src="${bond.Image}" alt="${bond.Company}" class="w-40 mb-3 rounded-3" style="height:150px; object-fit: cover;" />
+
+    <!-- Badge -->
+    <div class="bond-badge fw-bold text-uppercase text-dark bg-warning px-3 py-1 rounded-pill mb-2 d-inline-block">
+      ${bond["Type of Bonds"]}
+    </div>
+
+    <!-- Company Title -->
+    <h5 class="bond-title fw-bold mb-2 text-dark">${bond.Company}</h5>
+
+    <hr class="my-2">
+
+    <!-- Bond Info -->
+    <div class="bond-info mt-2 text-dark">
+      <p class="mb-2 fw-bold"><i class="bi bi-percent me-2 text-primary fw-bold"></i>Coupon Rate: <span class="fw-bold">${bond["Coupon Rate"]}</span></p>
+      <p class="mb-2 fw-bold"><i class="bi bi-calendar3 me-2 text-primary fw-bold"></i>Maturity: <span class="fw-bold">${bond["Maturity Date"]}</span></p>
+      <p class="mb-2 fw-bold"><i class="bi bi-bank me-2 text-primary fw-bold"></i>Credit Rating: <span class="fw-bold">${bond["Credit Rating"]}</span></p>
+      <p class="mb-2 fw-bold"><i class="bi bi-lock me-2 text-primary fw-bold"></i>Instrument: <span class="fw-bold">${bond["Instrument Type"]}</span></p>
+      <p class="mb-0 fw-bold"><i class="bi bi-code-slash me-2 text-primary fw-bold"></i>ISIN: <span class="fw-bold">${bond["ISIN No"]}</span></p>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="d-flex mt-4">
+    <a href="${bond['Buy Now URL']}" class="btn btn-primary fw-bold px-4 rounded-pill" target="_blank">
+      Buy Now
+    </a>
+    <button class="btn btn-outline-primary fw-bold ms-3 px-4 rounded-pill" onclick="shareBond('${bond.Company}', '${bond["Credit Rating"]}')">
+      <i class="bi bi-share-fill me-1"></i> Share
+    </button>
+  </div>
+</div>
+
+      `;
+
+      bondList.appendChild(slide);
+    });
+
+    function shareBond(company, rating) {
+      const text = `${company} - Rating: ${rating}`;
+      const shareData = {
+        title: company,
+        text: text,
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData).catch((err) => console.error("Share failed:", err));
+      } else {
+        navigator.clipboard.writeText(`${text}\n${window.location.href}`).then(() => {
+          alert("Bond info copied to clipboard!");
+        });
+      }
+    }
+
+    new Swiper('.mySwiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+      },
+      breakpoints: {
+        576: { slidesPerView: 1.2 },
+        768: { slidesPerView: 2 },
+        992: { slidesPerView: 3 },
+      },
+    });
+    </script>
+
 </section>
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    new Swiper('.fd-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: { delay: 3000 },
-        breakpoints: {
-            576: { slidesPerView: 1.2 },
-            768: { slidesPerView: 2 },
-            992: { slidesPerView: 3 },
-            1200: { slidesPerView: 3.2 },
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
-</script>
 
 <!-- Custom Styles -->
-<style>
-.fd-heading {
-  background: linear-gradient(90deg, #00558C, #FF8746);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: shine 5s linear infinite;
-}
-@keyframes shine {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
-.highlight-orange { color: #FF8746; }
 
-.swiper-slide { display: flex; justify-content: center; }
-
-.fd-card {
-  width: 340px;
-  background: linear-gradient(135deg, #fff5eb, #e8f4fd);
-  border-radius: 1.5rem;
-  padding: 1.5rem 1rem;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.07);
-  border: 1px solid rgba(0,0,0,0.03);
-  transition: all 0.4s ease-in-out;
-  position: relative;
-}
-.fd-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(255, 135, 70, 0.2);
-  background: linear-gradient(135deg, #fef1e6, #e0f0ff);
-  border-color: #FF8746;
-}
-.fd-card-img {
-  width: 100%; height: 120px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1rem;
-}
-.fd-card-img img {
-  width: 100%; height: 100%; object-fit: contain;
-  transition: transform 0.3s ease;
-}
-.fd-card:hover img { transform: scale(1.05); }
-.fd-card h5 {
-  font-size: 1.1rem; font-weight: 600; color: #003366; margin-bottom: 0.5rem;
-}
-.rate-text {
-  font-weight: 500;
-  color: #FF8746;
-  margin-bottom: 1rem;
-}
-.rate-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #FF8746;
-  color: white;
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding: 5px 10px;
-  border-radius: 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-.btn-fd {
-  background: linear-gradient(to right, #FF8746, #00558C);
-  color: #fff;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  display: inline-block;
-}
-.btn-fd:hover {
-  background: linear-gradient(to right, #00558C, #FF8746);
-  box-shadow: 0 0 12px rgba(255, 135, 70, 0.5);
-  transform: scale(1.05);
-}
-</style>
 
 
 
@@ -747,176 +1846,183 @@
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
 
-<section class="py-5 bg-light position-relative overflow-hidden">
+<section class="products-fd-section py-5" id="fd-section">
   <div class="container">
-    <h5 class="text-center mb-5 fw-bold display-5 fd-heading">
-      💰 Top <span class="highlight-orange">High-Yield FD</span> Above 13%
-    </h5>
+             <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-3">
+    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
+        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+      High Yield FD <span style="color: #F15A29; font-weight: 700;">Above 13%</span>
+    </h3>
+  </div>
+</section>  
+    
 
-    <div class="swiper fd-swiper">
-      <div class="swiper-wrapper">
-        <!-- Card 1 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <div class="rate-badge">13.25%</div>
-            <div class="fd-card-img">
-              <img src="https://cdn.shriramfinance.in/sfl-fe/assets/images/sfl-logo.webp" alt="Shriram" />
-            </div>
-            <h5>Shriram Finance</h5>
-            <p class="rate-text">Up to 13.25%</p>
-            <a href="https://www.dimensiongroup.co.in/fixed-deposit/SFl%20Form.pdf" target="_blank" class="btn-fd">Buy Now</a>
+  <div class="container my-4">
+  <div class="row g-4">
+
+    <!-- Swiper Container -->
+<div class="container py-4">
+  <div class="swiper fd-swiper">
+    <div class="swiper-wrapper">
+
+      <!-- FD CARD 1: Shriram -->
+      <div class="swiper-slide">
+        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+          <div>
+            <img src="https://cdn.shriramfinance.in/sfl-fe/assets/images/sfl-logo.webp"
+                 alt="Shriram" class="img-fluid mb-2" style="height: 40px;">
+            <h5 class="fw-bold mb-1">Shriram Finance</h5>
+            <span class="badge bg-danger fw-bold mb-2">13.25%</span>
+            <p class="text-muted fw-semibold small">Up to 13.25% Monthly Return</p>
           </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <div class="rate-badge">13.10%</div>
-            <div class="fd-card-img">
-              <img src="https://www.pnbhousing.com/documents/d/guest/logo-header?download=true" alt="PNB" />
-            </div>
-            <h5>PNB Housing Finance Ltd.</h5>
-            <p class="rate-text">Up to 13.10%</p>
-            <a href="https://www.dimensiongroup.co.in/fixed-deposit/PNB_Fixed_Deposit_Form.pdf" target="_blank" class="btn-fd">Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <div class="rate-badge">13.50%</div>
-            <div class="fd-card-img">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi0Lufh2ybEC5od_gdVgJ0V_YN67KUPh4Ww&s" alt="Bajaj" />
-            </div>
-            <h5>Bajaj Finance Ltd.</h5>
-            <p class="rate-text">Up to 13.50%</p>
-            <a href="https://www.dimensiongroup.co.in/fixed-deposit/APP%20BAJAJ%20FORM.pdf" target="_blank" class="btn-fd">Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="swiper-slide">
-          <div class="fd-card text-center">
-            <div class="rate-badge">13.00%</div>
-            <div class="fd-card-img">
-              <img src="https://f2.leadsquaredcdn.com/t/lichousing/content/common/images/LIC_Housing_Finance_logo.png" alt="LIC" />
-            </div>
-            <h5>LIC Housing Finance Ltd.</h5>
-            <p class="rate-text">Up to 13.00%</p>
-            <a href="https://www.dimensiongroup.co.in/fixed-deposit/sanchay03.pdf" target="_blank" class="btn-fd">Buy Now</a>
+          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
+            <a href="https://www.dimensiongroup.co.in/fixed-deposit/SFl%20Form.pdf" target="_blank"
+               class="btn btn-sm text-white fw-bold flex-fill"
+               style="background-color: #00558C; border-radius: 20px;">
+              <i class="bi bi-cart-fill me-1"></i> Buy
+            </a>
+            <button onclick="shareFD('Shriram Finance','13.25%','https://www.dimensiongroup.co.in/fixed-deposit/SFl%20Form.pdf')"
+                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
+                    style="border-radius: 20px;">
+              <i class="bi bi-share-fill me-1"></i> Share
+            </button>
           </div>
         </div>
       </div>
-      <%--<div class="swiper-pagination mt-4"></div>--%>
+
+      <!-- FD CARD 2: PNB -->
+      <div class="swiper-slide">
+        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+          <div>
+            <img src="https://www.pnbhousing.com/documents/d/guest/logo-header?download=true"
+                 alt="PNB" class="img-fluid mb-2" style="height: 40px;">
+            <h5 class="fw-bold mb-1">PNB Housing</h5>
+            <span class="badge bg-danger fw-bold mb-2">13.10%</span>
+            <p class="text-muted fw-semibold small">Up to 13.10% Monthly Return</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
+            <a href="https://www.dimensiongroup.co.in/fixed-deposit/PNB_Fixed_Deposit_Form.pdf" target="_blank"
+               class="btn btn-sm text-white fw-bold flex-fill"
+               style="background-color: #00558C; border-radius: 20px;">
+              <i class="bi bi-cart-fill me-1"></i> Buy
+            </a>
+            <button onclick="shareFD('PNB Housing','13.10%','https://www.dimensiongroup.co.in/fixed-deposit/PNB_Fixed_Deposit_Form.pdf')"
+                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
+                    style="border-radius: 20px;">
+              <i class="bi bi-share-fill me-1"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FD CARD 3: Bajaj -->
+      <div class="swiper-slide">
+        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+          <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi0Lufh2ybEC5od_gdVgJ0V_YN67KUPh4Ww&s"
+                 alt="Bajaj" class="img-fluid mb-2" style="height: 40px;">
+            <h5 class="fw-bold mb-1">Bajaj Finance</h5>
+            <span class="badge bg-danger fw-bold mb-2">13.50%</span>
+            <p class="text-muted fw-semibold small">Up to 13.50% Monthly Return</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
+            <a href="https://www.dimensiongroup.co.in/fixed-deposit/APP%20BAJAJ%20FORM.pdf" target="_blank"
+               class="btn btn-sm text-white fw-bold flex-fill"
+               style="background-color: #00558C; border-radius: 20px;">
+              <i class="bi bi-cart-fill me-1"></i> Buy
+            </a>
+            <button onclick="shareFD('Bajaj Finance','13.50%','https://www.dimensiongroup.co.in/fixed-deposit/APP%20BAJAJ%20FORM.pdf')"
+                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
+                    style="border-radius: 20px;">
+              <i class="bi bi-share-fill me-1"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FD CARD 4: LIC -->
+      <div class="swiper-slide">
+        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+          <div>
+            <img src="https://f2.leadsquaredcdn.com/t/lichousing/content/common/images/LIC_Housing_Finance_logo.png"
+                 alt="LIC" class="img-fluid mb-2" style="height: 40px;">
+            <h5 class="fw-bold mb-1">LIC Housing</h5>
+            <span class="badge bg-danger fw-bold mb-2">13.00%</span>
+            <p class="text-muted fw-semibold small">Up to 13.00% Monthly Return</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
+            <a href="https://www.dimensiongroup.co.in/fixed-deposit/sanchay03.pdf" target="_blank"
+               class="btn btn-sm text-white fw-bold flex-fill"
+               style="background-color: #00558C; border-radius: 20px;">
+              <i class="bi bi-cart-fill me-1"></i> Buy
+            </a>
+            <button onclick="shareFD('LIC Housing','13.00%','https://www.dimensiongroup.co.in/fixed-deposit/sanchay03.pdf')"
+                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
+                    style="border-radius: 20px;">
+              <i class="bi bi-share-fill me-1"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <%--<!-- Optional Controls -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination mt-3"></div>--%>
+  </div>
+</div>
+
+</div>
+
   </div>
 </section>
 
+<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    new Swiper('.fd-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: { delay: 3000 },
-        breakpoints: {
-            576: { slidesPerView: 1.2 },
-            768: { slidesPerView: 2 },
-            992: { slidesPerView: 3 },
-            1200: { slidesPerView: 3.2 },
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
+  new Swiper('.fd-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: { delay: 3000 },
+    breakpoints: {
+      576: { slidesPerView: 1.2 },
+      768: { slidesPerView: 2 },
+      992: { slidesPerView: 3 },
+      1200: { slidesPerView: 3.2 },
+    }
+  });
 </script>
 
-<style>
-.fd-heading {
-  background: linear-gradient(90deg, #00558C, #FF8746);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: shine 5s linear infinite;
-}
-@keyframes shine {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
-.highlight-orange { color: #FF8746; }
-
-.swiper-slide { display: flex; justify-content: center; }
-
-.fd-card {
-  width: 320px;
-  background: linear-gradient(135deg, #fff5eb, #e8f4fd);
-  border-radius: 1.5rem;
-  padding: 1.5rem 1rem;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.07);
-  border: 1px solid rgba(0,0,0,0.03);
-  transition: all 0.4s ease-in-out;
-  position: relative;
-}
-.fd-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(255, 135, 70, 0.2);
-  background: linear-gradient(135deg, #fef1e6, #e0f0ff);
-  border-color: #FF8746;
-}
-.fd-card-img {
-  width: 100%; height: 150px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1rem;
-}
-.fd-card-img img {
-  width: 100%; height: 100%; object-fit: contain;
-  transition: transform 0.3s ease;
-}
-.fd-card:hover img { transform: scale(1.05); }
-.fd-card h5 {
-  font-size: 1.1rem; font-weight: 600; color: #003366; margin-bottom: 0.5rem;
-}
-.rate-text {
-  font-weight: 500;
-  color: #FF8746;
-  margin-bottom: 1rem;
-}
-.rate-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #FF8746;
-  color: white;
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding: 5px 10px;
-  border-radius: 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-.btn-fd {
-  background: linear-gradient(to right, #FF8746, #00558C);
-  color: #fff;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  display: inline-block;
-}
-.btn-fd:hover {
-  background: linear-gradient(to right, #00558C, #FF8746);
-  box-shadow: 0 0 12px rgba(255, 135, 70, 0.5);
-  transform: scale(1.05);
-}
-</style>
+<!-- Share Button Script -->
+<script>
+  function shareFD(name, rate, url) {
+    const text = `🔥 Check out this Fixed Deposit offer from ${name} at ${rate} interest!\nApply here: ${url}`;
+    if (navigator.share) {
+      navigator.share({
+        title: `${name} FD Offer`,
+        text: text,
+        url: url
+      }).catch(err => console.log('Share failed:', err));
+    } else {
+      navigator.clipboard.writeText(text);
+      alert("FD details copied! Share it anywhere.");
+    }
+  }
+</script>
 
 
 
 
 
 
-    <section  >
+
+
+
+    <section >
         <asp:HiddenField ID="hfIPDateaaa" runat="server" />
         <asp:HiddenField ID="hfFrequencyType" runat="server" />
         <asp:HiddenField ID="hfQuar" runat="server" />
@@ -927,9 +2033,7 @@
         <asp:HiddenField ID="hfHalfYearly" runat="server" />
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <h2 ></h2>
-                </div>
+                
 
                 <link rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.2.4/assets/owl.carousel.min.css">
@@ -1227,215 +2331,183 @@
     </section>--%>
 
     
-    <section class="py-5 bg-white">
+    <!-- Testimonials Section -->
+<section class="testimonials py-5" style="background: linear-gradient(to bottom, #e0e0e0 0%, #ffffff 100%)">
   <div class="container">
     <div class="text-center mb-5">
-      <h2 class="fw-bold text-primary">What Our Investors Say</h2>
-      <p class="text-muted">Trusted by thousands of happy investors across India</p>
+                 <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-3">
+    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
+        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+     What Our  <span style="color: #F15A29; font-weight: 700;">Investors Say</span>
+    </h3>
+      <p class="text-light">Trusted by thousands of happy investors across India</p>
+  </div>
+</section>    
+  
+
+      <%--<h4 class="fw-bold mb-4 text-start heading-glow text-center" data-aos="fade-up">
+   What Our  <span class="text-highlight-orange">Investors Say</span>
+  </h4>--%>
+      
     </div>
 
-    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
+    <div class="row">
+      <div class="col-12">
+        <div id="customers-testimonials" class="owl-carousel">
 
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-          <div class="card border-0 shadow-sm mx-auto" style="max-width: 600px;">
-            <div class="card-body">
-              <p class="card-text text-muted mb-3">“BondsAdda made bond investing simple and profitable. The support team guided me at every step.”</p>
-              <div class="d-flex align-items-center">
-                <img src="https://i.pravatar.cc/60?img=5" class="rounded-circle me-3" width="50" height="50" alt="Investor">
-                <div>
-                  <h6 class="mb-0 fw-semibold">Ravi Sharma</h6>
-                  <small class="text-muted">Mumbai, Maharashtra</small>
-                </div>
-              </div>
+          <!-- Testimonial 1 -->
+          <div class="item">
+            <div class="shadow-effect">
+              <p>Bonds Adda made investing in government bonds extremely simple. Highly recommended!</p>
+              <div class="testimonial-name">ARJUN SHARMA</div>
             </div>
           </div>
-        </div>
 
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-          <div class="card border-0 shadow-sm mx-auto" style="max-width: 600px;">
-            <div class="card-body">
-              <p class="card-text text-muted mb-3">“I was new to bonds, but BondsAdda’s dashboard and recommendations made me confident and comfortable.”</p>
-              <div class="d-flex align-items-center">
-                <img src="https://i.pravatar.cc/60?img=8" class="rounded-circle me-3" width="50" height="50" alt="Investor">
-                <div>
-                  <h6 class="mb-0 fw-semibold">Priya Verma</h6>
-                  <small class="text-muted">Delhi NCR</small>
-                </div>
-              </div>
+          <!-- Testimonial 2 -->
+          <div class="item">
+            <div class="shadow-effect">
+              <p>I diversified into PSU and tax-free bonds seamlessly. The support team was very helpful.</p>
+              <div class="testimonial-name">PRIYA MEHTA</div>
             </div>
           </div>
-        </div>
 
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-          <div class="card border-0 shadow-sm mx-auto" style="max-width: 600px;">
-            <div class="card-body">
-              <p class="card-text text-muted mb-3">“Great platform with high-yield bond options. The process is fast, secure, and completely online.”</p>
-              <div class="d-flex align-items-center">
-                <img src="https://i.pravatar.cc/60?img=12" class="rounded-circle me-3" width="50" height="50" alt="Investor">
-                <div>
-                  <h6 class="mb-0 fw-semibold">Ankit Desai</h6>
-                  <small class="text-muted">Ahmedabad, Gujarat</small>
-                </div>
-              </div>
+          <!-- Testimonial 3 -->
+          <div class="item">
+            <div class="shadow-effect">
+              <p>Great UI and real-time data—made tracking my high-yield bond portfolio a breeze.</p>
+              <div class="testimonial-name">ROHIT VERMA</div>
             </div>
           </div>
-        </div>
 
+          <!-- Testimonial 4 -->
+          <div class="item">
+            <div class="shadow-effect">
+              <p>My go-to platform for sovereign-rated bonds—secure, transparent, and user‑friendly.</p>
+              <div class="testimonial-name">SONAL GUPTA</div>
+            </div>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="item">
+            <div class="shadow-effect">
+              <p>Fantastic experience! Bonds Adda’s hand‑holding on KYC and documentation was top‑notch.</p>
+              <div class="testimonial-name">VIKRAM SINGH</div>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
-
   </div>
 </section>
 
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-        <script>
-            left = '<svg width="50" height="50" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 20L15.6464 19.6464L15.2929 20L15.6464 20.3536L16 20ZM21.6464 13.6464L15.6464 19.6464L16.3536 20.3536L22.3536 14.3536L21.6464 13.6464ZM15.6464 20.3536L21.6464 26.3536L22.3536 25.6464L16.3536 19.6464L15.6464 20.3536Z" fill="white"/><circle cx="20" cy="20" r="19.5" stroke="white"/></svg>';
-            right = '<svg width="50" height="50" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 20L24.3536 20.3536L24.7071 20L24.3536 19.6464L24 20ZM18.3536 26.3536L24.3536 20.3536L23.6464 19.6464L17.6464 25.6464L18.3536 26.3536ZM24.3536 19.6464L18.3536 13.6464L17.6464 14.3536L23.6464 20.3536L24.3536 19.6464Z" fill="white"/><circle cx="20" cy="20" r="19.5" transform="rotate(180 20 20)" stroke="white"/></svg>';
-            $('#owl-carousel2').owlCarousel({
-                loop: true,
-                margin: 0,
-                dots: false,
-                navText: [left, right],
-                items: 3,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    768: {
-                        items: 1
-                    },
-                    1080: {
-                        items: 1
-                    }
-                }
-            })
-        </script>
-    </section>
-    <section class="home-blog py-md-5 py-4" >
-        <div class="container">
-            <div class="row py-md-5 ">
-                <div class="col-12">
-                    <h2 class="h3 text-center font-weight-normal color1">Latest 
-                        <span class="color2">News</span></h2>
+<script>
+  $(document).ready(function () {
+    $('#customers-testimonials').owlCarousel({
+      loop: true,
+      center: true,
+      items: 3,
+      margin: 0,
+      autoplay: true,
+      dots: true,
+      autoplayTimeout: 6000,
+      smartSpeed: 600,
+      responsive: {
+        0: { items: 1 },
+        768: { items: 2 },
+        1170: { items: 3 }
+      }
+    });
+  });
+</script>
+
+
+
+   <section class="home-blog py-md-5 py-4">
+  <div class="container">
+    <!-- Section Heading -->
+    <div class="row py-md-5">
+      <div class="col-12">
+                           <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-3">
+    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
+        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+    Latest <span style="color: #F15A29; font-weight: 700;">News</span>
+    </h3>
+      
+  </div>
+</section>    
+        
+
+    <!-- News Cards -->
+    <div class="row g-4 mt-3">
+      <asp:Repeater ID="rptNews" runat="server">
+        <ItemTemplate>
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="box bg-white rounded shadow-sm h-100 w-100 d-flex flex-column border border-light-subtle">
+              
+              <!-- Blog Image -->
+              <img src='<%# ResolveUrl(Eval("BlogImage").ToString().Replace("~", "")) %>'
+                   alt="Blog Image"
+                   class="img-fluid rounded-top"
+                   style="height: 180px; object-fit: cover;" />
+
+              <!-- Blog Details -->
+              <div class="details p-3 d-flex flex-column justify-content-between flex-grow-1">
+                <div>
+                  <small class="text-danger d-block mb-2">
+                    <strong>Date:</strong> <%# Eval("BlogDate", "{0:dd MMM yyyy}") %> |
+                    <strong>Author:</strong> <%# Eval("AuthorBy") %>
+                  </small>
+
+                  <h4 class="h6 text-dark mb-2">
+                    <%# Eval("BlogTitle") %>: <%# Eval("BlogSubTitle") %>
+                  </h4>
+
+                  <p class="text-muted small mb-3">
+                    <%# Eval("MetaDescription") %>
+                  </p>
                 </div>
+
+                <div>
+                  <a href='<%# "BlogNewsDetails?oId=" + Eval("BlogId") %>' class="text-primary fw-bold">
+                    Read More →
+                  </a>
+                </div>
+              </div>
+
             </div>
-            <div class="row">
-                <asp:Repeater ID="rptNews" runat="server">
-                    <ItemTemplate>
-                        <div class="col-md-4 py-2">
-                            <div class="box">
+          </div>
+        </ItemTemplate>
+      </asp:Repeater>
+    </div>
+  </div>
+</section>
 
-                                <img src='<%#Eval("BlogImage").ToString().Replace("~/","") %>' class="col-12 p-0 def" alt="" />
+   <section class="subscribe py-5" style="background: #1f3c88; color: #fff;">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <h2 class="fw-bold mb-3">📬 Subscribe to our <span style="color: #ffcb05;">Newsletter</span></h2>
+        <p class="mb-4">DON’T FALL BEHIND. Stay current with a recap of today’s computing news from Digital Trend — by <strong>Bonds Adda</strong>.</p>
 
-                                <div class="details p-3 ">
-                                    <small class="text-danger font_2"><strong>Date:</strong> <%--20 June  2022--%><%#Eval("BlogDate") %> | <strong>Author:</strong> <%--Admin | Investment--%><%#Eval("AuthorBy") %> </small>
-                                    <span class="abcd">
-                                        <h4 class="h5 font_2 font-weight-normal"><%--Sovereign Gold Bond Scheme 2023-24--%><%#Eval("BlogTitle") %>:  <%--An Attractive Investment Opportunity--%> <%#Eval("BlogSubTitle") %></h4>
-                                    </span>
-                                    <span class="defg">
-                                        <p><small><%--Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?--%> <%#Eval("MetaDescription") %></small></p>
-                                    </span>
-                                    <a href="<%=ResolveUrl("~")%>BlogNewsDetails?oId=<%#Eval("BlogId") %>" class="color1 font_1">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
-                <%--<div class="col-md-4 py-2">
-                    <div class="box">
-                        <img src="img/blog/blog1.png" class="col-12 p-0" alt="">
-                        <div class="details p-3 ">
-                            <small class="text-danger font_2"><strong> Date:</strong> 20 June  2022 | <strong> Author:</strong> Admin | Investment </small>
-                            <h4 class="h5 font_2 font-weight-normal">Sovereign Gold Bond Scheme 2023-24:  An Attractive Investment Opportunity</h4>
-                            <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?</small></p>
-                            <a href="#" class="color1 font_1">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 py-2">
-                    <div class="box">
-                        <img src="img/blog/blog1.png" class="col-12 p-0" alt="">
-                        <div class="details p-3 ">
-                            <small class="text-danger font_2"><strong> Date:</strong> 20 June  2022 | <strong> Author:</strong> Admin | Investment </small>
-                            <h4 class="h5 font_2 font-weight-normal">Sovereign Gold Bond Scheme 2023-24:  An Attractive Investment Opportunity</h4>
-                            <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?</small></p>
-                            <a href="#" class="color1 font_1">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 py-2">
-                    <div class="box">
-                        <img src="img/blog/blog1.png" class="col-12 p-0" alt="">
-                        <div class="details p-3 ">
-                            <small class="text-danger font_2"><strong> Date:</strong> 20 June  2022 | <strong> Author:</strong> Admin | Investment </small>
-                            <h4 class="h5 font_2 font-weight-normal">Sovereign Gold Bond Scheme 2023-24:  An Attractive Investment Opportunity</h4>
-                            <p><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi porro fugit nostrum, consequuntur magni quas nobis ullam minus ea repellendus maxime et in, consequatur sunt debitis rem, blanditiis placeat minima?</small></p>
-                            <a href="#" class="color1 font_1">Read More</a>
-                        </div>
-                    </div>
-                </div>--%>
+        <asp:UpdatePanel ID="uPanel" runat="server">
+          <ContentTemplate>
+            <div class="input-group shadow-lg">
+              <asp:TextBox ID="txtEmail" runat="server" class="form-control form-control-lg border-0" placeholder="Enter your Email Address" />
+              <asp:Button ID="btnSubscribe" runat="server" Text="Subscribe Now" class="btn btn-warning btn-lg px-4 fw-semibold" OnClick="btnSubscribe_Click" />
             </div>
-        </div>
-    </section>
-    <section class="subscribe pb-md-5 pb-3" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00);">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="box2 ">
-                        <div class="row">
-                            <div
-                                class="col-md-7 p-md-5 p-5 text-md-left text-center d-flex justify-content-center align-items-center">
-                                <div
-                                    class="">
-                                    <h2 class="font-weight-normal color2">Subscribe
-                                        to
-                                        our <span class="color2">Newsletter</span></h2>
-                                    <p style="color:white;">
-                                        DON’T FALL BEHIND<br />
-                                        Stay current with a recap of today’s computing news from digital trend by bonds adda.
-                                    </p>
-                                    <asp:UpdatePanel ID="uPanel" runat="server">
-                                        <ContentTemplate>
-                                            <div class="form-inline row">
-                                                <div
-                                                    class="form-group col-md-8 mb-2 pr-md-0">
-                                                    <asp:TextBox ID="txtEmail" runat="server" class="form-control col-12" placeholder="Enter your Email Address"></asp:TextBox>
-                                                </div>
-                                                <div class="col-md-4 mb-2 pl-md-0">
-                                                    <asp:Button ID="btnSubscribe" runat="server" Text="Subscribe Now" class="btn btn-dark col-12 " OnClick="btnSubscribe_Click" />
-                                                </div>
-
-                                            </div>
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
-
-                                </div>
-
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-3 ">
-                                <img class="d-lg-block d-md-block d-none" src="img/news.svg" alt="">
-                            </div>
-                            <div class="col-md-1"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
+          </ContentTemplate>
+        </asp:UpdatePanel>
+      </div>
+    </div>
+  </div>
+</section>
 
             <!-- js for nav -->
 
@@ -1528,118 +2600,101 @@
 </div>
 
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      const wordEl = document.getElementById("changing-word");
+      const labelEl = document.getElementById("product-label");
+      const chartCtx = document.getElementById("graphChart").getContext("2d");
+      const ballSvg = document.getElementById("ballSvg").querySelector("circle");
 
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      let index = 0;
+      const words = ["FD", "Bonds"];
 
-    <style>
-        .chart-wrapper {
-            display: none;
-            transition: opacity 0.5s ease;
-        }
-        .chart-wrapper.active {
-            display: block;
-        }
-    </style>
+      const colors = {
+        "FD": "#ffd700",
+        "Bonds": "#fd7e14",
+        
+      };
 
-    <!-- Chart Containers -->
-    <div id="chartBond" class="chart-wrapper active">
-        <canvas id="bondChart" height="0.1"></canvas>
-    </div>
-    <div id="chartFD" class="chart-wrapper">
-        <canvas id="fdChart" height="0.1"></canvas>
-    </div>
-    <div id="chartIPO" class="chart-wrapper">
-        <canvas id="ipoChart" height="0.1"></canvas>
-    </div>
+      const chartData = {
+        "FD": {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+          datasets: [{
+            label: 'FD Growth',
+            data: [6.5, 7, 7.6, 8.3, 9],
+            borderColor: colors.FD,
+            borderWidth: 3,
+            fill: false,
+            tension: 0.4
+          }]
+        },
+        "Bonds": {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+          datasets: [{
+            label: 'Bond Yield',
+            data: [9.8, 10.2, 10.6, 11.2, 11.9],
+            borderColor: colors.Bonds,
+            borderWidth: 3,
+            fill: false,
+            tension: 0.4
+          }]
+        },
+        
+      };
 
-    <!-- JS to Initialize Charts + Auto Switch -->
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize Charts
-            const bondCtx = document.getElementById('bondChart').getContext('2d');
-            new Chart(bondCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['High Returns Bonds', 'Monthly Income Bonds'],
-                    datasets: [{
-                        label: 'Returns (%)',
-                        data: [14, 13],
-                        backgroundColor: ['#FF6B00', '#0d6efd']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { display: true, text: 'Return (%)' },
-                            ticks: { stepSize: 2 }
-                        }
-                    }
+      let chartInstance;
+
+      function renderChart(type) {
+        if (chartInstance) chartInstance.destroy();
+        chartInstance = new Chart(chartCtx, {
+          type: 'line',
+          data: chartData[type],
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                labels: {
+                  color: '#fff',
+                  font: { weight: 'bold', size: 14 }
                 }
-            });
-
-            const fdCtx = document.getElementById('fdChart').getContext('2d');
-            new Chart(fdCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Top FD Rates', 'Market Avg'],
-                    datasets: [{
-                        label: 'Interest (%)',
-                        data: [12, 6],
-                        backgroundColor: ['#FF6B00', '#0d6efd']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { display: true, text: 'Interest (%)' },
-                            ticks: { stepSize: 2 }
-                        }
-                    }
+              }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  color: '#ccc',
+                  font: { weight: 'bold' }
                 }
-            });
-
-            const ipoCtx = document.getElementById('ipoChart').getContext('2d');
-            new Chart(ipoCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['IPO A', 'IPO B', 'IPO C'],
-                    datasets: [{
-                        label: 'Potential Gain (%)',
-                        data: [18, 25, 15],
-                        backgroundColor: ['#FF6B00', '#0d6efd', '#ffc107']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { display: true, text: 'Gain (%)' },
-                            ticks: { stepSize: 5 }
-                        }
-                    }
+              },
+              y: {
+                ticks: {
+                  color: '#ccc',
+                  font: { weight: 'bold' }
                 }
-            });
-
-            // Auto-Switch Logic
-            const chartWrappers = document.querySelectorAll('.chart-wrapper');
-            let currentIndex = 0;
-
-            setInterval(() => {
-                chartWrappers[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % chartWrappers.length;
-                chartWrappers[currentIndex].classList.add('active');
-            }, 2000); // 2 seconds
+              }
+            }
+          }
         });
-    </script>
+      }
+
+      // Initial render
+      renderChart("FD");
+
+      setInterval(() => {
+        index = (index + 1) % words.length;
+        wordEl.style.opacity = 0;
+        setTimeout(() => {
+          const newWord = words[index];
+          wordEl.textContent = newWord;
+          labelEl.textContent = newWord;
+          ballSvg.setAttribute("fill", colors[newWord]);
+          wordEl.style.opacity = 1;
+          renderChart(newWord);
+        }, 300);
+      }, 2500);
+    });
+  </script>
 </asp:Content>
+
  
