@@ -91,7 +91,7 @@
         opacity: 20;
         transform: translateX(10px);
         transition: all 0.3s ease;
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         color: black;
     }
 
@@ -154,7 +154,9 @@
    /*Footer*/
       .footer {
         font-family: 'Segoe UI', sans-serif;
-        background: black;
+       background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(0,85,140,0.9));
+
+   
         color: black;
         padding-top: 40px;
     }
@@ -318,7 +320,7 @@
 
         input#txtResult {
             border-radius: 20px 0px 0px 20px;
-            padding-left: 15px !important;
+             
             line-height: 2.5;
         }
 
@@ -345,6 +347,31 @@
             background: green;
             border-radius: 50%;
         }
+<style>
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  }
+
+  .group:hover .social-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(241, 90, 41, 0.6);
+    background-color: #f15a29;
+    color: #fff !important;
+  }
+
+  .group:hover span:last-child {
+    color: #f8f9fa;
+  }
+</style>
+
     </style>
     <script>(function (w, d, s, l, i) {
                 w[l] = w[l] || []; w[l].push({
@@ -829,10 +856,19 @@
 <div class="container">
     <div class="row">
         <div class="col-12 p-md-4 p-3">
-            <div class="breadcrumb-wrapper text-white rounded shadow-lg position-relative overflow-hidden px-md-5 py-md-4 px-3 py-3">
+            <%--<div class="breadcrumb-wrapper text-white rounded shadow-lg position-relative overflow-hidden px-md-5 py-md-4 px-3 py-3">
                 <div class="bg-overlay"></div>
                 <h1 class="text-dark fw-bold">Frequently Asked Questions</h1>
-                <p class="text-dark lead mb-0">Home / <span class="text-dark">FAQ</span></p>
+                <p class="text-dark lead mb-0">Home / <span class="text-dark">FAQ</span></p>--%>
+                                           <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-3">
+    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
+        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+   Frequently Asked <span style="color: #F15A29; font-weight: 700;">Questions</span>
+    </h3>
+      <p class="text-light text-center lead mb-0">Home / <span class="text-light">FAQ</span></p>
+  </div>
+</section>    
             </div>
         </div>
     </div>
@@ -860,124 +896,141 @@
  
 
 
-<footer class="footer text-white font_2">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 py-3">
-        <img src="img/logo2.png" class="col-8 p-0" alt="" srcset="">
-        <p>Bonds Adda is an online platform or market place powered by Dimension Financial Solutions Pvt Ltd to buy or sell bonds. Where we can make investment in fixed return bonds and can sell bonds.</p>
+<footer class="footer text-white font_2" style="background: linear-gradient(to bottom, #ffffff, #00354D);">
+  <div class="container py-5">
+    <div class="row gy-4">
+      <!-- Logo & About -->
+      <div class="col-lg-3">
+        <img src="img/logo.png" class="img-fluid mb-3" alt="Bonds Adda Logo">
+        <p class="text-dark small">
+          BondsAdda is an online platform or marketplace powered by Dimension Financial Solutions Pvt Ltd to buy or sell bonds.
+          Invest in fixed return bonds and trade them easily.
+        </p>
       </div>
-      <div class="col-lg-3 py-3">
-  <h2 class="h5 font-weight-normal">Quick Links</h2>
-  <div class="row">
-    <div class="col-6">
-      <a href="" class="btn-link text-white">Bonds</a><br>
-      <a href="<%=ResolveUrl("~")%>OurCollections" class="btn-link text-white">Collections</a><br>
-      <a href="<%=ResolveUrl("~")%>PrivacyPolicy" class="btn-link text-white">Privacy Policy</a><br>
-      <a href="<%=ResolveUrl("~")%>BlogNewsData" class="btn-link text-white">Blogs</a><br>
-      <a href="<%=ResolveUrl("~")%>TermsAndCondition" class="btn-link text-white">Terms & Conditions</a><br>
-    </div>
-    <div class="col-6">
-      <a href="<%=ResolveUrl("~")%>FAQ" class="btn-link text-white">FAQ</a><br>
-      <a href="<%=ResolveUrl("~")%>Contact" class="btn-link text-white">Contact Us</a><br>
-      <a href="<%=ResolveUrl("~")%>CodeOfConduct" class="btn-link text-white">Code of Conduct</a><br>
-      <a href="Image/Investor%20Grievance_DFS.pdf" download class="btn-link text-white">Grievance</a>
-    </div>
-  </div>
-</div>
 
-      <div class="col-lg-4 py-3">
-        <h2 class="h5 font-weight-normal font_1">Corporate  Office</h2>
-        <div class="row mb-2">
-          <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
-          <div class="col-10">
-            KAUSHAMBI, GHAZIABAD<br />
-            Dimension Tower, Plot No-10, 3rd Floor, Commercial Area, Kaushambi, Ghaziabad, U.P-201010.
+      <!-- Quick Links -->
+      <div class="col-lg-3">
+        <h5 class="text-dark mb-3">Quick Links</h5>
+        <div class="row">
+          <div class="col-6">
+            <a href="#" class="d-block text-dark mb-2">Bonds</a>
+            <a href="<%=ResolveUrl("~")%>OurCollections" class="d-block text-dark mb-2">Collections</a>
+            <a href="<%=ResolveUrl("~")%>PrivacyPolicy" class="d-block text-dark mb-2">Privacy Policy</a>
+            <a href="<%=ResolveUrl("~")%>BlogNewsData" class="d-block text-dark mb-2">Blogs</a>
+            <a href="<%=ResolveUrl("~")%>TermsAndCondition" class="d-block text-dark mb-2">Terms & Conditions</a>
           </div>
-        </div>
-        <div class="row mb-2">
-          <div class="col-1"><i class="fa fa-phone" aria-hidden="true"></i></div>
-          <div class="col-10">0120-4376552, 0120-4151349</div>
-        </div>
-        <div class="row mb-2">
-          <div class="col-1"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-          <div class="col-10">customercare@bondsadda.com</div>
-        </div>
-        <div class="row mb-2">
-          <div class="col-1"></div>
-          <div class="col-10">SEBI REGISTRATION No.: INZ000313233</div>
-        </div>
-        <div class="row mb-2">
-          <div class="col-1"></div>
-          <div class="col-10">BSE Member ID: 6824</div>
+          <div class="col-6">
+            <a href="<%=ResolveUrl("~")%>FAQ" class="d-block text-dark mb-2">FAQ</a>
+            <a href="<%=ResolveUrl("~")%>Contact" class="d-block text-dark mb-2">Contact Us</a>
+            <a href="<%=ResolveUrl("~")%>CodeOfConduct" class="d-block text-dark mb-2">Code of Conduct</a>
+            <a href="Image/Investor%20Grievance_DFS.pdf" download class="d-block text-dark mb-2">Grievance</a>
+          </div>
         </div>
       </div>
-      <div class="col-lg-2 py-3">
-        <h2 class="h5 font-weight-normal font_1">Follow us</h2>
-        <a href="https://www.facebook.com/profile.php?id=100094572825123" class="btn-link text-white" target="_blank">
-          <div class="row mb-2">
-            <div class="col-1"><i class="fa-brands fa-facebook"></i>Facebook</div>
-            <div class="col-9">    </div>
-          </div>
-        </a>
-        <a href="https://www.instagram.com/bondsadda/" class="btn-link text-white" target="_blank">
-          <div class="row mb-2">
-            <div class="col-1"><i class="fa-brands fa-instagram"></i>Instagram</div>
-            <div class="col-10">      </div>
-          </div>
-        </a>
-        <a href="https://twitter.com/bondsadda" class="btn-link text-white" target="_blank">
-          <div class="row mb-2">
-            <div class="col-1"><i class="fa-brands fa-twitter"></i>Twitter</div>
-            <div class="col-10">    </div>
-          </div>
-        </a>
+
+      <!-- Corporate Office -->
+      <div class="col-lg-4">
+        <h5 class="text-dark mb-3">Corporate Office</h5>
+        <p class="text-dark mb-2">
+          <i class="fas fa-map-marker-alt me-2"></i>
+          Dimension Tower, Plot No-10, 3rd Floor, Commercial Area, Kaushambi, Ghaziabad, U.P-201010.
+        </p>
+        <p class="text-dark mb-2"><i class="fas fa-phone me-2"></i>0120-4376552, 0120-4151349</p>
+        <p class="text-dark mb-2"><i class="fas fa-envelope me-2"></i>customercare@bondsadda.com</p>
+        <p class="text-dark mb-2">SEBI REGISTRATION No.: INZ000313233</p>
+        <p class="text-dark">BSE Member ID: 6824</p>
+      </div>
+
+      <!-- Social Links -->
+      <div class="col-lg-2 col-md-6">
+        <h5 class="fw-bold text-uppercase text-dark mb-4">Follow Us</h5>
+        <ul class="list-unstyled d-flex flex-column gap-3">
+          <li>
+            <a href="https://www.facebook.com/profile.php?id=100094572825123" target="_blank" class="d-flex align-items-center text-dark text-decoration-none">
+              <i class="fab fa-facebook-f me-2 bg-white text-primary p-2 rounded-circle"></i> Facebook
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/bondsadda/" target="_blank" class="d-flex align-items-center text-dark text-decoration-none">
+              <i class="fab fa-instagram me-2 bg-white text-danger p-2 rounded-circle"></i> Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/bondsadda" target="_blank" class="d-flex align-items-center text-dark text-decoration-none">
+              <i class="fab fa-twitter me-2 bg-white text-info p-2 rounded-circle"></i> Twitter
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <div class="container" style="padding: 25px;">
-    <hr />
+  <!-- Bottom Bar -->
+  <div class="container py-4 border-top border-light-subtle">
     <div class="row">
-      <h3 class="text-light">Welcome to BondsAdda</h3>
-      <p>Dimension Financial Solutions Private Limited | SEBI Registration No.: INZ000313233</p>
-    </div>
-
-    <div id="readMoreContent" class="read-more-content">
-      <div class="row">
-        <p style="margin-bottom: -1px;">BondsAdda is a brand name of the website of Dimension Financial Solutions Private Limited - a SEBI registered and  BSE debt market broker which provide an Online Bond Providing Platform (OBPP) that enables investors to trade bonds and debentures through exchange in the secondary market.</p>
-        <p style="margin-bottom: -1px;"> Before you proceed with using our website and its services, we ask that you carefully read and understand the following disclaimer:</p>
-        <p>*** Investments in debt securities are subject to market risks. Read all the offer/scheme related documents carefully before investing. ***</p>
-        <p style="margin-bottom: -1px;"><strong>1. Investment Risks:</strong></p>
-        <p style="margin-bottom: -1px;">BondsAdda.com is a marketplace that facilitates the buying and selling of bonds. All investments involve risks, and past performance is not indicative of future results. Users are advised to conduct thorough research and seek professional advice before making investment decisions.</p>
-        <p style="margin-bottom: -1px;"><strong>2. Information Accuracy:</strong></p>
-        <p style="margin-bottom: -1px;">While we strive to provide accurate and up-to-date information, BondsAdda.com does not guarantee the accuracy, completeness, or reliability of any information on the platform. Users should independently verify information before making financial decisions.</p>
-        <p style="margin-bottom: -1px;"><strong>3. Financial Advice:</strong></p>
-        <p style="margin-bottom: -1px;">BondsAdda.com does not provide personalized financial advice. The information presented on the platform is for general informational purposes only. Users are encouraged to consult with financial advisors or professionals to assess their individual financial situations and goals.</p>
-        <p style="margin-bottom: -1px;"><strong>4. User Responsibility:</strong></p>
-        <p style="margin-bottom: -1px;">Users are solely responsible for their investment decisions, actions, and outcomes. BondsAdda.com and Dimension Group are not liable for any financial losses or damages resulting from the use of the platform or the information provided.</p>
-        <p style="margin-bottom: -1px;"><strong>5. Third-Party Links:</strong></p>
-        <p style="margin-bottom: -1px;">BondsAdda.com may include links to third-party websites. These links are provided for convenience, and we do not endorse or guarantee the content, services, or products offered by third parties. Users should review the terms and policies of external websites.</p>
-        <p style="margin-bottom: -1px;"><strong>6. Regulatory Compliance:</strong></p>
-        <p style="margin-bottom: -1px;">Users are responsible for ensuring compliance with applicable laws and regulations related to investments in their jurisdiction. BondsAdda.com and the Company are not responsible for any legal consequences arising from non-compliance.</p>
-        <p style="margin-bottom: -1px;"><strong>7. Platform Modifications:</strong></p>
-        <p style="margin-bottom: -1px;">BondsAdda.com reserves the right to modify, suspend, or discontinue any aspect of the platform at any time without prior notice. We may also update this disclaimer, and users are encouraged to review it periodically.</p>
-        <p style="margin-bottom: -1px;">By using BondsAdda.com, you acknowledge that you have read, understood, and agreed to the terms of this disclaimer. If you do not agree with any part of this disclaimer, please refrain from using our services.</p>
-        <p style="margin-bottom: -1px;">For further inquiries or clarifications, please contact us at <a href="https://bondsadda.com/">customercare@bondsadda.com</a></p>
-        <p style="margin-bottom: -1px;"><strong>Compliance Officer: RAVI KANT MATHUR</strong></p>
-        <p style="margin-bottom: -1px;"><strong>Contact Details:</strong></p>
-        <p style="margin-bottom: -1px;">Tel. No.: 0120-4151349 ,</p>
-        <p style="margin-bottom: -1px;">Email ID: compliance@dimensiongroup.co.in</p>
-        <p>(for any compliance & grievance related complaints)</p>
-        <p><strong>Directors: RAVI KANT MATHUR, PRACHI CHOPRA & VIVEK GAUTAM</strong></p>
-        <p>Thank you for choosing BondsAdda.com for your financial needs.</p>
-        <p>Important links: Indian Clearing Corporation Ltd(ICCL) | NSDL | CDSL | BSE</p>
+      <div class="col-12">
+        <h3 class="fw-bold mb-2 text-warning">Welcome to BondsAdda</h3>
+        <p class="text-white-50 mb-0">Dimension Financial Solutions Private Limited | SEBI Registration No.: INZ000313233</p>
       </div>
     </div>
 
-    <span id="readMoreToggle" class="read-more-toggle" onclick="toggleReadMore()">View More ▼</span>
+    <!-- Disclaimer Section -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div id="readMoreContent" class="read-more-content bg-light p-4 rounded-4 shadow-sm">
+          <h3 class="fw-bold mb-3 text-dark"><i class="fas fa-shield-alt text-primary me-2"></i> Disclaimer</h3>
+
+          <p class="mb-2 text-dark">BondsAdda is a brand name of the website of <strong>Dimension Financial Solutions Private Limited</strong> – a SEBI registered and BSE debt market broker providing an Online Bond Providing Platform (OBPP) enabling investors to trade bonds and debentures in the secondary market.</p>
+
+          <p class="mb-3 text-dark">Before using our website and services, please read the following disclaimer carefully:</p>
+
+          <div class="alert alert-warning rounded-3 mb-4" role="alert">
+            <strong><i class="fas fa-exclamation-triangle me-2"></i>Market Risk:</strong> Investments in debt securities are subject to market risks. Read all the offer/scheme related documents carefully before investing.
+          </div>
+
+          <ol class="ps-3 text-dark">
+            <li class="mb-3"><strong>Investment Risks:</strong><br>BondsAdda.com is a marketplace for buying and selling bonds. Investments involve risks, and past performance is not indicative of future returns. Always do your own research or seek expert advice.</li>
+            <li class="mb-3"><strong>Information Accuracy:</strong><br>While we strive for accuracy, we cannot guarantee completeness or reliability. Please verify information independently.</li>
+            <li class="mb-3"><strong>Financial Advice:</strong><br>We do not offer personalized financial advice. The content is for informational purposes only.</li>
+            <li class="mb-3"><strong>User Responsibility:</strong><br>You are solely responsible for your decisions and investments. BondsAdda and Dimension Group are not liable for losses.</li>
+            <li class="mb-3"><strong>Third-Party Links:</strong><br>External links are for convenience. We do not endorse their content or services.</li>
+            <li class="mb-3"><strong>Regulatory Compliance:</strong><br>Ensure you comply with applicable laws in your region. We are not responsible for consequences of non-compliance.</li>
+            <li class="mb-3"><strong>Platform Modifications:</strong><br>We may change or update features without notice. Please check the disclaimer periodically.</li>
+          </ol>
+
+          <p class="mt-4 text-dark">By using BondsAdda.com, you confirm that you accept this disclaimer. If you disagree with any part, please stop using our platform.</p>
+
+          <p class="text-dark">For queries, contact: <a href="mailto:customercare@bondsadda.com" class="text-decoration-underline text-primary">customercare@bondsadda.com</a></p>
+
+          <hr class="my-4">
+
+          <div class="pt-2">
+            <h5 class="fw-semibold"><i class="fas fa-user-shield text-secondary me-2"></i> Compliance Officer</h5>
+            <p class="mb-1 text-dark">RAVI KANT MATHUR</p>
+            <p class="mb-1 text-dark">Tel. No.: <a href="tel:01204151349" class="text-decoration-none text-dark">0120-4151349</a></p>
+            <p class="mb-1 text-dark">Email: <a href="mailto:compliance@dimensiongroup.co.in" class="text-decoration-underline text-primary">compliance@dimensiongroup.co.in</a></p>
+            <p class="mb-2 text-muted fst-italic">(For compliance & grievance-related complaints)</p>
+            <p class="mb-0 text-dark"><strong>Directors:</strong> RAVI KANT MATHUR, PRACHI CHOPRA & VIVEK GAUTAM</p>
+          </div>
+
+          <hr class="my-4">
+
+          <p class="mb-1 text-dark">Thank you for choosing <strong>BondsAdda.com</strong> for your financial needs.</p>
+          <p class="text-dark">Important links:
+            <a href="#" class="text-decoration-underline text-secondary">Indian Clearing Corporation Ltd (ICCL)</a> |
+            <a href="#" class="text-decoration-underline text-secondary">NSDL</a> |
+            <a href="#" class="text-decoration-underline text-secondary">CDSL</a> |
+            <a href="#" class="text-decoration-underline text-secondary">BSE</a>
+          </p>
+        </div>
+
+        <!-- View More Toggle -->
+        <span id="readMoreToggle" class="read-more-toggle text-primary mt-3 d-inline-block" style="cursor: pointer;" onclick="toggleReadMore()">View More ▼</span>
+      </div>
+    </div>
   </div>
 </footer>
+
         
 
       <span style="display: block; background: #000; color: #fff; text-align: center; padding: 10px 0; font-weight: 500;">
