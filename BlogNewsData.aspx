@@ -55,7 +55,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ScriptManager ID="SM1" EnableCdn="true" runat="server"></asp:ScriptManager>
     <asp:HiddenField ID ="hfDataa" runat="server" />
-    <section class="breadcrumb-collection  py-md-4 gradient" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
+    <section class="breadcrumb-collection  py-md-4 gradient" style="font-family: 'Segoe UI', sans-serif; color: black; ">
             <div class="container">
                 <div class="row">
                     <div class="col-12 p-md-3 p-0">
@@ -69,7 +69,7 @@
                 
             </div>
         </section>
-        <section class="news-page  " style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
+        <section class="news-page  " style="font-family: 'Segoe UI', sans-serif; color: white; ">
             <div class="container">
                 <div class="row">
 
@@ -79,21 +79,34 @@
                             <ItemTemplate>
 
                                     <div class="col-md-6 py-2">
-                                <div class="box">
-                                    <img src='<%#Eval("BlogImage").ToString().Replace("~/","") %>' class="col-12 p-0" alt="" />
-                                    <div class="details p-3 ">
-                                        <small class="text-danger font_2"><strong> Date:</strong> <%--20 June  2022--%><%#Eval("FormattedBlogDate") %> | <strong> Author:</strong> <%--Admin | Investment--%><%#Eval("AuthorBy") %> </small>
-                                        <span class="abcd">
-                                            <a href="<%=ResolveUrl("~")%>BlogNewsDetails?oId=<%#Eval("BlogId") %>">
-                           <h4 class="h5 font_2 font-weight-normal" style="color:black; text-decoration:blink;"><%#Eval("BlogTitle") %>: <%#Eval("BlogSubTitle") %></h4></a>
-                                             </span>
-                                        <span class="defg">
-                                                                                    <p><small><%#Eval("MetaDescription") %></small></p>
-                                        </span>
-                                        <asp:LinkButton ID="lnkviewdetails" runat="server" CssClass="color1 font_1" CommandArgument='<%#Eval("BlogId") %>' OnClick="lnkviewdetails_Click">Read More</asp:LinkButton>
-                                    </div>
-                                </div>
-                            </div>
+  <div class="box h-100 d-flex flex-column bg-white shadow-sm rounded-3 overflow-hidden" style="min-height: 100%;">
+    <!-- Blog Image -->
+    <img src='<%# Eval("BlogImage").ToString().Replace("~/", "") %>' class="w-100" alt="Blog Image" style="height: 150px; object-fit: cover;" />
+    
+    <!-- Blog Details -->
+    <div class="details p-3 d-flex flex-column justify-content-between flex-grow-1">
+      <small class="text-danger font_2 d-block mb-2">
+        <strong>Date:</strong> <%# Eval("FormattedBlogDate") %> |
+        <strong>Author:</strong> <%# Eval("AuthorBy") %>
+      </small>
+
+      <a href="<%= ResolveUrl("~") %>BlogNewsDetails?oId=<%# Eval("BlogId") %>" style="text-decoration: none;">
+        <h4 class="h5 text-dark font-weight-semibold mb-2">
+          <%# Eval("BlogTitle") %>: <%# Eval("BlogSubTitle") %>
+        </h4>
+      </a>
+
+      <p class="text-muted" style="font-size: 0.9rem;">
+        <%# Eval("MetaDescription") %>
+      </p>
+
+      <asp:LinkButton ID="lnkviewdetails" runat="server" CssClass="btn btn-sm btn-primary mt-auto align-self-start" CommandArgument='<%# Eval("BlogId") %>' OnClick="lnkviewdetails_Click">
+        Read More
+      </asp:LinkButton>
+    </div>
+  </div>
+</div>
+
                                 
                             </ItemTemplate>
                         </asp:Repeater>
@@ -154,7 +167,26 @@
             </div>
                 </div>
         </section>
-        <section class="subscribe pb-md-5 pb-3" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
+       <section class="subscribe py-5" style="background: #1f3c88; color: #fff;">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <h2 class="fw-bold mb-3">📬 Subscribe to our <span style="color: #ffcb05;">Newsletter</span></h2>
+        <p class="mb-4">DON’T FALL BEHIND. Stay current with a recap of today’s computing news from Digital Trend — by <strong>Bonds Adda</strong>.</p>
+
+        <asp:UpdatePanel ID="uPanel" runat="server">
+          <ContentTemplate>
+            <div class="input-group shadow-lg">
+              <asp:TextBox ID="txtEmail" runat="server" class="form-control form-control-lg border-0" placeholder="Enter your Email Address" />
+              <asp:Button ID="btnSubscribe" runat="server" Text="Subscribe Now" class="btn btn-warning btn-lg px-4 fw-semibold" OnClick="btnSubscribe_Click" />
+            </div>
+          </ContentTemplate>
+        </asp:UpdatePanel>
+      </div>
+    </div>
+  </div>
+</section>
+        <%--<section class="subscribe pb-md-5 pb-3" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -202,7 +234,7 @@ Stay current with a recap of today’s computing news from digital trend by bo
                 </div>
             </div>
             
-        </section>
+        </section>--%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
 </asp:Content>
