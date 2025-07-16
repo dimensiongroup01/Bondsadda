@@ -1359,7 +1359,8 @@ scroll-behavior: smooth;
 
  
 <!-- 🟠 START OF HERO SECTION -->
-<section class="hero-section" style="background: linear-gradient(to bottom, #00558C, #ffffff);">
+<section class="hero-section" style="background: linear-gradient(to bottom, rgba(0, 85, 140, 0.2), rgba(255, 255, 255, 0.1));"
+">
   <div class="container py-3">
 
     <!-- 🔍 Search Bar -->
@@ -1397,14 +1398,14 @@ scroll-behavior: smooth;
 
         <!-- Title & Description -->
         <div class="text-left px-2">
-          <h1 class="display-5 fw-bold mb-2">
+          <h1 class="display-5 fw-bold mb-2 text-dark">
             Maximize Your Savings with
             <span class="text-warning fw-bold" id="changing-word">FD</span>
           </h1>
-          <p class="lead fw-medium mb-3">
+          <p class="lead fw-medium mb-3 text-dark">
             Invest in top-rated <span id="product-label" class="fw-bold text-warning">Fixed Deposits</span> and earn up to 
             <span class="fw-bold text-success">14%</span> returns. <br />
-            <span class="text-light">Fully digital, secure & hassle-free.</span>
+            <span class="text-dark">Fully digital, secure & hassle-free.</span>
           </p>
         </div>
 
@@ -1441,7 +1442,7 @@ scroll-behavior: smooth;
       <!-- ✅ RIGHT SECTION -->
       <div class="col-md-6 hero-right text-center">
         <svg class="ball-svg mb-3" id="ballSvg" width="220" height="300" viewBox="0 0 400 400" fill="none">
-          <circle cx="200" cy="200" r="200" fill="#ffd700" />
+          <circle cx="200" cy="200" r="200" fill="#000" />
         </svg>
         <div class="graph-container">
           <canvas id="graphChart"></canvas>
@@ -2611,11 +2612,11 @@ scroll-behavior: smooth;
       let index = 0;
       const words = ["FD", "Bonds"];
 
-      const colors = {
-        "FD": "#ffd700",
-        "Bonds": "#fd7e14",
-        
-      };
+        const colors = {
+            "FD": "#003366",     // Dark Blue for visibility instead of light gold
+            "Bonds": "#c04d00",  // Dark Orange instead of light orange
+        };
+
 
       const chartData = {
         "FD": {

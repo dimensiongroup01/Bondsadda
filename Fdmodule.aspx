@@ -3,80 +3,105 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>FD Registration</title>
-
-    <!-- Bootstrap & Icons -->
+    <title>FD Registration Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <style>
         html, body {
-            height: 100%;
             margin: 0;
+            padding: 0;
+            height: 100%;
             font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(to right, #fdfbfb, #ebedee);
-            overflow-x: hidden;
         }
 
-        .header-wave svg, .footer-wave svg {
-            width: 100%;
-            height: 120px;
-        }
-
-        .form-section {
-            display: flex;
-            flex-wrap: wrap;
-            height: auto;
-            padding: 20px 40px;
-            gap: 30px;
-        }
-
-        .form-box {
-            flex: 1.2;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.6s ease-in-out;
-        }
-
-        .logo-header {
+        .navbar-custom {
+            background: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
-            margin-bottom: 25px;
+            align-items: center;
         }
 
-        .logo-header img {
-            height: 50px;
+        .navbar-brand img {
+            height: 40px;
         }
 
-        h2.form-title {
-            text-align: center;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
+        .btn-nav {
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            color: #fff;
             font-weight: 600;
-            font-size: 15px;
-            color: #495057;
-            transition: color 0.3s;
+            padding: 8px 18px;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease-in-out;
         }
 
-        .form-group label i {
-            margin-right: 6px;
+        .btn-nav:hover {
+            background: linear-gradient(135deg, #6610f2, #007bff);
+            color: #fff;
+        }
+
+        .dashboard-top, .main-grid {
+            padding: 20px 40px;
+        }
+
+        .dashboard-top {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-card {
+            flex: 1 1 200px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h5 {
+            color: #343a40;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card .count {
+            font-size: 32px;
+            font-weight: bold;
             color: #007bff;
         }
 
-        .form-control {
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr;
+            gap: 30px;
+        }
+
+        .form-box, .chart-box {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title, .form-title {
+            text-align: center;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        .form-control,
+        .form-control-file {
             border-radius: 12px;
         }
 
         .form-control:focus {
-            border-color: #007bff;
             box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
         }
 
@@ -88,216 +113,224 @@
             font-size: 16px;
             background: linear-gradient(135deg, #007bff, #6610f2);
             border: none;
-            transition: background 0.3s ease;
         }
 
         .btn-primary:hover {
             background: linear-gradient(135deg, #6610f2, #007bff);
         }
 
-        .error {
-            font-size: 0.9em;
-            color: red;
+        .hidden {
+            display: none;
         }
 
-        .chart-box {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
+        .text-gradient {
+            background: linear-gradient(to right, #00558c, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        canvas {
-            max-width: 100%;
+        .form-box:hover {
+            transform: scale(1.01);
+            transition: all 0.3s ease-in-out;
         }
+        .hidden {
+  display: none;
+}
 
-        .person-svg {
-            width: 100%;
-            max-width: 260px;
-            margin-top: 20px;
-        }
-
-        @media(max-width: 768px) {
-            .form-section {
-                flex-direction: column;
-                height: auto;
-            }
-
-            .chart-box {
-                justify-content: flex-start;
-                margin-top: 20px;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
     </style>
-</head>
-<body>
-
-    <!-- Top SVG Wave -->
-    <div class="header-wave">
-        <svg viewBox="0 0 1440 320">
-            <path fill="#ffffff" fill-opacity="1" d="M0,96L48,128C96,160,192,224,288,224C384,224,480,160,576,138.7C672,117,768,139,864,165.3C960,192,1056,224,1152,224C1248,224,1344,192,1392,176L1440,160L1440,0L0,0Z"></path>
-        </svg>
-    </div>
-
-    <!-- Blob Decoration SVG -->
-    <svg style="position: absolute; top: 140px; left: -80px; z-index: -1;" width="500" height="500" viewBox="0 0 200 200">
-        <path fill="#cce5ff" d="M47.8,-66.3C60.6,-59.1,68.3,-45.4,73.7,-30.9C79,-16.3,82,0.2,76.4,14.3C70.9,28.4,56.8,40.2,43.3,48.8C29.7,57.4,14.9,62.8,1.6,60.4C-11.7,58,-23.3,47.7,-36.3,39.1C-49.4,30.6,-64,23.7,-67.2,13.4C-70.3,3,-62.1,-11,-52.8,-22.1C-43.6,-33.1,-33.4,-41.1,-22.4,-49.2C-11.4,-57.3,0.3,-65.6,13.3,-70C26.2,-74.3,40.4,-74.9,47.8,-66.3Z" transform="translate(100 100)" />
-    </svg>
-
-    <form id="form1" runat="server">
-        <div class="container-fluid form-section">
-            <!-- Left: Form -->
-            <div class="form-box">
-                <div class="logo-header">
-                    <img src="img/logo.png" alt="Logo 1" />
-                    <img src="img/logodf.png" alt="Logo 2" />
-                </div>
-
-                <h2 class="form-title">FD Registration</h2>
-
-                <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="text-danger mb-3" HeaderText="Please fix the following:" />
-
-                <div class="row">
-                    <!-- Column 1 -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="txtName"><i class="fas fa-user"></i>Name</label>
-                            <asp:TextBox ID="txtName" runat="server" CssClass="form-control" />
-                            <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name is required" CssClass="error" Display="Dynamic" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="txtEmail"><i class="fas fa-envelope"></i>Email</label>
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" />
-                            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required" CssClass="error" Display="Dynamic" />
-                            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail"
-                                ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
-                                ErrorMessage="Invalid email format" CssClass="error" Display="Dynamic" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="txtPAN"><i class="fas fa-id-card"></i>PAN</label>
-                            <asp:TextBox ID="txtPAN" runat="server" CssClass="form-control" MaxLength="10" />
-                            <asp:RequiredFieldValidator ID="rfvPAN" runat="server" ControlToValidate="txtPAN" ErrorMessage="PAN is required" CssClass="error" Display="Dynamic" />
-                            <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN"
-                                ValidationExpression="[A-Z]{5}[0-9]{4}[A-Z]{1}" ErrorMessage="Invalid PAN format" CssClass="error" Display="Dynamic" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="ddlFDType"><i class="fas fa-list-ul"></i>FD Type</label>
-                            <asp:DropDownList ID="ddlFDType" runat="server" CssClass="form-control">
-                                <asp:ListItem Text="-- Select FD Type --" Value="" />
-                                <asp:ListItem Text="SANCHAY" Value="SANCHAY" />
-                                <asp:ListItem Text="SHRI RAM FINANCE" Value="SHRIRAM" />
-                                <asp:ListItem Text="BAJAJ" Value="BAJAJ" />
-                                <asp:ListItem Text="PNB" Value="PNB" />
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="rfvFDType" runat="server" ControlToValidate="ddlFDType" InitialValue="" ErrorMessage="Please select FD Type" CssClass="error" Display="Dynamic" />
-                        </div>
-                    </div>
-
-                    <!-- Column 2 -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="txtAadhaar"><i class="fas fa-address-card"></i>Aadhaar</label>
-                            <asp:TextBox ID="txtAadhaar" runat="server" CssClass="form-control" MaxLength="12" />
-                            <asp:RequiredFieldValidator ID="rfvAadhaar" runat="server" ControlToValidate="txtAadhaar" ErrorMessage="Aadhaar is required" CssClass="error" Display="Dynamic" />
-                            <asp:RegularExpressionValidator ID="revAadhaar" runat="server" ControlToValidate="txtAadhaar"
-                                ValidationExpression="^\d{12}$" ErrorMessage="Aadhaar must be 12 digits" CssClass="error" Display="Dynamic" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fuPAN"><i class="fas fa-upload"></i>Upload PAN</label>
-                            <asp:FileUpload ID="fuPAN" runat="server" CssClass="form-control-file" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fuAadhaar"><i class="fas fa-upload"></i>Upload Aadhaar</label>
-                            <asp:FileUpload ID="fuAadhaar" runat="server" CssClass="form-control-file" />
-                        </div>
-                        <div class="form-group">
-                            <label for="txtMobileNo">Mobile Number</label>
-                            <asp:TextBox ID="txtMobileNo" runat="server" CssClass="form-control" MaxLength="15"></asp:TextBox>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="form-group text-center mt-4">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
-                </div>
-            </div>
-
-            <!-- Right: Chart & Image -->
-            <div class="chart-box">
-                <canvas id="fdChart"></canvas>
-                <canvas id="lineChart" style="margin-top: 40px;"></canvas>
-                <img src="https://www.svgrepo.com/show/364798/person-employee.svg" class="person-svg" alt="Person" />
-            </div>
-        </div>
-    </form>
-
-    <!-- Bottom SVG Wave -->
-    <div class="footer-wave">
-        <svg viewBox="0 0 1440 320">
-            <path fill="#ffffff" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,101.3C672,117,768,203,864,218.7C960,235,1056,181,1152,160C1248,139,1344,149,1392,154.7L1440,160L1440,320L0,320Z"></path>
-        </svg>
-    </div>
-
-    <!-- Chart.js Scripts -->
     <script>
+        function showFDForm() {
+            document.getElementById("dashboardSection").classList.add("hidden");
+            document.getElementById("fdFormSection").classList.remove("hidden");
+        }
+
+        function showDashboard() {
+            document.getElementById("fdFormSection").classList.add("hidden");
+            document.getElementById("dashboardSection").classList.remove("hidden");
+        }
+
         window.onload = function () {
-            new Chart(document.getElementById('fdChart').getContext('2d'), {
+            new Chart(document.getElementById('fdChart'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['SANCHAY', 'SHRIRAM', 'BAJAJ', 'PNB'],
+                    labels: ['LIC Housing Finance Ltd.', 'Shriram Transport Finance Company Ltd.', 'Bajaj Finance Ltd.', 'PNB Housing Finance Ltd.'],
                     datasets: [{
                         data: [40, 20, 25, 15],
-                        backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
-                        borderWidth: 1
+                        backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545']
                     }]
                 },
-                options: {
-                    responsive: true,
-                    legend: { position: 'bottom' }
-                }
+                options: { responsive: true, legend: { position: 'bottom' } }
             });
 
-            new Chart(document.getElementById('lineChart').getContext('2d'), {
+            new Chart(document.getElementById('lineChart'), {
                 type: 'line',
                 data: {
                     labels: ['Q1', 'Q2', 'Q3', 'Q4'],
                     datasets: [{
-                        label: 'FD Growth Trend',
+                        label: 'FD Growth',
                         data: [50, 75, 60, 90],
                         borderColor: '#007bff',
                         backgroundColor: 'rgba(0,123,255,0.2)',
                         fill: true,
-                        tension: 0.4,
-                        borderWidth: 3,
-                        pointBackgroundColor: '#007bff',
-                        pointBorderColor: '#fff',
-                        pointRadius: 6
+                        tension: 0.4
                     }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { position: 'top' }
-                    },
-                    scales: {
-                        y: { beginAtZero: true, grid: { color: '#ccc' } },
-                        x: { grid: { color: '#eee' } }
-                    }
+                }
+            });
+
+            new Chart(document.getElementById('userBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        label: 'User Registrations',
+                        data: [120, 90, 150, 200, 170, 220],
+                        backgroundColor: '#6610f2',
+                        borderRadius: 10
+                    }]
                 }
             });
         };
     </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg navbar-custom fixed-top shadow-sm">
+    <div class="container-fluid d-flex justify-content-between align-items-center px-3">
+        <a class="navbar-brand" href="index.aspx">
+            <img src="img/logo.png" alt="Logo" style="height: 40px;" />
+        </a>
+        <button type="button" class="btn btn-nav bg-warning text-light fw-semibold" onclick="showFDForm()">
+            🚀 FD Registration
+        </button>
+    </div>
+</nav>
+
+        <!-- DASHBOARD SECTION -->
+        <div id="dashboardSection">
+            <div class="dashboard-top">
+                <div class="dashboard-card"><h5>Total Users</h5><div class="count">872</div></div>
+                <div class="dashboard-card"><h5>Monthly Growth</h5><div class="count">+28%</div></div>
+                <div class="dashboard-card"><h5>Pending Verifications</h5><div class="count">34</div></div>
+                <div class="dashboard-card"><h5>Active FDs</h5><div class="count">612</div></div>
+            </div>
+
+            <div class="main-grid">
+                <div class="form-box">
+                    <h2 class="chart-title">User Registrations - Last 6 Months</h2>
+                    <canvas id="userBarChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h2 class="chart-title">FD Distribution</h2>
+                    <canvas id="fdChart"></canvas>
+                    <h2 class="chart-title mt-4">Growth Over Time</h2>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- FD REGISTRATION SECTION -->
+    <div id="fdFormSection" class="container my-4 hidden">
+    <button type="button" class="btn btn-sm btn-outline-secondary mb-3" onclick="showDashboard()">
+        ← Back to Dashboard
+    </button>
+
+    <div class="form-box bg-white p-4 rounded shadow-sm border border-light">
+        <h4 class="form-title mb-3 text-primary fw-semibold">
+            <i class="fas fa-file-signature me-2 text-danger"></i> FD Registration
+        </h4>
+
+        <div class="row g-3">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <div class="mb-2">
+                    <label for="txtName" class="form-label"><i class="fas fa-user me-1 text-primary"></i> Full Name</label>
+                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control form-control-sm" placeholder="Enter your full name" />
+                </div>
+
+                <div class="mb-2">
+                    <label for="txtEmail" class="form-label"><i class="fas fa-envelope me-1 text-primary"></i> Email Address</label>
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" TextMode="Email" placeholder="example@email.com" />
+                </div>
+
+               <div class="mb-2">
+    <label for="txtMobile" class="form-label">
+        <i class="fas fa-phone me-1 text-primary"></i> Mobile Number
+    </label>
+
+    <asp:TextBox ID="txtMobile" runat="server"
+        CssClass="form-control form-control-sm"
+        MaxLength="10"
+        placeholder="Enter 10-digit mobile number" />
+
+    <!-- Required field validator -->
+    <asp:RequiredFieldValidator ID="rfvMobile" runat="server"
+        ControlToValidate="txtMobile"
+        ErrorMessage="Mobile number is required"
+        CssClass="text-danger small d-block"
+        Display="Dynamic"
+        ValidationGroup="fdGroup" />
+
+    <!-- Regular expression validator for 10-digit Indian mobile numbers -->
+    <asp:RegularExpressionValidator ID="revMobile" runat="server"
+        ControlToValidate="txtMobile"
+        ValidationExpression="^[6-9]\d{9}$"
+        ErrorMessage="Enter valid 10-digit Indian mobile number"
+        CssClass="text-danger small d-block"
+        Display="Dynamic"
+        ValidationGroup="fdGroup" />
+</div>
+
+
+                <div class="mb-2">
+                    <label for="txtPAN" class="form-label"><i class="fas fa-id-card me-1 text-primary"></i> PAN Number</label>
+                    <asp:TextBox ID="txtPAN" runat="server" CssClass="form-control form-control-sm text-uppercase" MaxLength="10" placeholder="ABCDE1234F" />
+                </div>
+
+                <div class="mb-2">
+                    <label for="ddlFDType" class="form-label"><i class="fas fa-university me-1 text-primary"></i> Select FD Type</label>
+                    <asp:DropDownList ID="ddlFDType" runat="server" CssClass="form-select form-select-sm">
+                        <asp:ListItem Text="-- Select --" Value="" />
+                        <asp:ListItem Text="LIC Housing Finance Ltd." Value="LIC Housing Finance Ltd." />
+                        <asp:ListItem Text="Shriram Transport Finance Company Ltd." Value="Shriram Transport Finance Company Ltd." />
+                        <asp:ListItem Text="Bajaj Finance Ltd." Value="Bajaj Finance Ltd." />
+                        <asp:ListItem Text="PNB Housing Finance Ltd." Value="PNB Housing Finance Ltd." />
+                    </asp:DropDownList>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <div class="mb-2">
+                    <label for="txtAadhaar" class="form-label"><i class="fas fa-address-card me-1 text-primary"></i> Aadhaar Number</label>
+                    <asp:TextBox ID="txtAadhaar" runat="server" CssClass="form-control form-control-sm" MaxLength="12" placeholder="XXXX-XXXX-XXXX" />
+                </div>
+
+                <div class="mb-2">
+                    <label for="fuPAN" class="form-label"><i class="fas fa-upload text-success me-1"></i> Upload PAN Card</label>
+                    <asp:FileUpload ID="fuPAN" runat="server" CssClass="form-control form-control-sm" />
+                </div>
+
+                <div class="mb-2">
+                    <label for="fuAadhaar" class="form-label"><i class="fas fa-upload text-success me-1"></i> Upload Aadhaar Card</label>
+                    <asp:FileUpload ID="fuAadhaar" runat="server" CssClass="form-control form-control-sm" />
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-3" style="border-top: 1px dashed #ccc;" />
+
+        <div class="text-center mt-3  p-3 rounded">
+    <asp:Button ID="btnSubmit" runat="server" Text="🚀 Submit Application"
+        CssClass="bg-warning btn-sm px-4 py-2 fw-semibold shadow-sm border-0 rounded-pill"
+        OnClick="btnSubmit_Click" />
+</div>
+
+
+
+    </div>
+</div>
+
+
+    </form>
 </body>
 </html>
