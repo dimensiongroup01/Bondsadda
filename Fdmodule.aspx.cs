@@ -20,7 +20,7 @@ public partial class Fdmodule : System.Web.UI.Page
 
         if (fuAadhaar.HasFile)
             fuAadhaar.SaveAs(Server.MapPath(aadhaarPath));
-
+        //tesobject
         dynamic request = new
         {
             name = txtName.Text.Trim(),
@@ -35,6 +35,8 @@ public partial class Fdmodule : System.Web.UI.Page
         SaveFDCustomerRequest(request);
 
        
+
+
     
         bool emailSent = sms.SendFDRegistrationConfirmation(
             request.email,
