@@ -296,7 +296,7 @@
                                             </div>
                                         </div>
                                         <asp:TextBox ID="txtUserName" runat="server" class="form-control"
-                                            placeholder="Mobile/Email"></asp:TextBox>
+                                            placeholder="Email"></asp:TextBox>
                                     </div>
                                     <asp:LinkButton ID="lnkGetOTP" runat="server" CssClass="btn btn-primary" OnClientClick="js-startTimer()" OnClick="lnkGetOTP_Click">Get OTP</asp:LinkButton>
                                     
