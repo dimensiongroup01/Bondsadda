@@ -221,6 +221,11 @@
                             <label for="fuAadhaar"><i class="fas fa-upload"></i>Upload Aadhaar</label>
                             <asp:FileUpload ID="fuAadhaar" runat="server" CssClass="form-control-file" />
                         </div>
+                        <div class="form-group">
+                            <label for="txtMobileNo">Mobile Number</label>
+                            <asp:TextBox ID="txtMobileNo" runat="server" CssClass="form-control" MaxLength="15"></asp:TextBox>
+                        </div>
+
                     </div>
                 </div>
 

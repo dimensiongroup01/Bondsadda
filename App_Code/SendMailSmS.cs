@@ -488,7 +488,7 @@ public class SendMailSmS
         sbodyHtml.Append(@"<div class='table box p-md-5 p-4 font_2' id='printarea'><table><tbody><tr><td><h3><strong>Dimension Financial Solutions Pvt Ltd</strong></h3><p>Plot No-10, Third Floor, Dimension Group Building,<br>Commercial Area, Kaushambi, Ghaziabad U.P - 201010<br><strong>CIN</strong> - U74140DL2009PTC186563<br><strong> Email Id </strong> - debt@dimensiongroup.co.in<br><strong>Mobile No</strong> - +91 9650700244 / 9650799558<br><strong>Ref No:</strong> - DFS/227/2023-24,<br>to<br><strong>"+ CustomerName +"("+ customermobile + ")</strong></p></td><td><img src='https://bondsadda.com/Signup/Picture1.png' style='width:70%'></td></tr></tbody></table><table style='width: 100%;' border='1'><tbody><tr><td><strong>Transaction Type</strong></td><td colspan='3'><strong>Security Sale</strong></td></tr><tr><td>Deal Date</td><td>"+dealdate+"</td><td>Settlement Date</td><td>"+sattledate+"</td></tr><tr><td colspan='4'>Security Details :-</td></tr><tr><td>Name of Security</td><td colspan='3'>"+security+"</td></tr><tr><td>ISIN Number</td><td colspan='3'>"+isin+"</td></tr><tr><td>Coupon Rate</td><td colspan='3'>"+couponrate+"%</td></tr><tr><td>Interest Payment Date</td><td colspan='3'>"+maturitytype+"-"+ipdate+"</td></tr><tr><td>Maturity Date</td><td colspan='3'>"+maturitydate+"</td></tr><tr><td>Put/Call Option</td><td colspan='3'>"+calldate+"/"+putdate+"</td></tr><tr><td>Last Interest Payment Date</td><td colspan='3'>"+lastipdate+"</td></tr><tr><td>Number of Days</td><td colspan='3'>"+noofdays+"</td></tr><tr><td>Face Value of Per Bond</td><td colspan='3'>"+facevaluebond+"</td></tr><tr><td>Quantity</td><td colspan='3'>"+qty+"</td></tr><tr><td>Rate (Rs.)</td><td>"+rate+"</td><td>YTM</td><td>"+YTM+" %</td></tr><tr><td>Face Value of Deal (Rs.)</td><td colspan='3'>"+deal+"</td></tr><tr><td>Principal Amount (Rs.)</td><td colspan='3'>"+principalamo+"</td></tr><tr><td>Accured Interest (Rs.)</td><td colspan='3'>"+accuredinterest+"</td></tr><tr><td>Total Consideration (Rs.)</td><td colspan='3'>"+totalconsideration+"</td></tr><tr><td>Stamp Duty (Rs.)</td><td colspan='3'>"+stampduty+"</td></tr><tr><td style='padding: 5px 0;'><strong> Total Consideration (Rs.) With Stamp Duty</strong></td><td colspan='3'>"+totalconsiderationstamp+"</td></tr></tbody></table><p>**This document is system genrated, doesn't require any signature..**</p><table style='width: 100%;'><tbody><tr><td>Yours Faithfully</td></tr><tr><td>We hereby confirm the deal</td><td>We are agreeable to buy the security as per terms mentioned above</td></tr><tr><td>For Dimension Financial Solutions Pvt. Ltd.</td><td>For <strong>"+CustomerName+"</strong></td></tr><tr><td>&nbsp;</td></tr><tr><td>(Authorised Signatory)<br>Our Pan : AADCD0669G</td><td style='text-align: center;'>Authorised Signatory</td></tr><tr><td>&nbsp;</td></tr><tr><td colspan='2' style='text-align: center;'>Dimension Financial Solutions Pvt. Ltd.<br>Regd. Office: 302, Dakha Chamber, 38/2068, Naiwala Karol Bagh, New Delhi-110005 <br>Tel.: 0120-4376552, 4336551-52 Fax: +91-0120-4151349<br>Website: www.dimensiongroup.co.in</td></tr></tbody></table></div>");
           return forwardMailsss(Subject, sbodyHtml.ToString(),Adminemail,cemail);
     }
-    public bool SendFDRegistrationConfirmation(string emailTo, string name, string pan, string aadhaar, string fdtype)
+    public bool SendFDRegistrationConfirmation(string emailTo, string name, string pan, string aadhaar, string fdtype, string mobileno )
     {
         string subject = "FD Registration Confirmation";
 
@@ -505,13 +505,14 @@ public class SendMailSmS
             <tr><td><strong>PAN</strong></td><td>" + pan + @"</td></tr>
             <tr><td><strong>Aadhaar</strong></td><td>" + aadhaar + @"</td></tr>
             <tr><td><strong>FD Type</strong></td><td>" + fdtype + @"</td></tr>
+            <tr><td><strong>FD Type</strong></td><td>" + mobileno + @"</td></tr>            
         </table>
 
         <p>This is a system-generated confirmation. No signature is required.</p>
 
         <br />
         <p>Regards,<br /><strong>Dimension Financial Solutions Pvt. Ltd.</strong></p>
-        <p style='font-size: 12px;'>Email: debt@dimensiongroup.co.in<br />Phone: +91 9650700244 / 9650799558<br />Website: <a href='https://dimensiongroup.co.in'>dimensiongroup.co.in</a></p>
+        <p style='font-size: 12px;'>Email: debt@dimensiongroup.co.in<br />Phone: +91 9650799566<br />Website: <a href='https://dimensiongroup.co.in'>dimensiongroup.co.in</a></p>
     </div>
     ");
 

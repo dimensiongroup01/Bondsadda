@@ -25,6 +25,7 @@ public partial class Fdmodule : System.Web.UI.Page
         {
             name = txtName.Text.Trim(),
             email = txtEmail.Text.Trim(),
+            mobileNo = txtMobileNo.Text.Trim(), // ← New line
             pan = txtPAN.Text.Trim(),
             aadhaar = txtAadhaar.Text.Trim(),
             fdtype = ddlFDType.SelectedValue,
@@ -34,18 +35,19 @@ public partial class Fdmodule : System.Web.UI.Page
 
         SaveFDCustomerRequest(request);
 
-       
 
 
-    
+
+
         bool emailSent = sms.SendFDRegistrationConfirmation(
-            request.email,
-            request.name,
-            request.pan,
-            request.aadhaar,
-            request.fdtype
-        
-        );
+      request.email,
+      request.name,
+      request.pan,
+      request.aadhaar,
+      request.fdtype,
+      request.mobileNo // ← if method supports it
+  );
+
 
         if (emailSent)
         {
@@ -61,15 +63,17 @@ public partial class Fdmodule : System.Web.UI.Page
     {
         SqlParameter[] parameters = new SqlParameter[]
         {
-            new SqlParameter("@Name", request.name),
-            new SqlParameter("@Email", request.email),
-            new SqlParameter("@PAN", request.pan),
-            new SqlParameter("@Aadhaar", request.aadhaar),
-            new SqlParameter("@FDType", request.fdtype),
-            new SqlParameter("@PANFilePath", request.panfilepath),
-            new SqlParameter("@AadhaarFilePath", request.aadhaarfilepath)
+        new SqlParameter("@Name", request.name),
+        new SqlParameter("@Email", request.email),
+        new SqlParameter("@MobileNo", request.mobileNo), // ← New parameter
+        new SqlParameter("@PAN", request.pan),
+        new SqlParameter("@Aadhaar", request.aadhaar),
+        new SqlParameter("@FDType", request.fdtype),
+        new SqlParameter("@PANFilePath", request.panfilepath),
+        new SqlParameter("@AadhaarFilePath", request.aadhaarfilepath)
         };
 
         SqlDBHelper.ExecuteNonQuery("sp_InsertFDCustomerDetails", parameters);
     }
+
 }
