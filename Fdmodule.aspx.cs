@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Web;
@@ -12,20 +12,37 @@ public partial class Fdmodule : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        string panPath = "~/Uploads/" + Guid.NewGuid() + "_" + fuPAN.FileName;
-        string aadhaarPath = "~/Uploads/" + Guid.NewGuid() + "_" + fuAadhaar.FileName;
+        int maxSizeBytes = 4 * 1024 * 1024; // 4 MB
+
+        // File size validations
+        if (fuPAN.HasFile && fuPAN.PostedFile.ContentLength > maxSizeBytes)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "sizeError", "Swal.fire('❌ PAN file too large', 'Please upload a file smaller than 4MB.', 'error');", true);
+            return;
+        }
+
+        if (fuAadhaar.HasFile && fuAadhaar.PostedFile.ContentLength > maxSizeBytes)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "sizeError2", "Swal.fire('❌ Aadhaar file too large', 'Please upload a file smaller than 4MB.', 'error');", true);
+            return;
+        }
+
+        // Save uploaded files
+        string panPath = "~/Uploads/" + Guid.NewGuid() + "_" + Path.GetFileName(fuPAN.FileName);
+        string aadhaarPath = "~/Uploads/" + Guid.NewGuid() + "_" + Path.GetFileName(fuAadhaar.FileName);
 
         if (fuPAN.HasFile)
             fuPAN.SaveAs(Server.MapPath(panPath));
 
         if (fuAadhaar.HasFile)
             fuAadhaar.SaveAs(Server.MapPath(aadhaarPath));
-        //tesobject
+
+        // Create request object
         dynamic request = new
         {
             name = txtName.Text.Trim(),
             email = txtEmail.Text.Trim(),
-            mobileNo = txtMobileNo.Text.Trim(), // ← New line
+            mobileNo = txtMobile.Text.Trim(),
             pan = txtPAN.Text.Trim(),
             aadhaar = txtAadhaar.Text.Trim(),
             fdtype = ddlFDType.SelectedValue,
@@ -33,47 +50,85 @@ public partial class Fdmodule : System.Web.UI.Page
             aadhaarfilepath = aadhaarPath
         };
 
-        SaveFDCustomerRequest(request);
+        // Save and get inserted data
+        var savedCustomer = SaveFDCustomerRequest(request);
 
-
-
-
-
-        bool emailSent = sms.SendFDRegistrationConfirmation(
-      request.email,
-      request.name,
-      request.pan,
-      request.aadhaar,
-      request.fdtype,
-      request.mobileNo // ← if method supports it
-  );
-
-
-        if (emailSent)
+        if (savedCustomer != null)
         {
-            Response.Write("<script>alert('FD Details saved successfully! Our RM will connect with you shortly.');</script>");
+            // Send confirmation email
+            bool emailSent = sms.SendFDRegistrationConfirmation(
+                savedCustomer.Email,
+                savedCustomer.Name,
+                savedCustomer.PAN,
+                savedCustomer.Aadhaar,
+                savedCustomer.FDType,
+                savedCustomer.MobileNo
+            );
+
+            string jsMessage = string.Format(
+         "Swal.fire({{ " +
+         "title: '✅ FD Details Saved!', " +
+         "html: '<strong>Name:</strong> {0}<br/>' + " +
+               "'<strong>Email:</strong> {1}<br/>' + " +
+               "'<strong>Mobile:</strong> {2}<br/>' + " +
+               "'<strong>PAN:</strong> {3}<br/>' + " +
+               "'<strong>Aadhaar:</strong> {4}<br/>' + " +
+               "'<strong>FD Type:</strong> {5}<br/>' + " +
+               "'<strong>Created On:</strong> {6}', " +
+         "icon: 'success' " +
+         "}});",
+         savedCustomer.Name,
+         savedCustomer.Email,
+         savedCustomer.MobileNo,
+         savedCustomer.PAN,
+         savedCustomer.Aadhaar,
+         savedCustomer.FDType,
+         savedCustomer.CreatedDate.ToString("dd-MMM-yyyy hh:mm tt")
+     );
+
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "popup", jsMessage, true);
         }
         else
         {
-            Response.Write("<script>alert('FD saved, but failed to send confirmation email. Please check your email or contact support.');</script>");
+            ScriptManager.RegisterStartupScript(this, GetType(), "fail", "Swal.fire('❌ Failed to Save!', 'Something went wrong while saving the FD details.', 'error');", true);
         }
     }
 
-    private void SaveFDCustomerRequest(dynamic request)
+    private dynamic SaveFDCustomerRequest(dynamic request)
     {
         SqlParameter[] parameters = new SqlParameter[]
         {
-        new SqlParameter("@Name", request.name),
-        new SqlParameter("@Email", request.email),
-        new SqlParameter("@MobileNo", request.mobileNo), // ← New parameter
-        new SqlParameter("@PAN", request.pan),
-        new SqlParameter("@Aadhaar", request.aadhaar),
-        new SqlParameter("@FDType", request.fdtype),
-        new SqlParameter("@PANFilePath", request.panfilepath),
-        new SqlParameter("@AadhaarFilePath", request.aadhaarfilepath)
+            new SqlParameter("@Name", request.name),
+            new SqlParameter("@Email", request.email),
+            new SqlParameter("@MobileNo", request.mobileNo),
+            new SqlParameter("@PAN", request.pan),
+            new SqlParameter("@Aadhaar", request.aadhaar),
+            new SqlParameter("@FDType", request.fdtype),
+            new SqlParameter("@PANFilePath", request.panfilepath),
+            new SqlParameter("@AadhaarFilePath", request.aadhaarfilepath)
         };
 
-        SqlDBHelper.ExecuteNonQuery("sp_InsertFDCustomerDetails", parameters);
-    }
+        DataTable result = SqlDBHelper.ExecuteReader("user_BondsAdda.sp_InsertFDCustomerDetails", parameters);
 
+        if (result.Rows.Count > 0)
+        {
+            DataRow row = result.Rows[0];
+            return new
+            {
+                Id = Convert.ToInt32(row["Id"]),
+                Name = row["Name"].ToString(),
+                Email = row["Email"].ToString(),
+                MobileNo = row["MobileNo"].ToString(),
+                PAN = row["PAN"].ToString(),
+                Aadhaar = row["Aadhaar"].ToString(),
+                FDType = row["FDType"].ToString(),
+                PANFilePath = row["PANFilePath"].ToString(),
+                AadhaarFilePath = row["AadhaarFilePath"].ToString(),
+                CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+            };
+        }
+
+        return null;
+    }
 }

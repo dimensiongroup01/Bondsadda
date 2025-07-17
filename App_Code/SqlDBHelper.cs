@@ -15,6 +15,26 @@ public class SqlDBHelper
     const string CONNECTION_STRING3 = @"Data Source=103.186.184.63; DATABASE=db_BondsAdda;user id =user_BondsAdda; password=P4*jz6c82;Timeout=20000;Min Pool Size=0;Max Pool Size=100;Pooling=true;";
     const string CONNECTION_STRING = @"Data Source=103.211.202.68; DATABASE=db_BondsAdda;user id=user_BondsAdda ; password=8s9!55joH;Timeout=20000;Min Pool Size=0;Max Pool Size=100;Pooling=true;";
 
+    public static DataTable ExecuteReader(string storedProcedure, SqlParameter[] parameters)
+    {
+
+        using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
+        {
+            using (SqlCommand cmd = new SqlCommand(storedProcedure, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (parameters != null)
+                    cmd.Parameters.AddRange(parameters);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+    }
 
     internal static DataTable ExecuteSelectCommand(string CommandName, CommandType cmdType)
     {
