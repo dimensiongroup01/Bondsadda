@@ -1,9 +1,11 @@
-﻿    <%@ Page Language="C#"  AutoEventWireup="true" CodeFile="Fdmodule.aspx.cs" Inherits="Fdmodule" %>
+﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeFile="Fdmodule.aspx.cs" Inherits="Fdmodule" %>
 
     <!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
         <title>FD Registration Dashboard</title>
+        <!-- SweetAlert2 for modern popup -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <!-- CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -199,10 +201,10 @@
                                 <label for="ddlFDType">Select FD Type</label>
                                 <asp:DropDownList ID="ddlFDType" runat="server" CssClass="form-control">
                                     <asp:ListItem Text="-- Select --" Value="" />
-                                    <asp:ListItem Text="LIC Housing Finance Ltd." Value="LIC Housing Finance Ltd." />
-                                    <asp:ListItem Text="Shriram Transport Finance Company Ltd." Value="Shriram Transport Finance Company Ltd." />
-                                    <asp:ListItem Text="Bajaj Finance Ltd." Value="Bajaj Finance Ltd." />
-                                    <asp:ListItem Text="PNB Housing Finance Ltd." Value="PNB Housing Finance Ltd." />
+                                    <asp:ListItem Text="LIC Housing Finance Ltd." Value="SANCHAY" />
+                                    <asp:ListItem Text="Shriram Transport Finance Company Ltd." Value="SHRIRAM" />
+                                    <asp:ListItem Text="Bajaj Finance Ltd." Value="BAJAJ" />
+                                    <asp:ListItem Text="PNB Housing Finance Ltd." Value="PNB" />
                                 </asp:DropDownList>
                             </div>
                         </div>

@@ -523,8 +523,8 @@ public class SendMailSmS
         string pdfPath = HttpContext.Current.Server.MapPath("~/FDTmeplates/" + fileName);
 
         // 🔁 Pass the attachment path
-        return forwardMailfd(subject, bodyHtml.ToString(), "developer@dimensiongroup.co.in", emailTo, pdfPath);
-    }
+        return forwardMailfd(subject, bodyHtml.ToString(), "debt@dimensiongroup.co.in", emailTo, pdfPath);
+    } 
 
 
 }

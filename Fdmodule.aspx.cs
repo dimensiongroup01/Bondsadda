@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Web;
@@ -33,6 +33,23 @@ public partial class Fdmodule : System.Web.UI.Page
         string panPath = "~/Uploads/" + Guid.NewGuid() + "_" + fuPAN.FileName;
         string aadhaarPath = "~/Uploads/" + Guid.NewGuid() + "_" + fuAadhaar.FileName;
 
+        // File size validations
+        if (fuPAN.HasFile && fuPAN.PostedFile.ContentLength > maxSizeBytes)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "sizeError", "Swal.fire('❌ PAN file too large', 'Please upload a file smaller than 4MB.', 'error');", true);
+            return;
+        }
+
+        if (fuAadhaar.HasFile && fuAadhaar.PostedFile.ContentLength > maxSizeBytes)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "sizeError2", "Swal.fire('❌ Aadhaar file too large', 'Please upload a file smaller than 4MB.', 'error');", true);
+            return;
+        }
+
+        // Save uploaded files
+        string panPath = "~/Uploads/" + Guid.NewGuid() + "_" + Path.GetFileName(fuPAN.FileName);
+        string aadhaarPath = "~/Uploads/" + Guid.NewGuid() + "_" + Path.GetFileName(fuAadhaar.FileName);
+
         if (fuPAN.HasFile)
             fuPAN.SaveAs(Server.MapPath(panPath));
 
@@ -52,7 +69,8 @@ public partial class Fdmodule : System.Web.UI.Page
             aadhaarfilepath = aadhaarPath
         };
 
-        SaveFDCustomerRequest(request);
+        // Save and get inserted data
+        var savedCustomer = SaveFDCustomerRequest(request);
 
         // Send email
         bool emailSent = sms.SendFDRegistrationConfirmation(
@@ -79,17 +97,36 @@ public partial class Fdmodule : System.Web.UI.Page
     {
         SqlParameter[] parameters = new SqlParameter[]
         {
-        new SqlParameter("@Name", request.name),
-        new SqlParameter("@Email", request.email),
-        new SqlParameter("@MobileNo", request.mobileNo), // ← New parameter
-        new SqlParameter("@PAN", request.pan),
-        new SqlParameter("@Aadhaar", request.aadhaar),
-        new SqlParameter("@FDType", request.fdtype),
-        new SqlParameter("@PANFilePath", request.panfilepath),
-        new SqlParameter("@AadhaarFilePath", request.aadhaarfilepath)
+            new SqlParameter("@Name", request.name),
+            new SqlParameter("@Email", request.email),
+            new SqlParameter("@MobileNo", request.mobileNo),
+            new SqlParameter("@PAN", request.pan),
+            new SqlParameter("@Aadhaar", request.aadhaar),
+            new SqlParameter("@FDType", request.fdtype),
+            new SqlParameter("@PANFilePath", request.panfilepath),
+            new SqlParameter("@AadhaarFilePath", request.aadhaarfilepath)
         };
 
-        SqlDBHelper.ExecuteNonQuery("sp_InsertFDCustomerDetails", parameters);
-    }
+        DataTable result = SqlDBHelper.ExecuteReader("user_BondsAdda.sp_InsertFDCustomerDetails", parameters);
 
+        if (result.Rows.Count > 0)
+        {
+            DataRow row = result.Rows[0];
+            return new
+            {
+                Id = Convert.ToInt32(row["Id"]),
+                Name = row["Name"].ToString(),
+                Email = row["Email"].ToString(),
+                MobileNo = row["MobileNo"].ToString(),
+                PAN = row["PAN"].ToString(),
+                Aadhaar = row["Aadhaar"].ToString(),
+                FDType = row["FDType"].ToString(),
+                PANFilePath = row["PANFilePath"].ToString(),
+                AadhaarFilePath = row["AadhaarFilePath"].ToString(),
+                CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+            };
+        }
+
+        return null;
+    }
 }
