@@ -1,336 +1,408 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Fdmodule.aspx.cs" Inherits="Fdmodule" %>
+﻿    <%@ Page Language="C#"  AutoEventWireup="true" CodeFile="Fdmodule.aspx.cs" Inherits="Fdmodule" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>FD Registration Dashboard</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #fdfbfb, #ebedee);
-        }
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>FD Registration Dashboard</title>
 
-        .navbar-custom {
-            background: #ffffff;
-            padding: 10px 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        <!-- CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
-        .navbar-brand img {
-            height: 40px;
-        }
+        <!-- JS -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        .btn-nav {
-            background: linear-gradient(135deg, #007bff, #6610f2);
-            color: #fff;
-            font-weight: 600;
-            padding: 8px 18px;
-            border: none;
-            border-radius: 25px;
-            transition: all 0.3s ease-in-out;
-        }
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', sans-serif;
+                background: linear-gradient(to right, #fdfbfb, #ebedee);
+            }
 
-        .btn-nav:hover {
-            background: linear-gradient(135deg, #6610f2, #007bff);
-            color: #fff;
-        }
+            .navbar-custom {
+                background: #ffffff;
+                padding: 10px 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
 
-        .dashboard-top, .main-grid {
-            padding: 20px 40px;
-        }
+            .btn-nav {
+                background: linear-gradient(135deg, #007bff, #6610f2);
+                color: #fff;
+                font-weight: 600;
+                padding: 8px 18px;
+                border: none;
+                border-radius: 25px;
+            }
 
-        .dashboard-top {
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+            .dashboard-top, .main-grid {
+                padding: 20px 40px;
+            }
 
-        .dashboard-card {
-            flex: 1 1 200px;
-            background: #fff;
-            border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
+            .dashboard-card {
+                background: #fff;
+                border-radius: 20px;
+                padding: 25px;
+                text-align: center;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease-in-out;
+            }
 
-        .dashboard-card h5 {
-            color: #343a40;
-            margin-bottom: 10px;
-        }
+            .dashboard-card:hover {
+                transform: translateY(-5px);
+            }
 
-        .dashboard-card .count {
-            font-size: 32px;
-            font-weight: bold;
-            color: #007bff;
-        }
+            .main-grid {
+                display: grid;
+                grid-template-columns: 2fr 1.5fr;
+                gap: 30px;
+            }
 
-        .main-grid {
-            display: grid;
-            grid-template-columns: 2fr 1.5fr;
-            gap: 30px;
-        }
+            .form-box, .chart-box {
+                background: #fff;
+                border-radius: 20px;
+                padding: 30px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
 
-        .form-box, .chart-box {
-            background: #fff;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
+            .chart-title, .form-title {
+                text-align: center;
+                font-weight: bold;
+                color: #343a40;
+                
+            }
 
-        .chart-title, .form-title {
-            text-align: center;
-            font-weight: bold;
-            color: #343a40;
-            margin-bottom: 20px;
-        }
+            .form-control:focus {
+                box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+            }
 
-        .form-control,
-        .form-control-file {
-            border-radius: 12px;
-        }
+            .btn-primary {
+                width: 100%;
+                padding: 12px;
+                border-radius: 30px;
+                font-weight: bold;
+                font-size: 16px;
+                background: linear-gradient(135deg, #007bff, #6610f2);
+                border: none;
+            }
 
-        .form-control:focus {
-            box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
-        }
+            .btn-primary:hover {
+                background: linear-gradient(135deg, #6610f2, #007bff);
+            }
 
-        .btn-primary {
-            width: 100%;
-            padding: 12px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 16px;
-            background: linear-gradient(135deg, #007bff, #6610f2);
-            border: none;
-        }
+            .hidden {
+                display: none;
+            }
 
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #6610f2, #007bff);
-        }
+            footer {
+                font-size: 0.875rem;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="form1" runat="server">
 
-        .hidden {
-            display: none;
-        }
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
+                <div class="container d-flex justify-content-between align-items-center px-3">
+                    <a class="navbar-brand" href="index.aspx">
+                        <img src="img/logo.png" alt="Logo" style="height: 40px;" />
+                    </a>
+                    <button type="button" class="btn btn-nav bg-warning text-light fw-semibold" onclick="showFDForm()">
+                        🚀 FD Registration
+                    </button>
+                </div>
+            </nav>
 
-        .text-gradient {
-            background: linear-gradient(to right, #00558c, #00c6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+            <!-- DASHBOARD SECTION -->
+            <div id="dashboardSection" class="container py-4">
+                <div class="row g-3">
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="dashboard-card">
+                            <h6>Total Users</h6>
+                            <div class="count fs-4 fw-bold">872</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="dashboard-card">
+                            <h6>Monthly Growth</h6>
+                            <div class="count text-success fs-4 fw-bold">+28%</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="dashboard-card">
+                            <h6>Pending Verifications</h6>
+                            <div class="count text-warning fs-4 fw-bold">34</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="dashboard-card">
+                            <h6>Active FDs</h6>
+                            <div class="count text-primary fs-4 fw-bold">612</div>
+                        </div>
+                    </div>
+                </div>
 
-        .form-box:hover {
-            transform: scale(1.01);
-            transition: all 0.3s ease-in-out;
-        }
-        .hidden {
-  display: none;
-}
-
-    </style>
-    <script>
-        function showFDForm() {
-            document.getElementById("dashboardSection").classList.add("hidden");
-            document.getElementById("fdFormSection").classList.remove("hidden");
-        }
-
-        function showDashboard() {
-            document.getElementById("fdFormSection").classList.add("hidden");
-            document.getElementById("dashboardSection").classList.remove("hidden");
-        }
-
-        window.onload = function () {
-            new Chart(document.getElementById('fdChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['LIC Housing Finance Ltd.', 'Shriram Transport Finance Company Ltd.', 'Bajaj Finance Ltd.', 'PNB Housing Finance Ltd.'],
-                    datasets: [{
-                        data: [40, 20, 25, 15],
-                        backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545']
-                    }]
-                },
-                options: { responsive: true, legend: { position: 'bottom' } }
-            });
-
-            new Chart(document.getElementById('lineChart'), {
-                type: 'line',
-                data: {
-                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                    datasets: [{
-                        label: 'FD Growth',
-                        data: [50, 75, 60, 90],
-                        borderColor: '#007bff',
-                        backgroundColor: 'rgba(0,123,255,0.2)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                }
-            });
-
-            new Chart(document.getElementById('userBarChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                    datasets: [{
-                        label: 'User Registrations',
-                        data: [120, 90, 150, 200, 170, 220],
-                        backgroundColor: '#6610f2',
-                        borderRadius: 10
-                    }]
-                }
-            });
-        };
-    </script>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <nav class="navbar navbar-expand-lg navbar-custom fixed-top shadow-sm">
-    <div class="container-fluid d-flex justify-content-between align-items-center px-3">
-        <a class="navbar-brand" href="index.aspx">
-            <img src="img/logo.png" alt="Logo" style="height: 40px;" />
-        </a>
-        <button type="button" class="btn btn-nav bg-warning text-light fw-semibold" onclick="showFDForm()">
-            🚀 FD Registration
-        </button>
-    </div>
-</nav>
-
-        <!-- DASHBOARD SECTION -->
-        <div id="dashboardSection">
-            <div class="dashboard-top">
-                <div class="dashboard-card"><h5>Total Users</h5><div class="count">872</div></div>
-                <div class="dashboard-card"><h5>Monthly Growth</h5><div class="count">+28%</div></div>
-                <div class="dashboard-card"><h5>Pending Verifications</h5><div class="count">34</div></div>
-                <div class="dashboard-card"><h5>Active FDs</h5><div class="count">612</div></div>
+                <!-- CHARTS -->
+                <div class="row mt-4 g-4">
+                    <div class="col-lg-6 mb-4">
+                        <div class="chart-box">
+                            <h5 class="chart-title">User Registrations - Last 6 Months</h5>
+                            <canvas id="userBarChart" class="w-100" height="250"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="chart-box">
+                            <h5 class="chart-title">FD Distribution</h5>
+                            <canvas id="fdChart" class="w-100" height="250"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="chart-box">
+                            <h5 class="chart-title">Growth Over Time</h5>
+                            <canvas id="lineChart" class="w-100" height="250"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="chart-box">
+                            <h5 class="chart-title">FD Type Comparison</h5>
+                            <canvas id="doughnutChart" class="w-100" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="main-grid">
+            <!-- FD REGISTRATION FORM -->
+            <div id="fdFormSection" class="container my-4 hidden">
+                <button type="button" class="btn btn-outline-secondary mb-3" onclick="showDashboard()">← Back to Dashboard</button>
                 <div class="form-box">
-                    <h2 class="chart-title">User Registrations - Last 6 Months</h2>
-                    <canvas id="userBarChart"></canvas>
+                    <h4 class="form-title"><i class="fas fa-file-signature text-danger me-2"></i> FD Registration</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="txtName">Full Name</label>
+                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter your full name" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="txtEmail">Email</label>
+                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="example@email.com" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="txtMobile">Mobile Number</label>
+                                <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" MaxLength="10" placeholder="Enter 10-digit mobile number" TextMode="SingleLine" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="txtPAN">PAN Number</label>
+                                <asp:TextBox ID="txtPAN" runat="server" CssClass="form-control text-uppercase" MaxLength="10" placeholder="ABCDE1234F" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="ddlFDType">Select FD Type</label>
+                                <asp:DropDownList ID="ddlFDType" runat="server" CssClass="form-control">
+                                    <asp:ListItem Text="-- Select --" Value="" />
+                                    <asp:ListItem Text="LIC Housing Finance Ltd." Value="LIC Housing Finance Ltd." />
+                                    <asp:ListItem Text="Shriram Transport Finance Company Ltd." Value="Shriram Transport Finance Company Ltd." />
+                                    <asp:ListItem Text="Bajaj Finance Ltd." Value="Bajaj Finance Ltd." />
+                                    <asp:ListItem Text="PNB Housing Finance Ltd." Value="PNB Housing Finance Ltd." />
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="txtAadhaar">Aadhaar Number</label>
+                                <asp:TextBox ID="txtAadhaar" runat="server" CssClass="form-control" MaxLength="12" placeholder="XXXX-XXXX-XXXX" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="fuPAN">Upload PAN Card</label>
+                                <asp:FileUpload ID="fuPAN" runat="server" CssClass="form-control" />
+                            </div>
+                            <div class="mb-2">
+                                <label for="fuAadhaar">Upload Aadhaar Card</label>
+                                <asp:FileUpload ID="fuAadhaar" runat="server" CssClass="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <asp:Button ID="btnSubmit" runat="server" Text="🚀 Submit Application" CssClass="btn btn-warning px-4 py-2 fw-bold shadow-sm rounded-pill" OnClick="btnSubmit_Click" data-toggle="modal" data-target="#fdRegistrationModal" />
+                    </div>
                 </div>
-                <div class="chart-box">
-                    <h2 class="chart-title">FD Distribution</h2>
-                    <canvas id="fdChart"></canvas>
-                    <h2 class="chart-title mt-4">Growth Over Time</h2>
-                    <canvas id="lineChart"></canvas>
+            </div>
+
+            <!-- FOOTER DISCLAIMER -->
+            <footer class="text-center py-4 mt-5 bg-light text-muted">
+                <p class="mb-0 px-3">
+                    Disclaimer: Fixed Deposit returns shown on BondsAdda are subject to market risks and institutional availability. 
+                    BondsAdda does not guarantee fixed returns. Investors are advised to evaluate terms before investing.
+                </p>
+            </footer>
+
+            <!-- FD Registration Modal -->
+<div class="modal fade" id="fdRegistrationModal" tabindex="-1" role="dialog" aria-labelledby="fdRegistrationLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="fdRegistrationLabel">
+                    <i class="fas fa-file-signature me-2"></i> FD Registration
+                </h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Left Column -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="txtName">Full Name</label>
+                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Enter your full name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail">Email</label>
+                            <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" TextMode="Email" placeholder="example@email.com" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMobile">Mobile Number</label>
+                            <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" MaxLength="10"
+                                placeholder="Enter 10-digit mobile number"
+                                TextMode="SingleLine" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPAN">PAN Number</label>
+                            <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control text-uppercase" MaxLength="10" placeholder="ABCDE1234F" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ddlFDType">Select FD Type</label>
+                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="-- Select --" Value="" />
+                                <asp:ListItem Text="LIC Housing Finance Ltd." Value="LIC Housing Finance Ltd." />
+                                <asp:ListItem Text="Shriram Transport Finance Company Ltd." Value="Shriram Transport Finance Company Ltd." />
+                                <asp:ListItem Text="Bajaj Finance Ltd." Value="Bajaj Finance Ltd." />
+                                <asp:ListItem Text="PNB Housing Finance Ltd." Value="PNB Housing Finance Ltd." />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="txtAadhaar">Aadhaar Number</label>
+                            <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control" MaxLength="12" placeholder="XXXX-XXXX-XXXX" />
+                        </div>
+                        <div class="form-group">
+                            <label for="fuPAN">Upload PAN Card</label>
+                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="fuAadhaar">Upload Aadhaar Card</label>
+                            <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" />
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">❌ Cancel</button>
+                <asp:Button ID="Button1" runat="server" Text="🚀 Submit Application" CssClass="btn btn-warning px-4 fw-bold shadow-sm rounded-pill" OnClick="btnSubmit_Click" />
             </div>
         </div>
-
-        <!-- FD REGISTRATION SECTION -->
-    <div id="fdFormSection" class="container my-4 hidden">
-    <button type="button" class="btn btn-sm btn-outline-secondary mb-3" onclick="showDashboard()">
-        ← Back to Dashboard
-    </button>
-
-    <div class="form-box bg-white p-4 rounded shadow-sm border border-light">
-        <h4 class="form-title mb-3 text-primary fw-semibold">
-            <i class="fas fa-file-signature me-2 text-danger"></i> FD Registration
-        </h4>
-
-        <div class="row g-3">
-            <!-- Left Column -->
-            <div class="col-md-6">
-                <div class="mb-2">
-                    <label for="txtName" class="form-label"><i class="fas fa-user me-1 text-primary"></i> Full Name</label>
-                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control form-control-sm" placeholder="Enter your full name" />
-                </div>
-
-                <div class="mb-2">
-                    <label for="txtEmail" class="form-label"><i class="fas fa-envelope me-1 text-primary"></i> Email Address</label>
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" TextMode="Email" placeholder="example@email.com" />
-                </div>
-
-               <div class="mb-2">
-    <label for="txtMobile" class="form-label">
-        <i class="fas fa-phone me-1 text-primary"></i> Mobile Number
-    </label>
-
-    <asp:TextBox ID="txtMobile" runat="server"
-        CssClass="form-control form-control-sm"
-        MaxLength="10"
-        placeholder="Enter 10-digit mobile number" />
-
-    <!-- Required field validator -->
-    <asp:RequiredFieldValidator ID="rfvMobile" runat="server"
-        ControlToValidate="txtMobile"
-        ErrorMessage="Mobile number is required"
-        CssClass="text-danger small d-block"
-        Display="Dynamic"
-        ValidationGroup="fdGroup" />
-
-    <!-- Regular expression validator for 10-digit Indian mobile numbers -->
-    <asp:RegularExpressionValidator ID="revMobile" runat="server"
-        ControlToValidate="txtMobile"
-        ValidationExpression="^[6-9]\d{9}$"
-        ErrorMessage="Enter valid 10-digit Indian mobile number"
-        CssClass="text-danger small d-block"
-        Display="Dynamic"
-        ValidationGroup="fdGroup" />
-</div>
-
-
-                <div class="mb-2">
-                    <label for="txtPAN" class="form-label"><i class="fas fa-id-card me-1 text-primary"></i> PAN Number</label>
-                    <asp:TextBox ID="txtPAN" runat="server" CssClass="form-control form-control-sm text-uppercase" MaxLength="10" placeholder="ABCDE1234F" />
-                </div>
-
-                <div class="mb-2">
-                    <label for="ddlFDType" class="form-label"><i class="fas fa-university me-1 text-primary"></i> Select FD Type</label>
-                    <asp:DropDownList ID="ddlFDType" runat="server" CssClass="form-select form-select-sm">
-                        <asp:ListItem Text="-- Select --" Value="" />
-                        <asp:ListItem Text="LIC Housing Finance Ltd." Value="LIC Housing Finance Ltd." />
-                        <asp:ListItem Text="Shriram Transport Finance Company Ltd." Value="Shriram Transport Finance Company Ltd." />
-                        <asp:ListItem Text="Bajaj Finance Ltd." Value="Bajaj Finance Ltd." />
-                        <asp:ListItem Text="PNB Housing Finance Ltd." Value="PNB Housing Finance Ltd." />
-                    </asp:DropDownList>
-                </div>
-            </div>
-
-            <!-- Right Column -->
-            <div class="col-md-6">
-                <div class="mb-2">
-                    <label for="txtAadhaar" class="form-label"><i class="fas fa-address-card me-1 text-primary"></i> Aadhaar Number</label>
-                    <asp:TextBox ID="txtAadhaar" runat="server" CssClass="form-control form-control-sm" MaxLength="12" placeholder="XXXX-XXXX-XXXX" />
-                </div>
-
-                <div class="mb-2">
-                    <label for="fuPAN" class="form-label"><i class="fas fa-upload text-success me-1"></i> Upload PAN Card</label>
-                    <asp:FileUpload ID="fuPAN" runat="server" CssClass="form-control form-control-sm" />
-                </div>
-
-                <div class="mb-2">
-                    <label for="fuAadhaar" class="form-label"><i class="fas fa-upload text-success me-1"></i> Upload Aadhaar Card</label>
-                    <asp:FileUpload ID="fuAadhaar" runat="server" CssClass="form-control form-control-sm" />
-                </div>
-            </div>
-        </div>
-
-        <hr class="my-3" style="border-top: 1px dashed #ccc;" />
-
-        <div class="text-center mt-3  p-3 rounded">
-    <asp:Button ID="btnSubmit" runat="server" Text="🚀 Submit Application"
-        CssClass="bg-warning btn-sm px-4 py-2 fw-semibold shadow-sm border-0 rounded-pill"
-        OnClick="btnSubmit_Click" />
-</div>
-
-
-
     </div>
 </div>
+               
+            <!-- TOGGLE JS -->
+            <script>
+                function showFDForm() {
+                    document.getElementById("dashboardSection").classList.add("hidden");
+                    document.getElementById("fdFormSection").classList.remove("hidden");
+                }
 
+                function showDashboard() {
+                    document.getElementById("fdFormSection").classList.add("hidden");
+                    document.getElementById("dashboardSection").classList.remove("hidden");
+                }
+            </script>
 
-    </form>
-</body>
-</html>
+            <!-- CHART JS SETUP -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const charts = {
+                        userBarChart: {
+                            type: 'bar',
+                            data: {
+                                labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                                datasets: [{
+                                    label: 'Users',
+                                    data: [120, 150, 180, 220, 300, 350],
+                                    backgroundColor: '#ffc107'
+                                }]
+                            }
+                        },
+                        fdChart: {
+                            type: 'pie',
+                            data: {
+                                labels: ['Corporate FD', 'Bank FD', 'NBFC FD'],
+                                datasets: [{
+                                    data: [40, 35, 25],
+                                    backgroundColor: ['#0d6efd', '#198754', '#ffc107']
+                                }]
+                            }
+                        },
+                        lineChart: {
+                            type: 'line',
+                            data: {
+                                labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                                datasets: [{
+                                    label: 'Growth %',
+                                    data: [5, 10, 15, 25, 30, 40],
+                                    borderColor: '#198754',
+                                    fill: false
+                                }]
+                            }
+                        },
+                        doughnutChart: {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Shriram', 'Mahindra', 'Bajaj', 'Others'],
+                                datasets: [{
+                                    data: [120, 90, 60, 40],
+                                    backgroundColor: ['#f44336', '#4caf50', '#ff9800', '#9c27b0']
+                                }]
+                            }
+                        }
+                    };
+
+                    for (const id in charts) {
+                        const canvas = document.getElementById(id);
+                        if (canvas) {
+                            new Chart(canvas, charts[id]);
+                        }
+                    }
+                });
+            </script>
+
+            <!-- FILE SIZE VALIDATION -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const maxBytes = 4 * 1024 * 1024;
+                    document.querySelector("form").addEventListener("submit", function (e) {
+                        const pan = document.getElementById("<%= fuPAN.ClientID %>");
+                        const aadhaar = document.getElementById("<%= fuAadhaar.ClientID %>");
+                        if (pan.files[0] && pan.files[0].size > maxBytes) {
+                            alert("❌ PAN file exceeds 4MB.");
+                            e.preventDefault();
+                        }
+                        if (aadhaar.files[0] && aadhaar.files[0].size > maxBytes) {
+                            alert("❌ Aadhaar file exceeds 4MB.");
+                            e.preventDefault();
+                        }
+                    });
+                });
+            </script>
+
+        </form>
+    </body>
+    </html>
