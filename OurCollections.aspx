@@ -157,8 +157,10 @@
     <asp:HiddenField ID="hfCheckdata" runat="server" />
     <asp:HiddenField ID="hfInvest" runat="server" />
     
-    <div class="gradient">
-        <section class="breadcrumb-collection py-md-4">
+    <div >
+        <section class="breadcrumb-collection py-md-4" style="background: linear-gradient(to bottom, #ffffff, rgba(0, 126, 167, 0.15), rgba(0, 53, 77, 0.3));"
+
+>
             <div class="container">
                 <div class="row">
                     <div class="col-12 p-md-0 p-0">
@@ -167,12 +169,12 @@
                             Collections</h1>
                             <p class=" font_2">Home / Collections</p>
                         </div>
-<div class="highlight-marquee">
+<div class="highlight-marquee bg-light">
   <div class="highlight-track">
-    <span class="highlight-text">
+    <span class="highlight-text ">
       🔔 <strong>Important:</strong> The mentioned rates are subject to market conditions & availability. Please confirm the rates and availability of securities before finalizing. 
     </span>
-    <span class="highlight-text">
+    <span class="highlight-text ">
       🔔 <strong>Important:</strong> The mentioned rates are subject to market conditions & availability. Please confirm the rates and availability of securities before finalizing. 
     </span>
   </div>

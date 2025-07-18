@@ -8,30 +8,11 @@ using System.Web.UI.WebControls;
 
 public partial class Fdmodule : System.Web.UI.Page
 {
-
     SendMailSmS sms = new SendMailSmS();
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         int maxSizeBytes = 4 * 1024 * 1024; // 4 MB
-
-        if (fuPAN.HasFile && fuPAN.PostedFile.ContentLength > maxSizeBytes)
-        {
-            // Show error message
-            Response.Write("<script>alert('❌ PAN file exceeds 4MB. Please upload a smaller file.');</script>");
-            return;
-        }
-
-        if (fuAadhaar.HasFile && fuAadhaar.PostedFile.ContentLength > maxSizeBytes)
-        { 
-            // Show error message
-            Response.Write("<script>alert('❌ Aadhaar file exceeds 4MB. Please upload a smaller file.');</script>");
-            return;
-        }
-
-        // Save files
-        string panPath = "~/Uploads/" + Guid.NewGuid() + "_" + fuPAN.FileName;
-        string aadhaarPath = "~/Uploads/" + Guid.NewGuid() + "_" + fuAadhaar.FileName;
 
         // File size validations
         if (fuPAN.HasFile && fuPAN.PostedFile.ContentLength > maxSizeBytes)
@@ -72,28 +53,54 @@ public partial class Fdmodule : System.Web.UI.Page
         // Save and get inserted data
         var savedCustomer = SaveFDCustomerRequest(request);
 
-        // Send email
-        bool emailSent = sms.SendFDRegistrationConfirmation(
-            request.email,
-            request.name,
-            request.pan,
-            request.aadhaar,
-            request.fdtype,
-            request.mobileNo
-        );
-
-        if (emailSent)
+        if (savedCustomer != null)
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('FD Details saved successfully! Our RM will connect with you shortly.');", true);
+            // Send confirmation email
+            bool emailSent = sms.SendFDRegistrationConfirmation(
+                savedCustomer.Email.ToUpper(),
+                savedCustomer.Name.ToUpper(),
+                savedCustomer.PAN.ToUpper(),
+                savedCustomer.Aadhaar.ToUpper(),
+                savedCustomer.FDType.ToUpper(),
+                savedCustomer.MobileNo
+            );
+
+            string jsMessage = string.Format(
+
+   
+    "Swal.fire({{ " +
+    "title: '✅ FD Details Saved!', " +
+    "html: '<strong>Name:</strong> {0}<br/>' + " +
+          "'<strong>Email:</strong> {1}<br/>' + " +
+          "'<strong>Mobile:</strong> {2}<br/>' + " +
+          "'<strong>PAN:</strong> {3}<br/>' + " +
+          "'<strong>Aadhaar:</strong> {4}<br/>' + " +
+          "'<strong>FD Type:</strong> {5}<br/>' + " +
+          "'<strong>Created On:</strong> {6}', " +
+    "icon: 'success', " +
+    "footer: '<button class=\"btn btn-primary\" onclick=\"downloadFDDetails()\">⬇ Download Receipt</button>'" +
+    "}});",
+    savedCustomer.Name.ToUpper(),
+    savedCustomer.Email.ToUpper(),
+    savedCustomer.MobileNo,
+    savedCustomer.PAN.ToUpper(),
+    savedCustomer.Aadhaar.ToUpper(),
+    savedCustomer.FDType.ToUpper(),
+    savedCustomer.CreatedDate.ToString("dd-MMM-yyyy hh:mm tt")
+);
+
+
+
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "popup", jsMessage, true);
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('FD saved, but failed to send confirmation email. Please check your email or contact support.');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "fail", "Swal.fire('❌ Failed to Save!', 'Something went wrong while saving the FD details.', 'error');", true);
         }
     }
 
-
-    private void SaveFDCustomerRequest(dynamic request)
+    private dynamic SaveFDCustomerRequest(dynamic request)
     {
         SqlParameter[] parameters = new SqlParameter[]
         {

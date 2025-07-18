@@ -1459,9 +1459,9 @@ scroll-behavior: smooth;
 
    
 
-<section class="collection-section py-5 position-relative overflow-hidden">
+<section class="collection-section py-2 position-relative overflow-hidden">
   <!-- Optional Sparkle Background -->
-  <div class="container py-5">
+  <div class="container ">
     <div class="row g-4 justify-content-center">
    <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
   <div class="container py-3">
@@ -1874,16 +1874,17 @@ scroll-behavior: smooth;
             <img src="https://cdn.shriramfinance.in/sfl-fe/assets/images/sfl-logo.webp"
                  alt="Shriram" class="img-fluid mb-2" style="height: 40px;">
             <h5 class="fw-bold mb-1">Shriram Finance</h5>
-            <span class="badge bg-danger fw-bold mb-2">13.25%</span>
-            <p class="text-muted fw-semibold small">Up to 13.25% Monthly Return</p>
+            <span class="badge bg-danger fw-bold mb-2">8.55%</span>
+            <p class="text-muted fw-semibold small">Empower Your Financial Future with
+Shriram Finance</p>
           </div>
           <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="https://www.dimensiongroup.co.in/fixed-deposit/SFl%20Form.pdf" target="_blank"
+            <a href="/signin.aspx" target="_blank"
                class="btn btn-sm text-white fw-bold flex-fill"
                style="background-color: #00558C; border-radius: 20px;">
               <i class="bi bi-cart-fill me-1"></i> Buy
             </a>
-            <button onclick="shareFD('Shriram Finance','13.25%','https://www.dimensiongroup.co.in/fixed-deposit/SFl%20Form.pdf')"
+            <button onclick="shareFD('Shriram Finance','8.55%','Fdmodule.aspx')"
                     class="btn btn-sm btn-outline-primary fw-bold flex-fill"
                     style="border-radius: 20px;">
               <i class="bi bi-share-fill me-1"></i> Share
@@ -1899,16 +1900,16 @@ scroll-behavior: smooth;
             <img src="https://www.pnbhousing.com/documents/d/guest/logo-header?download=true"
                  alt="PNB" class="img-fluid mb-2" style="height: 40px;">
             <h5 class="fw-bold mb-1">PNB Housing</h5>
-            <span class="badge bg-danger fw-bold mb-2">13.10%</span>
-            <p class="text-muted fw-semibold small">Up to 13.10% Monthly Return</p>
+            <span class="badge bg-danger fw-bold mb-2">7.10%</span>
+            <p class="text-muted fw-semibold small">Ghar ki Baat</p>
           </div>
           <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="https://www.dimensiongroup.co.in/fixed-deposit/PNB_Fixed_Deposit_Form.pdf" target="_blank"
+            <a href="/signin.aspx" target="_blank"
                class="btn btn-sm text-white fw-bold flex-fill"
                style="background-color: #00558C; border-radius: 20px;">
               <i class="bi bi-cart-fill me-1"></i> Buy
             </a>
-            <button onclick="shareFD('PNB Housing','13.10%','https://www.dimensiongroup.co.in/fixed-deposit/PNB_Fixed_Deposit_Form.pdf')"
+            <button onclick="shareFD('PNB Housing','13.10%','Fdmodule.aspx')"
                     class="btn btn-sm btn-outline-primary fw-bold flex-fill"
                     style="border-radius: 20px;">
               <i class="bi bi-share-fill me-1"></i> Share
@@ -1924,16 +1925,16 @@ scroll-behavior: smooth;
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi0Lufh2ybEC5od_gdVgJ0V_YN67KUPh4Ww&s"
                  alt="Bajaj" class="img-fluid mb-2" style="height: 40px;">
             <h5 class="fw-bold mb-1">Bajaj Finance</h5>
-            <span class="badge bg-danger fw-bold mb-2">13.50%</span>
-            <p class="text-muted fw-semibold small">Up to 13.50% Monthly Return</p>
+            <span class="badge bg-danger fw-bold mb-2">7.30%</span>
+            <p class="text-muted fw-semibold small">Maximising your savings potential and ensuring stable returns</p>
           </div>
           <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="https://www.dimensiongroup.co.in/fixed-deposit/APP%20BAJAJ%20FORM.pdf" target="_blank"
+            <a href="/signin.aspx" target="_blank"
                class="btn btn-sm text-white fw-bold flex-fill"
                style="background-color: #00558C; border-radius: 20px;">
               <i class="bi bi-cart-fill me-1"></i> Buy
             </a>
-            <button onclick="shareFD('Bajaj Finance','13.50%','https://www.dimensiongroup.co.in/fixed-deposit/APP%20BAJAJ%20FORM.pdf')"
+            <button onclick="shareFD('Bajaj Finance','7.30%','Fdmodule.aspx')"
                     class="btn btn-sm btn-outline-primary fw-bold flex-fill"
                     style="border-radius: 20px;">
               <i class="bi bi-share-fill me-1"></i> Share
@@ -1949,16 +1950,16 @@ scroll-behavior: smooth;
             <img src="https://f2.leadsquaredcdn.com/t/lichousing/content/common/images/LIC_Housing_Finance_logo.png"
                  alt="LIC" class="img-fluid mb-2" style="height: 40px;">
             <h5 class="fw-bold mb-1">LIC Housing</h5>
-            <span class="badge bg-danger fw-bold mb-2">13.00%</span>
-            <p class="text-muted fw-semibold small">Up to 13.00% Monthly Return</p>
+            <span class="badge bg-danger fw-bold mb-2">7.15%</span>
+            <p class="text-muted fw-semibold small">“SANCHAY” – a Deposit Scheme by LIC Housing Finance Ltd</p>
           </div>
           <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="https://www.dimensiongroup.co.in/fixed-deposit/sanchay03.pdf" target="_blank"
+            <a href="/signin.aspx" target="_blank"
                class="btn btn-sm text-white fw-bold flex-fill"
                style="background-color: #00558C; border-radius: 20px;">
               <i class="bi bi-cart-fill me-1"></i> Buy
             </a>
-            <button onclick="shareFD('LIC Housing','13.00%','https://www.dimensiongroup.co.in/fixed-deposit/sanchay03.pdf')"
+            <button onclick="shareFD('LIC Housing','7.15%','Fdmodule.aspx')"
                     class="btn btn-sm btn-outline-primary fw-bold flex-fill"
                     style="border-radius: 20px;">
               <i class="bi bi-share-fill me-1"></i> Share
@@ -1969,10 +1970,7 @@ scroll-behavior: smooth;
 
     </div>
 
-    <%--<!-- Optional Controls -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-pagination mt-3"></div>--%>
+   
   </div>
 </div>
 
@@ -2261,7 +2259,7 @@ scroll-behavior: smooth;
 
 
 
-    <section class="video-home py-md-5 py-4 collection" >
+    <section class="video-home py-md-5 py-4 collection" style="background: linear-gradient(to bottom, #ffffff, #00354D);" >
         <div class="container">
             <div class="row py-md-5 ">
                 <div class="col-lg-7 py-md-4 py-5">
