@@ -55,7 +55,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ScriptManager ID="SM1" EnableCdn="true" runat="server"></asp:ScriptManager>
     <asp:HiddenField ID ="hfDataa" runat="server" />
-    <section class="breadcrumb-collection  py-md-4 gradient" style="font-family: 'Segoe UI', sans-serif; color: black; ">
+    <section class="breadcrumb-collection  py-md-4 " style="background: linear-gradient(to bottom, #ffffff, rgba(0, 126, 167, 0.15), rgba(0, 53, 77, 0.3)); ">
             <div class="container">
                 <div class="row">
                     <div class="col-12 p-md-3 p-0">

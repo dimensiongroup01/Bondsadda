@@ -18,7 +18,7 @@ public partial class login : System.Web.UI.Page
         {
             votp.Visible = false;
             lnkSubmit.Visible = false;
-            pnlResend.Visible = false;
+            pnlResend.Visible = false; 
             //pnlResendOTP.Visible = false;
         }
     }

@@ -1403,8 +1403,8 @@ scroll-behavior: smooth;
             <span class="text-warning fw-bold" id="changing-word">FD</span>
           </h1>
           <p class="lead fw-medium mb-3 text-dark">
-            Invest in top-rated <span id="product-label" class="fw-bold text-warning">Fixed Deposits</span> and earn up to 
-            <span class="fw-bold text-success">14%</span> returns. <br />
+            Invest in top-rated <span id="product-label" class="fw-bold text-warning">Fixed Deposits</span> and earn
+            <span class="fw-bold text-success">Decent</span> returns. <br />
             <span class="text-dark">Fully digital, secure & hassle-free.</span>
           </p>
         </div>
@@ -1877,9 +1877,10 @@ scroll-behavior: smooth;
             <span class="badge bg-danger fw-bold mb-2">8.55%</span>
             <p class="text-muted fw-semibold small">Empower Your Financial Future with
 Shriram Finance</p>
+                       <p class="text-muted fw-semibold small !important;">(Including 0.50%* p.a. for Senior Citizens and 0.05%* p.a. for Women)**T&C Apply</p>
           </div>
           <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/signin.aspx" target="_blank"
+            <a href="/Fdmodule.aspx" target="_blank"
                class="btn btn-sm text-white fw-bold flex-fill"
                style="background-color: #00558C; border-radius: 20px;">
               <i class="bi bi-cart-fill me-1"></i> Buy
@@ -1904,7 +1905,7 @@ Shriram Finance</p>
             <p class="text-muted fw-semibold small">Ghar ki Baat</p>
           </div>
           <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/signin.aspx" target="_blank"
+            <a href="/Fdmodule.aspx" target="_blank"
                class="btn btn-sm text-white fw-bold flex-fill"
                style="background-color: #00558C; border-radius: 20px;">
               <i class="bi bi-cart-fill me-1"></i> Buy
@@ -1929,7 +1930,7 @@ Shriram Finance</p>
             <p class="text-muted fw-semibold small">Maximising your savings potential and ensuring stable returns</p>
           </div>
           <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/signin.aspx" target="_blank"
+            <a href="/Fdmodule.aspx" target="_blank"
                class="btn btn-sm text-white fw-bold flex-fill"
                style="background-color: #00558C; border-radius: 20px;">
               <i class="bi bi-cart-fill me-1"></i> Buy
@@ -1954,7 +1955,7 @@ Shriram Finance</p>
             <p class="text-muted fw-semibold small">“SANCHAY” – a Deposit Scheme by LIC Housing Finance Ltd</p>
           </div>
           <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/signin.aspx" target="_blank"
+            <a href="/Fdmodule.aspx" target="_blank"
                class="btn btn-sm text-white fw-bold flex-fill"
                style="background-color: #00558C; border-radius: 20px;">
               <i class="bi bi-cart-fill me-1"></i> Buy

@@ -196,35 +196,11 @@
                                         <h4 class="h6 font-weight-normal">Type of Bonds:</h4>
 
                                         <div action="" method="get">
-                                            <%--       <asp:Repeater ID ="rptCategory" runat="server" OnItemDataBound="rptCategory_ItemDataBound">
-                                        <ItemTemplate>--%>
+                                        
 
                                             <asp:CheckBoxList ID="chkData" runat="server" class="table-check-input" type="checkboxlist" OnSelectedIndexChanged="chkData_SelectedIndexChanged" AutoPostBack="true" DataTextField="CategoryHead" DataValueField="CategoryId" />
 
-                                            <%--                                        </ItemTemplate>
-                                    </asp:Repeater>--%>
-                                            <%--                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-
-                                                Sovereign Gold Bonds
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                Listed Corporate Bonds
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                NCD IPOs
-                                            </label>
-                                        </div>--%>
+                                     
                                         </div>
                                     </div>
                                     <hr>
@@ -240,14 +216,7 @@
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                         </span>
-                                        <%--                                    <button>A</button>
-                                    <button>A+</button>
-                                    <button>AA</button>
-                                    <button>AA+</button>
-                                    <button>A-</button>
-                                    <button>AA-</button>
-                                    <button>BBB+</button>
-                                    <button>BBB-</button>--%>
+                                  
                                     </div>
                                     <hr>
 
@@ -255,13 +224,11 @@
                                         <h4 class="h6 font-weight-normal">Type of Tags:</h4>
 
                                         <div action="" method="get">
-                                            <%--       <asp:Repeater ID ="rptCategory" runat="server" OnItemDataBound="rptCategory_ItemDataBound">
-                                        <ItemTemplate>--%>
+                                         
 
                                             <asp:CheckBoxList ID="checkTags" runat="server" class="table-check-input" type="checkboxlist" DataTextField="TagsHead" DataValueField="TagsId" AutoPostBack="true" OnSelectedIndexChanged="checkTags_SelectedIndexChanged" />
 
-                                            <%--                                        </ItemTemplate>
-                                    </asp:Repeater>--%>
+                                         
                                         </div>
                                     </div>
 
@@ -277,28 +244,7 @@
                                                     <asp:ListItem Value="2">10 Lac +</asp:ListItem>
                                                 </asp:RadioButtonList>
 
-                                                <%--                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-
-                                                Less Than 1 Lac
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                1 - 10 Lac
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                10 Lac +
-                                            </label>
-                                        </div>--%>
+                                          
                                             </div>
                                         </div>
                                         <hr>
@@ -314,28 +260,7 @@
                                                     <asp:ListItem Value="10">Upto 8-11%</asp:ListItem>
                                                     <asp:ListItem Value="11">11% +</asp:ListItem>
                                                 </asp:RadioButtonList>
-                                                <%--<div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-
-                                                Upto 8%
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                Upto 8 to 11%
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                11% +
-                                            </label>
-                                        </div>--%>
+                                             
                                             </div>
                                         </div>
                                         <hr>
@@ -347,11 +272,13 @@
                         </div>
                     </div>
 
-
+                    <asp:Panel ID="pnlNoData" runat="server" CssClass="col-12 text-center text-danger" Visible="false">
+    <h5>No Bond Found</h5>
+</asp:Panel>
                     <div class="col-lg-9 pl-md-4">
 
                         <div id="myDiv" class="row">
-                            <asp:Repeater ID="rptData" runat="server" OnItemDataBound="rptData_ItemDataBound">
+                            <asp:Repeater ID="rptData" runat="server" OnItemDataBound="rptData_ItemDataBound" OnDataBound="rptData_DataBound">
                                 <ItemTemplate>
 
                                     <div class="col-lg-4 col-md-6 col-12 border-0">
@@ -380,7 +307,6 @@
                                                             </ItemTemplate>
                                                         </asp:Repeater>
 
-                                                        <%-- <img src="img/bonds/bond1.png" class="border col-12 p-0" alt>--%>
                                                     </div>
                                                 </div>
                                             </div>
@@ -486,370 +412,8 @@
                                 </ItemTemplate>
                             </asp:Repeater>
 
-                            <%--<div class="card border-0">
-                            <div class="box">
-                                <button class="status-button">OPEN</button>
-                                <br>
-                                <div class="box0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h3 class="h6 font-weight-normal">
-                                                7.41% GOI 19
-                                                DEC 2036
-                                            </h3>
-                                        </div>
-                                        <div class="col-5">
-                                            <img src="img/bonds/bond1.png" class="border col-12 p-0" alt>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box1">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>Price</small>
-                                            <p class="h6  font_2 ">
-                                                ₹ 10,05,500
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <img src="img/rate/AA.png" class="border  col-6 p-0" alt>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>Coupon</small>
-                                            <p class="h6  font_2">
-                                                9.62%
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <small>Yield</small>
-                                            <p class="h6  font_2">
-                                                9.80%
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>IP Frequency</small>
-                                            <p class="h6  font_2">
-                                                QUARTERLY
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <small>Maturity Date</small>
-                                            <p class="h6  font_2">
-                                                31 May 2028
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <small>Type of Bond</small>
-                                            <p class="h6  font_2">
-                                                NCD TAXABLE
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="button">
-                                        <a href="#" class="font_2 text-white">View
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0">
-                            <div class="box status-button">
-                                <button class="status-button">OPEN</button>
-                                <br>
-                                <div class="box0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h3 class="h6 font-weight-normal">
-                                                7.41% GOI 19
-                                                DEC 2036
-                                            </h3>
-                                        </div>
-                                        <div class="col-5">
-                                            <img src="img/bonds/bond1.png" class="border col-12 p-0" alt>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box1">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>Price</small>
-                                            <p class="h6  font_2 ">
-                                                ₹ 10,05,500
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <img src="img/rate/AA.png" class="border  col-6 p-0" alt>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>Coupon</small>
-                                            <p class="h6  font_2">
-                                                9.62%
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <small>Yield</small>
-                                            <p class="h6  font_2">
-                                                9.80%
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>IP Frequency</small>
-                                            <p class="h6  font_2">
-                                                QUARTERLY
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <small>Maturity Date</small>
-                                            <p class="h6  font_2">
-                                                31 May 2028
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <small>Type of Bond</small>
-                                            <p class="h6  font_2">
-                                                NCD TAXABLE
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="button">
-                                        <a href="#" class="font_2 text-white">View
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card border-0">
-                            <div class="box">
-                                <button class="status-button">OPEN</button>
-                                <br>
-                                <div class="box0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h3 class="h6 font-weight-normal">
-                                                7.41% GOI 19
-                                                DEC 2036
-                                            </h3>
-                                        </div>
-                                        <div class="col-5">
-                                            <img src="img/bonds/bond1.png" class="border col-12 p-0" alt>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box1">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>Price</small>
-                                            <p class="h6  font_2 ">
-                                                ₹ 10,05,500
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <img src="img/rate/AA.png" class="border  col-6 p-0" alt>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>Coupon</small>
-                                            <p class="h6  font_2">
-                                                9.62%
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <small>Yield</small>
-                                            <p class="h6  font_2">
-                                                9.80%
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>IP Frequency</small>
-                                            <p class="h6  font_2">
-                                                QUARTERLY
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <small>Maturity Date</small>
-                                            <p class="h6  font_2">
-                                                31 May 2028
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <small>Type of Bond</small>
-                                            <p class="h6  font_2">
-                                                NCD TAXABLE
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="button">
-                                        <a href="#" class="font_2 text-white">View
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0">
-                            <div class="box">
-                                <button class="status-button">OPEN</button>
-                                <br>
-                                <div class="box0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <h3 class="h6 font-weight-normal">
-                                                7.41% GOI 19
-                                                DEC 2036
-                                            </h3>
-                                        </div>
-                                        <div class="col-5">
-                                            <img src="img/bonds/bond1.png" class="border col-12 p-0" alt>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box1">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>Price</small>
-                                            <p class="h6  font_2 ">
-                                                ₹ 10,05,500
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <img src="img/rate/AA.png" class="border  col-6 p-0" alt>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>Coupon</small>
-                                            <p class="h6  font_2">
-                                                9.62%
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <small>Yield</small>
-                                            <p class="h6  font_2">
-                                                9.80%
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <small>IP Frequency</small>
-                                            <p class="h6  font_2">
-                                                QUARTERLY
-                                            </p>
-                                        </div>
-                                        <div class="col-5 text-right">
-                                            <small>Maturity Date</small>
-                                            <p class="h6  font_2">
-                                                31 May 2028
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <small>Type of Bond</small>
-                                            <p class="h6  font_2">
-                                                NCD TAXABLE
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="button">
-                                        <a href="#" class="font_2 text-white">View
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>--%>
-                        </div>
-                        <%--<div class="card-footer">
-                                
-                                        <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList1" CssClass="table-paging"
-                                            OnItemCommand="DataList1_ItemCommand">
-                                            <ItemTemplate>
-                                           <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                            </ItemTemplate>
-                                        </asp:DataList>
-                                                                                        <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList2" CssClass="table-paging"
-                                            OnItemCommand="DataList2_ItemCommand">
-                                            <ItemTemplate>
-                                           <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                            </ItemTemplate>
-                                        </asp:DataList>
-                                             <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList3" CssClass="table-paging"  OnItemCommand="DataList3_ItemCommand">
-                                             <ItemTemplate>
-                                            <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                           </ItemTemplate>
-                                               </asp:DataList>
-                                         <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList4" CssClass="table-paging" OnItemCommand="DataList4_ItemCommand">
-                                               <ItemTemplate>
-                                        <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                            </ItemTemplate>
-                                            </asp:DataList>
-                                                <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList5" CssClass="table-paging" OnItemCommand="DataList5_ItemCommand">
-                                            <ItemTemplate>
-                                       <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                            </ItemTemplate>
-                                        </asp:DataList>
-                                       <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList6" CssClass="table-paging" OnItemCommand="DataList6_ItemCommand">
-                                       <ItemTemplate>
-                                       <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:DataList>
-                                    <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList7" CssClass="table-paging" OnItemCommand="DataList7_ItemCommand">
-                                    <ItemTemplate>
-                                   <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:DataList>
-                                  <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList8" CssClass="table-paging" OnItemCommand="DataList8_ItemCommand">
-                                        <ItemTemplate>
-                                       <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:DataList>
-                                    <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList9" CssClass="table-paging"  OnItemCommand="DataList9_ItemCommand">
-                                        <ItemTemplate>
-                                       <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:DataList>
-                                      <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList10" CssClass="table-paging" OnItemCommand="DataList10_ItemCommand">
-                                    <ItemTemplate>
-                                   <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:DataList>
-                                 <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList11" CssClass="table-paging" OnItemCommand="DataList11_ItemCommand">
-                                        <ItemTemplate>
-                                       <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:DataList>
-                               <asp:DataList CellPadding="5" RepeatDirection="Horizontal" runat="server" ID="DataList12" CssClass="table-paging" OnItemCommand="DataList12_ItemCommand">
-                                    <ItemTemplate>
-                                   <asp:LinkButton Enabled='<%#Eval("Enabled") %>' runat="server" ID="lnkPageNo" Text='<%#Eval("Text") %>' CommandArgument='<%#Eval("Value") %>' CommandName="PageNo"></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:DataList>
-   
-</div>--%>
+                       </div>
+                     
                     </div>
                 </div>
             </div>

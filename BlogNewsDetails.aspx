@@ -22,7 +22,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="SM1" EnableCdn="true" runat="server"></asp:ScriptManager>
-    <section class="py-md-5 py-4" style="font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #085D94, #F57C00); color: white; ">
+    <section class="py-md-5 py-4" style="background: linear-gradient(to bottom, #ffffff, rgba(0, 126, 167, 0.15), rgba(0, 53, 77, 0.3));">
         <div class="container">
             <div class="row">
 

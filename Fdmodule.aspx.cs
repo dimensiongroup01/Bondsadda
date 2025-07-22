@@ -10,6 +10,32 @@ public partial class Fdmodule : System.Web.UI.Page
 {
     SendMailSmS sms = new SendMailSmS();
 
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (GetUserLoggedIn() == null)
+        {
+            if (GetUserLoggedIn() == null)
+            {
+                Response.Redirect("signin?url=" + Server.UrlEncode(Request.Url.AbsoluteUri));
+            }
+        }
+
+    }
+
+    private string GetUserLoggedIn()
+    {
+
+        HttpCookie cookieuser = Request.Cookies["DGBAM"];
+        if (cookieuser == null)
+        {
+            return null;
+        }
+        else
+        {
+            return cookieuser.Value.ToString();
+        }
+
+    }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         int maxSizeBytes = 4 * 1024 * 1024; // 4 MB
