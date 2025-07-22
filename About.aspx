@@ -1,14 +1,36 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="About" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-        <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+      <head>
+              <!-- ✅ Meta Configuration -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About BondsAdda – India’s Trusted Platform for Fixed-Income Investments</title>
+
+<!-- ✅ SEO Meta Tags -->
+<meta name="description" content="BondsAdda is SEBI-verified and India’s leading online marketplace powered by Dimension Financial Solutions Pvt. Ltd. for fixed-income investments. Buy & sell all types of bonds with high returns. Start investing today!" />
+
+<meta name="keywords" content="BondsAdda, High-return bonds , Fixed-income investment platform, FD, Bonds, Financial Solution" />
+<meta name="author" content="BondsAdda by Dimension Financial Solutions Pvt. Ltd." />
+
+<!-- 🌐 Open Graph Tags -->
+<meta property="og:title" content="BondsAdda – SEBI Verified Platform for Bonds & Fixed Deposits" />
+<meta property="og:description" content="BondsAdda is India’s leading online platform to invest in bonds, FDs, and capital gain instruments. Trusted, secure, and SEBI-compliant." />
+<meta property="og:url" content="https://bondsadda.com/about" />
+<meta property="og:type" content="website" />
+
+<!-- ✅ External Stylesheets -->
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+      </head>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ScriptManager ID="ScriptManager1" EnableCdn="true" runat="server"></asp:ScriptManager>
         <section class="py-3" style="font-family: 'Segoe UI', sans-serif;color:black; " >

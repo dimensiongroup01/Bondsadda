@@ -1,32 +1,75 @@
 ﻿<%@ Page Title="" EnableEventValidation="false"  Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+   <head>
+  <!-- 📄 Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BondsAdda - Smart FD & Bonds Investment Partner</title>
+  <meta name="description" content="Discover secure and SEBI-compliant investment options with BondsAdda. Choose from G-Secs, Monthly Income Bonds, 54EC Capital Gain Bonds, PSU Bonds, and top-rated Fixed Deposits. Maximize your returns with smart, fixed-income strategies.">
+  <meta name="keywords" content="Bonds, Fixed Deposits, G-Secs, Capital Gain Bonds, 54EC Bonds, Monthly Income Bonds, PSU Bonds, SEBI compliant investments, BondsAdda, Smart FD Investment">
+  <meta name="author" content="BondsAdda by Dimension Financial Solutions">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 🌐 Open Graph Tags -->
+  <meta property="og:title" content="BondsAdda - Smart FD & Bonds Investment Partner">
+  <meta property="og:description" content="Secure your future with SEBI-compliant G-Secs, Monthly Income Bonds, 54EC Capital Gain Bonds, and FDs. Trusted by smart investors.">
+  <meta property="og:url" content="https://www.bondsadda.com">
+  <meta property="og:type" content="website">
+
+  <!-- 🖋️ Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- 🎨 CSS Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+       <!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+       <!-- Init AOS & Tilt -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
+
+       <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V03KL3H9X5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-V03KL3H9X5');
+</script>
+
+<!-- Custom Styles -->
+
+
+
+
+
+  <!-- Swiper Carousel with FD Cards -->
+<link
   rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+  <!-- 📊 JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-   <!-- Splide.js CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+</head>
 
-     <!-- CSS Links -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<!-- Required CSS/JS Libraries -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <!-- Optional custom CSS -->
     <style>
        /* Organized & Cleaned CSS */
@@ -198,7 +241,7 @@ body,
   color: #FF8746 !important;
 }
 
-/* ==== FD Cards ==== */
+
 .swiper-slide { display: flex; justify-content: center; }
 
 .fd-card {
@@ -754,111 +797,7 @@ body,
 
 
 
-    /*.hero-section {
-      position: relative;
-     style="background: linear-gradient(to bottom, #00558C, #ffffff);"
-      color: white;
-      overflow: hidden;
-      padding: 80px 20px 160px;
-    }
-
-    .hero-section::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 140px;
-     
-      z-index: 0;
-    }
-
-    .hero-container {
-      position: relative;
-      z-index: 1;
-      max-width: 1140px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .hero-left {
-      flex: 1 1 50%;
-      min-width: 280px;
-    }
-
-    .hero-badge {
-      font-weight: 600;
-      font-size: 1.1rem;
-      background: linear-gradient(90deg, #e45005, #fd7e14);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-
-    .hero-title {
-      font-size: 2.8rem;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-
-    .hero-desc {
-      font-size: 1.1rem;
-      margin: 1rem 0 1.5rem;
-      color: #000;
-    }
-
-    .hero-desc span {
-      color: #ec6c07;
-      font-weight: bold;
-    }
-
-    .hero-cta {
-      display: inline-block;
-      background-color: #fd7e14;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-
-    .hero-right {
-      flex: 1 1 45%;
-      min-width: 280px;
-      text-align: center;
-    }
-
-    .hero-right img {
-      width: 100%;
-      max-width: 480px;
-      border-radius: 12px;
-      
-    }*/
-
-    /* Dynamic Text */
-    /*.dynamic-text span {
-      font-weight: bold;
-      color: #ec6c07;
-      display: inline-block;
-      min-width: 80px;
-      transition: opacity 0.5s ease;
-    }
-
-    @media (max-width: 768px) {
-      .hero-container {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero-title {
-        font-size: 2.2rem;
-      }
-    }*/
+    
 .hero-section {
       padding: 60px 20px;
       position: relative;
@@ -919,8 +858,8 @@ body,
       right: 0;
       animation: bounce 2s infinite ease-in-out;
       transform: scale(1.5);
-      opacity: 0.3;
-      z-index: 0;
+      opacity: 1.2;
+      z-index: 1;
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0) scale(1.5); }
@@ -1232,7 +1171,27 @@ scroll-behavior: smooth;
 .fd-card:hover {
   transform: translateY(-4px);
 }
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.hover-effect {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.collection h5 {
+  min-height: 50px;
+}
 
 
     </style>
@@ -1250,152 +1209,41 @@ scroll-behavior: smooth;
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:HiddenField ID="hfInputData" runat="server" />
-<!-- Hero + Search + Carousel Section -->
-<%--<section style="padding: 30px 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #1f3c88 0%, #ffffff 100%); position: relative; overflow: hidden;">
-  <div class="container">
 
-    <!-- Search Bar -->
-    <div class="row justify-content-center mb-3">
-      <div class="col-md-10 col-lg-8">
-        <div class="bg-white rounded-5 shadow-sm px-2 py-1 d-flex align-items-center justify-content-between" style="border: 1px solid #dee2e6;">
-          <asp:TextBox ID="txtResult" runat="server" ClientIDMode="Static"
-            placeholder="Search for Bonds..."
-            CssClass="form-control border-0"
-            Style="border-radius: 50px; height: 45px; font-size: 16px; background-color: #f9fafb; padding-left: 15px;">
-          </asp:TextBox>
-          <asp:LinkButton ID="lnkSerch" runat="server" OnClick="lnkSerch_Click"
-            CssClass="btn"
-            Style="background: linear-gradient(135deg, #007bff, #0056d2); color: white; border-radius: 30px; padding: 8px 16px; font-size: 15px;">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </asp:LinkButton>
+ 
+
+<!-- 🟠 START OF HERO SECTION -->
+<section class="hero-section" style="background: linear-gradient(to bottom, rgba(0, 85, 140, 0.2), rgba(255, 255, 255, 0.1));">
+  <div class="container py-3">
+
+    <!-- 🔍 Search Bar -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8 col-lg-6">
+        <div class="position-relative">
+          <!-- Stylish Search Box -->
+          <div class="search-container d-flex align-items-center shadow-sm px-2 py-1">
+            <asp:TextBox ID="txtResult" runat="server"
+              CssClass="form-control border-0 flex-grow-1 px-3 bg-light rounded-start-pill"
+              ClientIDMode="Static"
+              Style="height: 48px; font-size: 15px;"
+              placeholder="🔍 Search For Bonds...">
+            </asp:TextBox>
+
+            <asp:LinkButton ID="lnkSerch" runat="server" OnClick="lnkSerch_Click"
+              CssClass="btn search-btn rounded-end-pill d-flex align-items-center justify-content-center px-4"
+              Style="height: 48px;">
+              <i class="fa-solid fa-magnifying-glass text-white"></i>
+            </asp:LinkButton>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Hero Section -->
-    <div class="hero-section position-relative" style="color: white; overflow: hidden; border-radius: 12px;">
-      <div class="hero-container d-flex flex-wrap align-items-center justify-content-between gap-3">
-
-        <!-- Left Column -->
-        <div style="flex: 1 1 50%; min-width: 280px;">
-          <h1 data-aos="fade-up" style="font-size: 2.4rem; font-weight: bold;">
-            Maximize Your Savings with 
-            <span class="dynamic-text"><span id="changing-word">FD</span></span>
-          </h1>
-          <p style="font-size: 1rem; margin: 0.8rem 0 1rem; color: #f1f1f1;">
-            India's trusted platform to invest in Bonds with up to 
-            <span style="color: #ffd700; font-weight: bold;">14%</span> returns. <br />
-            100% digital. 100% secure.
-          </p>
-          <a href="OurCollections.aspx" class="btn" style="background-color: #fd7e14; color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 1rem;">
-            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i> Start Investing
-          </a>
-        </div>
-
-        <!-- Right Column -->
-        <div class="text-center position-relative" style="flex: 1 1 45%; min-width: 280px;">
-          <!-- Decorative SVG Ball -->
-          <svg style="position: absolute; top: -40px; right: -40px; z-index: 0; transform: scale(1.3); opacity: 0.5;" width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="200" cy="200" r="200" fill="url(#darkGradient)"/>
-            <defs>
-              <linearGradient id="darkGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#0b1e3d"/>
-                <stop offset="100%" stop-color="#192b4d"/>
-              </linearGradient>
-            </defs>
-          </svg>
-
-          <!-- Foreground Image -->
-          <img src="https://raw.githubusercontent.com/codewithsadee/desinic/master/assets/images/hero-banner.png"
-               alt="Hero Investment"
-               style="width: 100%; max-width: 440px; border-radius: 12px; position: relative; z-index: 1;" />
-        </div>
-
-      </div> <!-- End Hero Container -->
-    </div> <!-- End Hero Section -->
-
-  </div> <!-- End Container -->
-</section>
-<script>
-  const words = ["FD", "Bonds", "IPO"];
-  let index = 0;
-  const el = document.getElementById("changing-word");
-
-  setInterval(() => {
-    index = (index + 1) % words.length;
-    el.style.opacity = 0;
-    setTimeout(() => {
-      el.textContent = words[index];
-      el.style.opacity = 1;
-    }, 300);
-  }, 2000);
-</script>
-
-<!-- Font Awesome CDN -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-
-<%--<!-- Dynamic Text Script -->
-<script>
-  const words = ["FD", "Bonds", "IPO"];
-  let index = 0;
-  const el = document.getElementById("changing-word");
-
-  setInterval(() => {
-    index = (index + 1) % words.length;
-    el.style.opacity = 0;
-    setTimeout(() => {
-      el.textContent = words[index];
-      el.style.opacity = 1;
-    }, 300);
-  }, 2000);
-</script>
-
-<!-- Font Awesome (optional) -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>--%>
-
- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">  
-
- 
-<!-- 🟠 START OF HERO SECTION -->
-<section class="hero-section" style="background: linear-gradient(to bottom, rgba(0, 85, 140, 0.2), rgba(255, 255, 255, 0.1));"
-">
-  <div class="container py-3">
-
-    <!-- 🔍 Search Bar -->
-   <div class="row justify-content-center mb-5">
-  <div class="col-md-8 col-lg-6">
-  <div class="position-relative">
-
-    <!-- Stylish Search Box -->
-    <div class="search-container d-flex align-items-center shadow-sm px-2 py-1">
-      <asp:TextBox ID="txtResult" runat="server"
-        CssClass="form-control border-0 flex-grow-1 px-3 bg-light rounded-start-pill"
-        ClientIDMode="Static"
-        Style="height: 48px; font-size: 15px;"
-        placeholder="🔍 Search For Bonds...">
-      </asp:TextBox>
-
-      <asp:LinkButton ID="lnkSerch" runat="server" OnClick="lnkSerch_Click"
-        CssClass="btn search-btn rounded-end-pill d-flex align-items-center justify-content-center px-4"
-        Style="height: 48px;">
-        <i class="fa-solid fa-magnifying-glass text-white"></i>
-      </asp:LinkButton>
-    </div>
-
-  </div>
-</div>
-
-</div>
-
-
     <!-- 🔥 Hero Content -->
     <div class="hero-content row align-items-start gx-4 gy-4">
-      
+
       <!-- ✅ LEFT SECTION -->
       <div class="col-md-6 hero-left text-white">
-
         <!-- Title & Description -->
         <div class="text-left px-2">
           <h1 class="display-5 fw-bold mb-2 text-dark">
@@ -1409,27 +1257,40 @@ scroll-behavior: smooth;
           </p>
         </div>
 
-        <!-- Feature Highlights -->
-        <div class="glow-wrapper small-glow">
-          <div class="glow-content compact d-flex flex-wrap gap-3 px-2">
-            <div class="feature-item text-white">
-              <img src="https://img.icons8.com/fluency/30/percentage.png" alt="returns" class="feature-icon mb-1" />
-              <p class="feature-title mb-0 fw-medium">Upto 14%<br>Returns</p>
-            </div>
-            <div class="feature-item text-white">
-              <img src="https://img.icons8.com/fluency/30/combo-chart.png" alt="stable" class="feature-icon mb-1" />
-              <p class="feature-title mb-0 fw-medium">Stable<br>Returns</p>
-            </div>
-            <div class="feature-item text-white">
-              <img src="https://img.icons8.com/fluency/30/conference-call.png" alt="users" class="feature-icon mb-1" />
-              <p class="feature-title mb-0 fw-medium">10k+<br>Visitors</p>
-            </div>
-            <div class="feature-item text-white">
-              <img src="https://img.icons8.com/fluency/30/rupee.png" alt="min invest" class="feature-icon mb-1" />
-              <p class="feature-title mb-0 fw-medium">Minimum<br>Investment 10K</p>
-            </div>
-          </div>
-        </div>
+       <!-- Feature Highlights (Responsive Bootstrap) -->
+<div class="container">
+  <div class="row justify-content-center text-center text-white g-3 px-2">
+    
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="feature-item">
+        <img src="https://img.icons8.com/fluency/30/percentage.png" alt="returns" class="feature-icon mb-1" />
+        <p class="feature-title mb-0 fw-medium">Upto 14%<br>Returns</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="feature-item">
+        <img src="https://img.icons8.com/fluency/30/combo-chart.png" alt="stable" class="feature-icon mb-1" />
+        <p class="feature-title mb-0 fw-medium">Stable<br>Returns</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="feature-item">
+        <img src="https://img.icons8.com/fluency/30/conference-call.png" alt="users" class="feature-icon mb-1" />
+        <p class="feature-title mb-0 fw-medium">10k+<br>Visitors</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm-4 col-md-3">
+      <div class="feature-item">
+        <img src="https://img.icons8.com/fluency/30/rupee.png" alt="min invest" class="feature-icon mb-1" />
+        <p class="feature-title mb-0 fw-medium">Minimum<br>Investment 10K</p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
         <!-- CTA Button -->
         <div class="mt-3 px-2">
@@ -1441,7 +1302,7 @@ scroll-behavior: smooth;
 
       <!-- ✅ RIGHT SECTION -->
       <div class="col-md-6 hero-right text-center">
-        <svg class="ball-svg mb-3" id="ballSvg" width="220" height="300" viewBox="0 0 400 400" fill="none">
+        <svg class="ball-svg mb-3" id="ballSvg" width="190" height="300" viewBox="0 0 400 400" fill="none">
           <circle cx="200" cy="200" r="200" fill="#000" />
         </svg>
         <div class="graph-container">
@@ -1452,8 +1313,6 @@ scroll-behavior: smooth;
     </div>
   </div>
 </section>
-
-
 <!-- 🔚 END HERO SECTION -->
 
 
@@ -1463,10 +1322,10 @@ scroll-behavior: smooth;
   <!-- Optional Sparkle Background -->
   <div class="container ">
     <div class="row g-4 justify-content-center">
-   <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
-  <div class="container py-3">
+  <section class="py-3" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-2">
     <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
-        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+        style="font-size: 2.2rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
       Our <span style="color: #F15A29; font-weight: 700;">Products</span>
     </h3>
   </div>
@@ -1577,54 +1436,14 @@ scroll-behavior: smooth;
 </section>
 
 
-<!-- Custom CSS -->
 
 
 
-<!-- Init AOS & Tilt -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
-<script>
-  AOS.init();
-  VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-    max: 15,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.2
-  });
-</script>
 
 
-<!-- Modal -->
-<section>
-  <div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content border-0 text-white custom-modal-gradient rounded-4 shadow-lg">
-        
-        <!-- Modal Header -->
-        <div class="modal-header border-0">
-          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        
-        <!-- Modal Body -->
-        <div class="modal-body text-center px-4 py-3">
-          <div class="icon-glow mb-3">
-            <i class="bi bi-graph-up-arrow fs-1"></i>
-          </div>
-          <h4 class="fw-bold">High Yield Bonds</h4>
-          <p>Discover high-return bond opportunities now.</p>
-          <a href="https://bondsadda.com/OurCollections?oId=16" class="btn btn-golden btn-lg mt-3 px-4 py-2 fw-semibold shadow">Explore Now</a>
-        </div>
 
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Bootstrap JS (required) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Auto show and close after 5 seconds -->
 
 
 
@@ -1635,14 +1454,15 @@ scroll-behavior: smooth;
 
 <section class="py-5 bg-light position-relative overflow-hidden">
   <div class="container">
-         <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
-  <div class="container py-3">
+         <section class="py-3" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-2">
     <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
-        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+        style="font-size: 2.2rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
       High Yield Bonds <span style="color: #F15A29; font-weight: 700;">Above 14%</span>
     </h3>
   </div>
 </section>
+
  
 
     <!-- Swiper -->
@@ -1654,364 +1474,115 @@ scroll-behavior: smooth;
   </div>
 
   <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
 
-  <script>
-    const bondsData = [
-      {
-        "Company": "VEDIKA CREDIT CAPITAL LIMITED",
-        "Face Value": "₹100000",
-        "ISIN No": "INE04HY07289",
-        "Credit Rating": "A-",
-        "Coupon Rate": "12.00%",
-        "Rate": "₹ 35.54",
-        "Rating Agencies": "CARE",
-        "IP Frequency": "Monthly",
-        "Last Interest Payment Date": "04/04/2023",
-        "Maturity Date": "04/04/2029",
-        "Guaranteed By": "N/A",
-        "Instrument Type": "SECURED",
-        "Type of Bonds": "High Return Bonds",
-        "Redemption Type": "Bullet Redemption",
-        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4892",
-        "Image": "https://bondsadda.com/vimage/88108team_vedika_logo.jpeg"
-      },
-      {
-        "Company": "EarlySalary Services Pvt Ltd",
-        "Face Value": "₹100000",
-        "ISIN No": "INE01I0743Z4",
-        "Credit Rating": "BBB+",
-        "Coupon Rate": "10.30%",
-        "Rate": "₹ 38.23",
-        "Rating Agencies": "CRISIL",
-        "IP Frequency": "Monthly",
-        "Last Interest Payment Date": "04/10/2027",
-        "Maturity Date": "04/10/2027",
-        "Guaranteed By": "Social Worth Technologies Private Limited",
-        "Instrument Type": "SECURED",
-        "Type of Bonds": "High Return Bonds",
-        "Redemption Type": "Bullet Redemption",
-        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4855",
-        "Image": "https://bondsadda.com/vimage/73786earlysalary.webp"
-      },
-      {
-        "Company": "INDEL MONEY LIMITED",
-        "Face Value": "₹100000",
-        "ISIN No": "INE08US08G9",
-        "Credit Rating": "BBB- BBB",
-        "Coupon Rate": "11.00%",
-        "Rate": "₹ 37.31",
-        "Rating Agencies": "CRISIL",
-        "IP Frequency": "Monthly",
-        "Last Interest Payment Date": "11/11/2026",
-        "Maturity Date": "11/11/2026",
-        "Guaranteed By": "N/A",
-        "Instrument Type": "SECURED",
-        "Type of Bonds": "High Return Bonds",
-        "Redemption Type": "Bullet Redemption",
-        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4849",
-        "Image": "https://bondsadda.com/vimage/95068indelmoney_logo.jpeg"
-      },
-      {
-        "Company": "KEERTANA FINSERY PRIVATE LIMITED",
-        "Face Value": "₹100000",
-        "ISIN No": "INE0NFS01626",
-        "Credit Rating": "BBB- BBB",
-        "Coupon Rate": "11.30%",
-        "Rate": "₹ 37.18",
-        "Rating Agencies": "CRISIL ICRA IND",
-        "IP Frequency": "Monthly",
-        "Last Interest Payment Date": "06/03/2027",
-        "Maturity Date": "06/03/2027",
-        "Guaranteed By": "N/A",
-        "Instrument Type": "SECURED",
-        "Type of Bonds": "High Return Bonds",
-        "Redemption Type": "Bullet Redemption",
-        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4862",
-        "Image": "https://bondsadda.com/vimage/47714keertana.png"
-      },
-      {
-        "Company": "RDC CONCRETE(INDIA) LIMITED",
-        "Face Value": "₹100000",
-        "ISIN No": "INE067I07020",
-        "Credit Rating": "A-",
-        "Coupon Rate": "11.00%",
-        "Rate": "₹ 37",
-        "Rating Agencies": "IND",
-        "IP Frequency": "Monthly",
-        "Last Interest Payment Date": "12/03/2028",
-        "Maturity Date": "12/03/2028",
-        "Guaranteed By": "Robu Sildem Private Limited & Halls Infra Market Limited",
-        "Instrument Type": "SECURED",
-        "Type of Bonds": "High Return Bonds",
-        "Redemption Type": "Bullet Redemption",
-        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4878",
-        "Image": "	https://bondsadda.com/vimage/24414rdc%20concrete(india)%20limited.jpeg"
-      }
-    ];
-
-    const bondList = document.getElementById('bond-list');
-
-    bondsData.forEach(bond => {
-      const slide = document.createElement("div");
-      slide.className = "swiper-slide";
-
-      slide.innerHTML = `
-        <div class="bond-card w-100 p-3 shadow-sm border border-2 border-primary rounded-4">
-  <div>
-    <!-- Image -->
-    <img src="${bond.Image}" alt="${bond.Company}" class="w-40 mb-3 rounded-3" style="height:150px; object-fit: cover;" />
-
-    <!-- Badge -->
-    <div class="bond-badge fw-bold text-uppercase text-dark bg-warning px-3 py-1 rounded-pill mb-2 d-inline-block">
-      ${bond["Type of Bonds"]}
-    </div>
-
-    <!-- Company Title -->
-    <h5 class="bond-title fw-bold mb-2 text-dark">${bond.Company}</h5>
-
-    <hr class="my-2">
-
-    <!-- Bond Info -->
-    <div class="bond-info mt-2 text-dark">
-      <p class="mb-2 fw-bold"><i class="bi bi-percent me-2 text-primary fw-bold"></i>Coupon Rate: <span class="fw-bold">${bond["Coupon Rate"]}</span></p>
-      <p class="mb-2 fw-bold"><i class="bi bi-calendar3 me-2 text-primary fw-bold"></i>Maturity: <span class="fw-bold">${bond["Maturity Date"]}</span></p>
-      <p class="mb-2 fw-bold"><i class="bi bi-bank me-2 text-primary fw-bold"></i>Credit Rating: <span class="fw-bold">${bond["Credit Rating"]}</span></p>
-      <p class="mb-2 fw-bold"><i class="bi bi-lock me-2 text-primary fw-bold"></i>Instrument: <span class="fw-bold">${bond["Instrument Type"]}</span></p>
-      <p class="mb-0 fw-bold"><i class="bi bi-code-slash me-2 text-primary fw-bold"></i>ISIN: <span class="fw-bold">${bond["ISIN No"]}</span></p>
-    </div>
-  </div>
-
-  <!-- Action Buttons -->
-  <div class="d-flex mt-4">
-    <a href="${bond['Buy Now URL']}" class="btn btn-primary fw-bold px-4 rounded-pill" target="_blank">
-      Buy Now
-    </a>
-    <button class="btn btn-outline-primary fw-bold ms-3 px-4 rounded-pill" onclick="shareBond('${bond.Company}', '${bond["Credit Rating"]}')">
-      <i class="bi bi-share-fill me-1"></i> Share
-    </button>
-  </div>
-</div>
-
-      `;
-
-      bondList.appendChild(slide);
-    });
-
-    function shareBond(company, rating) {
-      const text = `${company} - Rating: ${rating}`;
-      const shareData = {
-        title: company,
-        text: text,
-        url: window.location.href
-      };
-
-      if (navigator.share) {
-        navigator.share(shareData).catch((err) => console.error("Share failed:", err));
-      } else {
-        navigator.clipboard.writeText(`${text}\n${window.location.href}`).then(() => {
-          alert("Bond info copied to clipboard!");
-        });
-      }
-    }
-
-    new Swiper('.mySwiper', {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: {
-        delay: 3000,
-      },
-      breakpoints: {
-        576: { slidesPerView: 1.2 },
-        768: { slidesPerView: 2 },
-        992: { slidesPerView: 3 },
-      },
-    });
-    </script>
-
+  
 </section>
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- Custom Styles -->
-
-
-
-
-
-  <!-- Swiper Carousel with FD Cards -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
 
 <section class="products-fd-section py-5" id="fd-section">
   <div class="container">
-             <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
-  <div class="container py-3">
-    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
-        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
-      High Yield FD <span style="color: #F15A29; font-weight: 700;">Above 13%</span>
-    </h3>
-  </div>
-</section>  
-    
 
-  <div class="container my-4">
-  <div class="row g-4">
-
-    <!-- Swiper Container -->
-<div class="container py-4">
-  <div class="swiper fd-swiper">
-    <div class="swiper-wrapper">
-
-      <!-- FD CARD 1: Shriram -->
-      <div class="swiper-slide">
-        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-          <div>
-            <img src="https://cdn.shriramfinance.in/sfl-fe/assets/images/sfl-logo.webp"
-                 alt="Shriram" class="img-fluid mb-2" style="height: 40px;">
-            <h5 class="fw-bold mb-1">Shriram Finance</h5>
-            <span class="badge bg-danger fw-bold mb-2">8.55%</span>
-            <p class="text-muted fw-semibold small">Empower Your Financial Future with
-Shriram Finance</p>
-          </div>
-          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/signin.aspx" target="_blank"
-               class="btn btn-sm text-white fw-bold flex-fill"
-               style="background-color: #00558C; border-radius: 20px;">
-              <i class="bi bi-cart-fill me-1"></i> Buy
-            </a>
-            <button onclick="shareFD('Shriram Finance','8.55%','Fdmodule.aspx')"
-                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
-                    style="border-radius: 20px;">
-              <i class="bi bi-share-fill me-1"></i> Share
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- FD CARD 2: PNB -->
-      <div class="swiper-slide">
-        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-          <div>
-            <img src="https://www.pnbhousing.com/documents/d/guest/logo-header?download=true"
-                 alt="PNB" class="img-fluid mb-2" style="height: 40px;">
-            <h5 class="fw-bold mb-1">PNB Housing</h5>
-            <span class="badge bg-danger fw-bold mb-2">7.10%</span>
-            <p class="text-muted fw-semibold small">Ghar ki Baat</p>
-          </div>
-          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/signin.aspx" target="_blank"
-               class="btn btn-sm text-white fw-bold flex-fill"
-               style="background-color: #00558C; border-radius: 20px;">
-              <i class="bi bi-cart-fill me-1"></i> Buy
-            </a>
-            <button onclick="shareFD('PNB Housing','13.10%','Fdmodule.aspx')"
-                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
-                    style="border-radius: 20px;">
-              <i class="bi bi-share-fill me-1"></i> Share
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- FD CARD 3: Bajaj -->
-      <div class="swiper-slide">
-        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-          <div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi0Lufh2ybEC5od_gdVgJ0V_YN67KUPh4Ww&s"
-                 alt="Bajaj" class="img-fluid mb-2" style="height: 40px;">
-            <h5 class="fw-bold mb-1">Bajaj Finance</h5>
-            <span class="badge bg-danger fw-bold mb-2">7.30%</span>
-            <p class="text-muted fw-semibold small">Maximising your savings potential and ensuring stable returns</p>
-          </div>
-          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/signin.aspx" target="_blank"
-               class="btn btn-sm text-white fw-bold flex-fill"
-               style="background-color: #00558C; border-radius: 20px;">
-              <i class="bi bi-cart-fill me-1"></i> Buy
-            </a>
-            <button onclick="shareFD('Bajaj Finance','7.30%','Fdmodule.aspx')"
-                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
-                    style="border-radius: 20px;">
-              <i class="bi bi-share-fill me-1"></i> Share
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- FD CARD 4: LIC -->
-      <div class="swiper-slide">
-        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-          <div>
-            <img src="https://f2.leadsquaredcdn.com/t/lichousing/content/common/images/LIC_Housing_Finance_logo.png"
-                 alt="LIC" class="img-fluid mb-2" style="height: 40px;">
-            <h5 class="fw-bold mb-1">LIC Housing</h5>
-            <span class="badge bg-danger fw-bold mb-2">7.15%</span>
-            <p class="text-muted fw-semibold small">“SANCHAY” – a Deposit Scheme by LIC Housing Finance Ltd</p>
-          </div>
-          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/signin.aspx" target="_blank"
-               class="btn btn-sm text-white fw-bold flex-fill"
-               style="background-color: #00558C; border-radius: 20px;">
-              <i class="bi bi-cart-fill me-1"></i> Buy
-            </a>
-            <button onclick="shareFD('LIC Housing','7.15%','Fdmodule.aspx')"
-                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
-                    style="border-radius: 20px;">
-              <i class="bi bi-share-fill me-1"></i> Share
-            </button>
-          </div>
-        </div>
-      </div>
-
+    <!-- Section Heading -->
+    <div class="py-3 px-2" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+      <h3 class="fw-bold mb-2 text-white text-center" data-aos="fade-up"
+          style="font-size: 2.2rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+        High Yield FD <span style="color: #F15A29; font-weight: 700;">Above 13%</span>
+      </h3>
     </div>
 
-   
-  </div>
-</div>
+    <!-- FD Cards Swiper -->
+    <div class="my-4">
+      <div class="swiper fd-swiper">
+        <div class="swiper-wrapper">
 
-</div>
+          <!-- FD CARD 1 -->
+          <div class="swiper-slide">
+            <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+              <div>
+                <img src="https://cdn.shriramfinance.in/sfl-fe/assets/images/sfl-logo.webp" alt="Shriram" class="img-fluid mb-2" style="height: 40px;">
+                <h5 class="fw-bold mb-1">Shriram Finance</h5>
+                <span class="badge bg-danger fw-bold mb-2">8.55%</span>
+                <p class="text-muted fw-semibold small">Empower Your Financial Future with Shriram Finance</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
+                <a href="/signin.aspx" target="_blank" class="btn btn-sm text-white fw-bold flex-fill" style="background-color: #00558C; border-radius: 20px;">
+                  <i class="bi bi-cart-fill me-1"></i> Buy
+                </a>
+                <button onclick="shareFD('Shriram Finance','8.55%','Fdmodule.aspx')" class="btn btn-sm btn-outline-primary fw-bold flex-fill" style="border-radius: 20px;">
+                  <i class="bi bi-share-fill me-1"></i> Share
+                </button>
+              </div>
+            </div>
+          </div>
 
-  </div>
+          <!-- FD CARD 2 -->
+          <div class="swiper-slide">
+            <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+              <div>
+                <img src="https://www.pnbhousing.com/documents/d/guest/logo-header?download=true" alt="PNB" class="img-fluid mb-2" style="height: 40px;">
+                <h5 class="fw-bold mb-1">PNB Housing</h5>
+                <span class="badge bg-danger fw-bold mb-2">7.10%</span>
+                <p class="text-muted fw-semibold small">Ghar ki Baat</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
+                <a href="/signin.aspx" target="_blank" class="btn btn-sm text-white fw-bold flex-fill" style="background-color: #00558C; border-radius: 20px;">
+                  <i class="bi bi-cart-fill me-1"></i> Buy
+                </a>
+                <button onclick="shareFD('PNB Housing','13.10%','Fdmodule.aspx')" class="btn btn-sm btn-outline-primary fw-bold flex-fill" style="border-radius: 20px;">
+                  <i class="bi bi-share-fill me-1"></i> Share
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- FD CARD 3 -->
+          <div class="swiper-slide">
+            <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+              <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi0Lufh2ybEC5od_gdVgJ0V_YN67KUPh4Ww&s" alt="Bajaj" class="img-fluid mb-2" style="height: 40px;">
+                <h5 class="fw-bold mb-1">Bajaj Finance</h5>
+                <span class="badge bg-danger fw-bold mb-2">7.30%</span>
+                <p class="text-muted fw-semibold small">Maximising your savings potential and ensuring stable returns</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
+                <a href="/signin.aspx" target="_blank" class="btn btn-sm text-white fw-bold flex-fill" style="background-color: #00558C; border-radius: 20px;">
+                  <i class="bi bi-cart-fill me-1"></i> Buy
+                </a>
+                <button onclick="shareFD('Bajaj Finance','7.30%','Fdmodule.aspx')" class="btn btn-sm btn-outline-primary fw-bold flex-fill" style="border-radius: 20px;">
+                  <i class="bi bi-share-fill me-1"></i> Share
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- FD CARD 4 -->
+          <div class="swiper-slide">
+            <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
+              <div>
+                <img src="https://f2.leadsquaredcdn.com/t/lichousing/content/common/images/LIC_Housing_Finance_logo.png" alt="LIC" class="img-fluid mb-2" style="height: 40px;">
+                <h5 class="fw-bold mb-1">LIC Housing</h5>
+                <span class="badge bg-danger fw-bold mb-2">7.15%</span>
+                <p class="text-muted fw-semibold small">“SANCHAY” – a Deposit Scheme by LIC Housing Finance Ltd</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
+                <a href="/signin.aspx" target="_blank" class="btn btn-sm text-white fw-bold flex-fill" style="background-color: #00558C; border-radius: 20px;">
+                  <i class="bi bi-cart-fill me-1"></i> Buy
+                </a>
+                <button onclick="shareFD('LIC Housing','7.15%','Fdmodule.aspx')" class="btn btn-sm btn-outline-primary fw-bold flex-fill" style="border-radius: 20px;">
+                  <i class="bi bi-share-fill me-1"></i> Share
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- .swiper-wrapper -->
+      </div> <!-- .swiper -->
+    </div> <!-- .my-4 -->
+
+  </div> <!-- .container -->
 </section>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  new Swiper('.fd-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
-    autoplay: { delay: 3000 },
-    breakpoints: {
-      576: { slidesPerView: 1.2 },
-      768: { slidesPerView: 2 },
-      992: { slidesPerView: 3 },
-      1200: { slidesPerView: 3.2 },
-    }
-  });
-</script>
-
-<!-- Share Button Script -->
-<script>
-  function shareFD(name, rate, url) {
-    const text = `🔥 Check out this Fixed Deposit offer from ${name} at ${rate} interest!\nApply here: ${url}`;
-    if (navigator.share) {
-      navigator.share({
-        title: `${name} FD Offer`,
-        text: text,
-        url: url
-      }).catch(err => console.log('Share failed:', err));
-    } else {
-      navigator.clipboard.writeText(text);
-      alert("FD details copied! Share it anywhere.");
-    }
-  }
-</script>
 
 
 
@@ -2102,9 +1673,7 @@ Shriram Finance</p>
                                                             <%#Eval("CreditRating") %>
                                                         </ItemTemplate>
                                                     </asp:Repeater>
-                                                    <%--                                        <img src="img/rate/AA.png"
-                                            class="border  col-4 ml-auto p-0"
-                                            alt>--%>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -2182,9 +1751,7 @@ Shriram Finance</p>
                                         </div>
                                         <div class="button">
                                             <asp:LinkButton ID="lnkdetails" runat="server" CssClass="font_2 text-white" CommandArgument='<%#Eval("ProductsId") %>' OnClick="lnkdetails_Click">View Details</asp:LinkButton>
-                                           <%-- <a href="<%=ResolveUrl("~")%>CashFlow?oId=<%#Eval("ProductsId") %>"
-                                                class="font_2 text-white">View
-                                        Details</a>--%>
+                                         
                                         </div>
                                     </div>
                                 </div>
@@ -2195,67 +1762,11 @@ Shriram Finance</p>
                 </div>
 
             </div>
-            <%--<div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-4">
-
-                    <div class="button asd">
-                        <a href="<%=ResolveUrl("~")%>OurCollections"
-                            class="btn btn1 ase">View
-                                        More</a>
-
-                    </div>
-                </div>
-            </div>--%>
-            <%-- <script>
-                left = '<svg width="50" height="50" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 20L15.6464 19.6464L15.2929 20L15.6464 20.3536L16 20ZM21.6464 13.6464L15.6464 19.6464L16.3536 20.3536L22.3536 14.3536L21.6464 13.6464ZM15.6464 20.3536L21.6464 26.3536L22.3536 25.6464L16.3536 19.6464L15.6464 20.3536Z" fill="white"/><circle cx="20" cy="20" r="19.5" stroke="white"/></svg>';
-                right = '<svg width="50" height="50" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 20L24.3536 20.3536L24.7071 20L24.3536 19.6464L24 20ZM18.3536 26.3536L24.3536 20.3536L23.6464 19.6464L17.6464 25.6464L18.3536 26.3536ZM24.3536 19.6464L18.3536 13.6464L17.6464 14.3536L23.6464 20.3536L24.3536 19.6464Z" fill="white"/><circle cx="20" cy="20" r="19.5" transform="rotate(180 20 20)" stroke="white"/></svg>';
-                $('#owl-carousel1').owlCarousel({
-                    loop: false,
-                    margin: 0,
-                    dots: true,
-                    navText: [left, right],
-                    items: 3,
-                    responsive: {
-                        0: {
-                            items: 1
-                        },
-                        768: {
-                            items: 2
-                        },
-                        1080: {
-                            items: 3
-                        }
-                    }
-                })
-            </script>--%>
+           
         </div>
     </section>
  
-<!-- Style block -->
-<style>
-  .icon-circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
-  .hover-effect {
-    transition: all 0.3s ease-in-out;
-  }
-
-  .hover-effect:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  .collection h5 {
-    min-height: 50px;
-  }
-</style>
 
 
 
@@ -2264,14 +1775,14 @@ Shriram Finance</p>
             <div class="row py-md-5 ">
                 <div class="col-lg-7 py-md-4 py-5">
                     <div id="tab-1" class="tab-content active">
-                        <%-- <img src="img/tutorial1.png" class="col-12" alt srcset>--%><img src="img/Group%201000002009%20(3).png" class="col-12" alt srcset />
+                       <img src="img/Group%201000002009%20(3).png" class="col-12" alt srcset />
                     </div>
                     <div id="tab-2" class="tab-content">
-                        <%-- <img src="img/tutorial1.png" class="col-12" alt srcset>--%><img src="img/Group%201000002009%20(2).png" class="col-12" alt srcset />
+                       <img src="img/Group%201000002009%20(2).png" class="col-12" alt srcset />
                     </div>
 
                     <div id="tab-3" class="tab-content">
-                        <%-- <img src="img/tutorial1.png" class="col-12" alt srcset>--%><img src="img/Group%201000002009%20(1).png" class="col-12" alt srcset />
+                        <img src="img/Group%201000002009%20(1).png" class="col-12" alt srcset />
                     </div>
 
 
@@ -2313,36 +1824,22 @@ Shriram Finance</p>
             </div>
         </div>
     </section>
-    <%--<section class=" py-md-5 py-4">
-        <div class="container-fluid">
-            <div class="row py-md-5 ">
-                <div class="col-12">
-                    <h2 class="h3 text-center font-weight-normal color1">Awards and
-                        <span class="color2">Accolades</span></h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <img src="img/award.png" class="col-12" alt="" srcset="">
-                </div>
-            </div>
-        </div>
-    </section>--%>
 
     
     <!-- Testimonials Section -->
 <section class="testimonials py-5" style="background: linear-gradient(to bottom, #e0e0e0 0%, #ffffff 100%)">
   <div class="container">
     <div class="text-center mb-5">
-                 <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
-  <div class="container py-3">
-    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
-        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
-     What Our  <span style="color: #F15A29; font-weight: 700;">Investors Say</span>
+                 <section class="py-3" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-2">
+    <h3 class="fw-bold mb-2 text-start text-white text-center" data-aos="fade-up"
+        style="font-size: 2.2rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+      What Our <span style="color: #F15A29; font-weight: 700;">Investors Say</span>
     </h3>
-      <p class="text-light">Trusted by thousands of happy investors across India</p>
+    <p class="text-light mb-0 text-center" style="font-size: 1rem;">Trusted by thousands of happy investors across India</p>
   </div>
-</section>    
+</section>
+
   
 
       <%--<h4 class="fw-bold mb-4 text-start heading-glow text-center" data-aos="fade-up">
@@ -2401,29 +1898,9 @@ Shriram Finance</p>
   </div>
 </section>
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-<script>
-  $(document).ready(function () {
-    $('#customers-testimonials').owlCarousel({
-      loop: true,
-      center: true,
-      items: 3,
-      margin: 0,
-      autoplay: true,
-      dots: true,
-      autoplayTimeout: 6000,
-      smartSpeed: 600,
-      responsive: {
-        0: { items: 1 },
-        768: { items: 2 },
-        1170: { items: 3 }
-      }
-    });
-  });
-</script>
+
+
 
 
 
@@ -2432,15 +1909,15 @@ Shriram Finance</p>
     <!-- Section Heading -->
     <div class="row py-md-5">
       <div class="col-12">
-                           <section class="py-5" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
-  <div class="container py-3">
-    <h3 class="fw-bold mb-3 text-start text-white text-center" data-aos="fade-up"
-        style="font-size: 2.5rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
-    Latest <span style="color: #F15A29; font-weight: 700;">News</span>
+                          <section class="py-3" style="background-color: #00558C; border-radius: 24px 24px 0 0;">
+  <div class="container py-2">
+    <h3 class="fw-bold mb-2 text-start text-white text-center" data-aos="fade-up"
+        style="font-size: 2.2rem; line-height: 1.2; text-shadow: 0 0 6px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);">
+      Latest <span style="color: #F15A29; font-weight: 700;">News</span>
     </h3>
-      
   </div>
-</section>    
+</section>
+
         
 
     <!-- News Cards -->
@@ -2693,6 +2170,230 @@ Shriram Finance</p>
         }, 300);
       }, 2500);
     });
+
+        const bondsData = [
+      {
+        "Company": "VEDIKA CREDIT CAPITAL LIMITED",
+        "Face Value": "₹100000",
+        "ISIN No": "INE04HY07289",
+        "Credit Rating": "A-",
+        "Coupon Rate": "12.00%",
+        "Rate": "₹ 35.54",
+        "Rating Agencies": "CARE",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "04/04/2023",
+        "Maturity Date": "04/04/2029",
+        "Guaranteed By": "N/A",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4892",
+        "Image": "https://bondsadda.com/vimage/88108team_vedika_logo.jpeg"
+      },
+      {
+        "Company": "EarlySalary Services Pvt Ltd",
+        "Face Value": "₹100000",
+        "ISIN No": "INE01I0743Z4",
+        "Credit Rating": "BBB+",
+        "Coupon Rate": "10.30%",
+        "Rate": "₹ 38.23",
+        "Rating Agencies": "CRISIL",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "04/10/2027",
+        "Maturity Date": "04/10/2027",
+        "Guaranteed By": "Social Worth Technologies Private Limited",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4855",
+        "Image": "https://bondsadda.com/vimage/73786earlysalary.webp"
+      },
+      {
+        "Company": "INDEL MONEY LIMITED",
+        "Face Value": "₹100000",
+        "ISIN No": "INE08US08G9",
+        "Credit Rating": "BBB- BBB",
+        "Coupon Rate": "11.00%",
+        "Rate": "₹ 37.31",
+        "Rating Agencies": "CRISIL",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "11/11/2026",
+        "Maturity Date": "11/11/2026",
+        "Guaranteed By": "N/A",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4849",
+        "Image": "https://bondsadda.com/vimage/95068indelmoney_logo.jpeg"
+      },
+      {
+        "Company": "KEERTANA FINSERY PRIVATE LIMITED",
+        "Face Value": "₹100000",
+        "ISIN No": "INE0NFS01626",
+        "Credit Rating": "BBB- BBB",
+        "Coupon Rate": "11.30%",
+        "Rate": "₹ 37.18",
+        "Rating Agencies": "CRISIL ICRA IND",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "06/03/2027",
+        "Maturity Date": "06/03/2027",
+        "Guaranteed By": "N/A",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4862",
+        "Image": "https://bondsadda.com/vimage/47714keertana.png"
+      },
+      {
+        "Company": "RDC CONCRETE(INDIA) LIMITED",
+        "Face Value": "₹100000",
+        "ISIN No": "INE067I07020",
+        "Credit Rating": "A-",
+        "Coupon Rate": "11.00%",
+        "Rate": "₹ 37",
+        "Rating Agencies": "IND",
+        "IP Frequency": "Monthly",
+        "Last Interest Payment Date": "12/03/2028",
+        "Maturity Date": "12/03/2028",
+        "Guaranteed By": "Robu Sildem Private Limited & Halls Infra Market Limited",
+        "Instrument Type": "SECURED",
+        "Type of Bonds": "High Return Bonds",
+        "Redemption Type": "Bullet Redemption",
+        "Buy Now URL": "https://bondsadda.com/cashflow?oid=4878",
+        "Image": "	https://bondsadda.com/vimage/24414rdc%20concrete(india)%20limited.jpeg"
+      }
+    ];
+
+    const bondList = document.getElementById('bond-list');
+
+    bondsData.forEach(bond => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+
+      slide.innerHTML = `
+        <div class="bond-card w-100 p-3 shadow-sm border border-2 border-primary rounded-4">
+  <div>
+    <!-- Image -->
+    <img src="${bond.Image}" alt="${bond.Company}" class="w-40 mb-3 rounded-3" style="height:150px; object-fit: cover;" />
+
+    <!-- Badge -->
+    <div class="bond-badge fw-bold text-uppercase text-dark bg-warning px-3 py-1 rounded-pill mb-2 d-inline-block">
+      ${bond["Type of Bonds"]}
+    </div>
+
+    <!-- Company Title -->
+    <h5 class="bond-title fw-bold mb-2 text-dark">${bond.Company}</h5>
+
+    <hr class="my-2">
+
+    <!-- Bond Info -->
+    <div class="bond-info mt-2 text-dark">
+      <p class="mb-2 fw-bold"><i class="bi bi-percent me-2 text-primary fw-bold"></i>Coupon Rate: <span class="fw-bold">${bond["Coupon Rate"]}</span></p>
+      <p class="mb-2 fw-bold"><i class="bi bi-calendar3 me-2 text-primary fw-bold"></i>Maturity: <span class="fw-bold">${bond["Maturity Date"]}</span></p>
+      <p class="mb-2 fw-bold"><i class="bi bi-bank me-2 text-primary fw-bold"></i>Credit Rating: <span class="fw-bold">${bond["Credit Rating"]}</span></p>
+      <p class="mb-2 fw-bold"><i class="bi bi-lock me-2 text-primary fw-bold"></i>Instrument: <span class="fw-bold">${bond["Instrument Type"]}</span></p>
+      <p class="mb-0 fw-bold"><i class="bi bi-code-slash me-2 text-primary fw-bold"></i>ISIN: <span class="fw-bold">${bond["ISIN No"]}</span></p>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="d-flex mt-4">
+    <a href="${bond['Buy Now URL']}" class="btn btn-primary fw-bold px-4 rounded-pill" target="_blank">
+      Buy Now
+    </a>
+    <button class="btn btn-outline-primary fw-bold ms-3 px-4 rounded-pill" onclick="shareBond('${bond.Company}', '${bond["Credit Rating"]}')">
+      <i class="bi bi-share-fill me-1"></i> Share
+    </button>
+  </div>
+</div>
+
+      `;
+
+      bondList.appendChild(slide);
+    });
+
+    function shareBond(company, rating) {
+      const text = `${company} - Rating: ${rating}`;
+      const shareData = {
+        title: company,
+        text: text,
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData).catch((err) => console.error("Share failed:", err));
+      } else {
+        navigator.clipboard.writeText(`${text}\n${window.location.href}`).then(() => {
+          alert("Bond info copied to clipboard!");
+        });
+      }
+    }
+
+    new Swiper('.mySwiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+      },
+      breakpoints: {
+        576: { slidesPerView: 1.2 },
+        768: { slidesPerView: 2 },
+        992: { slidesPerView: 3 },
+      },
+    });
+
+    AOS.init();
+VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+  max: 15,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.2
+});
+
+ $(document).ready(function () {
+   $('#customers-testimonials').owlCarousel({
+     loop: true,
+     center: true,
+     items: 3,
+     margin: 0,
+     autoplay: true,
+     dots: true,
+     autoplayTimeout: 6000,
+     smartSpeed: 600,
+     responsive: {
+       0: { items: 1 },
+       768: { items: 2 },
+       1170: { items: 3 }
+     }
+   });
+ });
+
+ new Swiper('.fd-swiper', {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  autoplay: { delay: 3000 },
+  breakpoints: {
+    576: { slidesPerView: 1.2 },
+    768: { slidesPerView: 2 },
+    992: { slidesPerView: 3 },
+    1200: { slidesPerView: 3.2 },
+  }
+});
+ function shareFD(name, rate, url) {
+   const text = `🔥 Check out this Fixed Deposit offer from ${name} at ${rate} interest!\nApply here: ${url}`;
+   if (navigator.share) {
+     navigator.share({
+       title: `${name} FD Offer`,
+       text: text,
+       url: url
+     }).catch(err => console.log('Share failed:', err));
+   } else {
+     navigator.clipboard.writeText(text);
+     alert("FD details copied! Share it anywhere.");
+   }
+ }
   </script>
 </asp:Content>
 
