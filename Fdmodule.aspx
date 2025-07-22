@@ -185,7 +185,7 @@
         <form id="form1" runat="server">
 
             <!-- NAVBAR -->
-            <nav class="navbar navbar-expand-lg navbar-custom fixed shadow-sm">
+            <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-sm">
                 <div class="container d-flex justify-content-between align-items-center px-3">
                     <a class="navbar-brand" href="index.aspx">
                         <img src="img/logo.png" alt="Logo" style="height: 40px;" />

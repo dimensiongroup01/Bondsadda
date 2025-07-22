@@ -1,146 +1,150 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="OurCollections.aspx.cs" Inherits="OurCollections" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style>
-        table#ContentPlaceHolder1_ddlInvest {
-            padding: 0px !IMPORTANT;
-        }
 
-        table#ContentPlaceHolder1_ddlYield {
-            padding: 0px !IMPORTANT;
-        }
+   <head>
+  <!-- ✅ Meta Configuration -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About BondsAdda – India’s Trusted Platform for Fixed-Income Investments</title>
 
-        span .button {
-            background: none;
+  <!-- ✅ SEO Meta Tags -->
+  <meta name="description" content="Investment gets easy with BondsAdda – from tax-saving bonds to high-return government-backed securities. Maximize returns with expert-backed fixed income products and grow your wealth today!" />
 
-            margin-bottom: 4px;
-            padding: 5px 15px;
-            border: none;
-            font-size: 14px;
-            border-radius: 5px;
-            background: #e7fde9;
-            border: 2px solid #02a713;
-            color: #02a713;
-            cursor: pointer
-        }
+  <meta name="keywords" content="High return bonds, Investment options, Government securities, Tax-free bonds, PSU bonds, Fixed income, Earn maximum returns, 54EC, Grow wealth, BondsAdda" />
 
-        span.kgs {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* number of lines to show */
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
+  <meta name="author" content="BondsAdda by Dimension Financial Solutions Pvt. Ltd." />
 
-        span.mmm {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1; /* number of lines to show */
-            line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
-        /*               input#ContentPlaceHolder1_rptCreditRating_btnCredit_0 {
+  <!-- 🌐 Open Graph Tags -->
+  <meta property="og:title" content="BondsAdda – SEBI Verified Platform for Bonds & Fixed Deposits" />
+  <meta property="og:description" content="BondsAdda is India’s leading online platform to invest in bonds, FDs, and capital gain instruments. Trusted, secure, and SEBI-compliant." />
+  <meta property="og:url" content="https://bondsadda.com/OurCollections.aspx" />
+  <meta property="og:type" content="website" />
+</head>
+
+<style>
+  table#ContentPlaceHolder1_ddlInvest,
+  table#ContentPlaceHolder1_ddlYield {
+    padding: 0 !important;
+  }
+
+  span .button {
     background: #e7fde9;
     border: 2px solid #02a713;
     color: #02a713;
+    margin-bottom: 4px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 14px;
     cursor: pointer;
-}*/
-        span.abs {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1; /* number of lines to show */
-            line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
-
-        .table-paging {
-            border: 1px solid #ff00dc2b;
-            width: fit-content;
-        }
-
-            .table-paging tbody tr td {
-                border: 1px solid #ff00dc2b;
-            }
-
-                .table-paging tbody tr td a {
-                    padding: 10px;
-                }
-
-                .table-paging tbody tr td .aspNetDisabled {
-                    padding: 10px;
-                    color: #cec072;
-                }
-                .filter-scroll-wrapper {
-        max-height: 600px; /* Adjust height as needed */
-        overflow-y: auto;
-        padding-right: 10px;
-        scrollbar-width: thin; /* Firefox */
-    }
-
-    /* Optional for better styling in WebKit browsers */
-    .filter-scroll-wrapper::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .filter-scroll-wrapper::-webkit-scrollbar-thumb {
-        background-color: #f39c12;
-        border-radius: 10px;
-    }
-
-    .filter-scroll-wrapper::-webkit-scrollbar-track {
-        background-color: #f0f0f0;
-    }
-.highlight-marquee {
-  margin: 5px;
-  color: #335682;
-  border: 2px solid #5183BE;
-  border-radius: 12px;
-  padding: 16px 0;
-  overflow: hidden;
-  font-size: 1.1rem;
-  font-weight: bold;
-  white-space: nowrap;
-  box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
-  position: relative;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
-  animation: marqueeGlow 2s ease-in-out infinite alternate;
-}
-
-.highlight-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scrollLeft 12s linear infinite;
-}
-
-.highlight-marquee:hover .highlight-track {
-  animation-play-state: paused;
-}
-
-.highlight-text {
-  display: inline-block;
-  padding-right: 200px;
-}
-
-@keyframes scrollLeft {
-  0% {
-    transform: translateX(0%);
   }
-  100% {
-    transform: translateX(-50%);
-  }
-}
 
-@keyframes marqueeGlow {
-  0% {
-    box-shadow: 0 0 10px #007bff;
+  span.kgs,
+  span.mmm,
+  span.abs {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   }
-  100% {
-    box-shadow: 0 0 18px #5082BD;
+
+  span.kgs {
+    -webkit-line-clamp: 2;
   }
-}    </style>
+
+  span.mmm,
+  span.abs {
+    -webkit-line-clamp: 1;
+  }
+
+  .table-paging {
+    border: 1px solid #ff00dc2b;
+    width: fit-content;
+  }
+
+  .table-paging tbody tr td {
+    border: 1px solid #ff00dc2b;
+  }
+
+  .table-paging tbody tr td a,
+  .table-paging tbody tr td .aspNetDisabled {
+    padding: 10px;
+  }
+
+  .table-paging tbody tr td .aspNetDisabled {
+    color: #cec072;
+  }
+
+  .filter-scroll-wrapper {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+  }
+
+  .filter-scroll-wrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .filter-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: #f39c12;
+    border-radius: 10px;
+  }
+
+  .filter-scroll-wrapper::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+
+  .highlight-marquee {
+    margin: 5px;
+    color: #335682;
+    border: 2px solid #5183BE;
+    border-radius: 12px;
+    padding: 16px 0;
+    overflow: hidden;
+    font-size: 1.1rem;
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    animation: marqueeGlow 2s ease-in-out infinite alternate;
+    position: relative;
+  }
+
+  .highlight-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrollLeft 12s linear infinite;
+  }
+
+  .highlight-marquee:hover .highlight-track {
+    animation-play-state: paused;
+  }
+
+  .highlight-text {
+    display: inline-block;
+    padding-right: 200px;
+  }
+
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marqueeGlow {
+    0% {
+      box-shadow: 0 0 10px #007bff;
+    }
+    100% {
+      box-shadow: 0 0 18px #5082BD;
+    }
+  }
+</style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" EnableCdn="true" runat="server"></asp:ScriptManager>
