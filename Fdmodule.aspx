@@ -264,30 +264,21 @@
                         <div class="col-md-6">
                             <div class="mb-2">
                                 <label for="txtName">Full Name</label>
-                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter your full name" />
+                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control"   ReadOnly="true" placeholder="Enter your full name" />
                             </div>
                             <div class="mb-2">
                                 <label for="txtEmail">Email</label>
-                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="example@email.com" />
+                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"   ReadOnly="true" TextMode="Email" placeholder="example@email.com" />
                             </div>
                             <div class="mb-2">
                                 <label for="txtMobile">Mobile Number</label>
-                                <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" MaxLength="10" placeholder="Enter 10-digit mobile number" TextMode="SingleLine" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                                <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control"   ReadOnly="true" MaxLength="10" placeholder="Enter 10-digit mobile number" TextMode="SingleLine" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
                             </div>
                             <div class="mb-2">
                                 <label for="txtPAN">PAN Number</label>
                                 <asp:TextBox ID="txtPAN" runat="server" CssClass="form-control text-uppercase" MaxLength="10" placeholder="ABCDE1234F" />
                             </div>
-                            <div class="mb-2">
-                                <label for="ddlFDType">Select FD Type</label>
-                                <asp:DropDownList ID="ddlFDType" runat="server" CssClass="form-control">
-                                    <asp:ListItem Text="-- Select --" Value="" />
-                                    <asp:ListItem Text="LIC Housing Finance Ltd." Value="SANCHAY" />
-                                    <asp:ListItem Text="Shriram Transport Finance Company Ltd." Value="SHRIRAM" />
-                                    <asp:ListItem Text="Bajaj Finance Ltd." Value="BAJAJ" />
-                                    <asp:ListItem Text="PNB Housing Finance Ltd." Value="PNB" />
-                                </asp:DropDownList>
-                            </div>
+                         
                         </div>
                         <div class="col-md-6">
                             <div class="mb-2">
@@ -302,6 +293,17 @@
                                 <label for="fuAadhaar">Upload Aadhaar Card</label>
                                 <asp:FileUpload ID="fuAadhaar" runat="server" CssClass="form-control" />
                             </div>
+
+                           <div class="mb-2">
+                           <label for="ddlFDType">Select FD Type</label>
+                           <asp:DropDownList ID="ddlFDType" runat="server" CssClass="form-control">
+                               <asp:ListItem Text="-- Select --" Value="" />
+                               <asp:ListItem Text="LIC Housing Finance Ltd." Value="SANCHAY" />
+                               <asp:ListItem Text="Shriram Transport Finance Company Ltd." Value="SHRIRAM" />
+                               <asp:ListItem Text="Bajaj Finance Ltd." Value="BAJAJ" />
+                               <asp:ListItem Text="PNB Housing Finance Ltd." Value="PNB" />
+                           </asp:DropDownList>
+                        </div>
                         </div>
                     </div>
 
@@ -450,17 +452,23 @@
          
                
             <!-- TOGGLE JS -->
-            <script>
-                function showFDForm() {
-                    document.getElementById("dashboardSection").classList.add("hidden");
-                    document.getElementById("fdFormSection").classList.remove("hidden");
-                }
+          <script>
+              function showFDForm() {
+                  document.getElementById("dashboardSection").classList.add("hidden");
+                  document.getElementById("fdFormSection").classList.remove("hidden");
+              }
 
-                function showDashboard() {
-                    document.getElementById("fdFormSection").classList.add("hidden");
-                    document.getElementById("dashboardSection").classList.remove("hidden");
-                }
-            </script>
+              function showDashboard() {
+                  document.getElementById("fdFormSection").classList.add("hidden");
+                  document.getElementById("dashboardSection").classList.remove("hidden");
+              }
+
+              // Automatically show FD form when the page loads
+              window.onload = function () {
+                  showFDForm();
+              };
+          </script>
+
 
             <!-- CHART JS SETUP -->
             <script>

@@ -46,15 +46,19 @@
         <ItemTemplate>
                         <section class="py-5 title">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="font-weight-bold mb-0">Home / Our Collections
-                            /
-                            Highly safe Bonds / <%#Eval("Security") %></p>
+<div class="row">
+    <div class="col-12">
+        <p class="font-weight-bold mb-0">
+            <a href='<%= ResolveUrl("~/Index.aspx") %>' class="text-decoration-none text-dark">Home</a> /
+            <a href='<%= ResolveUrl("~/OurCollections.aspx") %>' class="text-decoration-none text-dark">Our Collections</a> /
+            <%# Eval("Security") %>
+        </p>
 
-                        <h1 class="h2 font-weight-normal" style="text-transform:capitalize"> <%#Eval("Security") %></h1>
-                    </div>
-                </div>
+        <h1 class="h2 font-weight-normal text-capitalize">
+            <%# Eval("Security") %>
+        </h1>
+    </div>
+</div>
 
             </div>
             <!-- <div class="row pt-md-5">

@@ -1,11 +1,13 @@
 ﻿<%@ Page Title="" EnableEventValidation="false"  Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-   <head>
+ 
   <!-- 📄 Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BondsAdda - Smart FD & Bonds Investment Partner</title>
+             <meta name="google-site-verification" content="DrmoYoFrQifi3U9lxOPypMFBsBxfsUS17IN4czl-N6o" />
+
   <meta name="description" content="Discover secure and SEBI-compliant investment options with BondsAdda. Choose from G-Secs, Monthly Income Bonds, 54EC Capital Gain Bonds, PSU Bonds, and top-rated Fixed Deposits. Maximize your returns with smart, fixed-income strategies.">
   <meta name="keywords" content="Bonds, Fixed Deposits, G-Secs, Capital Gain Bonds, 54EC Bonds, Monthly Income Bonds, PSU Bonds, SEBI compliant investments, BondsAdda, Smart FD Investment">
   <meta name="author" content="BondsAdda by Dimension Financial Solutions">
@@ -68,7 +70,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-</head>
+
 
     <!-- Optional custom CSS -->
     <style>
@@ -847,7 +849,7 @@ body,
     .graph-container {
       background-color: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(4px);
-      padding: 30px;
+      padding: 50px;
       border-radius: 20px;
       position: relative;
       z-index: 1;
@@ -858,7 +860,7 @@ body,
       right: 0;
       animation: bounce 2s infinite ease-in-out;
       transform: scale(1.5);
-      opacity: 1.2;
+      opacity:0.3;
       z-index: 1;
     }
     @keyframes bounce {
@@ -868,7 +870,7 @@ body,
     canvas#graphChart {
       width: 100% !important;
       max-width: 100%;
-      height: 250px !important;
+      height: 350px !important;
       position: relative;
       z-index: 2;
     }
@@ -1027,13 +1029,13 @@ body,
 }
 
 .feature-icon {
-  width: 24px;
-  height: 24px;
+  width: 50px;
+  height: 50px;
   margin-bottom: 6px;
 }
 
 .feature-title {
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 600;
   color: #111;
   line-height: 1.2;
@@ -1306,7 +1308,8 @@ scroll-behavior: smooth;
           <circle cx="200" cy="200" r="200" fill="#000" />
         </svg>
         <div class="graph-container">
-          <canvas id="graphChart"></canvas>
+          <canvas id="graphChart" width="1000" height="1000"></canvas>
+
         </div>
       </div>
 
@@ -1498,104 +1501,88 @@ scroll-behavior: smooth;
         <div class="swiper-wrapper">
 
       <!-- FD CARD 1: Shriram -->
-      <div class="swiper-slide">
-        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-          <div>
-            <img src="https://cdn.shriramfinance.in/sfl-fe/assets/images/sfl-logo.webp"
-                 alt="Shriram" class="img-fluid mb-2" style="height: 40px;">
-            <h5 class="fw-bold mb-1">Shriram Finance</h5>
-            <span class="badge bg-danger fw-bold mb-2">8.55%</span>
-            <p class="text-muted fw-semibold small">Empower Your Financial Future with
-Shriram Finance</p>
-                       <p class="text-muted fw-semibold small !important;">(Including 0.50%* p.a. for Senior Citizens and 0.05%* p.a. for Women)**T&C Apply</p>
-          </div>
-          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/Fdmodule.aspx" target="_blank"
-               class="btn btn-sm text-white fw-bold flex-fill"
-               style="background-color: #00558C; border-radius: 20px;">
-              <i class="bi bi-cart-fill me-1"></i> Buy
-            </a>
-            <button onclick="shareFD('Shriram Finance','8.55%','Fdmodule.aspx')"
-                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
-                    style="border-radius: 20px;">
-              <i class="bi bi-share-fill me-1"></i> Share
-            </button>
-          </div>
-        </div>
-      </div>
+<div class="swiper-slide">
+  <div class="fd-card bg-white text-center p-3 rounded-4 shadow h-100 d-flex flex-column justify-content-between" style="min-height: 360px;">
+    <div>
+      <img src="https://cdn.shriramfinance.in/sfl-fe/assets/images/sfl-logo.webp" alt="Shriram" class="img-fluid mb-3" style="height: 40px;">
+      <h5 class="fw-bold mb-1">Shriram Finance</h5>
+      <span class="badge bg-danger fw-bold mb-2">8.55%</span>
+      <p class="text-muted small mb-1">Empower Your Financial Future with Shriram Finance</p>
+      <p class="text-muted small mb-0">(Incl. 0.50% p.a. for Seniors & 0.05% for Women)<br><small>**T&C Apply</small></p>
+    </div>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <a href="/Fdmodule.aspx" target="_blank" class="btn btn-sm btn-primary text-white fw-semibold flex-fill rounded-pill">
+        <i class="bi bi-cart-fill me-1"></i> Buy
+      </a>
+      <button onclick="shareFD('Shriram Finance','8.55%','Fdmodule.aspx')" class="btn btn-sm btn-outline-primary fw-semibold flex-fill rounded-pill">
+        <i class="bi bi-share-fill me-1"></i> Share
+      </button>
+    </div>
+  </div>
+</div>
 
-      <!-- FD CARD 2: PNB -->
-      <div class="swiper-slide">
-        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-          <div>
-            <img src="https://www.pnbhousing.com/documents/d/guest/logo-header?download=true"
-                 alt="PNB" class="img-fluid mb-2" style="height: 40px;">
-            <h5 class="fw-bold mb-1">PNB Housing</h5>
-            <span class="badge bg-danger fw-bold mb-2">7.10%</span>
-            <p class="text-muted fw-semibold small">Ghar ki Baat</p>
-          </div>
-          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/Fdmodule.aspx" target="_blank"
-               class="btn btn-sm text-white fw-bold flex-fill"
-               style="background-color: #00558C; border-radius: 20px;">
-              <i class="bi bi-cart-fill me-1"></i> Buy
-            </a>
-            <button onclick="shareFD('PNB Housing','13.10%','Fdmodule.aspx')"
-                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
-                    style="border-radius: 20px;">
-              <i class="bi bi-share-fill me-1"></i> Share
-            </button>
-          </div>
-        </div>
-      </div>
+<!-- FD CARD 2: PNB -->
+<div class="swiper-slide">
+  <div class="fd-card bg-white text-center p-3 rounded-4 shadow h-100 d-flex flex-column justify-content-between" style="min-height: 360px;">
+    <div>
+      <img src="https://www.pnbhousing.com/documents/d/guest/logo-header?download=true" alt="PNB" class="img-fluid mb-3" style="height: 40px;">
+      <h5 class="fw-bold mb-1">PNB Housing</h5>
+      <span class="badge bg-danger fw-bold mb-2">7.10%</span>
+      <p class="text-muted small mb-0">Ghar ki Baat</p>
+    </div>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <a href="/Fdmodule.aspx" target="_blank" class="btn btn-sm btn-primary text-white fw-semibold flex-fill rounded-pill">
+        <i class="bi bi-cart-fill me-1"></i> Buy
+      </a>
+      <button onclick="shareFD('PNB Housing','7.10%','Fdmodule.aspx')" class="btn btn-sm btn-outline-primary fw-semibold flex-fill rounded-pill">
+        <i class="bi bi-share-fill me-1"></i> Share
+      </button>
+    </div>
+  </div>
+</div>
 
-      <!-- FD CARD 3: Bajaj -->
-      <div class="swiper-slide">
-        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-          <div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi0Lufh2ybEC5od_gdVgJ0V_YN67KUPh4Ww&s"
-                 alt="Bajaj" class="img-fluid mb-2" style="height: 40px;">
-            <h5 class="fw-bold mb-1">Bajaj Finance</h5>
-            <span class="badge bg-danger fw-bold mb-2">7.30%</span>
-            <p class="text-muted fw-semibold small">Maximising your savings potential and ensuring stable returns</p>
-          </div>
-          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/Fdmodule.aspx" target="_blank"
-               class="btn btn-sm text-white fw-bold flex-fill"
-               style="background-color: #00558C; border-radius: 20px;">
-              <i class="bi bi-cart-fill me-1"></i> Buy
-            </a>
-            <button onclick="shareFD('Bajaj Finance','7.30%','Fdmodule.aspx')"
-                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
-                    style="border-radius: 20px;">
-              <i class="bi bi-share-fill me-1"></i> Share
-            </button>
-          </div>
-        </div>
-      </div>
+<!-- FD CARD 3: Bajaj -->
+<div class="swiper-slide">
+  <div class="fd-card bg-white text-center p-3 rounded-4 shadow h-100 d-flex flex-column justify-content-between" style="min-height: 360px;">
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIi0Lufh2ybEC5od_gdVgJ0V_YN67KUPh4Ww&s" alt="Bajaj" class="img-fluid mb-3" style="height: 40px;">
+      <h5 class="fw-bold mb-1">Bajaj Finance</h5>
+      <span class="badge bg-danger fw-bold mb-2">7.30%</span>
+      <p class="text-muted small mb-1">Maximising your savings potential with stable returns</p>
+      <p class="text-muted small mb-0">Higher returns for 24–60 month tenure<br>0.35% extra for seniors<br><small>**T&C Apply</small></p>
+    </div>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <a href="/Fdmodule.aspx" target="_blank" class="btn btn-sm btn-primary text-white fw-semibold flex-fill rounded-pill">
+        <i class="bi bi-cart-fill me-1"></i> Buy
+      </a>
+      <button onclick="shareFD('Bajaj Finance','7.30%','Fdmodule.aspx')" class="btn btn-sm btn-outline-primary fw-semibold flex-fill rounded-pill">
+        <i class="bi bi-share-fill me-1"></i> Share
+      </button>
+    </div>
+  </div>
+</div>
 
-      <!-- FD CARD 4: LIC -->
-      <div class="swiper-slide">
-        <div class="fd-card bg-white text-center p-3 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
-          <div>
-            <img src="https://f2.leadsquaredcdn.com/t/lichousing/content/common/images/LIC_Housing_Finance_logo.png"
-                 alt="LIC" class="img-fluid mb-2" style="height: 40px;">
-            <h5 class="fw-bold mb-1">LIC Housing</h5>
-            <span class="badge bg-danger fw-bold mb-2">7.15%</span>
-            <p class="text-muted fw-semibold small">“SANCHAY” – a Deposit Scheme by LIC Housing Finance Ltd</p>
-          </div>
-          <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
-            <a href="/Fdmodule.aspx" target="_blank"
-               class="btn btn-sm text-white fw-bold flex-fill"
-               style="background-color: #00558C; border-radius: 20px;">
-              <i class="bi bi-cart-fill me-1"></i> Buy
-            </a>
-            <button onclick="shareFD('LIC Housing','7.15%','Fdmodule.aspx')"
-                    class="btn btn-sm btn-outline-primary fw-bold flex-fill"
-                    style="border-radius: 20px;">
-              <i class="bi bi-share-fill me-1"></i> Share
-            </button>
-          </div>
+<!-- FD CARD 4: LIC -->
+<div class="swiper-slide">
+  <div class="fd-card bg-white text-center p-3 rounded-4 shadow h-100 d-flex flex-column justify-content-between" style="min-height: 360px;">
+    <div>
+      <img src="https://f2.leadsquaredcdn.com/t/lichousing/content/common/images/LIC_Housing_Finance_logo.png" alt="LIC" class="img-fluid mb-3" style="height: 40px;">
+      <h5 class="fw-bold mb-1">LIC Housing</h5>
+      <span class="badge bg-danger fw-bold mb-2">7.15%</span>
+      <p class="text-muted small mb-1">“SANCHAY” – a deposit scheme by LIC Housing Finance</p>
+      <p class="text-muted small mb-0">Additional 0.25% for senior citizens<br><small>**T&C Apply</small></p>
+    </div>
+    <div class="d-flex justify-content-between gap-2 mt-3">
+      <a href="/Fdmodule.aspx" target="_blank" class="btn btn-sm btn-primary text-white fw-semibold flex-fill rounded-pill">
+        <i class="bi bi-cart-fill me-1"></i> Buy
+      </a>
+      <button onclick="shareFD('LIC Housing','7.15%','Fdmodule.aspx')" class="btn btn-sm btn-outline-primary fw-semibold flex-fill rounded-pill">
+        <i class="bi bi-share-fill me-1"></i> Share
+      </button>
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
 
@@ -2100,98 +2087,128 @@ Shriram Finance</p>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
   <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-      const wordEl = document.getElementById("changing-word");
-      const labelEl = document.getElementById("product-label");
-      const chartCtx = document.getElementById("graphChart").getContext("2d");
-      const ballSvg = document.getElementById("ballSvg").querySelector("circle");
+  document.addEventListener("DOMContentLoaded", function () {
+  const wordEl = document.getElementById("changing-word");
+  const labelEl = document.getElementById("product-label");
+  const chartCtx = document.getElementById("graphChart").getContext("2d");
+  const ballSvg = document.getElementById("ballSvg").querySelector("circle");
 
-      let index = 0;
-      const words = ["FD", "Bonds"];
+  let index = 0;
+  const words = ["FD", "Bonds"];
 
-        const colors = {
-            "FD": "#003366",     // Dark Blue for visibility instead of light gold
-            "Bonds": "#c04d00",  // Dark Orange instead of light orange
-        };
+  const colors = {
+    "FD": "#003366",     // Dark Blue
+    "Bonds": "#c04d00",  // Dark Orange
+  };
 
+  const chartData = {
+    "FD": {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+        label: 'FD Growth',
+        data: [6.5, 7, 7.6, 8.3, 9,11],
+        borderColor: colors.FD,
+        borderWidth: 3,
+        fill: false,
+        tension: 0.6
+      }]
+    },
+    "Bonds": {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+        label: 'Bond Yield',
+        data: [9.8, 10.2, 10.6, 11.2, 11.9,14],
+        borderColor: colors.Bonds,
+        borderWidth: 3,
+        fill: false,
+        tension: 0.7
+      }]
+    },
+  };
 
-      const chartData = {
-        "FD": {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-          datasets: [{
-            label: 'FD Growth',
-            data: [6.5, 7, 7.6, 8.3, 9],
-            borderColor: colors.FD,
-            borderWidth: 3,
-            fill: false,
-            tension: 0.4
-          }]
+  let chartInstance;
+
+  function renderChart(type) {
+    if (chartInstance) chartInstance.destroy();
+    chartInstance = new Chart(chartCtx, {
+      type: 'line',
+        data: chartData[type],
+        layout: {
+            padding: 10 // ✅ Correct way to add padding (number, no 'px')
         },
-        "Bonds": {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-          datasets: [{
-            label: 'Bond Yield',
-            data: [9.8, 10.2, 10.6, 11.2, 11.9],
-            borderColor: colors.Bonds,
-            borderWidth: 3,
-            fill: false,
-            tension: 0.4
-          }]
-        },
-        
-      };
-
-      let chartInstance;
-
-      function renderChart(type) {
-        if (chartInstance) chartInstance.destroy();
-        chartInstance = new Chart(chartCtx, {
-          type: 'line',
-          data: chartData[type],
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                labels: {
-                  color: '#fff',
-                  font: { weight: 'bold', size: 14 }
-                }
-              }
-            },
-            scales: {
-              x: {
-                ticks: {
-                  color: '#ccc',
-                  font: { weight: 'bold' }
-                }
-              },
-              y: {
-                ticks: {
-                  color: '#ccc',
-                  font: { weight: 'bold' }
-                }
-              }
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#640D5F',
+              font: { weight: 'bold', size: 16 }
             }
           }
-        });
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Months',
+              color: '#333',
+              font: {
+                size: 15,
+                weight: 'bold'
+              }
+            },
+            ticks: {
+              color: '#333', // Dark shiny text
+              font: {
+                weight: 'bold'
+              }
+            },
+            grid: {
+              color: 'rgba(80, 80, 80, 1)' // Shiny dark grid lines
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Yield %',
+              color: '#333',
+              font: {
+                size: 15,
+                weight: 'bold'
+              }
+            },
+            ticks: {
+              color: '#333', // Dark shiny text
+              font: {
+                weight: 'bold'
+              }
+            },
+            grid: {
+              color: 'rgba(80, 80, 80, 4)' // Shiny dark grid lines
+            
+            }
+          }
+        }
       }
-
-      // Initial render
-      renderChart("FD");
-
-      setInterval(() => {
-        index = (index + 1) % words.length;
-        wordEl.style.opacity = 0;
-        setTimeout(() => {
-          const newWord = words[index];
-          wordEl.textContent = newWord;
-          labelEl.textContent = newWord;
-          ballSvg.setAttribute("fill", colors[newWord]);
-          wordEl.style.opacity = 1;
-          renderChart(newWord);
-        }, 300);
-      }, 2500);
     });
+  }
+
+  // Initial render
+  renderChart("FD");
+
+  setInterval(() => {
+    index = (index + 1) % words.length;
+    wordEl.style.opacity = 0;
+    setTimeout(() => {
+      const newWord = words[index];
+      wordEl.textContent = newWord;
+      labelEl.textContent = newWord;
+      ballSvg.setAttribute("fill", colors[newWord]);
+      wordEl.style.opacity = 1;
+      renderChart(newWord);
+    }, 300);
+  }, 2500);
+});
 
         const bondsData = [
       {

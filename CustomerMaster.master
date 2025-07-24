@@ -11,6 +11,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BondsAdda - Smart FD & Bonds Investment Partner</title>
+      <meta name="google-site-verification" content="DrmoYoFrQifi3U9lxOPypMFBsBxfsUS17IN4czl-N6o" />
 
   <!-- 📄 Primary Meta Description -->
   <meta name="description" content="Discover secure and SEBI-compliant investment options with BondsAdda. Choose from G-Secs, Monthly Income Bonds, 54EC Capital Gain Bonds, PSU Bonds, and top-rated Fixed Deposits. Maximize your returns with smart, fixed-income strategies.">
@@ -32,11 +33,25 @@
         crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+     <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+ <link href="css/owl_carosouel_min.css" rel="stylesheet" />
+
+ <%--    <link href="Signup/css/css/css/style.css" rel="stylesheet" />--%>
+ <link href="assets/css/notice.css" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
+
+ <link href="Signup/css/style.css" rel="stylesheet" />
+ <link href="Signup/css/cashflowstyle.css" rel="stylesheet" />
+    
+    <!-- Whatsapp CSS Here -->
+    <link rel="stylesheet" href="whatsapp.css">
 </head>
 
 
-    <!-- Whatsapp CSS Here -->
-    <link rel="stylesheet" href="whatsapp.css">
 
     <!-- Chatbot AI Starts Here -->
     <script>
@@ -56,352 +71,222 @@
     <!-- Modal CSS CDN Link -->
     
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link href="css/owl_carosouel_min.css" rel="stylesheet" />
-
-    <%--    <link href="Signup/css/css/css/style.css" rel="stylesheet" />--%>
-    <link href="assets/css/notice.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
-
-    <link href="Signup/css/style.css" rel="stylesheet" />
-    <link href="Signup/css/cashflowstyle.css" rel="stylesheet" />
-    <style>
-    .navbar-nav {
-        width: 100%;
-        justify-content: center;
-        position: relative;
-    }
-
-    .nav-item {
-        margin: 0 10px;
-        position: relative;
-    }
-
-    .nav-link {
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        white-space: nowrap;
-        transition: all 0.3s ease;
-        color: white !important;
-        font-size: 2rem;
-        padding: 5px 12px;
-    }
-
-    .nav-icon {
-        font-size: 2rem;
-        transition: all 0.3s ease;
-        margin-right: 6px;
-        color: #FE5C36; /* Neon green */
-    }
-
-    .nav-link:hover .nav-icon {
-        color: #085D94; /* Pink on hover */
-        transform: scale(1.2);
-    }
-
-    .nav-text {
-        opacity: 20;
-        transform: translateX(10px);
-        transition: all 0.3s ease;
-        font-size: 1.1rem;
-        color: black;
-    }
-
-    .nav-link:hover .nav-text {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .profile-icon {
-        font-size: 2rem;
-        color: #00bbf9; /* Cyan blue */
-        transition: all 0.3s ease;
-    }
-
-    .nav-link:hover .profile-icon {
-        color: #f15bb5;
-        transform: scale(1.2);
-    }
-
-    .position-absolute.right-end {
-        right: 0;
-        top: 0;
-    }
-
-    @media (max-width: 991.98px) {
-        .nav-text {
-            opacity: 1 !important;
-            transform: translateX(0) !important;
-        }
-    }
-        /* Show dropdown on hover */
-    .navbar-nav .dropdown:hover .dropdown-menu {
-        display: block;
-        margin-top: 0; /* optional: remove jump */
-    }
-
-    /* Optional: Add transition for dropdown */
-    .dropdown-menu {
-        transition: all 0.3s ease-in-out;
-        border-radius: 0.5rem;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Smooth hover icon & text */
-    .nav-link .nav-icon {
-        transition: transform 0.2s ease, color 0.2s ease;
-    }
-
-    .nav-link:hover .nav-icon {
-        transform: scale(1.1);
-        color: #085D94;
-    }
-
-    .nav-link:hover .nav-text {
-        color: black;
-        margin-left: 4px;
-    }
-
-
-   /*Footer*/
-      .footer {
-        font-family: 'Segoe UI', sans-serif;
-       background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(0,85,140,0.9));
-
    
-        color: black;
-        padding-top: 40px;
-    }
+    <style>
+    /* ========= NAVIGATION STYLES ========= */
 
-    .footer h2 {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        padding-bottom: 5px;
-    }
+.navbar-nav {
+    width: 100%;
+    justify-content: center;
+    position: relative;
+}
 
-    .footer .btn-link {
-        display: inline-block;
-        margin: 4px 0;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-    }
+.nav-item {
+    margin: 0 10px;
+    position: relative;
+}
 
-    .footer .btn-link:hover {
-        text-decoration: underline;
-        color: #fffbe0;
-    }
+.nav-link {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    color: white !important;
+    font-size: 1.2rem;
+    padding: 6px 14px;
+    font-weight: 500;
+}
 
-    .footer i {
-        margin-right: 8px;
-        color: #ffeb3b;
-    }
+.nav-icon {
+    font-size: 2rem;
+    margin-right: 6px;
+    color: #FE5C36;
+    transition: all 0.3s ease;
+}
 
-    .footer .read-more-content {
-        display: none;
-        margin-top: 10px;
-    }
+.nav-link:hover .nav-icon {
+    color: #085D94;
+    transform: scale(1.2);
+}
 
-    .footer .read-more-toggle {
-        cursor: pointer;
-        font-weight: 500;
-        display: inline-block;
-        margin-top: 10px;
-        text-decoration: underline;
-        color: #ffffff;
-    }
+.nav-text {
+    opacity: 1;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    font-size: 1.3rem;
+    color: black;
+}
 
-    @media (max-width: 767.98px) {
-        .footer .col-lg-3,
-        .footer .col-lg-2,
-        .footer .col-lg-4 {
-            margin-bottom: 25px;
-        }
+.nav-link:hover .nav-text {
+    opacity: 1;
+    transform: translateX(0);
+    color: black;
+    margin-left: 4px;
+}
 
-        .footer h2 {
-            font-size: 1rem;
-        }
-    }
-        nav.navbar.navbar-expand-lg.navbar-light {
-            z-index: 100 !important;
-        }
+.profile-icon {
+    font-size: 1.6rem;
+    color: #00bbf9;
+    transition: all 0.3s ease;
+}
 
-        .owl-dots {
-            display: none;
-        }
+.nav-link:hover .profile-icon {
+    color: #f15bb5;
+    transform: scale(1.2);
+}
 
-        .new_icons_1 a i {
-            color: #fff;
-            border-radius: 50%;
-            border: 2px solid #fbfbfb;
-            background: #19ae19;
-            height: 55px;
-            width: 55px;
-            line-height: 48px;
-            font-size: 40px;
-            text-align: center;
-        }
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
 
-        .new_icons_2 a i {
-            color: #fff;
-            border-radius: 50%;
-            border: 2px solid #fbfbfb;
-            background: #19ae19;
-            height: 55px;
-            width: 55px;
-            line-height: 48px;
-            font-size: 35px;
-            text-align: center;
-        }
-
-        .new_icons_3 a i {
-            color: #fff;
-            border-radius: 50%;
-            border: 2px solid #fbfbfb;
-            background: #19ae19;
-            height: 55px;
-            width: 55px;
-            line-height: 48px;
-            font-size: 35px;
-            text-align: center;
-        }
-
-        .new_icons_1 {
-            padding-left: 2px;
-            position: fixed;
-            z-index: 10;
-            bottom: 160px;
-            right: -35px;
-        }
-
-        .new_icons_2 {
-            padding-left: 2px;
-            position: fixed;
-            z-index: 10;
-            bottom: 85px;
-            right: 7px;
-        }
-
-        .new_icons_3 {
-            padding-left: 2px;
-            position: fixed;
-            z-index: 10;
-            bottom: 225px;
-            right: -35px;
-        }
-
-        .ui-menu {
-            z-index: 1000000 !important;
-        }
-
-        a#ContentPlaceHolder1_lnkSearch {
-            padding: 10px !important;
-            border: none;
-            border: 1px solid black;
-            border-radius: 0 20px 20px 0 !important;
-            margin-left: -6px;
-        }
-
-        @media (max-width: 670px) {
-            #ui-id-2 {
-                width: 100% !important;
-                margin-top: 140px !important;
-                margin-left: 0px !important;
-            }
-        }
-
-        ul#ui-id-1 {
-            /*            top: 370px;
-            left: 200px;*/
-            height: 600px !important;
-            margin-left:250px;
-            margin-top:420px;
-        }
-
-        @media (max-width: 665px) {
-            #ui-id-1 {
-                width: 100% !important;
-                margin-top: 450px !important;
-                margin-left: 0px !important;
-            }
-        }
-
-        div#chatling-open-chat-icon {
-            margin-right: -20px;
-        }
- /* Glowing effect base */
-.glow-effect {
-    background-color: #00558C !important;
-    border-radius: 8px;
-    color: inherit;
+.dropdown-menu {
     transition: all 0.3s ease-in-out;
-    animation: glow 1.8s infinite ease-in-out;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Glow animation */
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 4px #00558C;
-    }
-    50% {
-        box-shadow: 0 0 15px #00bfff, 0 0 25px #00bfff;
-    }
-    100% {
-        box-shadow: 0 0 4px #00558C;
+/* Mobile View Fix */
+@media (max-width: 991.98px) {
+    .nav-text {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
     }
 }
 
-/* Default icon color */
-.glow-effect .nav-icon {
-    color: #FE5C36; /* example: original color (gold) */
-    transition: color 0.3s ease-in-out;
+/* ========= FOOTER STYLES ========= */
+
+.footer {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(0,85,140,0.9));
+    color: black;
+    padding-top: 40px;
 }
 
-/* On hover: icon and text become white */
-.glow-effect:hover,
-.glow-effect:hover .nav-text,
-.glow-effect:hover .nav-icon {
-    color: #ffffff !important;
+.footer h2 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
 }
 
+.footer .btn-link {
+    font-size: 0.95rem;
+    margin: 4px 0;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
 
+.footer .btn-link:hover {
+    text-decoration: underline;
+    color: #fffbe0;
+}
 
-        input#txtResult {
-            border-radius: 20px 0px 0px 20px;
-             
-            line-height: 2.5;
-        }
+.footer i {
+    margin-right: 8px;
+    color: #ffeb3b;
+}
 
-        .admisionFeeFrom {
-            background: green;
-            width: 150px;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            top: 45%;
-            z-index: 111;
-            border-radius: 5px;
-            right: -57px;
-            transform: rotate(90deg);
-            color: white;
-        }
+.footer .read-more-content {
+    display: none;
+    margin-top: 10px;
+}
 
-        .sc-1q9fwvy-0.gHHEeh {
-            background: green !important;
-            border-radius: 50% !important;
-        }
+.footer .read-more-toggle {
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: underline;
+}
 
-        button.sc-htpNat.sc-1w3tvxe-1.nwmXb.sc-EHOje.bsmmQV {
-            background: green;
-            border-radius: 50%;
-        }
+/* Responsive Footer Columns */
+@media (max-width: 767.98px) {
+    .footer .col-lg-3,
+    .footer .col-lg-2,
+    .footer .col-lg-4 {
+        margin-bottom: 25px;
+    }
+    .footer h2 {
+        font-size: 1rem;
+    }
+}
 
-  .social-icon {
+/* ========= ICONS & WIDGETS ========= */
+
+.new_icons_1,
+.new_icons_2,
+.new_icons_3 {
+    position: fixed;
+    z-index: 10;
+    padding-left: 2px;
+}
+
+.new_icons_1 { bottom: 160px; right: -35px; }
+.new_icons_2 { bottom: 85px; right: 7px; }
+.new_icons_3 { bottom: 225px; right: -35px; }
+
+.new_icons_1 a i,
+.new_icons_2 a i,
+.new_icons_3 a i {
+    background: #19ae19;
+    color: #fff;
+    border: 2px solid #fbfbfb;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 35px;
+}
+
+.new_icons_1 a i { font-size: 40px; }
+
+/* ========= SEARCH STYLES ========= */
+
+#ContentPlaceHolder1_lnkSearch {
+    padding: 10px !important;
+    border: 1px solid black;
+    border-radius: 0 20px 20px 0 !important;
+    margin-left: -6px;
+}
+
+input#txtResult {
+    border-radius: 20px 0 0 20px;
+    line-height: 2.5;
+}
+
+/* ========= AUTOCOMPLETE UI ========= */
+
+.ui-menu {
+    z-index: 1000000 !important;
+}
+
+@media (max-width: 670px) {
+    #ui-id-2 {
+        width: 100% !important;
+        margin-top: 140px !important;
+        margin-left: 0 !important;
+    }
+}
+
+ul#ui-id-1 {
+    height: 600px !important;
+    margin-left: 250px;
+    margin-top: 420px;
+}
+
+@media (max-width: 665px) {
+    #ui-id-1 {
+        width: 100% !important;
+        margin-top: 450px !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* ========= SOCIAL ICONS ========= */
+
+.social-icon {
     width: 40px;
     height: 40px;
     display: inline-flex;
@@ -411,73 +296,102 @@
     font-size: 18px;
     transition: all 0.3s ease;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-  }
+}
 
-  .group:hover .social-icon {
+.group:hover .social-icon {
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(241, 90, 41, 0.6);
     background-color: #f15a29;
     color: #fff !important;
-  }
+    box-shadow: 0 0 15px rgba(241, 90, 41, 0.6);
+}
 
-  .group:hover span:last-child {
+.group:hover span:last-child {
     color: #f8f9fa;
-  }
+}
+
+/* ========= OTHER FIXES ========= */
+
+nav.navbar.navbar-expand-lg.navbar-light {
+    z-index: 100 !important;
+}
+
+.admisionFeeFrom {
+    background: green;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    top: 45%;
+    z-index: 111;
+    border-radius: 5px;
+    right: -57px;
+    transform: rotate(90deg);
+    color: white;
+}
+
+.sc-1q9fwvy-0.gHHEeh,
+button.sc-htpNat.sc-1w3tvxe-1.nwmXb.sc-EHOje.bsmmQV {
+    background: green !important;
+    border-radius: 50% !important;
+}
+
+#chatling-open-chat-icon {
+    margin-right: -20px;
+}
+
+  .position-absolute.right-end {
+        right: 0;
+        top: 0;
+    }
+
 </style>
 
     
-    <script>(function (w, d, s, l, i) {
-                w[l] = w[l] || []; w[l].push({
-                    'gtm.start':
-                        new Date().getTime(), event: 'gtm.js'
-                }); var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-MNLVNJ32');</script>
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNLVNJ32"
-            height="0" width="0" style="display: none; visibility: hidden"></iframe>
-    </noscript>
+    <!-- Google Tag Manager -->
+<script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l !== 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MNLVNJ32');
+</script>
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNLVNJ32"
+    height="0" width="0" style="display: none; visibility: hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager -->
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0VBF5EPEG"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V0VBF5EPEG"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-V0VBF5EPEG');
+</script>
 
-        gtag('config', 'G-V0VBF5EPEG');
+<!-- Enter Key Search Trigger -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var input = document.getElementById("txtResult");
+        var searchBtn = document.getElementById("<%= lnkSerch.ClientID %>"); // Ensure this ID is available
 
+      if (input && searchBtn) {
+          input.addEventListener("keypress", function (e) {
+              if (e.key === "Enter") {
+                  e.preventDefault();
+                  searchBtn.click(); // Triggers ASP.NET Button Click
+              }
+          });
+      }
+  });
+</script>
 
-        document.addEventListener("DOMContentLoaded", function () {
-            var input = document.getElementById("txtResult");
-            var searchBtn = document.getElementById("lnkSerch");
-
-            if (input && searchBtn) {
-                input.addEventListener("keypress", function (e) {
-                    if (e.key === "Enter") {
-                        e.preventDefault();
-                        searchBtn.click();
-
-                    }
-                });
-            }
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var input = document.getElementById("txtResult");
-            var btn = document.getElementById("<%= lnkSerch.ClientID %>");
-
-             if (input && btn) {
-                 input.addEventListener("keypress", function (e) {
-                     if (e.key === "Enter") {
-                         e.preventDefault();
-                         btn.click(); // Triggers ASP.NET search button
-                     }
-                 });
-             }
-         });
-
-    </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -571,7 +485,7 @@
 
 <!-- FAQ -->
 <li class="nav-item">
-    <a class="nav-link" href="<%=ResolveUrl("~")%>FAQ">
+    <a class="nav-link " href="<%=ResolveUrl("~")%>FAQ">
         <i class="fas fa-question nav-icon"></i>
         <span class="nav-text">FAQ</span>
     </a>
@@ -591,14 +505,17 @@
     </div>
 </li>
 <li class="nav-item">
-  <a class="nav-link glow-effect" href="<%=ResolveUrl("~")%>Fdmodule.aspx">
-    <i class="fas fa-piggy-bank nav-icon me-1"></i>
-    <span class="nav-text">FD Registration</span>
-  </a>
+    <a class="nav-link text-white "
+       href="<%=ResolveUrl("~")%>Fdmodule.aspx"
+       style=" background: linear-gradient(90deg, #ff8800, #007bff); border-radius: 50px; transition: all 0.3s ease; display: inline-block;">
+        FD Registration
+    </a>
 </li>
 
+
+
 <!-- Profile Icon Right-Aligned -->
-<li class="nav-item dropdown position-absolute right-end">
+<li class="nav-item dropdown position-absolute right-end ms-auto">
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown">
         <i class="fas fa-user-circle profile-icon"></i>
     </a>
@@ -739,9 +656,15 @@
                    <li class="nav-item">
                         <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>Pan_Kra_Verification">Pan Kra Verification</a>
                     </li>
-                     <li class="nav-item">
-      <a class="nav-link font-weight-bold" href="<%=ResolveUrl("~")%>Fdmodule">FD Registration</a>
-  </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white "
+                           href="<%=ResolveUrl("~")%>Fdmodule.aspx"
+                           style=" background: linear-gradient(90deg, #ff8800, #007bff); border-radius: 6px; transition: all 0.3s ease;">
+                            FD Registration
+                        </a>
+                    </li>
+
+
 
                     <li>
                         <ul class="navbar-nav mr-auto menu2">

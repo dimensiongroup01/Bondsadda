@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -12,19 +13,22 @@ public partial class Fdmodule : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (GetUserLoggedIn() == null)
+        string customerId = GetUserLoggedIn();
+
+        if (string.IsNullOrEmpty(customerId))
         {
-            if (GetUserLoggedIn() == null)
-            {
-                Response.Redirect("signin?url=" + Server.UrlEncode(Request.Url.AbsoluteUri));
-            }
+            Response.Redirect("signin?url=" + Server.UrlEncode(Request.Url.AbsoluteUri));
+            return;
         }
 
+        if (!IsPostBack)
+        {
+            LoadCustomerData(customerId);
+        }
     }
 
     private string GetUserLoggedIn()
     {
-
         HttpCookie cookieuser = Request.Cookies["DGBAM"];
         if (cookieuser == null)
         {
@@ -32,9 +36,32 @@ public partial class Fdmodule : System.Web.UI.Page
         }
         else
         {
-            return cookieuser.Value.ToString();
+            return cookieuser.Value.ToString(); // assuming this is CustomerId
         }
+    }
+    private void LoadCustomerData(string customerId)
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["BondsAddaDB"].ConnectionString;
 
+        string query = "SELECT CFullName,CMobile, CEmail FROM Customer WHERE CustomerId = @CustomerId AND IsDeleted = 0 AND IsActive = 1";
+
+        using (SqlConnection conn = new SqlConnection(connStr))
+        using (SqlCommand cmd = new SqlCommand(query, conn))
+        {
+            cmd.Parameters.AddWithValue("@CustomerId", customerId);
+
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                txtName.Text = reader["CFullName"].ToString();
+                txtMobile.Text = reader["CMobile"].ToString();
+                txtEmail.Text = reader["CEmail"].ToString();
+            }
+
+            reader.Close();
+        }
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
