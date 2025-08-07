@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="CashFlow.aspx.cs" Inherits="CashFlow" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
         .box{
             border:none;
@@ -10,7 +15,29 @@
 /*        .timlines .interest-box {
             border:none !important;
             box-shadow:none !important;
+
+
 }*/
+    .box{
+            border:none;
+/*            border-radius:0;*/
+            box-shadow:none;
+        }
+    .modal {
+  z-index: 1055 !important; /* Make sure it's above sticky navbar */
+}
+.modal-backdrop {
+  z-index: 1050 !important;
+}
+.modal-dialog {
+  margin-top: 100px; /* Push modal below navbar */
+}
+
+.modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
     </style>
         <link rel="shortcut icon" href="Image/logo1.png" />
 
@@ -50,7 +77,7 @@
     <div class="col-12">
         <p class="font-weight-bold mb-0">
             <a href='<%= ResolveUrl("~/Index.aspx") %>' class="text-decoration-none text-dark">Home</a> /
-            <a href='<%= ResolveUrl("~/OurCollections.aspx") %>' class="text-decoration-none text-dark">Our Collections</a> /
+            <a href='<%= ResolveUrl("~/OurCollections.aspx") %>' class="text-decoration-none text-dark">Our Collections</a> 
             <%# Eval("Security") %>
         </p>
 
@@ -325,36 +352,54 @@
                                                 <h1 class="btn btn-primary">Invest Now</h1>
                                             </div>
                                 </asp:Panel>
-                                <div class="modal fade" id="investnow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h3 class="modal-title" id="exampleModalLabel">Bond Calculator</h3>
-                                                <span aria-hidden="true" data-dismiss="modal" style="cursor:pointer;font-size:30px;">&times;</span>
-                                            </div>
+                                <asp:UpdatePanel ID="upModal" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+      <div class="modal fade" id="investnow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
 
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label for="txtFaceValue">Sattlement Date:</label>
-                                                            <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" placeholder="DD/MM/YYYY"></asp:TextBox>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtCouponRate">Quantity:</label>
-                                                            <asp:TextBox ID="txtQty" runat="server" TextMode="Number" min="1" CssClass="form-control"></asp:TextBox>
-                                                        </div>
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Bond Calculator</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size:30px;    margin-right: 0;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
-                                                    </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="txtSDate">Settlement Date:</label>
+          <asp:TextBox ID="txtSDate" runat="server" CssClass="form-control datepicker" placeholder="DD/MM/YYYY"></asp:TextBox>
+        </div>
 
-                                            <div class="modal-footer">
-                                                <asp:Button ID="btnInterestSheet" runat="server" Text="Interest Sheet" OnClick="btnInterestSheet_Click" CssClass="btn btn-primary" />
-                                                <asp:Button ID="btnInterestSheet1" runat="server" Text="Deal Confirmation" OnClick="btnInvestNow_Click" CssClass="btn btn-primary"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="form-group">
+          <label for="txtQty">Quantity:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary" type="button" onclick="changeQty(-1)">−</button>
+            </div>
+            <asp:TextBox ID="txtQty" runat="server" TextMode="Number" min="1" CssClass="form-control text-center" />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+        </div>
 
-                               <%--     </ContentTemplate>
-                                </asp:UpdatePanel>   --%>
+        <!-- Additional fields can go here -->
+
+      </div>
+
+      <div class="modal-footer">
+        <asp:Button ID="btnInterestSheet" runat="server" Text="Interest Sheet" OnClick="btnInterestSheet_Click" CssClass="btn btn-primary" />
+        <asp:Button ID="btnInterestSheet1" runat="server" Text="Deal Confirmation" OnClick="btnInvestNow_Click" CssClass="btn btn-primary" />
+      </div>
+
+    </div>
+  </div>
+</div>
+                                     
+
+                               </ContentTemplate>
+                                </asp:UpdatePanel>   
                          <%--   </div>      --%>                      
                             </asp:Panel>
                             
@@ -1237,12 +1282,22 @@
                                                     </div>
                                                 </div>
                                             <div class="form-group row">
-                                                    <label for="inputPassword"
-                                                        class="col-5 col-form-label ">Quantity*</label>
-                                                    <div class="col-7">
-                                                        <asp:TextBox ID="txtQuantityValue" runat="server" CssClass="text-right form-control" 
-                                                            placeholder="Quantity" OnTextChanged="txtQuantityValue_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                                   <label for="inputPassword" class="col-5 col-form-label">Quantity*</label>
+                                                <div class="col-7">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn btn-outline-secondary" onclick="changeQuantity(-1)">–</button>
+                                                        </div>
+
+                                                        <asp:TextBox ID="txtQuantityValue" runat="server" CssClass="form-control text-center" 
+                                                            placeholder="Quantity" Text="1" OnTextChanged="txtQuantityValue_TextChanged" AutoPostBack="true"></asp:TextBox>
+
+                                                        <div class="input-group-append">
+                                                            <button type="button" class="btn btn-outline-secondary" onclick="changeQuantity(1)">+</button>
+                                                        </div>
                                                     </div>
+                                                </div>
+
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="inputPassword"
@@ -2330,51 +2385,25 @@
     <asp:UpdatePanel ID="uPanel" runat="server">
         <ContentTemplate>
 
-            <section class="subscribe pb-md-5 pb-3 mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="box2 ">
-                        <div class="row">
-                            <div
-                                class="col-md-7 p-md-5 p-5 text-md-left text-center d-flex justify-content-center align-items-center">
-                                <div
-                                    class="">
-                                    <h2 class="font-weight-normal color1 h3">Subscribe
-                                        to
-                                        our <span class="color2">Newsletter</span></h2>
-                                  <p>DON’T FALL BEHIND<br />
-Stay current with a recap of today’s computing news from digital trend by bonds adda.</p>
-                                    <div class="form-inline row">
-                                        <div
-                                            class="form-group col-md-8 mb-2 pr-md-0">
-                                            <asp:TextBox ID ="txtEmail" runat="server"
-                                                class="form-control col-12"
-                                                
-                                                placeholder="Enter your Email Address"></asp:TextBox>
-                                        </div>
-                                        <div class="col-md-4 mb-2 pl-md-0">
-                                                <asp:Button ID="btnSubscribe" runat="server" Text="Subscribe Now"
-                                                    class="btn btn-dark col-12 " OnClick="btnSubscribe_Click"></asp:Button>
-                                         
-                                        </div>
+               <section class="subscribe py-5" style="background: #1f3c88; color: #fff;">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <h2 class="fw-bold mb-3">📬 Subscribe to our <span style="color: #ffcb05;">Newsletter</span></h2>
+        <p class="mb-4">DON’T FALL BEHIND. Stay current with a recap of today’s computing news from Digital Trend — by <strong>Bonds Adda</strong>.</p>
 
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-3 ">
-                                <img class="d-lg-block d-md-block d-none" src="img/news.svg" alt="">
-                            </div>
-                            <div class="col-md-1"></div>
-                        </div>
-                    </div>
-                </div>
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+          <ContentTemplate>
+            <div class="input-group shadow-lg">
+              <asp:TextBox ID="txtEmail" runat="server" class="form-control form-control-lg border-0" placeholder="Enter your Email Address" />
+              <asp:Button ID="btnSubscribe" runat="server" Text="Subscribe Now" class="btn btn-warning btn-lg px-4 fw-semibold" OnClick="btnSubscribe_Click" />
             </div>
-        </div>
-        
-    </section>
+          </ContentTemplate>
+        </asp:UpdatePanel>
+      </div>
+    </div>
+  </div>
+</section>
         </ContentTemplate>
     </asp:UpdatePanel>
         </asp:Panel>
@@ -3227,6 +3256,16 @@ Stay current with a recap of today’s computing news from digital trend by bo
            // $('#investnow').modal('hide');
         }
     </script>
+        <script>
+function changeQty(delta) {
+  var input = document.getElementById('<%= txtQty.ClientID %>');
+                let current = parseInt(input.value || 0);
+                current = isNaN(current) ? 0 : current;
+                current += delta;
+                if (current < 1) current = 1;
+                input.value = current;
+            }
+        </script>
 
 </asp:Content>
 

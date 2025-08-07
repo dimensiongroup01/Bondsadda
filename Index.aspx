@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" EnableEventValidation="false"  Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
+﻿
+
+<%@ Page Title="" EnableEventValidation="false"  Language="C#" MasterPageFile="~/CustomerMaster.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
  
@@ -6,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BondsAdda - Smart FD & Bonds Investment Partner</title>
-             <meta name="google-site-verification" content="DrmoYoFrQifi3U9lxOPypMFBsBxfsUS17IN4czl-N6o" />
+  <meta name="google-site-verification" content="DrmoYoFrQifi3U9lxOPypMFBsBxfsUS17IN4czl-N6o" />
 
   <meta name="description" content="Discover secure and SEBI-compliant investment options with BondsAdda. Choose from G-Secs, Monthly Income Bonds, 54EC Capital Gain Bonds, PSU Bonds, and top-rated Fixed Deposits. Maximize your returns with smart, fixed-income strategies.">
   <meta name="keywords" content="Bonds, Fixed Deposits, G-Secs, Capital Gain Bonds, 54EC Bonds, Monthly Income Bonds, PSU Bonds, SEBI compliant investments, BondsAdda, Smart FD Investment">
@@ -1250,11 +1252,11 @@ scroll-behavior: smooth;
         <div class="text-left px-2">
           <h1 class="display-5 fw-bold mb-2 text-dark">
             Maximize Your Savings with
-            <span class="text-warning fw-bold" id="changing-word">FD</span>
+            <span class=" fw-bold" style="color:#fe5c36;" id="changing-word">FD</span>
           </h1>
           <p class="lead fw-medium mb-3 text-dark">
-            Invest in top-rated <span id="product-label" class="fw-bold text-warning">Fixed Deposits</span> and earn
-            <span class="fw-bold text-success">Decent</span> returns. <br />
+            Invest in top-rated <span id="product-label" class="fw-bold " style="color:#fe5c36;">Fixed Deposits</span> and earn
+            <span class="fw-bold " style="color:#fe5c36;">Decent</span> returns. <br />
             <span class="text-dark">Fully digital, secure & hassle-free.</span>
           </p>
         </div>

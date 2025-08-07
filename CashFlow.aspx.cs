@@ -16500,8 +16500,32 @@ public partial class CashFlow : System.Web.UI.Page
                 }
             }
         }
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "c", "ClosePopup();", true);
-        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Deal Confirmation Generated Plz Scroll.!!!', type: 'success',});", true);
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "HideModal", @"
+    $('#investnow').modal('hide');
+    $('.modal-backdrop').remove();           // Remove the dimmed overlay
+    $('body').removeClass('modal-open');     // Re-enable page scroll and interaction
+", true);
+
+        //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "c", "ClosePopup();", true);
+        //ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Deal Confirmation Generated Plz Scroll.!!!', type: 'success',});", true);
+        //ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "toastr.success('Deal Confirmation Generated. Please scroll!');", true);
+        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", @"
+    toastr.options = {
+        'positionClass': 'toast-top-right',
+        'onShown': function() {
+            var toast = $('.toast');
+            toast.css({
+                'margin-top': '100px',
+                'background-color': '#07447D',   // custom background
+                'color': '#fff',                 // custom text color
+                'font-weight': 'bold'            // optional: bold text
+            });
+        }
+    };
+    toastr.success('Deal Confirmation Generated. Please scroll!');
+", true);
+
+
         pnlViewDealCalculation.Visible = true;
     }
 
@@ -18254,8 +18278,9 @@ public partial class CashFlow : System.Web.UI.Page
             //}
 
         }
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "HideModal", "$('#investnow').modal('hide');", true);
 
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "popc", "ClosePopup();", true);
+        // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "popc", "ClosePopup();", true);
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "$.notice({icon: 'info', text: 'Inerest Sheet Generated Plz Scroll', type: 'success',});", true);
         
         pnlViewInterestSheet.Visible = true;

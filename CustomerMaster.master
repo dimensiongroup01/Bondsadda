@@ -41,8 +41,11 @@
  <link href="css/owl_carosouel_min.css" rel="stylesheet" />
 
  <%--    <link href="Signup/css/css/css/style.css" rel="stylesheet" />--%>
- <link href="assets/css/notice.css" rel="stylesheet" />
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
  <link href="Signup/css/style.css" rel="stylesheet" />
  <link href="Signup/css/cashflowstyle.css" rel="stylesheet" />

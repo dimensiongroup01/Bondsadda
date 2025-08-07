@@ -505,7 +505,7 @@ public class SendMailSmS
             <tr><td><strong>PAN</strong></td><td>" + pan + @"</td></tr>
             <tr><td><strong>Aadhaar</strong></td><td>" + aadhaar + @"</td></tr>
             <tr><td><strong>FD Type</strong></td><td>" + fdtype + @"</td></tr>
-            <tr><td><strong>FD Type</strong></td><td>" + mobileno + @"</td></tr>            
+            <tr><td><strong>Mobile No</strong></td><td>" + mobileno + @"</td></tr>            
         </table>
 
         <p>This is a system-generated confirmation. No signature is required.</p>

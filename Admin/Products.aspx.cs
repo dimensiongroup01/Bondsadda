@@ -418,15 +418,26 @@ public partial class Admin_Products : System.Web.UI.Page
 
                 }
             }
-            DataTable dtn = dl.get_ProductsTags(null,lnkEdit.CommandArgument,null, null);
-            if(dtn.Rows.Count > 0)
+            DataTable dtn = dl.get_ProductsTags(null, lnkEdit.CommandArgument, null, null);
+            if (dtn != null && dtn.Rows.Count > 0)
             {
                 foreach (DataRow row in dtn.Rows)
                 {
-                    ddlTags.Items.FindByValue(row["TagsId"].ToString()).Selected = true;
+                    string tagId = row["TagsId"].ToString();
+                    var item = ddlTags.Items.FindByValue(tagId);
+                    if (item != null)
+                    {
+                        item.Selected = true;
+                    }
+                    else
+                    {
+                        // Optional: log or handle missing tag
+                        System.Diagnostics.Debug.WriteLine(string.Format("Tag ID '{0}' not found in ddlTags.", tagId));
 
+                    }
                 }
             }
+
 
         }
     }

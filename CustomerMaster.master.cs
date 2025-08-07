@@ -95,7 +95,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
     }
     private void bindCategory()
     {
-        DataTable dt = dl.get_Category(null, null);
+        DataTable dt = dl.get_Category(null, true);
         if(dt.Rows.Count > 0)
         {
             rptcategory.DataSource = dt;
